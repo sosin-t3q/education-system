@@ -1,0 +1,27 @@
+.button {
+  border-radius: 10px;
+  font-size: 28px;
+  outline: none;
+  border: none;
+}
+
+.button--primary {
+  background-color: #3f75ff;
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 600;
+  width: 200px;
+  height: 68px;
+}
+
+.button--secondary {
+  background-color: #3f75ff;
+  color: #ffffff;
+  font-weight: 700;
+  width: 174px;
+  height: 70px;
+}
+
+.button--third {
+  background-color: salmon;
+}
