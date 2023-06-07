@@ -1,17 +1,16 @@
-import './Badge.css'
+import styles from './Badge.module.css'
 
 interface BadgeProps {
-  width: string;
-  content: React.ReactNode;
+  width: string
+  content: React.ReactNode
 }
 
-const Badge: React.FC<BadgeProps> = ({width, content}) => {
-
+const Badge = ({ width, content }: BadgeProps) => {
   return (
-    <button className='badge-university' style={{width: width}}>
+    <button className={styles['badge-university']} style={{ width: width }}>
       {content}
     </button>
   )
 }
 
-export default Badge;
+export default Badge
