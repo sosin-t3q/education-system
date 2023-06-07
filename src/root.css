@@ -4,6 +4,7 @@
   --bg-secondary: #eaeeff;
   --bg-blue: #3f75ff;
   --bg-black: #1f1f1f;
+  --bg-white: #ffffff;
 
   /* 카드컬러 */
   --card-korea: #8b0029;
@@ -36,6 +37,7 @@
   --font-extrabold: 800;
 
   /* 마진 */
+  --margin-10: 10px;
   --margin-15: 15px;
   --margin-20: 20px;
   --margin-25: 25px;
