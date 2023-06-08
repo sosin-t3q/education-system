@@ -17,7 +17,7 @@ const Link = (props: LinkProps) => {
       : styles['link--third']
 
   return (
-    <ReactRouterLink to={props.path} className={mode}>
+    <ReactRouterLink to={props.path} className={`${styles.link} ${mode}`}>
       {props.label}
     </ReactRouterLink>
   )
