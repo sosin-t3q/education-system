@@ -7,36 +7,22 @@ interface TitleProps {
   className: string
 }
 
-const Title = (props: TitleProps) => {
-  switch (props.type) {
+const Title = ({ type, label, className }: TitleProps) => {
+  switch (type) {
     case 1:
-      return (
-        <h1 className={`${props.className} ${styles.h1}`}>{props.label}</h1>
-      )
+      return <h1 className={`${className} ${styles.h1}`}>{label}</h1>
     case 2:
-      return (
-        <h2 className={`${props.className} ${styles.h2}`}>{props.label}</h2>
-      )
+      return <h2 className={`${className} ${styles.h2}`}>{label}</h2>
     case 3:
-      return (
-        <h3 className={`${props.className} ${styles.h3}`}>{props.label}</h3>
-      )
+      return <h3 className={`${className} ${styles.h3}`}>{label}</h3>
     case 4:
-      return (
-        <h4 className={`${props.className} ${styles.h4}`}>{props.label}</h4>
-      )
+      return <h4 className={`${className} ${styles.h4}`}>{label}</h4>
     case 5:
-      return (
-        <h5 className={`${props.className} ${styles.h5}`}>{props.label}</h5>
-      )
+      return <h5 className={`${className} ${styles.h5}`}>{label}</h5>
     case 6:
-      return (
-        <h6 className={`${props.className} ${styles.h6}`}>{props.label}</h6>
-      )
+      return <h6 className={`${className} ${styles.h6}`}>{label}</h6>
     default:
-      return (
-        <h1 className={`${props.className} ${styles.h1}`}>{props.label}</h1>
-      )
+      return <h1 className={`${className} ${styles.h1}`}>{label}</h1>
   }
 }
 

@@ -7,21 +7,21 @@ interface ButtonProps {
   className: string
 }
 
-const Button = (props: ButtonProps) => {
+const Button = ({ option, onClick, label, className }: ButtonProps) => {
   const mode =
-    props.option === 1
+    option === 1
       ? styles['button--primary']
-      : props.option === 2
+      : option === 2
       ? styles['button--secondary']
       : styles['button--third']
 
   return (
     <button
       type="button"
-      className={`${styles.button} ${mode} ${props.className}`}
-      onClick={props.onClick}
+      className={`${styles.button} ${mode} ${className}`}
+      onClick={onClick}
     >
-      {props.label}
+      {label}
     </button>
   )
 }

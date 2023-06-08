@@ -10,11 +10,11 @@ interface CarouselProps {
   className: string
 }
 
-const Carousel = (props: CarouselProps) => {
+const Carousel = ({ className }: CarouselProps) => {
   return (
     <>
       <Swiper
-        className={props.className}
+        className={className}
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
