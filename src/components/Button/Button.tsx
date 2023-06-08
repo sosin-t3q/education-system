@@ -4,23 +4,24 @@ interface ButtonProps {
   onClick: () => void
   option: number
   label: string
+  className: string
 }
 
-const Button = ({ option, label, onClick }: ButtonProps) => {
+const Button = (props: ButtonProps) => {
   const mode =
-    option === 1
+    props.option === 1
       ? styles['button--primary']
-      : option === 2
+      : props.option === 2
       ? styles['button--secondary']
       : styles['button--third']
 
   return (
     <button
       type="button"
-      className={`${styles.button} ${mode}`}
-      onClick={onClick}
+      className={`${styles.button} ${mode} ${props.className}`}
+      onClick={props.onClick}
     >
-      {label}
+      {props.label}
     </button>
   )
 }
