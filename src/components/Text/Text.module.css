@@ -1,0 +1,12 @@
+@import '../../root.css';
+
+.text-subtitle {
+  font-size: var(--font-28);
+  font-weight: var(--font-bold);
+}
+
+.text-paragraph {
+  font-size: var(--font-22);
+  font-weight: var(--font-medium);
+  text-align: left;
+}

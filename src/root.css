@@ -1,0 +1,66 @@
+:root {
+  /* 배경컬러 */
+  --bg-primary: #f7f8ff;
+  --bg-secondary: #eaeeff;
+  --bg-blue: #3f75ff;
+  --bg-black: #1f1f1f;
+  --bg-white: #ffffff;
+
+  /* 카드컬러 */
+  --card-korea: #8b0029;
+  --card-kyungbuk: #da2127;
+
+  /* 폰트컬러 */
+  --font-gray-heavy: #8c8f99;
+  --font-gray-light: #bbbecc;
+  --font-blue: #3f75ff;
+  --font-white: #ffffff;
+  --font-black: #1f1f1f;
+
+  /* 폰트 사이즈 */
+  --font-14: 14px;
+  --font-16: 16px;
+  --font-20: 20px;
+  --font-22: 22px;
+  --font-24: 24px;
+  --font-28: 28px;
+  --font-32: 32px;
+  --font-40: 40px;
+  --font-46: 46px;
+  --font-100: 100px;
+
+  /* 폰트 굵기 */
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+
+  /* 마진 */
+  --margin-10: 10px;
+  --margin-15: 15px;
+  --margin-20: 20px;
+  --margin-25: 25px;
+  --margin-30: 30px;
+  --margin-40: 40px;
+  --margin-50: 50px;
+  --margin-100: 100px;
+  --margin-120: 120px;
+  --margin-250: 300px;
+
+  /* 패딩 */
+  --padding-10: 10px;
+  --padding-15: 15px;
+  --padding-20: 20px;
+  --padding-25: 25px;
+  --padding-50: 50px;
+
+  /* 모서리 */
+  --border-radius-10: 10px;
+  --border-radius-20: 20px;
+
+  /* 박스 그림자 */
+  --shadow-navbar: 0px 4px 4px rgba(0, 0, 0, 0.06);
+  --shadow-block: 0px 10px 6px rgba(0, 0, 0, 0.1);
+  --shadow-card: 0px 10px 10px rgba(0, 0, 0, 0.1);
+}
