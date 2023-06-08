@@ -1,6 +1,6 @@
 // import styles from './Carousel.module.css'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Pagination, Navigation } from 'swiper'
+import { Autoplay, Pagination } from 'swiper'
 
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -8,28 +8,31 @@ import 'swiper/css/navigation'
 
 interface CarouselProps {
   className: string
-  pagination: boolean
-  navigation: boolean
 }
 
-const Carousel = (props: CarouselProps) => {
+const Carousel = ({ className }: CarouselProps) => {
   return (
     <>
       <Swiper
-        className={props.className}
+        className={className}
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 2500,
+          delay: 3000,
           disableOnInteraction: false,
         }}
-        pagination={props.pagination}
-        navigation={props.navigation}
-        modules={[Autoplay, Pagination, Navigation]}
+        pagination={true}
+        modules={[Autoplay, Pagination]}
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
+        <SwiperSlide>
+          <img src="./src/assets/intro_first.png" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="./src/assets/intro_second.png" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="./src/assets/intro_third.png" />
+        </SwiperSlide>
       </Swiper>
     </>
   )

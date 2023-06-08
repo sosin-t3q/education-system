@@ -1,9 +1,10 @@
+@import '../../root.css';
+
 .link--primary {
-  font-size: 28px;
-  font-weight: 600;
-  line-height: 24px;
-  color: #8c8f99;
   text-decoration: none;
+  font-weight: var(--font-semibold);
+  font-size: var(--font-28);
+  color: var(--font-gray-heavy);
 }
 
 /* .link—secondary {
