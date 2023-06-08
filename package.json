@@ -17,6 +17,7 @@
     "react-router-dom": "^6.11.2",
     "recoil": "^0.7.7",
     "reset.css": "^2.0.2",
+    "swiper": "^9.3.2",
     "vite-plugin-svgr": "^3.2.0"
   },
   "devDependencies": {

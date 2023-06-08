@@ -5,19 +5,20 @@ interface LinkProps {
   path: string
   label: string
   option: number
+  className: string
 }
 
-const Link = (props: LinkProps) => {
+const Link = ({ path, label, option, className }: LinkProps) => {
   const mode =
-    props.option === 1
+    option === 1
       ? styles['link--primary']
-      : props.option === 2
+      : option === 2
       ? styles['link--secondary']
       : styles['link--third']
 
   return (
-    <ReactRouterLink to={props.path} className={mode}>
-      {props.label}
+    <ReactRouterLink to={path} className={`${mode} ${className}`}>
+      {label}
     </ReactRouterLink>
   )
 }

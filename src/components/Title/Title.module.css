@@ -1,0 +1,29 @@
+@import '../../root.css';
+
+.h1 {
+  font-weight: var(--font-bold);
+  font-size: var(--font-100);
+}
+
+.h2 {
+  font-weight: var(--font-bold);
+  font-size: var(--font-46);
+}
+
+.h3 {
+  font-weight: var(--font-bold);
+  font-size: var(--font-40);
+}
+
+.h4 {
+  font-weight: var(--font-bold);
+  font-size: var(--font-32);
+}
+.h5 {
+  font-weight: var(--font-bold);
+  font-size: var(--font-28);
+}
+.h6 {
+  font-weight: var(--font-bold);
+  font-size: var(--font-24);
+}
