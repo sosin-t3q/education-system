@@ -5,6 +5,7 @@ interface LinkProps {
   path: string
   label: string
   option: number
+  className: string
 }
 
 const Link = (props: LinkProps) => {
