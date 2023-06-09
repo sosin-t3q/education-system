@@ -3,7 +3,7 @@ import styles from './Text.module.css'
 
 interface TextProps {
   variant: 'subtitle' | 'paragraph'
-  className?: 'string'
+  className?: string
   children: ReactNode
 }
 

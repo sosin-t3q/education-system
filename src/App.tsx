@@ -1,11 +1,5 @@
-import { Header } from './containers'
-
 function App() {
-  return (
-    <>
-      <Header/>
-    </>
-  )
+  return <></>
 }
 
 export default App

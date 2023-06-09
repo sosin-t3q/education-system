@@ -1,0 +1,20 @@
+@import '../../root.css';
+
+.case {
+  display: flex;
+  flex-direction: column;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.case .h2 {
+  color: var(--bg-blue);
+  text-align: center;
+  margin-bottom: var(--margin-50);
+}
+
+.case p {
+  padding: 0 88px;
+  text-align: left;
+  margin-bottom: var(--margin-300);
+}
