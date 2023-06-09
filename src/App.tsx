@@ -1,9 +1,9 @@
-import { Intro } from './pages'
+import { Header } from './containers'
 
 function App() {
   return (
     <>
-      <Intro></Intro>
+      <Header/>
     </>
   )
 }

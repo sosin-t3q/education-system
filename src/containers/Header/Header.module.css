@@ -1,0 +1,32 @@
+@import '../../root.css';
+
+body {
+  background-color: var(--bg-primary);
+}
+
+.header {
+  display: flex;
+  position: relative;
+  width: auto;
+  height: 100px;
+  margin-left: 360px;
+  margin-right: 360px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-top: var(--margin-25);
+}
+
+.experience {
+  position: absolute;
+  top: 40px;
+  right: 93px;
+}
+
+.login {
+  position: absolute;
+  top: 40px;
+  right: 0;
+}
