@@ -1,0 +1,56 @@
+.layers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1200px;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.general {
+  width: 25%;
+  transform: translateX(25%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 4;
+  cursor: pointer;
+}
+
+.general:hover {
+  transform: translate(25%, -30%);
+}
+
+.medical {
+  z-index: 3;
+  width: 25%;
+  transform: translateX(0%);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.medical:hover {
+  transform: translate(0%, -30%);
+}
+
+.army {
+  width: 25%;
+  transform: translateX(-25%);
+  z-index: 2;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.army:hover {
+  transform: translate(-25%, -30%);
+}
+
+.personal {
+  width: 25%;
+  transform: translateX(-50%);
+  z-index: 1;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.personal:hover {
+  transform: translate(-50%, -30%);
+}
