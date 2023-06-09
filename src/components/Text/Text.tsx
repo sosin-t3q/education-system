@@ -3,17 +3,22 @@ import styles from './Text.module.css'
 
 interface TextProps {
   variant: 'subtitle' | 'paragraph'
+  className?: 'string'
   children: ReactNode
 }
 
 // variant에 따라 subtitle, paragraph로 나뉘어서 선택됨
-const Text = ({ variant, children }: TextProps) => {
+const Text = ({ variant, children, className }: TextProps) => {
   switch (variant) {
     case 'subtitle':
-      return <p className={styles['text-subtitle']}>{children}</p>
+      return (
+        <p className={`${styles['text-subtitle']} ${className}`}>{children}</p>
+      )
 
     case 'paragraph':
-      return <p className={styles['text-paragraph']}>{children}</p>
+      return (
+        <p className={`${styles['text-paragraph']} ${className}`}>{children}</p>
+      )
   }
 }
 
