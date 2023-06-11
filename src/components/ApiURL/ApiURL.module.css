@@ -1,0 +1,23 @@
+.apiCont {
+  background-color: var(--bg-white);
+  border-radius: var(--border-radius-20);
+  padding: var(--padding-25);
+  display: flex;
+  align-items: center;
+  margin-top: var(--margin-100);
+}
+
+label {
+  font-size: var(--font-24);
+  font-weight: var(--font-bold);
+  color: var(--font-black);
+  flex-shrink: 0;
+  margin-right: var(--margin-25);
+}
+
+input {
+  font-size: var(--font-24);
+  width: 100%;
+  flex-grow: 1;
+  border: none;
+}
