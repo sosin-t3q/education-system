@@ -1,5 +1,4 @@
 import styles from './Title.module.css'
-console.log(styles.h1)
 
 interface TitleProps {
   type: number
