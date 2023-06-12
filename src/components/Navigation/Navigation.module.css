@@ -7,6 +7,7 @@
   margin: 0 auto;
   justify-content: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: var(--margin-100);
 }
 
 .list-item {
