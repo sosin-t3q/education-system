@@ -1,9 +1,9 @@
 .badge-university {
   display: inline-block;
-  line-height: 38px;
   height: 38px;
-  background: var(--bg-white);
   padding: 0 var(--padding-10);
+  background: var(--bg-white);
+  line-height: 38px;
   border-radius: var(--border-radius-20);
   font-weight: var(--font-semibold);
   font-size: var(--font-14);
