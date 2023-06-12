@@ -1,0 +1,19 @@
+.input-label {
+  width: 100%;
+  height: 530px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-white);
+  border-radius: var(--border-radius-10);
+}
+
+.hidden {
+  display: none;
+}
+
+.selectFile {
+  text-align: center;
+  color: var(--font-gray-light);
+}
