@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import styles from "./Home.module.css"
-import { Header, HomeInfo } from "@/containers";
-import { Navigation } from "@/components";
+import styles from './Home.module.css'
+import { Header, HomeInfo } from '@/containers'
+import { Navigation } from '@/components'
 
-
-type Tab = 'introduce' | 'performance';
+type Tab = 'introduce' | 'performance'
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState<Tab>('introduce')
@@ -12,14 +11,14 @@ const Home = () => {
   const handleTabChange = (tab: Tab) => {
     setActiveTab(tab)
   }
-    return(
-      <div className={styles.home}>
-        <Header />
-        <Navigation activeTab={activeTab} onTabChange={handleTabChange} />
+  return (
+    <div className={styles.home}>
+      <Header />
+      <Navigation activeTab={activeTab} onTabChange={handleTabChange} />
 
-        {activeTab === 'introduce' && <HomeInfo/>}
-      </div>
-    )
+      {activeTab === 'introduce' && <HomeInfo />}
+    </div>
+  )
 }
 
-export default Home;
+export default Home
