@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import styles from './Home.module.css'
-import { Header, HomeInfo } from '@/containers'
+import { Header, HomeCase, HomeInfo } from '@/containers'
 import { Navigation } from '@/components'
 
 type Tab = 'introduce' | 'performance'
@@ -17,6 +17,7 @@ const Home = () => {
       <Navigation activeTab={activeTab} onTabChange={handleTabChange} />
 
       {activeTab === 'introduce' && <HomeInfo />}
+      {activeTab === 'performance' && <HomeCase />}
     </div>
   )
 }
