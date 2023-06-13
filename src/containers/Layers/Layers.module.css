@@ -7,7 +7,7 @@
 .general {
   position: relative;
   width: 400px;
-  transition: transform 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   z-index: 4;
   cursor: pointer;
 }

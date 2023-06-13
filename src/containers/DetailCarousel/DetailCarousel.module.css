@@ -1,0 +1,28 @@
+@import '../../root.css';
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+
+.container {
+  width: 1560px;
+  margin: 0 auto;
+  padding-bottom: var(--padding-50);
+}
+
+.detailInfo {
+  width: 1200px;
+  margin-left: 180px;
+  margin-bottom: var(--margin-50);
+}
+
+.detail-title {
+  margin-bottom: var(--margin-50);
+}
+
+.my-swiper {
+  width: 1560px;
+  height: 900px;
+}
+
+.my-swiper img {
+  border-radius: 20px;
+}

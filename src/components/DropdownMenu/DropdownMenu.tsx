@@ -5,7 +5,11 @@ import { ReactComponent as ArrowDown } from '@/assets/arrow-down.svg'
 
 const options = ['소개', '밥먹기', '춤추기', '놀기', '실행']
 
-const DropdownMenu = () => {
+interface DropdownMenu {
+  className?: string
+}
+
+const DropdownMenu = ({ className }: DropdownMenu) => {
   const [toggle, setToggle] = useState(false)
   const [selected, setSelected] = useState(options[0])
 
@@ -20,7 +24,7 @@ const DropdownMenu = () => {
   }
 
   return (
-    <div className={styles.dropDown}>
+    <div className={`${styles.dropDown} ${className}`}>
       <div className={styles['dropDown-selected']}>
         <span className={styles['dropDown-selected-title']}>{selected}</span>
         <button

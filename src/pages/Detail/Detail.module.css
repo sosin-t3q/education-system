@@ -1,0 +1,9 @@
+@import '../../root.css';
+
+.detail {
+  background: #f7f8ff;
+}
+
+.detail-carousel {
+  margin-bottom: var(--margin-100);
+}
