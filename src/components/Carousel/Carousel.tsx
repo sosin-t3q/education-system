@@ -28,9 +28,7 @@ const Carousel = ({ className }: CarouselProps) => {
         modules={[Autoplay, Pagination]}
       >
         <SwiperSlide className="first-slide">
-          <section
-            className={`${styles['contents-container']} ${styles.first}`}
-          >
+          <section>
             <div className={styles['text-contents']}>
               <Title
                 className={styles['contents-title']}
@@ -66,9 +64,7 @@ const Carousel = ({ className }: CarouselProps) => {
           </section>
         </SwiperSlide>
         <SwiperSlide className="second-slide">
-          <section
-            className={`${styles['contents-container']} ${styles.second}`}
-          >
+          <section>
             <div className={styles['text-contents']}>
               <Title
                 className={styles['contents-title']}
@@ -97,9 +93,7 @@ const Carousel = ({ className }: CarouselProps) => {
           </section>
         </SwiperSlide>
         <SwiperSlide className="third-slide">
-          <section
-            className={`${styles['contents-container']} ${styles.third}`}
-          >
+          <section>
             <div className={styles['text-contents']}>
               <Title
                 className={styles['contents-title']}

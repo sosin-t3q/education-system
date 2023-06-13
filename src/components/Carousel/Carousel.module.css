@@ -14,10 +14,12 @@
 }
 
 .contents-title {
+  text-align: left;
   margin-bottom: var(--margin-40);
 }
 
 .contents-subtitle {
+  text-align: left;
   margin-bottom: var(--margin-40);
 }
 
