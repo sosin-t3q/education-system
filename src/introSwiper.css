@@ -1,0 +1,36 @@
+.swiper-slide.first-slide {
+  background: linear-gradient(90deg, #263650 0%, rgba(0, 0, 0, 0) 100%),
+    url(./assets/intro_first.png) no-repeat center center/cover;
+}
+
+.swiper-slide.second-slide {
+  background: linear-gradient(90deg, #3f3f3f 0%, rgba(0, 0, 0, 0) 100%),
+    url(./assets/intro_second.png) no-repeat center center/cover;
+}
+
+.swiper-slide.third-slide {
+  background: linear-gradient(90deg, #565656 0%, rgba(0, 0, 0, 0) 100%),
+    url(./assets/intro_third.png) no-repeat center center/cover;
+}
+
+.swiper-pagination-bullet {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: 1px solid #fff;
+  opacity: 1;
+  margin-right: 30px;
+}
+
+.swiper-pagination-horizontal.swiper-pagination-bullets
+  .swiper-pagination-bullet {
+  margin-right: 15px;
+}
+
+.swiper-pagination-bullet-active {
+  width: 80px;
+  transition: width 0.3s;
+  border-radius: 50px;
+  background: #fff;
+  border: 1px solid transparent;
+}
