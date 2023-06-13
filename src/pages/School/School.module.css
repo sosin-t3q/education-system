@@ -6,47 +6,35 @@
   background: #f7f8ff;
 }
 
-/* 헤더 */
-.header {
-  height: 100px;
-  display: flex;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
-}
-
-.header-inner {
-  min-width: 1200px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 auto;
-}
-
-.link1,
-.link2 {
-  color: var(--font-gray-heavy);
-  font-size: var(--font-28);
-  font-weight: var(--font-semibold);
-  text-decoration: none;
-}
-
-.link2 {
-  margin-left: var(--margin-20);
-}
-
-.link1:hover,
-.link2:hover {
-  color: var(--font-blue);
-}
-
 /* 타이틀 */
 .title {
-  color: var(--font-blue);
+  font-size: var(--font-46);
+  font-weight: var(--font-bold);
   text-align: center;
+  color: var(--font-blue);
   margin-bottom: var(--margin-40);
 }
 
 .subtitle {
-  font-size: var(--font-32);
+  font-size: var(--font-46);
+  font-weight: var(--font-bold);
   text-align: center;
+  color: var(--font-black);
+  margin-bottom: var(--margin-50);
+}
+
+.text {
+  font-size: var(--font-32);
+  font-weight: var(--font-medium);
+  text-align: center;
+  margin-bottom: var(--margin-100);
+}
+
+/* 카드 컨테이너 */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 30px;
+  row-gap: 50px;
   margin-bottom: var(--margin-100);
 }
