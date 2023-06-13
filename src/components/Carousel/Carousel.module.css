@@ -1,6 +1,6 @@
 @import '../../root.css';
 
-.contents-container {
+.container {
   position: relative;
 }
 
@@ -8,45 +8,38 @@
   position: absolute;
   top: 10%;
   left: 10%;
-  width: 800px;
   color: var(--font-white);
+  display: flex;
+  flex-direction: column;
 }
 
 .contents-title {
+  text-align: left;
   margin-bottom: var(--margin-40);
 }
 
 .contents-subtitle {
+  text-align: left;
   margin-bottom: var(--margin-40);
 }
 
 .contents-paragraph {
   margin-bottom: var(--margin-20);
   line-height: 26px;
-  width: 640px;
 }
 
 .contents-button {
   margin-top: var(--margin-100);
-  margin-left: var(--margin-120);
-  align-items: center;
+  cursor: pointer;
 }
 
-/* Swiper Pagination Test */
-/* 아래 코드는 적용되지 않는 오류가 있습니다. */
-
-.swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background: transparent;
-  border: 1px solid pink;
-  opacity: 1;
+.button-first {
+  position: relative;
+  left: 24%;
 }
 
-.swiper-pagination-bullet-active {
-  width: 40px;
-  transition: width 0.5s;
-  border-radius: 5px;
-  background: pink;
-  border: 1px solid transparent;
+.button-second,
+.button-third {
+  margin: 0 auto;
+  margin-top: var(--margin-100);
 }
