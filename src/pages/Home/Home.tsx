@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import styles from "./Home.module.css"
-import { Header } from "@/containers";
+import { Header, HomeInfo } from "@/containers";
 import { Navigation } from "@/components";
 
 
@@ -16,6 +16,8 @@ const Home = () => {
       <div className={styles.home}>
         <Header />
         <Navigation activeTab={activeTab} onTabChange={handleTabChange} />
+
+        {activeTab === 'introduce' && <HomeInfo/>}
       </div>
     )
 }
