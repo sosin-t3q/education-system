@@ -1,0 +1,23 @@
+.swiper-slide {
+  text-align: center;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  width: 120px;
+  height: 120px;
+  transform: translateY(-38px);
+}
+
+.swiper-button-prev {
+  background: url('/src/assets/left_button.png') no-repeat center;
+}
+
+.swiper-button-next {
+  background: url('/src/assets/right_button.png') no-repeat center;
+}
