@@ -14,7 +14,7 @@ const HomeInfo = () => {
         />
         <iframe
           className={styles.video}
-          src="https://www.youtube.com/embed/7dP07oQSiUA"
+          src="https://www.youtube.com/embed/FF1DBp5EgAU"
           width="1024"
           height="576"
           title="BLACKPINK"
