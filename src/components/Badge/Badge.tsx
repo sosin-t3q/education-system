@@ -1,15 +1,14 @@
 import styles from './Badge.module.css'
 
 interface BadgeProps {
-  width: string
-  content: React.ReactNode
+  children: string;
 }
 
-const Badge = ({ width, content }: BadgeProps) => {
+const Badge = ({ children }: BadgeProps) => {
   return (
-    <button className={styles['badge-university']} style={{ width: width }}>
-      {content}
-    </button>
+    <div className={styles['badge-university']} >
+      {children}
+    </div>
   )
 }
 

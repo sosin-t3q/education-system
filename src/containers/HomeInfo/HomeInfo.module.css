@@ -1,0 +1,58 @@
+@import '../../root.css';
+
+.info {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.info-inner {
+  display: flex;
+  width: 1024px;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.title {
+  color: var(--bg-blue);
+  text-align: center;
+  margin-bottom: var(--margin-50);
+}
+
+.video {
+  margin-bottom: var(--margin-50);
+}
+
+.paragraph {
+  margin-bottom: var(--margin-200);
+  line-height: 26px;
+}
+
+.info-data {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.images {
+  margin-bottom: var(--margin-50);
+}
+
+.center {
+  text-align: center;
+}
+
+.info-task {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.spacer {
+  font-weight: var(--font-bold);
+}
+
+.spacer::before {
+  content: ' ';
+}
+
+.spacer::after {
+  content: ' ';
+}

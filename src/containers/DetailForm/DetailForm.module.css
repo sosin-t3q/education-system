@@ -1,0 +1,35 @@
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+
+.detailform-title {
+  margin-bottom: var(--margin-20);
+}
+
+.detailform-Api {
+  color: var(--font-blue);
+  text-decoration: none;
+  font-weight: var(--font-bold);
+}
+
+.inputUl {
+  margin-top: var(--margin-20);
+  display: flex;
+  flex-direction: column;
+  gap: var(--margin-10);
+  font-size: var(--font-24);
+}
+
+.input-cont {
+  margin-top: var(--margin-50);
+  display: grid;
+  gap: var(--margin-25);
+  grid-template-columns: 1fr 1fr;
+}
+
+.container button {
+  display: block;
+  margin: var(--margin-100) auto 0;
+}

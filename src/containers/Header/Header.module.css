@@ -1,32 +1,24 @@
 @import '../../root.css';
 
-body {
+.header {
+  box-shadow: var(--shadow-navbar);
+  margin-bottom: var(--margin-100);
   background-color: var(--bg-primary);
 }
 
-.header {
+.header-inner {
   display: flex;
-  position: relative;
-  width: auto;
+  width: 1200px;
   height: 100px;
-  margin-left: 360px;
-  margin-right: 360px;
-}
-
-.logo {
-  display: flex;
+  margin: 0 auto;
   align-items: center;
-  margin-top: var(--margin-25);
+  justify-content: space-between;
 }
 
 .experience {
-  position: absolute;
-  top: 40px;
-  right: 93px;
+  margin-right: var(--margin-20);
 }
 
-.login {
-  position: absolute;
-  top: 40px;
-  right: 0;
+.login:hover {
+  color: var(--font-blue);
 }

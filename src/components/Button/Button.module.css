@@ -11,7 +11,7 @@
 
 .button--primary {
   font-weight: var(--font-semibold);
-  width: 200px;
+  width: 160px;
   height: 68px;
 }
 
@@ -24,4 +24,9 @@
 .button--third {
   width: 100px;
   height: 70px;
+}
+
+.button--input {
+  display: block;
+  margin: var(--margin-100) auto 0;
 }
