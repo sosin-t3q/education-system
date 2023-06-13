@@ -25,6 +25,7 @@
 .swiper-pagination-horizontal.swiper-pagination-bullets
   .swiper-pagination-bullet {
   margin-right: 15px;
+  margin-bottom: 30px;
 }
 
 .swiper-pagination-bullet-active {
