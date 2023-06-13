@@ -5,6 +5,8 @@
   font-weight: var(--font-extrabold);
   color: var(--font-black);
   width: 300px;
+  position: relative;
+  margin-bottom: var(--margin-50);
 }
 
 .dropDown-selected {
@@ -36,6 +38,8 @@
   flex-direction: column;
   background: var(--bg-white);
   border-radius: var(--border-radius-10);
+  width: 100%;
+  position: absolute;
 }
 
 .dropDown-option:first-child {
