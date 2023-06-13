@@ -1,7 +1,10 @@
 import styles from './Cube.module.css'
 import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
+import { useSetRecoilState } from 'recoil'
+import { modalAtom } from '@/atoms'
 
 const Cube = () => {
+  const setModal = useSetRecoilState(modalAtom)
   return (
     <div className={styles.cube}>
       <caption className={styles.caption}>일반</caption>
@@ -201,7 +204,10 @@ const Cube = () => {
           </tr>
         </tbody>
       </table>
-      <CloseButton className={styles.button}></CloseButton>
+      <CloseButton
+        onClick={() => setModal(false)}
+        className={styles.button}
+      ></CloseButton>
     </div>
   )
 }

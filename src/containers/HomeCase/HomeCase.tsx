@@ -1,8 +1,13 @@
-import { Title, Text } from '@/components'
-import { Layers } from '@/components'
+// import { useState } from 'react'
+import { Title, Text, Layers } from '@/components'
+import { Cube } from '@/containers'
 import styles from './HomeCase.module.css'
+import { useRecoilValue } from 'recoil'
+import { modalAtom } from '@/atoms'
 
 const HomeCase = () => {
+  const modal = useRecoilValue(modalAtom)
+
   return (
     <div className={styles.case}>
       <Title
@@ -21,6 +26,7 @@ const HomeCase = () => {
         수 있습니다.
       </Text>
       <Layers />
+      {modal && <Cube></Cube>}
     </div>
   )
 }
