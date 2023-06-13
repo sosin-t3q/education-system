@@ -1,8 +1,8 @@
 import { Title, Text } from '@/components'
-import { Layers } from '@/containers'
-import styles from './Case.module.css'
+import { Layers } from '@/components'
+import styles from './HomeCase.module.css'
 
-const Case = () => {
+const HomeCase = () => {
   return (
     <div className={styles.case}>
       <Title
@@ -25,4 +25,4 @@ const Case = () => {
   )
 }
 
-export default Case
+export default HomeCase

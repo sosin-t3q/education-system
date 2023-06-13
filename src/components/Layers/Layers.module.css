@@ -1,7 +1,10 @@
+@import '../../root.css';
+
 .layers {
   display: flex;
   width: 1200px;
   margin: 0 auto;
+  margin-bottom: var(--margin-100);
 }
 
 .general {
