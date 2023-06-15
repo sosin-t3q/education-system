@@ -14,24 +14,21 @@
 }
 
 .swiper-pagination-bullet {
-  width: 30px;
-  height: 30px;
-  background: transparent;
-  border: 1px solid #fff;
+  width: 20px;
+  height: 20px;
+  background: #fff;
   opacity: 1;
-  margin-right: 30px;
 }
 
 .swiper-pagination-horizontal.swiper-pagination-bullets
   .swiper-pagination-bullet {
-  margin-right: 15px;
-  margin-bottom: 30px;
+  margin-right: 6px;
+  margin-bottom: 29px;
 }
 
 .swiper-pagination-bullet-active {
-  width: 80px;
-  transition: width 0.3s;
+  width: 60px;
+  transition: width 0.6s;
   border-radius: 50px;
   background: #fff;
-  border: 1px solid transparent;
 }
