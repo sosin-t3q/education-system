@@ -25,7 +25,7 @@
 .paragraph {
   margin-bottom: var(--margin-100);
   line-height: 24px;
-  flood-color: var(--font-black);
+  color: var(--font-black-light);
 }
 
 .info-data {

@@ -19,7 +19,7 @@ const HomeInfo = () => {
           height="405"
           title="t3q 소개 유튜브 영상"
         ></iframe>
-        <Text className={styles.paragraph} variant="paragraph">
+        <Text className={`${styles.paragraph} ${styles.text}`}>
           세종대왕께서 글이 없어 자기 뜻을 제대로 표현하지 못한 백성들을 위하여
           28글자를 만들어 세상의 모든 소리와 뜻을 전할 수 있게 한 것처럼,
           인공지능에서 다루는
@@ -41,10 +41,7 @@ const HomeInfo = () => {
             className={`${styles.images} ${styles['images-data']}`}
           />
         </div>
-        <Text
-          className={`${styles.paragraph} ${styles.center}`}
-          variant="paragraph"
-        >
+        <Text className={`${styles.paragraph} ${styles.center} ${styles.text}`}>
           인공지능에서 다루는 데이터는
           <span style={{ fontWeight: 700 }}>
             &nbsp; 텍스트, 이미지, 음성, 영상, 위성, 로그/수치, 바이너리&nbsp;
@@ -63,10 +60,7 @@ const HomeInfo = () => {
             className={styles.images}
           />
         </div>
-        <Text
-          className={`${styles.paragraph} ${styles.center}`}
-          variant="paragraph"
-        >
+        <Text className={`${styles.paragraph} ${styles.center} ${styles.text}`}>
           인공지능이 하는 태스크는
           <span style={{ fontWeight: 700 }}>
             &nbsp;분류, 회귀, 군집화, 이상감지&nbsp;
