@@ -2,7 +2,7 @@
 
 .h1 {
   font-weight: var(--font-bold);
-  font-size: var(--font-100);
+  font-size: var(--font-64);
 }
 
 .h2 {

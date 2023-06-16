@@ -1,45 +1,36 @@
 @import '../../root.css';
 
 .container {
-  position: relative;
+  border: 1px solid salmon;
 }
 
 .text-contents {
-  position: absolute;
-  top: 10%;
-  left: 10%;
+  padding-top: 100px;
+  padding-left: 100px;
   color: var(--font-white);
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
 
 .contents-title {
-  text-align: left;
-  margin-bottom: var(--margin-40);
+  margin-bottom: var(--margin-30);
 }
 
 .contents-subtitle {
-  text-align: left;
-  margin-bottom: var(--margin-40);
+  font-size: var(--font-24);
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--margin-30);
 }
 
 .contents-paragraph {
-  margin-bottom: var(--margin-20);
-  line-height: 26px;
+  font-size: var(--font-20);
+  font-weight: var(--font-medium);
+  line-height: 30px;
+  margin-bottom: var(--margin-30);
 }
 
 .contents-button {
-  margin-top: var(--margin-100);
   cursor: pointer;
-}
-
-.button-first {
-  position: relative;
-  left: 24%;
-}
-
-.button-second,
-.button-third {
-  margin: 0 auto;
   margin-top: var(--margin-100);
 }
