@@ -3,7 +3,7 @@
   --bg-primary: #f7f8ff;
   --bg-secondary: #eaeeff;
   --bg-blue: #3f75ff;
-  --bg-black: #1f1f1f;
+  --bg-black: #282828;
   --bg-white: #ffffff;
 
   /* 카드컬러 */
@@ -15,19 +15,19 @@
   --font-gray-light: #bbbecc;
   --font-blue: #3f75ff;
   --font-white: #ffffff;
-  --font-black: #1f1f1f;
+  --font-black: #282828;
 
   /* 폰트 사이즈 */
-  --font-14: 0.875rem;
-  --font-16: 1rem;
-  --font-20: 1.25rem;
-  --font-22: 1.375rem;
-  --font-24: 1.5rem;
-  --font-28: 1.75rem;
-  --font-32: 2rem;
-  --font-40: 2.5rem;
-  --font-46: 2.875rem;
-  --font-100: 6.25rem;
+  --font-14: 14px;
+  --font-16: 16px;
+  --font-20: 20px;
+  --font-22: 22px;
+  --font-24: 24px;
+  --font-28: 28px;
+  --font-32: 32px;
+  --font-40: 40px;
+  --font-46: 46px;
+  --font-64: 64px;
 
   /* 폰트 굵기 */
   --font-regular: 400;
@@ -40,6 +40,7 @@
   --margin-10: 10px;
   --margin-15: 15px;
   --margin-20: 20px;
+  --margin-24: 24px;
   --margin-25: 25px;
   --margin-30: 30px;
   --margin-40: 40px;
