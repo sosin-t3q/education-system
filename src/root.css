@@ -3,7 +3,7 @@
   --bg-primary: #f7f8ff;
   --bg-secondary: #eaeeff;
   --bg-blue: #3f75ff;
-  --bg-black: #1f1f1f;
+  --bg-black: #282828;
   --bg-white: #ffffff;
 
   /* 카드컬러 */
@@ -15,7 +15,7 @@
   --font-gray-light: #bbbecc;
   --font-blue: #3f75ff;
   --font-white: #ffffff;
-  --font-black: #1f1f1f;
+  --font-black: #282828;
 
   /* 폰트 사이즈 */
   --font-14: 14px;
@@ -40,9 +40,11 @@
   --margin-10: 10px;
   --margin-15: 15px;
   --margin-20: 20px;
+  --margin-24: 24px;
   --margin-25: 25px;
   --margin-30: 30px;
   --margin-40: 40px;
+  --margin-48: 48px;
   --margin-50: 50px;
   --margin-100: 100px;
   --margin-120: 120px;

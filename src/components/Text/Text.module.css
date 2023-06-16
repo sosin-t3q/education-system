@@ -6,7 +6,7 @@
 }
 
 .text-paragraph {
-  font-size: var(--font-22);
-  font-weight: var(--font-medium);
+  font-size: var(--font-16);
+  font-weight: var(--font-regular);
   text-align: left;
 }
