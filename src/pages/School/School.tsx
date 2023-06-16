@@ -1,6 +1,7 @@
 import styles from './School.module.css'
 import { Title, Text, DropdownMenu } from '@/components'
 import { Header, Card } from '@/containers'
+import { schools } from '@/data/cards'
 
 const School = () => {
   return (
@@ -17,9 +18,15 @@ const School = () => {
         <DropdownMenu className={styles.menu}></DropdownMenu>
         <Title type={2} label="경북대학교" className={styles.subtitle}></Title>
         <div className={styles['card-container']}>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
+          {schools.경북대학교.map(school => {
+            return (
+              <Card
+                badge={school.badge}
+                title={school.title}
+                content={school.content}
+              />
+            )
+          })}
         </div>
       </main>
     </>
