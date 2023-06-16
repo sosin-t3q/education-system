@@ -1,0 +1,30 @@
+@import '../../root.css';
+
+.pagination {
+  width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 120px;
+}
+
+.pagination button {
+  border: none;
+  border-radius: 10px;
+  width: 80px;
+  height: 80px;
+}
+
+.pagination-pages {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.pagination-page {
+  background-color: #eeeeee;
+  font-size: 40px;
+  font-weight: 500;
+  margin-right: 20px;
+  margin: 0 20px;
+}

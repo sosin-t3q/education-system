@@ -3,7 +3,7 @@
 .link--primary {
   text-decoration: none;
   font-weight: var(--font-semibold);
-  font-size: var(--font-28);
+  font-size: var(--font-16);
   color: var(--font-gray-heavy);
 }
 
