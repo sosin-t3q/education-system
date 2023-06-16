@@ -3,7 +3,7 @@
 .list {
   display: flex;
   width: 1200px;
-  height: 80px;
+  height: 84px;
   margin: 0 auto;
   justify-content: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -16,7 +16,7 @@
   width: 300px;
   justify-content: center;
   align-items: center;
-  font-size: var(--font-32);
+  font-size: var(--font-24);
   font-weight: var(--font-bold);
 }
 

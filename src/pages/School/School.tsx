@@ -1,9 +1,15 @@
 import styles from './School.module.css'
-import { Title, Text, DropdownMenu } from '@/components'
+import { useState } from 'react'
+import { Title, Text, DropdownMenu, Pagination } from '@/components'
 import { Header, Card } from '@/containers'
 import { schools } from '@/data/cards'
 
 const School = () => {
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page)
+  }
+
   return (
     <>
       {/* 헤더 */}
@@ -28,6 +34,11 @@ const School = () => {
             )
           })}
         </div>
+        <Pagination
+          totalPage={5}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
       </main>
     </>
   )
