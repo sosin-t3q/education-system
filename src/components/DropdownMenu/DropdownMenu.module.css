@@ -2,21 +2,21 @@
 
 .dropDown {
   font-size: var(--font-16);
-  font-weight: var(--font-extrabold);
+  font-weight: var(--font-bold);
   color: var(--font-black);
-  width: 300px;
+  width: 250px;
   position: relative;
   margin-bottom: var(--margin-50);
 }
 
 .dropDown-selected {
-  height: 48px;
+  height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: var(--bg-white);
   border-radius: var(--border-radius-10);
-  padding: 0 var(--padding-25);
+  padding: 0 var(--padding-20);
   margin-bottom: var(--margin-10);
 }
 
@@ -31,6 +31,7 @@
   align-items: center;
   background-color: transparent;
   border: none;
+  padding: 0;
 }
 
 .dropDown-options {
@@ -52,7 +53,7 @@
 
 .dropDown-option {
   margin: var(--margin-10) 0;
-  padding: 0 var(--padding-25);
+  padding: 0 var(--padding-20);
   color: var(--font-gray-light);
 }
 
