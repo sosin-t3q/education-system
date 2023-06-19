@@ -1,17 +1,22 @@
-import { useState, MouseEvent } from 'react'
+import { useState, MouseEvent, useEffect } from 'react'
 import styles from './DropdownMenu.module.css'
 import { ReactComponent as ArrowUp } from '@/assets/arrow-up.svg'
 import { ReactComponent as ArrowDown } from '@/assets/arrow-down.svg'
 
-const options = ['소개', '밥먹기', '춤추기', '놀기', '실행']
-
 interface DropdownMenu {
   className?: string
+  options: string[]
 }
 
-const DropdownMenu = ({ className }: DropdownMenu) => {
+const DropdownMenu = ({ className, options }: DropdownMenu) => {
   const [toggle, setToggle] = useState(false)
-  const [selected, setSelected] = useState(options[0])
+  const [selected, setSelected] = useState('')
+
+  useEffect(() => {
+    if (options?.length > 0) {
+      setSelected(options[0])
+    }
+  }, [options])
 
   const handleToggle = () => {
     setToggle(!toggle)
