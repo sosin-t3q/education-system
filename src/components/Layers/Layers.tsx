@@ -1,8 +1,8 @@
 import styles from './Layers.module.css'
-import general from '@/assets/general.png'
-import medical from '@/assets/medical.png'
-import army from '@/assets/army.png'
-import personal from '@/assets/personal.png'
+import general from '@/assets/layer_general.png'
+import medical from '@/assets/layer_medical.png'
+import army from '@/assets/layer_army.png'
+import personal from '@/assets/layer_personal.png'
 import { useSetRecoilState } from 'recoil'
 import { modalAtom } from '@/atoms'
 
