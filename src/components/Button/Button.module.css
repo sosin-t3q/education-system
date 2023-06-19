@@ -25,8 +25,3 @@
   width: 100px;
   height: 70px;
 }
-
-.button--input {
-  display: block;
-  margin: var(--margin-100) auto 0;
-}
