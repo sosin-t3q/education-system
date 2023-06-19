@@ -1,0 +1,72 @@
+[
+  {
+    "id": "1",
+    "type": "text",
+    "name": "영화 리뷰 텍스트 감정 분석",
+    "file": [
+      {
+        "name": "example1",
+        "path": "/src/assets/example/example1.txt",
+        "text": "청춘에서만 구하지 별과 가는 웅대한 부패를 들어 속잎나고, 힘있다. 그들을 우리의 바로 노래하며 물방아 것이다. 얼마나 위하여 간에 반짝이는 보이는 사랑의 따뜻한 길을 있으랴? 시들어 길을 지혜는 이는 살았으며, 천하를 얼음 이상을 무엇을 끓는다. 더운지라 우리의 이는 끓는 그들의 아니더면, 그들은 것이다. 눈에 없으면, 위하여서 귀는 봄날의 있다. 힘차게 그들에게 원대하고, 소금이라 위하여, 동산에는 봄바람이다. 황금시대의 것은 그들의 이상은 이것이다. 인간은 넣는 눈에 있으랴? 옷을 위하여, 따뜻한 두손을 있으랴? 그들은 피가 청춘에서만 얼음과 현저하게 황금시대를 눈이 인간에 것이다. 우리 생생하며, 얼음이 황금시대를 과실이 봄바람이다. 속에서 크고 아니한 수 얼음 구할 끓는다. 밥을 사라지지 석가는 사는가 고동을 이것이야말로 자신과 아니다. 웅대한 것이 따뜻한 유소년에게서 끓는 따뜻한 가치를 있다. 갑 피에 노래하며 곧 사막이다. 영원히 장식하는 물방아 피다. 구하기 때에, 대중을 대고, 청춘의 이것이다. 수 남는 무한한 따뜻한 커다란 있다. 인생에 스며들어 두손을 얼마나 그들의 거선의 우리는 위하여서. 위하여, 지혜는 군영과 이것을 따뜻한 사막이다. 뜨고, 이것은 두기 심장은 고동을 것은 피다. 같은 인생에 같지 것은 방황하였으며, 것이다. 열매를 따뜻한 기쁘며, 소리다.이것은 같은 새 칼이다. 풍부하게 찾아 힘차게 고행을 위하여 가는 아름다우냐? 힘차게 품으며, 청춘의 그들은 찾아다녀도, 인류의 그것을 것이다. 있음으로써 평화스러운 위하여서, 찾아 피가 있는 이것이야말로 천자만홍이 듣는다. 밝은 풍부하게 것은 심장의 대고, 그들의 꾸며 천고에 교향악이다. 따뜻한 위하여, 물방아 아니더면, 이상은 뿐이다. 트고, 하는 아름답고 그들에게 듣는다. 청춘의 사랑의 충분히 방지하는 그리하였는가?"
+      },
+      {
+        "name": "example2",
+        "path": "/src/assets/example/example2.txt",
+        "text": "영화 리뷰 텍스트 감정 분석 예시입니다."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "type": "image",
+    "name": "손그림 이미지 분류",
+    "file": [
+      {
+        "name": "exampleImage1",
+        "path": "/src/assets/example/exampleImg1.jpeg"
+      },
+      {
+        "name": "exampleImage2",
+        "path": "/src/assets/example/exampleImg2.jpg"
+      },
+      {
+        "name": "exampleImage3",
+        "path": "/src/assets/example/exampleImg3.jpg"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "type": "audio",
+    "name": "음성 단어 분류",
+    "file": [
+      {
+        "name": "Down",
+        "path": "/src/assets/example/audio_classification/down.wav"
+      },
+      {
+        "name": "Go",
+        "path": "/src/assets/example/audio_classification/go.wav"
+      },
+      {
+        "name": "Right",
+        "path": "/src/assets/example/audio_classification/right.wav"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "type": "video",
+    "name": "비디오 행동 분류",
+    "file": [
+      {
+        "name": "ShavingBeard",
+        "path": "/src/assets/example/video_classification/ShavingBeard.mp4"
+      },
+      {
+        "name": "TennisSwing",
+        "path": "/src/assets/example/video_classification/TennisSwing.mp4"
+      }
+    ]
+  }
+]
