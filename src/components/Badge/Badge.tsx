@@ -1,15 +1,12 @@
 import styles from './Badge.module.css'
 
 interface BadgeProps {
-  children: string;
+  className?: string
+  children: string
 }
 
-const Badge = ({ children }: BadgeProps) => {
-  return (
-    <div className={styles['badge-university']} >
-      {children}
-    </div>
-  )
+const Badge = ({ className, children }: BadgeProps) => {
+  return <div className={`${styles.badge} ${className}`}>{children}</div>
 }
 
 export default Badge

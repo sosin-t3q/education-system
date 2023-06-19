@@ -1,8 +1,8 @@
 @import '../../root.css';
 
 .card {
-  width: 380px;
-  height: 500px;
+  width: 320px;
+  height: 400px;
   background: var(--bg-white);
   border-radius: var(--border-radius-10);
   cursor: pointer;
@@ -15,18 +15,26 @@
 }
 
 .card-top {
-  height: 200px;
+  height: 150px;
   border-radius: 10px 10px 0px 0px;
-  background: red;
+  background: var(--card-kyungbuk);
   padding: var(--padding-20);
 }
 
 .card-title {
-  font-size: var(--font-32);
+  font-size: var(--font-20);
   font-weight: var(--font-bold);
   color: var(--font-white);
 }
 
+.card-badge {
+  margin-bottom: 10px;
+}
+
 .card-bottom {
   padding: var(--padding-20);
+}
+
+.card-text {
+  color: var(--font-black-light);
 }

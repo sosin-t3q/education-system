@@ -1,17 +1,25 @@
 import styles from './Card.module.css'
 import { Text, Badge } from '@/components'
 
-const Card = () => {
+interface CardProps {
+  badge: string
+  title: string
+  content: string
+}
+
+const Card = ({
+  badge = '배지',
+  title = '제목',
+  content = '내용',
+}: CardProps) => {
   return (
     <div className={styles.card}>
       <div className={styles['card-top']}>
-        <Badge>전북대학교</Badge>
-        <Text variant="subtitle" className={styles['card-title']}>
-          안녕
-        </Text>
+        <Badge className={styles['card-badge']}>{badge}</Badge>
+        <Text className={styles['card-title']}>{title}</Text>
       </div>
       <div className={styles['card-bottom']}>
-        <Text variant="paragraph">안녕 만나서 반가워</Text>
+        <Text className={styles['card-text']}>{content}</Text>
       </div>
     </div>
   )
