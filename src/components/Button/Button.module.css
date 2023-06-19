@@ -2,8 +2,8 @@
 
 .button {
   background-color: var(--font-blue);
-  border-radius: var(--border-radius-10);
-  font-size: var(--font-28);
+  border-radius: var(--border-radius-4);
+  font-size: var(--font-18);
   color: var(--font-white);
   outline: none;
   border: none;
@@ -11,8 +11,8 @@
 
 .button--primary {
   font-weight: var(--font-semibold);
-  width: 160px;
-  height: 68px;
+  width: 93px;
+  height: 41px;
 }
 
 .button--secondary {
@@ -24,9 +24,4 @@
 .button--third {
   width: 100px;
   height: 70px;
-}
-
-.button--input {
-  display: block;
-  margin: var(--margin-100) auto 0;
 }

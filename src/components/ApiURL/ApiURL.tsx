@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styles from './ApiURL.module.css'
 
 interface ApiURLProps {
@@ -5,10 +6,23 @@ interface ApiURLProps {
 }
 
 const ApiURL = ({ api }: ApiURLProps) => {
+  const [apiURL, setApiURL] = useState<string>(api)
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setApiURL(e.target.value)
+  }
+
   return (
     <div className={styles.apiCont}>
-      <label htmlFor="api-url">API URL</label>
-      <input id="api-url" readOnly type="text" value={api} />
+      <label className={styles.apiLabel} htmlFor="api-url">
+        API URL
+      </label>
+      <input
+        className={styles.apiInput}
+        id="api-url"
+        type="text"
+        value={apiURL}
+        onChange={onChange}
+      />
     </div>
   )
 }

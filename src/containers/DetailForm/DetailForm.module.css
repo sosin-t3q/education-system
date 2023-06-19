@@ -23,13 +23,18 @@
 }
 
 .input-cont {
-  margin-top: var(--margin-50);
+  margin: var(--margin-40) 0 var(--margin-50);
   display: grid;
   gap: var(--margin-25);
   grid-template-columns: 1fr 1fr;
 }
 
-.container button {
+.button--input {
   display: block;
-  margin: var(--margin-100) auto 0;
+  margin: var(--margin-50) auto 0;
+  font-size: var(--font-20);
+  height: 40px;
+  width: 100px;
+  border-radius: 4px;
+  cursor: pointer;
 }
