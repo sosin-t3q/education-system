@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.swiper-wrapper {
+  height: 750px;
+}
+
 .swiper-button-next::after,
 .swiper-button-prev::after {
   display: none;
@@ -9,8 +13,8 @@
 
 .swiper-button-next,
 .swiper-button-prev {
-  width: 120px;
-  height: 120px;
+  width: 64px;
+  height: 64px;
   transform: translateY(-38px);
 }
 

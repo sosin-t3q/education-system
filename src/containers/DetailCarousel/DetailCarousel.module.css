@@ -3,14 +3,13 @@
 @import 'swiper/css/navigation';
 
 .container {
-  width: 1560px;
+  width: 1200px;
   margin: 0 auto;
   padding-bottom: var(--padding-50);
 }
 
 .detailInfo {
   width: 1200px;
-  margin-left: 180px;
   margin-bottom: var(--margin-50);
 }
 
@@ -18,11 +17,12 @@
   margin-bottom: var(--margin-50);
 }
 
-.my-swiper {
-  width: 1560px;
-  height: 900px;
+.my-swiper img {
+  width: 1000px;
+  height: 750px;
+  border-radius: 20px;
 }
 
-.my-swiper img {
-  border-radius: 20px;
+.detailFilter {
+  width: 250px;
 }

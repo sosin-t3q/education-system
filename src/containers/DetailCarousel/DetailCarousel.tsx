@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
 import { Title, DropdownMenu } from '@/components'
 import styles from './DetailCarousel.module.css'
-import '@/customSwiper.css'
+import '@/detailSwiper.css'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -21,7 +21,7 @@ const DetailCarousel = ({ className }: DetailCarouselProps) => {
           type={2}
           label="영화 리뷰 텍스트 감정 분석"
         ></Title>
-        <DropdownMenu></DropdownMenu>
+        <DropdownMenu className={styles.detailFilter}></DropdownMenu>
       </div>
 
       <Swiper
@@ -31,13 +31,16 @@ const DetailCarousel = ({ className }: DetailCarouselProps) => {
         modules={[Navigation]}
       >
         <SwiperSlide>
-          <img src="./src/assets/testDetail_first.png" />
+          <img src="./src/assets/spring.png" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="./src/assets/testDetail_second.png" />
+          <img src="./src/assets/summer.png" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="./src/assets/testDetail_third.png" />
+          <img src="./src/assets/fall.png" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="./src/assets/winter.png" />
         </SwiperSlide>
       </Swiper>
     </div>
