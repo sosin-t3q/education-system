@@ -1,11 +1,10 @@
-.badge-university {
+.badge {
   display: inline-block;
-  height: 38px;
+  height: 30px;
   padding: 0 var(--padding-10);
   background: var(--bg-white);
-  line-height: 38px;
+  line-height: 30px;
   border-radius: var(--border-radius-20);
-  font-weight: var(--font-semibold);
+  font-weight: var(--font-medium);
   font-size: var(--font-14);
-  margin-bottom: var(--margin-15);
 }
