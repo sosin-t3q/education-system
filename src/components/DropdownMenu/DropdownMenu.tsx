@@ -6,9 +6,10 @@ import { ReactComponent as ArrowDown } from '@/assets/arrow-down.svg'
 interface DropdownMenu {
   className?: string
   options: string[]
+  onChange?: (selected: string) => void
 }
 
-const DropdownMenu = ({ className, options }: DropdownMenu) => {
+const DropdownMenu = ({ className, options, onChange }: DropdownMenu) => {
   const [toggle, setToggle] = useState(false)
   const [selected, setSelected] = useState('')
 
@@ -16,7 +17,7 @@ const DropdownMenu = ({ className, options }: DropdownMenu) => {
     if (options?.length > 0) {
       setSelected(options[0])
     }
-  }, [options])
+  }, [])
 
   const handleToggle = () => {
     setToggle(!toggle)
@@ -26,6 +27,7 @@ const DropdownMenu = ({ className, options }: DropdownMenu) => {
     const li = e.target as HTMLLIElement
     setSelected(li.innerText)
     setToggle(false)
+    onChange && onChange(li.innerText)
   }
 
   return (
