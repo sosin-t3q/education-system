@@ -1,42 +1,78 @@
-import { ReactComponent as MathchCase } from '@/assets/match_case.svg'
+import { ReactComponent as MatchCase } from '@/assets/match_case.svg'
 import styles from './Input.module.css'
-// import { useState } from 'react'
 
 interface FileItem {
   name: string
   path: string
   text?: string
+  data?: string[]
 }
 
-interface InputProps {
-  file: FileItem[]
+interface Target {
+  id: string
   type: string
-  selected: string
+  name: string
+  API?: string
+  Key?: string[]
+  file?: FileItem[]
+}
+interface InputProps {
+  target: Target
+  selected?: string
 }
 
-const Input = ({ file, type, selected }: InputProps) => {
-  const selectedFile = file.filter(item => item.name === selected)[0]
+const Input = ({ target, selected }: InputProps) => {
+  const selectedFile = target.file?.filter(item => item.name === selected)[0]
 
-  return (
-    <div className={styles.selectFile}>
-      {selected === 'default' || selected === '예제 선택하기' ? (
-        <>
-          <MathchCase />
-          <p>추론 데이터 파일을 선택주세요</p>
-        </>
-      ) : type === 'text' ? (
-        <p>{selectedFile?.text}</p>
-      ) : type === 'image' ? (
-        <img src={selectedFile?.path} alt={selectedFile?.name} />
-      ) : type === 'audio' ? (
-        <audio controls src={selectedFile?.path} />
-      ) : type === 'video' ? (
-        <video controls src={selectedFile?.path} />
-      ) : (
-        '잘못된 파일 형식입니다.'
-      )}
-    </div>
-  )
+  let inner = <></>
+  if (selected === 'default' || selected === '예제 선택하기') {
+    inner = (
+      <>
+        <MatchCase />
+        <p>추론 데이터 파일을 선택주세요</p>
+      </>
+    )
+  } else if (!selected && !target.file && target.type === 'write') {
+    inner = <p>임시</p>
+  } else {
+    switch (target.type) {
+      case 'text':
+        inner = <p>{selectedFile?.text}</p>
+        break
+      case 'image':
+        inner = <img src={selectedFile?.path} alt={selectedFile?.name} />
+        break
+      case 'audio':
+        inner = <audio controls src={selectedFile?.path} />
+        break
+      case 'video':
+        inner = <video controls src={selectedFile?.path} />
+        break
+
+      case 'log':
+        inner = (
+          <table>
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Velue</th>
+              </tr>
+            </thead>
+            <tbody>
+              {target.Key?.map((item, index) => (
+                <tr>
+                  <td>{item}</td>
+                  <td>{selectedFile?.data && selectedFile?.data[index]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )
+        break
+    }
+  }
+
+  return <div className={styles.selectFile}>{inner}</div>
 }
 
 export default Input

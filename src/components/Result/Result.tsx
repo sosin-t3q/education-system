@@ -1,7 +1,11 @@
 import styles from './Result.module.css'
 import { ReactComponent as ApprovalDelegation } from '@/assets/approval_delegation.svg'
 
-const Result = () => {
+interface ResultProps {
+  infer: string | null
+}
+
+const Result = ({ infer }: ResultProps) => {
   return (
     <div className={styles['result-cont']}>
       <ApprovalDelegation />
