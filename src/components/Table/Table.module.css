@@ -18,10 +18,6 @@
   vertical-align: middle;
 }
 
-.table th:hover {
-  color: white;
-}
-
 /* 기둥 전체 선택 애니메이션 */
 .top-title {
   position: relative;
@@ -31,7 +27,7 @@
   display: none;
 }
 
-.top-title span::after {
+.top-title-span::after {
   content: '';
   display: block;
   width: 220px;
@@ -43,11 +39,20 @@
   top: -20px;
   left: -10px;
   background: transparent;
-  transition: all 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out;
+  pointer-events: none;
 }
 
-.top-title:hover span::after {
+.top-title-span:hover::after {
   background: #3f75ff;
+}
+
+.top-title-span {
+  transition: color 0.2s ease-in-out;
+}
+
+.top-title-span:hover {
+  color: #ffffff;
 }
 
 /* th 간격 조절 */
@@ -62,7 +67,7 @@
   position: relative;
 }
 
-.side-title span::after {
+.side-title-span::after {
   content: '';
   display: block;
   width: 960px;
@@ -75,10 +80,19 @@
   left: -20px;
   background: transparent;
   transition: all 0.2s ease-in-out;
+  pointer-events: none;
 }
 
-.side-title:hover span::after {
+.side-title-span:hover::after {
   background: #3f75ff;
+}
+
+.side-title-span {
+  transition: color 0.2s ease-in-out;
+}
+
+.side-title-span:hover {
+  color: #ffffff;
 }
 
 /* th 간격 조절 */

@@ -14,7 +14,7 @@ function Table() {
             columns?.map(({ id, title }) => {
               return (
                 <th key={id} className={styles['top-title']}>
-                  <span>{title}</span>
+                  <span className={styles['top-title-span']}>{title}</span>
                 </th>
               )
             })
@@ -26,7 +26,7 @@ function Table() {
           return (
             <tr key={id}>
               <th className={styles['side-title']}>
-                <span>{side}</span>
+                <span className={styles['side-title-span']}>{side}</span>
               </th>
               <td>{CLF}</td>
               <td>{REG}</td>
