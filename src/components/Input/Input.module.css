@@ -9,4 +9,21 @@
   align-items: center;
   background-color: var(--bg-white);
   border-radius: var(--border-radius-10);
+  padding: 10px;
+  overflow: hidden;
+}
+
+.selectFile p {
+  line-height: 1.2;
+}
+
+.selectFile img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.selectFile video {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-color: black;
 }

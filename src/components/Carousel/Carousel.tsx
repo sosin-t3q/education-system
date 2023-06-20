@@ -8,11 +8,27 @@ import 'swiper/swiper.min.css'
 import styles from './Carousel.module.css'
 import '@/introSwiper.css'
 
+import { useNavigate } from 'react-router-dom'
+
 interface CarouselProps {
   className: string
 }
 
 const Carousel = ({ className }: CarouselProps) => {
+  const navigate = useNavigate()
+
+  const goHome = () => {
+    navigate('/home')
+  }
+
+  const goDetail = () => {
+    navigate('/detail')
+  }
+
+  const goSchool = () => {
+    navigate('/school')
+  }
+
   return (
     <>
       <Swiper
@@ -51,7 +67,7 @@ const Carousel = ({ className }: CarouselProps) => {
               <Button
                 className={`${styles['contents-button']} ${styles['button-first']}`}
                 option={1}
-                onClick={() => console.log('button click')}
+                onClick={goHome}
                 label="바로가기"
               ></Button>
             </div>
@@ -77,7 +93,7 @@ const Carousel = ({ className }: CarouselProps) => {
               <Button
                 className={`${styles['contents-button']} ${styles['button-second']}`}
                 option={1}
-                onClick={() => console.log('button click')}
+                onClick={goSchool}
                 label="바로가기"
               ></Button>
             </div>
@@ -104,7 +120,7 @@ const Carousel = ({ className }: CarouselProps) => {
               <Button
                 className={`${styles['contents-button']} ${styles['button-third']}`}
                 option={1}
-                onClick={() => console.log('button click')}
+                onClick={goDetail}
                 label="바로가기"
               ></Button>
             </div>
