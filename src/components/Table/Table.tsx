@@ -1,7 +1,7 @@
 import TABLE_DATA from '@/data/TABLE_DATA.json'
 import styles from './Table.module.css'
 
-function Table() {
+const Table = () => {
   const columns = TABLE_DATA[0].columns
   const data = TABLE_DATA[1].data
 
