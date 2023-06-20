@@ -36,7 +36,7 @@ const DetailForm = ({ api }: DetailFormProps) => {
         <Input file={target.file} type={target.type} selected={selected} />
         <Result />
       </div>
-      <DropdownMenu options={fileList} onChange={onChange} />
+      <DropdownMenu options={fileList} onSelect={onChange} />
       <Button
         option={1}
         label={'추론하기'}

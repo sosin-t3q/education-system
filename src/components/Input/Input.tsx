@@ -15,9 +15,7 @@ interface InputProps {
 }
 
 const Input = ({ file, type, selected }: InputProps) => {
-  const selectedFile = file.filter((item: any) => item.name === selected)[0]
-
-  console.log(selectedFile?.path)
+  const selectedFile = file.filter(item => item.name === selected)[0]
 
   return (
     <div className={styles.selectFile}>
