@@ -63,7 +63,16 @@ const Input = ({ target, selected }: InputProps) => {
                 {target.Key?.map((item, index) => (
                   <tr>
                     <td>{item}</td>
-                    <td>{selectedFile?.data && selectedFile?.data[index]}</td>
+                    <td>
+                      <label>
+                        <input
+                          type="text"
+                          value={
+                            selectedFile?.data && selectedFile?.data[index]
+                          }
+                        />
+                      </label>
+                    </td>
                   </tr>
                 ))}
               </tbody>
