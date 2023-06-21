@@ -34,11 +34,42 @@
   height: 400px;
   background-color: var(--bg-white);
   border-radius: var(--border-radius-10);
-  padding: 10px;
+  padding: 20px;
   overflow: auto;
 }
 
 .input-table {
   width: 100%;
   height: 100%;
+}
+
+.input-table tr {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: left;
+}
+
+.input-table thead {
+  display: block;
+  background-color: var(--bg-blue);
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+  color: var(--font-white);
+}
+
+.input-table tbody td {
+  display: block;
+
+  border-bottom: 1px solid var(--bg-secondary);
+}
+
+.input-table tbody td:first-child {
+  padding: 20px 20px 0px 20px;
+  color: var(--font-black);
+}
+
+.input-table tbody input {
+  border: none;
+  width: 100%;
+  padding: 20px 0;
 }

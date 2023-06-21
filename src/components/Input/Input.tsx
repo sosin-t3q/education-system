@@ -64,7 +64,7 @@ const Input = ({ target, selected }: InputProps) => {
                   <tr>
                     <td>{item}</td>
                     <td>
-                      <label>
+                      <label aria-label="value">
                         <input
                           type="text"
                           value={
