@@ -1,24 +1,17 @@
 import { Link as ReactRouterLink } from 'react-router-dom'
+import { ReactNode } from 'react'
 import styles from './Link.module.css'
 
 interface LinkProps {
   path: string
-  label: string
-  option: number
-  className: string
+  children?: ReactNode
+  className?: string
 }
 
-const Link = ({ path, label, option, className }: LinkProps) => {
-  const mode =
-    option === 1
-      ? styles['link--primary']
-      : option === 2
-      ? styles['link--secondary']
-      : styles['link--third']
-
+const Link = ({ path, children, className }: LinkProps) => {
   return (
-    <ReactRouterLink to={path} className={`${mode} ${className}`}>
-      {label}
+    <ReactRouterLink to={path} className={`${styles.link} ${className}`}>
+      {children}
     </ReactRouterLink>
   )
 }
