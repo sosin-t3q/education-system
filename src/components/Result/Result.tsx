@@ -8,8 +8,14 @@ interface ResultProps {
 const Result = ({ infer }: ResultProps) => {
   return (
     <div className={styles['result-cont']}>
-      <ApprovalDelegation />
-      <p>예측 결과</p>
+      {infer ? (
+        <p className={styles.infer}>{infer}</p>
+      ) : (
+        <>
+          <ApprovalDelegation />
+          <p>예측 결과</p>
+        </>
+      )}
     </div>
   )
 }

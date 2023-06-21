@@ -16,7 +16,7 @@ interface DetailFormProps {
 
 const DetailForm = ({ pageId }: DetailFormProps) => {
   const [selected, setSelected] = useState('default')
-  const [infer, setInfer] = useState(null)
+  const [infer, setInfer] = useState('')
   const target = json[json.findIndex(item => item.name === pageId)]
   const fileList = target.file && [
     '예제 선택하기',
@@ -28,6 +28,7 @@ const DetailForm = ({ pageId }: DetailFormProps) => {
 
   const onClick = () => {
     // TODO: 추론하기 버튼 클릭 시, 추론 결과 받아오기
+    setInfer('추론 결과')
   }
 
   return (
