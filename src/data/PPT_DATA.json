@@ -1,0 +1,95 @@
+[
+  {
+    "id": 1,
+    "title": "영화 리뷰 텍스트 감정 분석",
+    "folderName": "text_classification",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "전처리"
+      },
+      {
+        "name": "Word Embedding-1"
+      },
+      {
+        "name": "Word Embedding-2"
+      },
+      {
+        "name": "Layer"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "셰익스피어의 저작 텍스트 생성",
+    "folderName": "text_generation",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "Word Embedding"
+      },
+      {
+        "name": "슬라이딩 윈도우"
+      },
+      {
+        "name": "GPU-1"
+      },
+      {
+        "name": "GPU-2"
+      },
+      {
+        "name": "LSTM"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "스팸메일 탐지",
+    "folderName": "text_anomaly_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "Label Encoder"
+      },
+      {
+        "name": "Tokenizer"
+      },
+      {
+        "name": "클래스 가중치"
+      },
+      {
+        "name": "Embedding Layer"
+      },
+      {
+        "name": "LSTM"
+      },
+      {
+        "name": "클래스 가중치의 영향"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  }
+]
