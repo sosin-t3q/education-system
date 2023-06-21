@@ -7,9 +7,13 @@ import { modalAtom } from '@/atoms'
 const Modal = () => {
   const setModal = useSetRecoilState(modalAtom)
   return (
-    <div className={styles.shadow} onClick={() => setModal(false)}>
+    <div
+      className={styles.shadow}
+      onClick={() => {
+        setModal(false)
+      }}
+    >
       <div className={styles.modal}>
-        <caption className={styles.caption}>전국민 AI</caption>
         <Table></Table>
         <CloseButton
           onClick={() => setModal(false)}
