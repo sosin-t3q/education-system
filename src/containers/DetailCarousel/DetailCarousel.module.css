@@ -26,3 +26,7 @@
 .detailFilter {
   width: 250px;
 }
+
+.detailFilter {
+  z-index: 99999;
+}
