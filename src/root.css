@@ -59,11 +59,13 @@
   --padding-15: 15px;
   --padding-20: 20px;
   --padding-25: 25px;
+  --padding-30: 30px;
   --padding-50: 50px;
 
   /* 모서리 */
   --border-radius-4: 4px;
   --border-radius-10: 10px;
+  --border-radius-15: 15px;
   --border-radius-20: 20px;
 
   /* 박스 그림자 */
