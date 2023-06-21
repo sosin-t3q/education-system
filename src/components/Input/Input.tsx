@@ -5,7 +5,7 @@ interface FileItem {
   name: string
   path: string
   text?: string
-  data?: string[]
+  data?: (string | number)[]
 }
 
 interface Target {
@@ -50,25 +50,26 @@ const Input = ({ target, selected }: InputProps) => {
         break
 
       case 'log':
-        inner = (
-          <table>
-            <thead>
-              <tr>
-                <th>Key</th>
-                <th>Velue</th>
-              </tr>
-            </thead>
-            <tbody>
-              {target.Key?.map((item, index) => (
+        return (
+          <div className={styles['input-log__box']}>
+            <table className={styles['input-table']}>
+              <thead>
                 <tr>
-                  <td>{item}</td>
-                  <td>{selectedFile?.data && selectedFile?.data[index]}</td>
+                  <th>Key</th>
+                  <th>Velue</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {target.Key?.map((item, index) => (
+                  <tr>
+                    <td>{item}</td>
+                    <td>{selectedFile?.data && selectedFile?.data[index]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )
-        break
     }
   }
 

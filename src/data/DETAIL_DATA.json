@@ -177,12 +177,60 @@
       {
         "name": "center_0",
         "path": "/src/assets/example/log_classification/center_0.txt",
-        "data": ["이름", "ㅇㅇㅇ"]
+        "data": [
+          "Bam Adebayo",
+          "Mia",
+          "C-F",
+          23.83,
+          64,
+          33.5,
+          69.7,
+          23.7,
+          354,
+          0.799,
+          792,
+          0.573,
+          8,
+          0.25,
+          0.626,
+          18.7,
+          9,
+          15.3,
+          5.4,
+          26.9,
+          1.17,
+          1.03,
+          11.6
+        ]
       },
       {
         "name": "center_1",
         "path": "/src/assets/example/log_classification/center_1.txt",
-        "data": ["이름", "ㅇㅇㅇ"]
+        "data": [
+          "LaMarcus Aldridge",
+          "San",
+          "C-F",
+          35.83,
+          21,
+          25.9,
+          54,
+          22.7,
+          37,
+          0.838,
+          173,
+          0.509,
+          75,
+          0.36,
+          0.545,
+          13.7,
+          4.5,
+          9.2,
+          1.7,
+          10.2,
+          0.38,
+          0.86,
+          7.3
+        ]
       }
     ]
   }

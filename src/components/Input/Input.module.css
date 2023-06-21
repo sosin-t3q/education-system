@@ -27,3 +27,18 @@
   aspect-ratio: 16/9;
   background-color: black;
 }
+
+.input-log__box {
+  color: var(--font-gray-light);
+  width: 100%;
+  height: 400px;
+  background-color: var(--bg-white);
+  border-radius: var(--border-radius-10);
+  padding: 10px;
+  overflow: auto;
+}
+
+.input-table {
+  width: 100%;
+  height: 100%;
+}
