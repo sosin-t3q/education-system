@@ -7,9 +7,15 @@ interface DropdownMenu {
   className?: string
   options: string[]
   onSelect?: (selected: string) => void
+  targetIndex?: (index: number) => void
 }
 
-const DropdownMenu = ({ className, options, onSelect }: DropdownMenu) => {
+const DropdownMenu = ({
+  className,
+  options,
+  onSelect,
+  targetIndex,
+}: DropdownMenu) => {
   const [toggle, setToggle] = useState(false)
   const [selected, setSelected] = useState('')
 
@@ -25,9 +31,11 @@ const DropdownMenu = ({ className, options, onSelect }: DropdownMenu) => {
 
   const handleClick = (e: MouseEvent) => {
     const li = e.target as HTMLLIElement
+    const index = options.indexOf(li.innerText)
     setSelected(li.innerText)
     setToggle(false)
     onSelect && onSelect(li.innerText)
+    targetIndex && targetIndex(index)
   }
 
   return (
