@@ -6,19 +6,19 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <div className={styles['header-inner']}>
-        <Logo className={styles.logo}></Logo>
+        <Link path="/">
+          <Logo className={styles.logo}></Logo>
+        </Link>
         <div className={styles.links}>
           <Link
             className={`${styles.experience}`}
-            path="/"
-            label="T3Q.ai 체험하기"
-            option={1}
+            path="http://hunmin.demo.t3q.ai/ADVENTURE"
+            children="T3Q.ai 체험하기"
           />
           <Link
             className={`${styles.login}`}
-            path="/"
-            label="로그인"
-            option={1}
+            path="http://hunmin.demo.t3q.ai:8080/auth/realms/t3q_ai_edu/protocol/openid-connect/auth?client_id=common&response_type=code&redirect_uri=http://hunmin.demo.t3q.ai/page-redirector/signIn-AIHUNMIN&scope=openid&state=toAnP"
+            children="로그인"
           />
         </div>
       </div>
