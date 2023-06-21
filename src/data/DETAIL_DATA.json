@@ -61,7 +61,7 @@
   },
   {
     "id": "5",
-    "type": "image",
+    "type": "draw",
     "name": "image_classification",
     "API": "http://dl.idro3vub.aica.t3q.ai/model/api/a8c58/inference",
     "file": [
@@ -77,7 +77,7 @@
   },
   {
     "id": "6",
-    "type": "draw",
+    "type": "image",
     "name": "image_regression",
     "API": "http://dl.idro3vub.aica.t3q.ai/model/api/0335c/inference",
     "file": [

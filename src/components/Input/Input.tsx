@@ -1,5 +1,6 @@
 import { ReactComponent as MatchCase } from '@/assets/match_case.svg'
 import styles from './Input.module.css'
+import { Canvas } from '@/components'
 
 interface FileItem {
   name: string
@@ -58,6 +59,13 @@ const Input = ({ target, selected }: InputProps) => {
         break
       case 'image':
         inner = <img src={selectedFile?.path} alt={selectedFile?.name} />
+        break
+      case 'draw':
+        if (selected === 'default' || selected === '예제 선택하기') {
+          inner = <Canvas />
+        } else if (selectedFile) {
+          inner = <img src={selectedFile?.path} alt={selectedFile?.name} />
+        }
         break
       case 'audio':
         inner = <audio controls src={selectedFile?.path} />
