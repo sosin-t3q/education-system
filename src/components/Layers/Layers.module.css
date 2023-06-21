@@ -2,58 +2,60 @@
 
 .layers {
   display: flex;
-  width: 1200px;
+  width: 720px;
+  height: 472px;
   margin: 0 auto;
   margin-bottom: var(--margin-100);
+  position: relative;
 }
 
 .general {
-  position: relative;
-  width: 400px;
-  transition: all 0.3s ease-in-out;
+  width: 300px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 4;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
-}
-
-.general:hover {
-  transform: translateY(-30%);
 }
 
 .medical {
-  position: relative;
+  width: 300px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 140px;
   z-index: 3;
-  width: 400px;
-  margin-left: -133px;
-  transition: transform 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
-}
-
-.medical:hover {
-  transform: translateY(-30%);
 }
 
 .army {
-  position: relative;
-  width: 400px;
-  margin-left: -133px;
+  width: 300px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 280px;
   z-index: 2;
-  transition: transform 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
-}
-
-.army:hover {
-  transform: translateY(-30%);
 }
 
 .personal {
-  position: relative;
-  width: 400px;
-  margin-left: -133px;
+  width: 300px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 420px;
   z-index: 1;
-  transition: transform 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
 
+.medical:hover,
+.general:hover,
+.army:hover,
 .personal:hover {
-  transform: translateY(-30%);
+  transform: translateY(-15%);
 }
