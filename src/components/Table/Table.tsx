@@ -1,13 +1,18 @@
 import TABLE_DATA from '@/data/TABLE_DATA.json'
 import styles from './Table.module.css'
+import { MouseEvent } from 'react'
 
 const Table = () => {
   const title = TABLE_DATA.title
   const columns = TABLE_DATA.content[0].columns
   const data = TABLE_DATA.content[1].data
 
+  const handleClick = (e: MouseEvent<HTMLTableElement>) => {
+    e.stopPropagation()
+  }
+
   return (
-    <table className={styles.table}>
+    <table className={styles.table} onClick={handleClick}>
       <caption className={styles.caption}>{title}</caption>
       <thead>
         <tr>
