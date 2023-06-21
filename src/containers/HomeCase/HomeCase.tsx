@@ -1,6 +1,6 @@
 // import { useState } from 'react'
 import { Title, Text, Layers } from '@/components'
-import { Cube } from '@/containers'
+import { Modal } from '@/containers'
 import styles from './HomeCase.module.css'
 import { useRecoilValue } from 'recoil'
 import { modalAtom } from '@/atoms'
@@ -25,7 +25,7 @@ const HomeCase = () => {
         수 있습니다.
       </Text>
       <Layers />
-      {modal && <Cube></Cube>}
+      {modal && <Modal></Modal>}
     </div>
   )
 }

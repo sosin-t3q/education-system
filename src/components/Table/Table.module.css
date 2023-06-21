@@ -1,0 +1,122 @@
+/* td 간격 조절 */
+.table {
+  border-collapse: separate;
+  border-spacing: 10px;
+  cursor: default;
+  position: relative;
+  z-index: 1;
+}
+
+.table th {
+  color: #282828;
+  font-size: 16px;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+/* 기둥 전체 선택 애니메이션 */
+.top-title {
+  position: relative;
+}
+
+.top-title:first-child span::after {
+  display: none;
+}
+
+.top-title-span::after {
+  content: '';
+  display: block;
+  width: 220px;
+  height: 690px;
+  border-radius: 15px;
+
+  position: absolute;
+  z-index: -1;
+  top: -20px;
+  left: -10px;
+  background: transparent;
+  transition: background 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.top-title-span:hover::after {
+  background: #3f75ff;
+}
+
+.top-title-span {
+  transition: color 0.2s ease-in-out;
+}
+
+.top-title-span:hover {
+  color: #ffffff;
+}
+
+/* th 간격 조절 */
+.top-title span {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* 행렬 전체 선택 애니메이션 */
+.side-title {
+  text-align: right;
+  position: relative;
+}
+
+.side-title-span::after {
+  content: '';
+  display: block;
+  width: 960px;
+  height: 100px;
+  border-radius: 15px;
+
+  position: absolute;
+  z-index: -1;
+  top: -10px;
+  left: -20px;
+  background: transparent;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.side-title-span:hover::after {
+  background: #3f75ff;
+}
+
+.side-title-span {
+  transition: color 0.2s ease-in-out;
+}
+
+.side-title-span:hover {
+  color: #ffffff;
+}
+
+/* th 간격 조절 */
+.side-title span {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.table td {
+  color: #282828;
+  font-size: 14px;
+  font-weight: 600;
+
+  width: 200px;
+  height: 80px;
+  background: #ffffff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 0 30px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.table td:hover {
+  color: #ffffff;
+  background: #3f75ff;
+}
