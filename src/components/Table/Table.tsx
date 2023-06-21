@@ -2,11 +2,13 @@ import TABLE_DATA from '@/data/TABLE_DATA.json'
 import styles from './Table.module.css'
 
 const Table = () => {
-  const columns = TABLE_DATA[0].columns
-  const data = TABLE_DATA[1].data
+  const title = TABLE_DATA.title
+  const columns = TABLE_DATA.content[0].columns
+  const data = TABLE_DATA.content[1].data
 
   return (
     <table className={styles.table}>
+      <caption className={styles.caption}>{title}</caption>
       <thead>
         <tr>
           {
