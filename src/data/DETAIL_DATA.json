@@ -1,7 +1,7 @@
 [
   {
     "id": "1",
-    "type": "text",
+    "type": "write",
     "name": "text_classification",
     "API": "http://dl.idro3vub.aica.t3q.ai/model/api/28c4c/inference",
     "file": [
@@ -77,7 +77,7 @@
   },
   {
     "id": "6",
-    "type": "image",
+    "type": "draw",
     "name": "image_regression",
     "API": "http://dl.idro3vub.aica.t3q.ai/model/api/0335c/inference",
     "file": [

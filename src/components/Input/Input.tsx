@@ -25,19 +25,36 @@ const Input = ({ target, selected }: InputProps) => {
   const selectedFile = target.file?.filter(item => item.name === selected)[0]
 
   let inner = <></>
-  if (selected === 'default' || selected === '예제 선택하기') {
+  if (
+    (selected === 'default' || selected === '예제 선택하기') &&
+    target.type !== 'write' &&
+    target.type !== 'draw'
+  ) {
     inner = (
       <>
         <MatchCase />
         <p>추론 데이터 파일을 선택주세요</p>
       </>
     )
-  } else if (!selected && !target.file && target.type === 'write') {
-    inner = <p>임시</p>
   } else {
     switch (target.type) {
       case 'text':
-        inner = <p>{selectedFile?.text}</p>
+        inner = <p className={styles.selectedTxt}>{selectedFile?.text}</p>
+        break
+      case 'write':
+        if (
+          selected === 'default' ||
+          selected === '예제 선택하기' ||
+          (!selected && !target.file)
+        ) {
+          inner = (
+            <label className={styles.textareaLabel}>
+              <textarea placeholder="텍스트를 작성해주세요." />
+            </label>
+          )
+        } else if (selectedFile) {
+          inner = <p className={styles.selectedTxt}>{selectedFile?.text}</p>
+        }
         break
       case 'image':
         inner = <img src={selectedFile?.path} alt={selectedFile?.name} />
@@ -48,7 +65,6 @@ const Input = ({ target, selected }: InputProps) => {
       case 'video':
         inner = <video controls src={selectedFile?.path} />
         break
-
       case 'log':
         return (
           <div className={styles['input-log__box']}>
