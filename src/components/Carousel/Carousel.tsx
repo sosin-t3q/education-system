@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination } from 'swiper'
-import { Title, Text, Button } from '@/components'
+import { Title, Text, Button, Link } from '@/components'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -19,10 +19,6 @@ const Carousel = ({ className }: CarouselProps) => {
 
   const goHome = () => {
     navigate('/home')
-  }
-
-  const goDetail = () => {
-    navigate('/detail')
   }
 
   const goSchool = () => {
@@ -117,12 +113,15 @@ const Carousel = ({ className }: CarouselProps) => {
                 만들수 있는 '공유주방'과 같은 <br />
                 개념입니다.
               </Text>
-              <Button
-                className={`${styles['contents-button']} ${styles['button-third']}`}
-                option={1}
-                onClick={goDetail}
-                label="바로가기"
-              ></Button>
+              <div>
+                <Link path="http://hunmin.demo.t3q.ai/ADVENTURE">
+                  <Button
+                    className={`${styles['contents-button']} ${styles['button-third']}`}
+                    option={1}
+                    label="바로가기"
+                  ></Button>
+                </Link>
+              </div>
             </div>
           </section>
         </SwiperSlide>
