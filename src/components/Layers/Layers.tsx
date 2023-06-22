@@ -4,22 +4,50 @@ import medical from '@/assets/layer_medical.png'
 import army from '@/assets/layer_army.png'
 import personal from '@/assets/layer_personal.png'
 import { useSetRecoilState } from 'recoil'
-import { modalAtom } from '@/atoms'
+import { modalAtom, tableAtom } from '@/atoms'
 
 const Layers = () => {
+  const setTable = useSetRecoilState(tableAtom)
   const setModal = useSetRecoilState(modalAtom)
 
   return (
     <div className={styles.layers}>
       <img
-        onClick={() => setModal(true)}
+        onClick={() => {
+          setTable('전국민 AI')
+          setModal(true)
+        }}
         src={general}
-        alt="일반 레이어"
+        alt="전국민 AI 레이어"
         className={styles.general}
       />
-      <img src={medical} alt="의료 레이어" className={styles.medical} />
-      <img src={army} alt="장병 레이어" className={styles.army} />
-      <img src={personal} alt="개인 레이어" className={styles.personal} />
+      <img
+        onClick={() => {
+          setTable('전산업 AI의료')
+          setModal(true)
+        }}
+        src={medical}
+        alt="전산업 AI의료 레이어"
+        className={styles.medical}
+      />
+      <img
+        onClick={() => {
+          setTable('전장병 AI')
+          setModal(true)
+        }}
+        src={army}
+        alt="전장병 AI 레이어"
+        className={styles.army}
+      />
+      <img
+        onClick={() => {
+          setTable('개인 AI')
+          setModal(true)
+        }}
+        src={personal}
+        alt="개인 AI 레이어"
+        className={styles.personal}
+      />
     </div>
   )
 }
