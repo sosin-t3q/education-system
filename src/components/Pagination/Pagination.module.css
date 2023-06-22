@@ -1,30 +1,26 @@
 @import '../../root.css';
 
 .pagination {
-  width: 800px;
-  margin: 0 auto;
   display: flex;
+  width: 372px;
+  margin: 0 auto;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 120px;
-}
-
-.pagination button {
-  border: none;
-  border-radius: 10px;
-  width: 80px;
-  height: 80px;
+  justify-content: space-between;
 }
 
 .pagination-pages {
   display: flex;
-  justify-content: space-evenly;
 }
 
 .pagination-page {
-  background-color: #eeeeee;
-  font-size: 40px;
-  font-weight: 500;
   margin-right: 20px;
-  margin: 0 20px;
+  width: 36px;
+  height: 36px;
+  text-align: center;
+  line-height: 36px;
+  border-radius: 4px;
+  background-color: #eeeeee;
+  font-size: 20px;
+  font-weight: 500;
 }
