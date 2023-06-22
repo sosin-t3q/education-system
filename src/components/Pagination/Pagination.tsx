@@ -17,7 +17,7 @@ const Pagination = ({ totalPage, currentPage, onPageChange }: PaginationProps) =
   const renderPageButtons = () => {
     return Array.from({ length: totalPage }, (_, i) => {
       return (
-        <button
+        <div
           key={i + 1}
           className={`${styles['pagination-page']} ${
             currentPage === i ? styles.active : ''
@@ -25,20 +25,20 @@ const Pagination = ({ totalPage, currentPage, onPageChange }: PaginationProps) =
           onClick={() => handlePageChange(i + 1)}
         >
           {i + 1}
-        </button>
+        </div>
       )
     })
   }
 
   return (
     <div className={styles.pagination}>
-      <button className={styles['pagination-button']}>
+      <div className={styles['pagination-button']}>
         <img src={paginationLeft} alt="왼쪽 버튼" />
-      </button>
+      </div>
       <div className={styles['pagination-pages']}>{renderPageButtons()}</div>
-      <button className={styles['pagination-button']}>
+      <div className={styles['pagination-button']}>
         <img src={paginationRight} alt="오른쪽 버튼" />
-      </button>
+      </div>
     </div>
   )
 }
