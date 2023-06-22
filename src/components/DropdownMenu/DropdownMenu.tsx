@@ -47,7 +47,7 @@ const DropdownMenu = ({
           onClick={handleToggle}
         >
           {/* 토글버튼의 방향에 따라 다른 아이콘을 렌더함 */}
-          {!toggle ? <ArrowUp></ArrowUp> : <ArrowDown></ArrowDown>}
+          {!toggle ? <ArrowDown></ArrowDown> : <ArrowUp></ArrowUp>}
         </button>
       </div>
       {/* toggle이 true면 메뉴를 보여줌 */}

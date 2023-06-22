@@ -126,3 +126,34 @@
   color: var(--font-white);
   background: var(--bg-blue);
 }
+
+/* 경고창 */
+.warning-table {
+  width: 100%;
+  height: 500px;
+  text-align: center;
+}
+
+.warning-title {
+  font-size: var(--font-32);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--margin-24);
+}
+
+.warning-content {
+  font-size: var(--font-20);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--font-black);
+  font-weight: var(--font-medium);
+}
+
+.warning-symbol {
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--margin-24);
+}
