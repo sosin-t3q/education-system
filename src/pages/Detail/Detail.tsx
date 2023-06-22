@@ -6,7 +6,7 @@ const Detail = () => {
     <div className={styles.detail}>
       <Header></Header>
       <DetailCarousel className={styles['detail-carousel']}></DetailCarousel>
-      <DetailForm pageId={'3'}></DetailForm>
+      <DetailForm pageId={23}></DetailForm>
     </div>
   )
 }

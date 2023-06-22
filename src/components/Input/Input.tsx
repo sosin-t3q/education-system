@@ -1,6 +1,7 @@
 import { ReactComponent as MatchCase } from '@/assets/match_case.svg'
 import styles from './Input.module.css'
 import { Canvas } from '@/components'
+import MidiPlayer from 'react-midi-player'
 
 interface FileItem {
   name: string
@@ -10,7 +11,7 @@ interface FileItem {
 }
 
 interface Target {
-  id: string
+  id: number
   type: string
   name: string
   API?: string
@@ -68,7 +69,11 @@ const Input = ({ target, selected }: InputProps) => {
         }
         break
       case 'audio':
-        inner = <audio controls src={selectedFile?.path} />
+        if (selectedFile?.path.includes('.midi')) {
+          inner = <MidiPlayer src={selectedFile?.path} />
+        } else {
+          inner = <audio controls src={selectedFile?.path} />
+        }
         break
       case 'video':
         inner = <video controls src={selectedFile?.path} />

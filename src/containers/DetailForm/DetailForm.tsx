@@ -11,7 +11,7 @@ import json from '@/data/DETAIL_DATA.json'
 import { useState } from 'react'
 
 interface DetailFormProps {
-  pageId: string
+  pageId: number
 }
 
 const DetailForm = ({ pageId }: DetailFormProps) => {
