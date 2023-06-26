@@ -45,6 +45,7 @@ const School = () => {
               badge={school.badge}
               title={school.title}
               content={school.content}
+              cardColor={selectedSchool === '고려대학교' ? 'korea' : 'kyungbuk'}
             />
           ))}
         </div>
