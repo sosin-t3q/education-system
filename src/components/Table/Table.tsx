@@ -5,10 +5,6 @@ import { useRecoilValue } from 'recoil'
 import { tableAtom } from '@/atoms'
 import { ReactComponent as Warning } from '@/assets/warning.svg'
 
-interface handleNavigateProps {
-  id: number
-}
-
 const Table = () => {
   const table = useRecoilValue(tableAtom)
 
@@ -20,7 +16,7 @@ const Table = () => {
   const navigate = useNavigate()
 
   // naviate 기능을 지닌 함수
-  const handleNavigate = ({ id }: handleNavigateProps) => {
+  const handleNavigate = ({ id }: { id: number }) => {
     navigate(`/detail/${id}`)
   }
 
