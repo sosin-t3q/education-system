@@ -1,42 +1,117 @@
-import { ReactComponent as MathchCase } from '@/assets/match_case.svg'
+import { ReactComponent as MatchCase } from '@/assets/match_case.svg'
 import styles from './Input.module.css'
-// import { useState } from 'react'
+import { Canvas } from '@/components'
+import MidiPlayer from 'react-midi-player'
 
 interface FileItem {
   name: string
   path: string
   text?: string
+  data?: (string | number)[]
 }
 
-interface InputProps {
-  file: FileItem[]
+interface Target {
+  id: number
   type: string
-  selected: string
+  name: string
+  API?: string
+  Key?: string[]
+  file?: FileItem[]
+}
+interface InputProps {
+  target: Target
+  selected?: string
 }
 
-const Input = ({ file, type, selected }: InputProps) => {
-  const selectedFile = file.filter(item => item.name === selected)[0]
+const Input = ({ target, selected }: InputProps) => {
+  const selectedFile = target.file?.filter(item => item.name === selected)[0]
 
-  return (
-    <div className={styles.selectFile}>
-      {selected === 'default' || selected === '예제 선택하기' ? (
-        <>
-          <MathchCase />
-          <p>추론 데이터 파일을 선택주세요</p>
-        </>
-      ) : type === 'text' ? (
-        <p>{selectedFile?.text}</p>
-      ) : type === 'image' ? (
-        <img src={selectedFile?.path} alt={selectedFile?.name} />
-      ) : type === 'audio' ? (
-        <audio controls src={selectedFile?.path} />
-      ) : type === 'video' ? (
-        <video controls src={selectedFile?.path} />
-      ) : (
-        '잘못된 파일 형식입니다.'
-      )}
-    </div>
-  )
+  let inner = <></>
+  if (
+    (selected === 'default' || selected === '예제 선택하기') &&
+    target.type !== 'write' &&
+    target.type !== 'draw'
+  ) {
+    inner = (
+      <>
+        <MatchCase />
+        <p>추론 데이터 파일을 선택주세요</p>
+      </>
+    )
+  } else {
+    switch (target.type) {
+      case 'text':
+        inner = <p className={styles.selectedTxt}>{selectedFile?.text}</p>
+        break
+      case 'write':
+        if (
+          selected === 'default' ||
+          selected === '예제 선택하기' ||
+          (!selected && !target.file)
+        ) {
+          inner = (
+            <label className={styles.textareaLabel}>
+              <textarea placeholder="텍스트를 작성해주세요." />
+            </label>
+          )
+        } else if (selectedFile) {
+          inner = <p className={styles.selectedTxt}>{selectedFile?.text}</p>
+        }
+        break
+      case 'image':
+        inner = <img src={selectedFile?.path} alt={selectedFile?.name} />
+        break
+      case 'draw':
+        if (selected === 'default' || selected === '예제 선택하기') {
+          inner = <Canvas />
+        } else if (selectedFile) {
+          inner = <img src={selectedFile?.path} alt={selectedFile?.name} />
+        }
+        break
+      case 'audio':
+        if (selectedFile?.path.includes('.midi')) {
+          inner = <MidiPlayer src={selectedFile?.path} />
+        } else {
+          inner = <audio controls src={selectedFile?.path} />
+        }
+        break
+      case 'video':
+        inner = <video controls src={selectedFile?.path} />
+        break
+      case 'log':
+        return (
+          <div className={styles['input-log__box']}>
+            <table className={styles['input-table']}>
+              <thead>
+                <tr>
+                  <th>Key</th>
+                  <th>Velue</th>
+                </tr>
+              </thead>
+              <tbody>
+                {target.Key?.map((item, index) => (
+                  <tr>
+                    <td>{item}</td>
+                    <td>
+                      <label aria-label="value">
+                        <input
+                          type="text"
+                          value={
+                            selectedFile?.data && selectedFile?.data[index]
+                          }
+                        />
+                      </label>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )
+    }
+  }
+
+  return <div className={styles.selectFile}>{inner}</div>
 }
 
 export default Input

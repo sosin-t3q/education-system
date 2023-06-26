@@ -1,44 +1,133 @@
 [
   {
-    "id": "1",
-    "type": "text",
+    "id": 1,
+    "type": "write",
     "name": "영화 리뷰 텍스트 감정 분석",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/28c4c/inference",
     "file": [
       {
-        "name": "example1",
-        "path": "/src/assets/example/example1.txt",
-        "text": "청춘에서만 구하지 별과 가는 웅대한 부패를 들어 속잎나고, 힘있다. 그들을 우리의 바로 노래하며 물방아 것이다. 얼마나 위하여 간에 반짝이는 보이는 사랑의 따뜻한 길을 있으랴? 시들어 길을 지혜는 이는 살았으며, 천하를 얼음 이상을 무엇을 끓는다. 더운지라 우리의 이는 끓는 그들의 아니더면, 그들은 것이다. 눈에 없으면, 위하여서 귀는 봄날의 있다. 힘차게 그들에게 원대하고, 소금이라 위하여, 동산에는 봄바람이다. 황금시대의 것은 그들의 이상은 이것이다. 인간은 넣는 눈에 있으랴? 옷을 위하여, 따뜻한 두손을 있으랴? 그들은 피가 청춘에서만 얼음과 현저하게 황금시대를 눈이 인간에 것이다. 우리 생생하며, 얼음이 황금시대를 과실이 봄바람이다. 속에서 크고 아니한 수 얼음 구할 끓는다. 밥을 사라지지 석가는 사는가 고동을 이것이야말로 자신과 아니다. 웅대한 것이 따뜻한 유소년에게서 끓는 따뜻한 가치를 있다. 갑 피에 노래하며 곧 사막이다. 영원히 장식하는 물방아 피다. 구하기 때에, 대중을 대고, 청춘의 이것이다. 수 남는 무한한 따뜻한 커다란 있다. 인생에 스며들어 두손을 얼마나 그들의 거선의 우리는 위하여서. 위하여, 지혜는 군영과 이것을 따뜻한 사막이다. 뜨고, 이것은 두기 심장은 고동을 것은 피다. 같은 인생에 같지 것은 방황하였으며, 것이다. 열매를 따뜻한 기쁘며, 소리다.이것은 같은 새 칼이다. 풍부하게 찾아 힘차게 고행을 위하여 가는 아름다우냐? 힘차게 품으며, 청춘의 그들은 찾아다녀도, 인류의 그것을 것이다. 있음으로써 평화스러운 위하여서, 찾아 피가 있는 이것이야말로 천자만홍이 듣는다. 밝은 풍부하게 것은 심장의 대고, 그들의 꾸며 천고에 교향악이다. 따뜻한 위하여, 물방아 아니더면, 이상은 뿐이다. 트고, 하는 아름답고 그들에게 듣는다. 청춘의 사랑의 충분히 방지하는 그리하였는가?"
+        "name": "neg_01",
+        "path": "/src/assets/example/text_classification/neg_01.txt",
+        "text": "Humm, an Italian movie starred by David hasselhoff and Linda Blair, I wasn't expecting very much, to be honest and in fact, I took even less than I was expecting. It doesn't mean this movie is the worst I have seen because I have watched worse things than this but the plot was most of the times confusing and uninteresting and some good gore scenes are the only thing saving this. Apart from that you are going to love some special effects, they are really cheesy and bad. Now I only want to watch \"Troll 3\" by this same director, sure it is not going to be worse than that."
       },
       {
-        "name": "example2",
-        "path": "/src/assets/example/example2.txt",
-        "text": "영화 리뷰 텍스트 감정 분석 예시입니다."
+        "name": "neg_02",
+        "path": "/src/assets/example/text_classification/neg_02.txt",
+        "text": "Read the book, forget the movie!"
       }
     ]
   },
   {
-    "id": "2",
-    "type": "image",
+    "id": 2,
+    "type": "write",
+    "name": "셰익스피어의 저작 텍스트 생성",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/6fe4c/inference"
+  },
+  {
+    "id": 3,
+    "type": "text",
+    "name": "스팸메일 탐지",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/1ff2f/inference",
+    "file": [
+      {
+        "name": "ham_01",
+        "path": "/src/assets/example/text_anomaly_detection/ham_01.txt",
+        "text": "Ok lar... Joking wif u oni..."
+      },
+      {
+        "name": "spam_01",
+        "path": "/src/assets/example/text_anomaly_detection/spam_01.txt",
+        "text": "Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005. Text FA to 87121 to receive entry question(std txt rate)T&C's apply 08452810075over18's"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "type": "text",
+    "name": "뉴스기사 군집화",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/61626/inference",
+    "file": [
+      {
+        "name": "comp1",
+        "path": "/src/assets/example/text_clustering/comp1.txt",
+        "text": "From: jgreen@amber (Joe Green)\nSubject: Re: Weitek P9000 ?\nOrganization: Harris Computer Systems Division\nLines: 14\nDistribution: world\nNNTP-Posting-Host: amber.ssd.csd.harris.com\nX-Newsreader: TIN [version 1.1 PL9]\n\nRobert J.C. Kyanko (rob@rjck.UUCP) wrote:\n> abraxis@iastate.edu writes in article <abraxis.734340159@class1.iastate.edu>:\n> > Anyone know about the Weitek P9000 graphics chip?\n> As far as the low-level stuff goes, it looks pretty nice.  It's got this\n> quadrilateral fill command that requires just the four points.\n\nDo you have Weitek's address/phone number?  I'd like to get some information\nabout this chip.\n\n--\nJoe Green\t\t\t\tHarris Corporation\njgreen@csd.harris.com\t\t\tComputer Systems Division\n\"The only thing that really scares me is a person with no sense of humor.\"\n\t\t\t\t\t\t-- Jonathan Winters\n"
+      },
+      {
+        "name": "comp2",
+        "path": "/src/assets/example/text_clustering/comp2.txt",
+        "text": "From: d2cheng@undergrad.math.uwaterloo.ca (Dominic Cheng)\nSubject: Re: Centris Cache & Bernoulli Box\nOrganization: University of Waterloo\nLines: 7\n\nYou will need Driver ver 3.5.2 to work with Quadra/Centris.  You can download\nit from iomega BBS: 1-801-778-4400\n\n--\n\nDominic Cheng (d2cheng@descartes.uwaterloo.ca)\nComputer Science, University of Waterloo, Ontario, Canada\n"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "type": "draw",
     "name": "손그림 이미지 분류",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/a8c58/inference",
     "file": [
       {
-        "name": "exampleImage1",
-        "path": "/src/assets/example/exampleImg1.jpeg"
+        "name": "my_ant",
+        "path": "/src/assets/example/image_classification/my_ant.png"
       },
       {
-        "name": "exampleImage2",
-        "path": "/src/assets/example/exampleImg2.jpg"
-      },
-      {
-        "name": "exampleImage3",
-        "path": "/src/assets/example/exampleImg3.jpg"
+        "name": "my_apple",
+        "path": "/src/assets/example/image_classification/my_apple.png"
       }
     ]
   },
   {
-    "id": "3",
+    "id": 6,
+    "type": "image",
+    "name": "Style Transfer",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/0335c/inference",
+    "file": [
+      {
+        "name": "river",
+        "path": "/src/assets/example/image_regression/river.jpg"
+      },
+      {
+        "name": "view",
+        "path": "/src/assets/example/image_regression/view.jpg"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "type": "image",
+    "name": "노후 시설물 이미지를 이용한 이상탐지",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/0897f/inference",
+    "file": [
+      {
+        "name": "discard_1",
+        "path": "/src/assets/example/image_anomaly_detection/discard_1.jpeg"
+      },
+      {
+        "name": "discard_2",
+        "path": "/src/assets/example/image_anomaly_detection/discard_2.jpeg"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "type": "image",
+    "name": "만화 얼굴 군집화",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/48f97/inference",
+    "file": [
+      {
+        "name": "cs10309128200518651326",
+        "path": "/src/assets/example/image_clustering/cs10309128200518651326.png"
+      },
+      {
+        "name": "cs103659213402785408",
+        "path": "/src/assets/example/image_clustering/cs103659213402785408.png"
+      }
+    ]
+  },
+  {
+    "id": 9,
     "type": "audio",
     "name": "음성 단어 분류",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/c68e0/inference",
     "file": [
       {
         "name": "Down",
@@ -55,9 +144,58 @@
     ]
   },
   {
-    "id": "4",
+    "id": 10,
+    "type": "audio",
+    "name": "피아노 악보 생성",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/29683/inference",
+    "file": [
+      {
+        "name": "1",
+        "path": "/src/assets/example/audio_regression/MIDI-UNPROCESSED_01-03_R1_2014_MID--AUDIO_01_R1_2014_wav--1.midi"
+      },
+      {
+        "name": "2",
+        "path": "/src/assets/example/audio_regression/MIDI-Unprocessed_01_R1_2006_01-09_ORIG_MID--AUDIO_01_R1_2006_01_Track01_wav.midi"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "type": "audio",
+    "name": "산업 기계 소리 이상탐지",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/704b3/inference",
+    "file": [
+      {
+        "name": "abnormal_0",
+        "path": "/src/assets/example/audio_anomaly_detection/abnormal_0.wav"
+      },
+      {
+        "name": "abnormal_1",
+        "path": "/src/assets/example/audio_anomaly_detection/abnormal_1.wav"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "type": "audio",
+    "name": "환경소리 군집화",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/17551/inference",
+    "file": [
+      {
+        "name": "Cow-cut",
+        "path": "/src/assets/example/audio_clustering/Cow-cut.wav"
+      },
+      {
+        "name": "Cracklingfire-cut",
+        "path": "/src/assets/example/audio_clustering/Cracklingfire-cut.wav"
+      }
+    ]
+  },
+  {
+    "id": 13,
     "type": "video",
     "name": "비디오 행동 분류",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/067bf/inference",
     "file": [
       {
         "name": "ShavingBeard",
@@ -66,6 +204,597 @@
       {
         "name": "TennisSwing",
         "path": "/src/assets/example/video_classification/TennisSwing.mp4"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "type": "image",
+    "name": "비디오의 다음 프레임 예측",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/a937e/inference",
+    "file": [
+      {
+        "name": "mnist1",
+        "path": "/src/assets/example/video_regression/mnist1.gif"
+      },
+      {
+        "name": "mnist2",
+        "path": "/src/assets/example/video_regression/mnist2.gif"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "type": "image",
+    "name": "보행자 도로 위 이상행동 탐지",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/90924/inference",
+    "file": [
+      {
+        "name": "abnormal_15frame_1",
+        "path": "/src/assets/example/video_anomaly_detection/abnormal_15frame_1.gif"
+      },
+      {
+        "name": "abnormal_15frame_2",
+        "path": "/src/assets/example/video_anomaly_detection/abnormal_15frame_2.gif"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "type": "image",
+    "name": "얼굴 키포인트가 있는 데이터 군집화",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/05973/inference",
+    "file": [
+      {
+        "name": "Paul_Bettany",
+        "path": "/src/assets/example/video_clustering/Paul_Bettany_1.gif"
+      },
+      {
+        "name": "Paul_Wilson",
+        "path": "/src/assets/example/video_clustering/Paul_Wilson_2.gif"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "type": "log",
+    "name": "NBA 선수 포지션 분류",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/7ede0/inference",
+    "Key": [
+      "FULL_NAME",
+      "TEAM",
+      "POS",
+      "AGE",
+      "GP",
+      "MPG",
+      "MIN",
+      "USG",
+      "FTA",
+      "FT",
+      "PA2",
+      "P2",
+      "PA3",
+      "P3",
+      "TS",
+      "PPG",
+      "RPG",
+      "TRB",
+      "APG",
+      "AST",
+      "SPG",
+      "BPG",
+      "VI"
+    ],
+    "file": [
+      {
+        "name": "center_0",
+        "path": "/src/assets/example/log_classification/center_0.txt",
+        "data": [
+          "Bam Adebayo",
+          "Mia",
+          "C-F",
+          23.83,
+          64,
+          33.5,
+          69.7,
+          23.7,
+          354,
+          0.799,
+          792,
+          0.573,
+          8,
+          0.25,
+          0.626,
+          18.7,
+          9,
+          15.3,
+          5.4,
+          26.9,
+          1.17,
+          1.03,
+          11.6
+        ]
+      },
+      {
+        "name": "center_1",
+        "path": "/src/assets/example/log_classification/center_1.txt",
+        "data": [
+          "LaMarcus Aldridge",
+          "San",
+          "C-F",
+          35.83,
+          21,
+          25.9,
+          54,
+          22.7,
+          37,
+          0.838,
+          173,
+          0.509,
+          75,
+          0.36,
+          0.545,
+          13.7,
+          4.5,
+          9.2,
+          1.7,
+          10.2,
+          0.38,
+          0.86,
+          7.3
+        ]
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "type": "log",
+    "name": "NBA 선수 연봉 예측",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/7ede0/inference",
+    "Key": [
+      "FULL_NAME",
+      "TEAM",
+      "POS",
+      "AGE",
+      "GP",
+      "MPG",
+      "MIN",
+      "USG",
+      "FTA",
+      "FT",
+      "PA2",
+      "P2",
+      "PA3",
+      "P3",
+      "TS",
+      "PPG",
+      "RPG",
+      "TRB",
+      "APG",
+      "SPG",
+      "BPG"
+    ],
+    "file": [
+      {
+        "name": "regression_2145720",
+        "path": "/src/assets/example/log_regression/regression_2145720.txt",
+        "data": [
+          "Malachi Flynn",
+          "Tor",
+          "G",
+          23.92,
+          44,
+          12.2,
+          25.4,
+          16.5,
+          24,
+          0.625,
+          93,
+          0.452,
+          90,
+          0.333,
+          0.488,
+          4.3,
+          1.4,
+          6.4,
+          1.6,
+          0.45,
+          0.09
+        ]
+      },
+      {
+        "name": "center_1",
+        "path": "/src/assets/example/log_regression/regression_3395062.txt",
+        "data": [
+          "Amir Coffey",
+          "Lac",
+          "G-F",
+          24.82,
+          69,
+          22.7,
+          47.3,
+          15.8,
+          117,
+          0.863,
+          212,
+          0.542,
+          254,
+          0.378,
+          0.598,
+          9,
+          2.9,
+          6.6,
+          1.8,
+          0.55,
+          0.22
+        ]
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "type": "log",
+    "name": "신용카드 사기 탐지",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/d0fb3/inference",
+    "Key": [
+      "V1",
+      "V2",
+      "V3",
+      "V4",
+      "V5",
+      "V6",
+      "V7",
+      "V8",
+      "V9",
+      "V10",
+      "V11",
+      "V12",
+      "V13",
+      "V14",
+      "V15",
+      "V16",
+      "V17",
+      "V18",
+      "V19",
+      "V20",
+      "V21",
+      "V22",
+      "V23",
+      "V24",
+      "V25",
+      "V26",
+      "V27",
+      "V28",
+      "Amount"
+    ],
+    "file": [
+      {
+        "name": "fraudulent_transaction_0",
+        "path": "/src/assets/example/log_anomaly_detection/fraudulent_transaction_0.txt",
+        "data": [
+          -1.813280485, 4.917850711, -5.926129694, 5.701500431, 1.204392572,
+          -3.035137548, -1.713402063, 0.561257391, -3.796354252, -7.454840651,
+          7.388055123, -10.47522865, -0.379314527, -11.73672912, -2.086988952,
+          -2.442353983, -3.535523512, 0.130360307, -2.071450488, 0.576656033,
+          0.615641835, -0.406427275, -0.737018076, -0.279641772, 1.106766374,
+          0.323885478, 0.894766672, 0.5695186, 1
+        ]
+      },
+      {
+        "name": "fraudulent_transaction_1",
+        "path": "/src/assets/example/log_anomaly_detection/fraudulent_transaction_1.txt",
+        "data": [
+          -0.25147096, 4.313523326, -6.891437717, 6.796796681, 0.616296505,
+          -2.966326542, -2.436652527, 0.489327899, -3.371638572, -6.810813099,
+          7.620089058, -10.28528252, -0.342444334, -11.54349792, -1.334987903,
+          -2.689284204, -3.204383403, 0.086521896, -1.314495097, 0.632709964,
+          0.536892074, -0.546126024, -0.605239548, -0.26374346, 1.539915831,
+          0.523573697, 0.891024688, 0.572740667, 1
+        ]
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "type": "log",
+    "name": "포켓몬 스탯에 따른 군집화",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/8ede6/inference",
+    "Key": ["NAME", "HP", "ATTACK", "DEFENCE", "Sp_Atk", "SP_DEFENCE", "SPEED"],
+    "file": [
+      {
+        "name": "pokemon_stat_1",
+        "path": "/src/assets/example/log_clustering/pokemon_stat_1.txt",
+        "data": ["Druddigon", 77, 120, 90, 60, 90, 48]
+      },
+      {
+        "name": "pokemon_stat_2",
+        "path": "/src/assets/example/log_clustering/pokemon_stat_2.txt",
+        "data": ["Happiny", 100, 5, 5, 15, 65, 30]
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "type": "image",
+    "name": "도로 위성 사진 분류",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/f9299/inference",
+    "file": [
+      {
+        "name": "freeway",
+        "path": "/src/assets/example/satellite_classification/freeway.png"
+      },
+      {
+        "name": "intersaction",
+        "path": "/src/assets/example/satellite_classification/intersection.png"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "type": "image",
+    "name": "허리케인 위성 사진 풍속 예측",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/8c28d/inference",
+    "file": [
+      {
+        "name": "test_source_lqb_066",
+        "path": "/src/assets/example/satellite_regression/nasa_tropical_storm_competition_test_source_lqb_066.jpg"
+      },
+      {
+        "name": "test_source_mod_255",
+        "path": "/src/assets/example/satellite_regression/nasa_tropical_storm_competition_test_source_mod_255.jpg"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "type": "log",
+    "name": "픽셀의 다중 스펙트럼 값을 이용한 이상탐지",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/69e0b/inference",
+    "Key": [
+      "ID",
+      "V0",
+      "V1",
+      "V2",
+      "V3",
+      "V4",
+      "V5",
+      "V6",
+      "V7",
+      "V8",
+      "V9",
+      "V10",
+      "V11",
+      "V12",
+      "V13",
+      "V14",
+      "V15",
+      "V16",
+      "V17",
+      "V18",
+      "V19",
+      "V20",
+      "V21",
+      "V22",
+      "V23",
+      "V24",
+      "V25",
+      "V26",
+      "V27",
+      "V28",
+      "V29",
+      "V30",
+      "V31",
+      "V32",
+      "V33",
+      "V34",
+      "V35"
+    ],
+    "file": [
+      {
+        "name": "abnormal_data_0",
+        "path": "/src/assets/example/satellite_anomaly_detection/abnormal_data_0.txt",
+        "data": [
+          0, 40, 31, 104, 125, 40, 29, 113, 132, 40, 29, 113, 128, 41, 32, 104,
+          121, 44, 32, 109, 125, 41, 29, 113, 129, 46, 34, 104, 107, 46, 32,
+          104, 114, 46, 27, 108, 129
+        ]
+      },
+      {
+        "name": "center_1",
+        "path": "/src/assets/example/satellite_anomaly_detection/abnormal_data_1.txt",
+        "data": [
+          1, 46, 34, 119, 127, 49, 34, 114, 124, 49, 40, 105, 116, 44, 37, 114,
+          129, 44, 34, 114, 129, 44, 37, 119, 129, 47, 34, 120, 124, 47, 34,
+          115, 124, 44, 34, 115, 120
+        ]
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "type": "image",
+    "name": "지표면 위성 사진 군집화",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/ff463/inference",
+    "file": [
+      {
+        "name": "bare_land(863)",
+        "path": "/src/assets/example/satellite_clustering/bare_land(863).png"
+      },
+      {
+        "name": "bare_land(864)",
+        "path": "/src/assets/example/satellite_clustering/bare_land(864).png"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "type": "image",
+    "name": "악성코드 분류",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/09a5a/inference",
+    "file": [
+      {
+        "name": "abnomal_1",
+        "path": "/src/assets/example/binary_classification/abnomal_1.png"
+      },
+      {
+        "name": "abnomal_2",
+        "path": "/src/assets/example/binary_classification/abnomal_2.png"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "type": "log",
+    "name": "악성코드 감염 예측",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/a142d/inference",
+    "Key": [
+      "hash",
+      "millisecond",
+      "state",
+      "usage_counter",
+      "prio",
+      "static_prio",
+      "normal_prio",
+      "policy",
+      "vm_pgoff",
+      "vm_truncate_count",
+      "task_size",
+      "cached_hole_size",
+      "free_area_cache",
+      "mm_users",
+      "map_count",
+      "hiwater_rss",
+      "total_vm",
+      "shared_vm",
+      "exec_vm",
+      "reserved_vm",
+      "nr_ptes",
+      "end_data",
+      "last_interval",
+      "nvcsw",
+      "nivcsw",
+      "min_flt",
+      "maj_flt",
+      "fs_excl_counter",
+      "lock",
+      "utime",
+      "stime",
+      "gtime",
+      "cgtime",
+      "signal_nvcsw"
+    ],
+    "file": [
+      {
+        "name": "benign_0",
+        "path": "/src/assets/example/binary_regression/benign_0.txt",
+        "data": [
+          "example.matharithmetics.apk",
+          808,
+          0,
+          0,
+          3069820928,
+          30050,
+          0,
+          0,
+          0,
+          19339,
+          0,
+          0,
+          2,
+          880,
+          14415,
+          0,
+          291,
+          114,
+          173,
+          253,
+          0,
+          114,
+          3475,
+          375148,
+          16,
+          1,
+          114,
+          2,
+          3204448256,
+          410274,
+          5,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "benign_2",
+        "path": "/src/assets/example/binary_regression/benign_2.txt",
+        "data": [
+          "com.magmamobile.game.Words.apk",
+          424,
+          0,
+          0,
+          3070062592,
+          15450,
+          0,
+          0,
+          0,
+          12482,
+          0,
+          0,
+          0,
+          643,
+          7447,
+          0,
+          99,
+          120,
+          112,
+          154,
+          0,
+          120,
+          2017,
+          343058,
+          21,
+          1,
+          120,
+          0,
+          3204448256,
+          378386,
+          4,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "type": "image",
+    "name": "악성코드 이상탐지",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/58d37/inference",
+    "file": [
+      {
+        "name": "test_benign0",
+        "path": "/src/assets/example/binary_anomaly_detection/test_benign0.png"
+      },
+      {
+        "name": "test_benign1",
+        "path": "/src/assets/example/binary_anomaly_detection/test_benign1.png"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "type": "image",
+    "name": "악성코드 군집화",
+    "API": "http://dl.idro3vub.aica.t3q.ai/model/api/069d2/inference",
+    "file": [
+      {
+        "name": "abnomal_0",
+        "path": "/src/assets/example/binary_clustering/abnomal_0.png"
+      },
+      {
+        "name": "abnomal_1",
+        "path": "/src/assets/example/binary_clustering/abnomal_1.png"
       }
     ]
   }
