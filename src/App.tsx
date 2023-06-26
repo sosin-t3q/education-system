@@ -7,7 +7,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Intro />}></Route>
         <Route path="/home" element={<Home />}></Route>
-        <Route path="/detail" element={<Detail />}></Route>
+        <Route path="/detail/:id" element={<Detail />}></Route>
         <Route path="/school" element={<School />}></Route>
         <Route path="*" element={<div>404 페이지</div>}></Route>
       </Routes>
