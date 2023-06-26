@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { Intro, Home, Detail, School } from '@/pages'
+import PrivateRoutes from './utils/PrivateRoutes'
 
 function App() {
   return (
@@ -7,7 +8,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Intro />}></Route>
         <Route path="/home" element={<Home />}></Route>
-        <Route path="/detail" element={<Detail />}></Route>
+        <Route element={<PrivateRoutes />}>
+          <Route path="/detail" element={<Detail />}></Route>
+        </Route>
         <Route path="/school" element={<School />}></Route>
         <Route path="*" element={<div>404 페이지</div>}></Route>
       </Routes>
