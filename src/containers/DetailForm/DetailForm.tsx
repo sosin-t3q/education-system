@@ -11,13 +11,13 @@ import json from '@/data/DETAIL_DATA.json'
 import { useState } from 'react'
 
 interface DetailFormProps {
-  pageId: number
+  pageId: string | undefined
 }
 
 const DetailForm = ({ pageId }: DetailFormProps) => {
   const [selected, setSelected] = useState('default')
   const [infer, setInfer] = useState('')
-  const target = json[json.findIndex(item => item.id === pageId)]
+  const target = json[json.findIndex(item => String(item.id) === pageId)]
   const fileList = target.file && [
     '예제 선택하기',
     ...target.file.map(item => item.name),
