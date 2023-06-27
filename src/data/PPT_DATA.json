@@ -93,6 +93,196 @@
     ]
   },
   {
+    "id": 4,
+    "title": "뉴스 기사 군집화",
+    "folderName": "text_clustering",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "HashingVectorizer"
+      },
+      {
+        "name": "TruncatedSVD"
+      },
+      {
+        "name": "K-means"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "손그림 이미지 분류",
+    "folderName": "image_classification",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "정규화"
+      },
+      {
+        "name": "원-핫 인코딩"
+      },
+      {
+        "name": "CNN - 1"
+      },
+      {
+        "name": "CNN - 2"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "음성 단어 분류",
+    "folderName": "audio_classification",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "정규화"
+      },
+      {
+        "name": "원-핫 인코딩"
+      },
+      {
+        "name": "CNN - 1"
+      },
+      {
+        "name": "CNN - 2"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "title": "비디오 행동 분류",
+    "folderName": "video_classification",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "전처리"
+      },
+      {
+        "name": "전처리-Inception V3"
+      },
+      {
+        "name": "학습"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "title": "NBA 선수 포지션 분류",
+    "folderName": "numeric_classification",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "전처리"
+      },
+      {
+        "name": "전처리-Inception V3"
+      },
+      {
+        "name": "학습"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "title": "도로 위성 사진 분류",
+    "folderName": "numeric_classification",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "원-핫 인코딩"
+      },
+      {
+        "name": "EfficientNet 1"
+      },
+      {
+        "name": "EfficientNet 2"
+      },
+      {
+        "name": "EfficientNetB5"
+      },
+      {
+        "name": "전이학습"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "title": "악성코드 분류",
+    "folderName": "binary_classification",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "EfficientNet 1"
+      },
+      {
+        "name": "EfficientNet 2"
+      },
+      {
+        "name": "EfficientNetB5"
+      },
+      {
+        "name": "전이학습"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
     "id": 1000,
     "title": "이륜차 위험 요소 탐지",
     "folderName": "twoWheel_vehicle_hazard",
