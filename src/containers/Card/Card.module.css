@@ -17,8 +17,15 @@
 .card-top {
   height: 150px;
   border-radius: 10px 10px 0px 0px;
-  background: var(--card-kyungbuk);
   padding: var(--padding-20);
+}
+
+.card-top.kyungbuk {
+  background: var(--card-kyungbuk);
+}
+
+.card-top.korea {
+  background: var(--card-korea);
 }
 
 .card-title {
