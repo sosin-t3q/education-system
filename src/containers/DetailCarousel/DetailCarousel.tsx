@@ -12,18 +12,18 @@ import json from '@/data/PPT_DATA.json'
 
 interface DetailCarouselProps {
   className: string
+  pageId: string | undefined
 }
 
-const DetailCarousel = ({ className }: DetailCarouselProps) => {
-  const pptTitle = '영화 리뷰 텍스트 감정 분석'
-  const target = json.find(item => item.title === pptTitle)
+const DetailCarousel = ({ className, pageId }: DetailCarouselProps) => {
+  const target = json.find(item => String(item.id) === pageId)
   const fileList = target?.category.map(item => item.name) || []
   const folderName = target?.folderName
   const swiperRef = useRef<SwiperRef>(null)
 
   const imagePaths = Array.from(
     { length: fileList.length },
-    (_, index) => `src/assets/pptImage/${folderName}/slide${index + 1}.jpeg`,
+    (_, index) => `/src/assets/pptImage/${folderName}/slide${index + 1}.jpeg`,
   )
 
   const gotoSlide = (selectedIndex: number) => {
