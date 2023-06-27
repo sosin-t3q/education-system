@@ -91,5 +91,299 @@
         "name": "추론 결과"
       }
     ]
+  },
+  {
+    "id": 1000,
+    "title": "이륜차 위험 요소 탐지",
+    "folderName": "twoWheel_vehicle_hazard",
+    "category": [
+      {
+        "name": "제목"
+      },
+      {
+        "name": "모델 소개-1"
+      },
+      {
+        "name": "모델 소개-2"
+      },
+      {
+        "name": "데이터 소개-1"
+      },
+      {
+        "name": "데이터 소개-2"
+      },
+      {
+        "name": "데이터 소개-3"
+      },
+      {
+        "name": "데이터 전처리-1"
+      },
+      {
+        "name": "데이터 전처리-2"
+      },
+      {
+        "name": "데모 영상"
+      }
+    ]
+  },
+  {
+    "id": 1001,
+    "title": "버스 승객 승하차 감지",
+    "folderName": "bus_passenger_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "MoveNet"
+      },
+      {
+        "name": "언더/오버샘플링"
+      },
+      {
+        "name": "오버샘플링"
+      },
+      {
+        "name": "원-핫 인코딩"
+      },
+      {
+        "name": "CNN - 1"
+      },
+      {
+        "name": "CNN - 2"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 1002,
+    "title": "버스 승객 이상행동 감지",
+    "folderName": "bus_passenger_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "MoveNet"
+      },
+      {
+        "name": "언더/오버샘플링"
+      },
+      {
+        "name": "오버샘플링"
+      },
+      {
+        "name": "원-핫 인코딩"
+      },
+      {
+        "name": "CNN - 1"
+      },
+      {
+        "name": "CNN - 2"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 1100,
+    "title": "키워드 검색을 통한 키워드 내 이슈 & 트렌드 분석 서비스",
+    "folderName": "keyword_search_issue",
+    "category": [
+      {
+        "name": "제목"
+      },
+      {
+        "name": "아이디어 배경"
+      },
+      {
+        "name": "서비스 목적 & 가치"
+      },
+      {
+        "name": "분석 배경 1"
+      },
+      {
+        "name": "분석 배경 2"
+      },
+      {
+        "name": "알고리즘 (전체)"
+      },
+      {
+        "name": "추론 결과 및 시각화"
+      }
+    ]
+  },
+  {
+    "id": 1101,
+    "title": "건축물 노후도 진단",
+    "folderName": "building_diagnostics",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "전처리 1"
+      },
+      {
+        "name": "전처리 2"
+      },
+      {
+        "name": "Swin Transformer"
+      },
+      {
+        "name": "RetinaNet 1"
+      },
+      {
+        "name": "RetinaNet 2"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 1102,
+    "title": "사용자 맞춤 알약 검색 시스템",
+    "folderName": "classifying_pill_images",
+    "category": [
+      {
+        "name": "Title"
+      },
+      {
+        "name": "About pillm"
+      },
+      {
+        "name": "preprocessing 1"
+      },
+      {
+        "name": "preprocessing 2"
+      },
+      {
+        "name": "Segmentation"
+      },
+      {
+        "name": "ClassificationModel 1"
+      },
+      {
+        "name": "ClassificationModel 2"
+      },
+      {
+        "name": "ClassificationColor 1"
+      },
+      {
+        "name": "ClassificationText 1"
+      },
+      {
+        "name": "Inference"
+      }
+    ]
+  },
+  {
+    "id": 1103,
+    "title": "가구 상세 분류",
+    "folderName": "find_your_furniture",
+    "category": [
+      {
+        "name": "제목"
+      },
+      {
+        "name": "Class 선정"
+      },
+      {
+        "name": "학습 Data 수집"
+      },
+      {
+        "name": "Imbalanced Dataset 1"
+      },
+      {
+        "name": "Imbalanced Dataset 2"
+      },
+      {
+        "name": "Data Distribution"
+      },
+      {
+        "name": "EfficientDet"
+      },
+      {
+        "name": "Reparameterization"
+      },
+      {
+        "name": "Export Model"
+      }
+    ]
+  },
+  {
+    "id": 1104,
+    "title": "가짜 얼굴 판별 서비스",
+    "folderName": "the_face_detective",
+    "category": [
+      {
+        "name": "제목"
+      },
+      {
+        "name": "데이터 1"
+      },
+      {
+        "name": "데이터 2"
+      },
+      {
+        "name": "데이터 전처리 1"
+      },
+      {
+        "name": "데이터 전처리 2"
+      },
+      {
+        "name": "데이터 전처리 3"
+      },
+      {
+        "name": "Deep Learning 1"
+      },
+      {
+        "name": "Deep Learning 2"
+      },
+      {
+        "name": "확장 가능성과 의의"
+      }
+    ]
+  },
+  {
+    "id": 1105,
+    "title": "보행약자 보조",
+    "folderName": "passing_parsing",
+    "category": [
+      {
+        "name": "제목"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "Instance Segmentation"
+      },
+      {
+        "name": "학습 결과"
+      },
+      {
+        "name": "신호등 인식기능"
+      },
+      {
+        "name": "고정체 장애물 안내"
+      },
+      {
+        "name": "기대 효과"
+      }
+    ]
   }
 ]
