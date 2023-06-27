@@ -3,8 +3,20 @@ import { useState } from 'react'
 import { Title, Text, DropdownMenu } from '@/components'
 import { Header, Card } from '@/containers'
 import schoolsData from '@/data/SCHOOL_CARD.json'
+import { useNavigate } from 'react-router-dom'
+
+interface handleNavigateProps {
+  id: number
+}
 
 const School = () => {
+  const navigate = useNavigate()
+
+  // naviate 기능을 지닌 함수
+  const handleNavigate = ({ id }: handleNavigateProps) => {
+    navigate(`/detail/${id}`)
+  }
+
   const [selectedSchool, setSelectedSchool] = useState<
     '경북대학교' | '고려대학교'
   >('경북대학교')
@@ -46,6 +58,7 @@ const School = () => {
               title={school.title}
               content={school.content}
               cardColor={selectedSchool === '고려대학교' ? 'korea' : 'kyungbuk'}
+              onClickCard={() => handleNavigate({ id: school.id })}
             />
           ))}
         </div>
