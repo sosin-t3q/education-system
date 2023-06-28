@@ -6,13 +6,15 @@ interface CardProps {
   title: string
   content: string
   cardColor: string
+  onClickCard?: () => void
 }
 
 const Card = ({
   badge = '배지',
   title = '제목',
   content = '내용',
-  cardColor='kyungbuk'
+  cardColor='kyungbuk',
+  onClickCard
 }: CardProps) => {
 
   const cardStyle = {
@@ -20,7 +22,7 @@ const Card = ({
   }
 
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={onClickCard}>
       <div className={`${styles['card-top']} ${styles[cardColor]}`} style={cardStyle}>
         <Badge className={styles['card-badge']}>{badge}</Badge>
         <Text className={styles['card-title']}>{title}</Text>
