@@ -146,6 +146,99 @@
     ]
   },
   {
+    "id": 6,
+    "title": "Style Transfer",
+    "folderName": "image_generation",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "Anti-alias"
+      },
+      {
+        "name": "VGG19"
+      },
+      {
+        "name": "Style & Content"
+      },
+      {
+        "name": "Gram Matrix"
+      },
+      {
+        "name": "Style Transfer 1"
+      },
+      {
+        "name": "Style Transfer 2"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "노후 시설물 이미지를 이용한 이상탐지",
+    "folderName": "image_anomaly_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "정규화"
+      },
+      {
+        "name": "언더/오버 샘플링"
+      },
+      {
+        "name": "SMOTE"
+      },
+      {
+        "name": "VGGNet"
+      },
+      {
+        "name": "VGG16"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "만화 얼굴 군집화",
+    "folderName": "image_clustering",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "VGGNet"
+      },
+      {
+        "name": "VGG19"
+      },
+      {
+        "name": "PCA(차원축소)"
+      },
+      {
+        "name": "K-means clustering"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
     "id": 9,
     "title": "음성 단어 분류",
     "folderName": "audio_classification",
@@ -167,6 +260,87 @@
       },
       {
         "name": "CNN - 2"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "피아노 악보 생성",
+    "folderName": "audio_generation",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "MIDI와 WAVE차이"
+      },
+      {
+        "name": "훈련 데이터셋 생성"
+      },
+      {
+        "name": "LSTM 1"
+      },
+      {
+        "name": "LSTM 2"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "산업 기계 소리 이상탐지",
+    "folderName": "audio_anomaly_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "Mel Spectrogram"
+      },
+      {
+        "name": "AutoEncoder"
+      },
+      {
+        "name": "Model Layer"
+      },
+      {
+        "name": "Threshold"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "title": "환경소리 군집화",
+    "folderName": "audio_clustering",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "MFCC"
+      },
+      {
+        "name": "PCA(차원축소)"
+      },
+      {
+        "name": "K-means clustering"
       },
       {
         "name": "추론 결과"
@@ -199,6 +373,93 @@
     ]
   },
   {
+    "id": 14,
+    "title": "비디오의 다음 프레임 예측",
+    "folderName": "video_generation",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "전처리"
+      },
+      {
+        "name": "Convolutional LSTM"
+      },
+      {
+        "name": "Convolutional LSTM Network"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "title": "보행자 도로 위 이상행동 탐지",
+    "folderName": "video_anomaly_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "전처리"
+      },
+      {
+        "name": "Convolutional LSTM"
+      },
+      {
+        "name": "AutoEncoder"
+      },
+      {
+        "name": "Convolutional LSTM AutoEncoder"
+      },
+      {
+        "name": "Model Layer"
+      },
+      {
+        "name": "재구성 점수"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "title": "얼굴 키포인트가 있는 데이터 군집화",
+    "folderName": "video_clustering",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "2D and 3D landmarks 시각화"
+      },
+      {
+        "name": "전처리"
+      },
+      {
+        "name": "K-means"
+      },
+      {
+        "name": "학습 결과"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
     "id": 17,
     "title": "NBA 선수 포지션 분류",
     "folderName": "numeric_classification",
@@ -217,6 +478,81 @@
       },
       {
         "name": "학습"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "title": "NBA 선수 연봉 예측",
+    "folderName": "numeric_regression",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "데이터셋 전처리"
+      },
+      {
+        "name": "의사 결정 트리"
+      },
+      {
+        "name": "랜덤 포레스트"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "title": "신용카드 사기 탐지",
+    "folderName": "numeric_anomaly_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "데이터셋 전처리"
+      },
+      {
+        "name": "정규화"
+      },
+      {
+        "name": "Neural Network"
+      },
+      {
+        "name": "클래시 가중치 설정"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "title": "포켓몬 스탯에 따른 군집화",
+    "folderName": "numeric_clustering",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "전처리"
+      },
+      {
+        "name": "K-means clustering"
       },
       {
         "name": "추론 결과"
@@ -255,6 +591,99 @@
     ]
   },
   {
+    "id": 22,
+    "title": "허리케인 위성 사진 풍속 예측",
+    "folderName": "satellite_regression",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "전처리"
+      },
+      {
+        "name": "ResNet 1"
+      },
+      {
+        "name": "ResNet 2"
+      },
+      {
+        "name": "ResNet 3"
+      },
+      {
+        "name": "ResNet50"
+      },
+      {
+        "name": "전이학습"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "title": "픽셀의 다중 스펙트럼값을 이용한 이상탐지",
+    "folderName": "satellite_anomaly_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "데이터셋 전처리"
+      },
+      {
+        "name": "RobustSCaler"
+      },
+      {
+        "name": "Neural Network"
+      },
+      {
+        "name": "클래스 가중치 설정"
+      },
+      {
+        "name": "Metrics 이해하기"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "title": "지표면 위성 사진 군집화",
+    "folderName": "satellite_clustering",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "VGGNet"
+      },
+      {
+        "name": "VGG19"
+      },
+      {
+        "name": "주성분 분석(PCA)"
+      },
+      {
+        "name": "K-means"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
     "id": 25,
     "title": "악성코드 분류",
     "folderName": "binary_classification",
@@ -276,6 +705,90 @@
       },
       {
         "name": "전이학습"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "title": "악성코드 감염 예측",
+    "folderName": "binary_regression",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "데이터 전처리"
+      },
+      {
+        "name": "의사 결정 트리"
+      },
+      {
+        "name": "Light GBM"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "title": "악성코드 이상탐지",
+    "folderName": "binary_anomaly_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "오토인코더"
+      },
+      {
+        "name": "U-Net"
+      },
+      {
+        "name": "U-Net 인코더"
+      },
+      {
+        "name": "U-Net 디코더"
+      },
+      {
+        "name": "Threshold"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "title": "악성코드 군집화",
+    "folderName": "binary_clustering",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "VGGNet"
+      },
+      {
+        "name": "VGG16"
+      },
+      {
+        "name": "PCA"
+      },
+      {
+        "name": "K-means clustering"
       },
       {
         "name": "추론 결과"
