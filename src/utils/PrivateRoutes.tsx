@@ -1,7 +1,10 @@
 import { Outlet } from 'react-router'
 import { checkUserCookie } from './index'
-// import { checkUserCookie, createUserCookie, deleteUserCookie } from './index'
-// createUserCookie('user_auth', 'adsadas', 2)
+
+import { createUserCookie } from './index'
+createUserCookie('user_auth', 'adsadas', 2)
+
+// import {deleteUserCookie} from "./index"
 // deleteUserCookie()
 
 const PrivateRoutes = () => {
