@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './ApiURL.module.css'
 
 interface ApiURLProps {
@@ -6,7 +6,14 @@ interface ApiURLProps {
 }
 
 const ApiURL = ({ api }: ApiURLProps) => {
-  const [apiURL, setApiURL] = useState<string>(api)
+  const [apiURL, setApiURL] = useState<string>('')
+
+  useEffect(() => {
+    if (api) {
+      setApiURL(api)
+    }
+  }, [api])
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setApiURL(e.target.value)
   }
