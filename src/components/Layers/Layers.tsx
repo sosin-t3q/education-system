@@ -1,53 +1,36 @@
 import styles from './Layers.module.css'
-import general from '@/assets/layer_general.png'
-import medical from '@/assets/layer_medical.png'
-import army from '@/assets/layer_army.png'
-import personal from '@/assets/layer_personal.png'
 import { useSetRecoilState } from 'recoil'
-import { modalAtom, tableAtom } from '@/atoms'
+import { modalAtom } from '@/atoms'
+import Layer from '../Layer/Layer'
 
 const Layers = () => {
-  const setTable = useSetRecoilState(tableAtom)
+  // modal state가 true면 모달창이 화면에 보인다
   const setModal = useSetRecoilState(modalAtom)
 
   return (
     <div className={styles.layers}>
-      <img
-        onClick={() => {
-          setTable('전국민 AI')
-          setModal(true)
-        }}
-        src={general}
-        alt="전국민 AI 레이어"
-        className={styles.general}
-      />
-      <img
-        onClick={() => {
-          setTable('전산업 AI의료')
-          setModal(true)
-        }}
-        src={medical}
-        alt="전산업 AI의료 레이어"
-        className={styles.medical}
-      />
-      <img
-        onClick={() => {
-          setTable('전장병 AI')
-          setModal(true)
-        }}
-        src={army}
-        alt="전장병 AI 레이어"
-        className={styles.army}
-      />
-      <img
-        onClick={() => {
-          setTable('개인 AI')
-          setModal(true)
-        }}
-        src={personal}
-        alt="개인 AI 레이어"
-        className={styles.personal}
-      />
+      {/* M - 마우스호버 애니메이션을 위해 각 <Layer />는 <div>로 감싸짐 */}
+      <div
+        className={styles['container-general']}
+        onClick={() => setModal(true)}
+      >
+        <Layer variant="전국민 AI" className={styles.general} />
+      </div>
+      <div
+        className={styles['container-medical']}
+        onClick={() => setModal(true)}
+      >
+        <Layer variant="전산업 AI의료" className={styles.medical} />
+      </div>
+      <div className={styles['container-army']} onClick={() => setModal(true)}>
+        <Layer variant="전장병 AI" className={styles.army} />
+      </div>
+      <div
+        className={styles['container-personal']}
+        onClick={() => setModal(true)}
+      >
+        <Layer variant="개인 AI" className={styles.personal} />
+      </div>
     </div>
   )
 }
