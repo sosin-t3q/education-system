@@ -51,19 +51,24 @@ const Input = ({ selected, getData }: InputProps) => {
     inner = <Canvas onChange={canvasData} />
   }
   if (data && !data.startsWith('data:')) {
+    // 문자열로만 데이터가 들어온 경우
     inner = <p className={styles.selectedTxt}>{data}</p>
   }
   if (data && data.includes('image/')) {
+    // 이미지 데이터가 들어온 경우
     inner = <img src={selected.data} alt={selected.name}></img>
   }
   if (data && data.includes('audio/')) {
+    // 오디오 데이터가 들어온 경우
     if (data.includes('audio/midi')) {
+      // 미디 데이터가 들어온 경우
       inner = <MidiPlayer src={selected.data} />
     } else {
       inner = <audio controls src={selected.data} />
     }
   }
   if (data && data.includes('video/')) {
+    // 비디오 데이터가 들어온 경우
     inner = <video controls src={selected.data} />
   }
 
