@@ -1,4 +1,4 @@
-@import '../../root.css';
+/* @import '../../root.css'; */
 
 .layers {
   display: flex;
@@ -9,53 +9,70 @@
   position: relative;
 }
 
+.container-general {
+  z-index: 4;
+  transition: all 0.3s ease-in-out;
+}
+
+.container-general:hover {
+  transform: translateY(-15%);
+}
+
 .general {
-  width: 300px;
-  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 4;
-  transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
 
+.container-medical {
+  z-index: 3;
+  transition: all 0.3s ease-in-out;
+}
+
+.container-medical:hover {
+  transform: translateY(-15%);
+}
+
 .medical {
-  width: 300px;
-  height: 100%;
   position: absolute;
   top: 0;
   left: 140px;
   z-index: 3;
-  transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
 
+.container-army {
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
+}
+
+.container-army:hover {
+  transform: translateY(-15%);
+}
+
 .army {
-  width: 300px;
-  height: 100%;
   position: absolute;
   top: 0;
   left: 280px;
   z-index: 2;
-  transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
 
+.container-personal {
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.container-personal:hover {
+  transform: translateY(-15%);
+}
+
 .personal {
-  width: 300px;
-  height: 100%;
   position: absolute;
   top: 0;
   left: 420px;
   z-index: 1;
-  transition: all 0.3s ease-in-out;
   cursor: pointer;
-}
-
-.medical:hover,
-.general:hover,
-.army:hover,
-.personal:hover {
-  transform: translateY(-15%);
 }
