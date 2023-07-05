@@ -27,7 +27,7 @@ const Detail = () => {
       setData(target)
     }
 
-    getDetailData('case8')
+    getDetailData('case7')
   }, [])
 
   return (
