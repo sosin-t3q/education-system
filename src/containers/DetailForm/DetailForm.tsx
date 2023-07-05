@@ -2,34 +2,74 @@ import {
   Title,
   ApiURL,
   Input,
-  Result,
+  // Result,
   Button,
   DropdownMenu,
 } from '@/components'
 import styles from './DetailForm.module.css'
-import json from '@/data/DETAIL_DATA.json'
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 interface DetailFormProps {
-  pageId: string | undefined
+  data: any
 }
 
-const DetailForm = ({ pageId }: DetailFormProps) => {
+const DetailForm = ({ data }: DetailFormProps) => {
   const [selected, setSelected] = useState('default')
-  const [infer, setInfer] = useState('')
-  const target = json[json.findIndex(item => String(item.id) === pageId)]
-  const fileList = target.file && [
-    '예제 선택하기',
-    ...target.file.map(item => item.name),
-  ]
-  const onChange = (selected: string) => {
-    setSelected(selected)
-  }
+  const [selectedFile, setSelectedFile] = useState<any>(null)
+  const [value, setValue] = useState<any>('')
+  const fileList = data &&
+    data['case_data'] && [
+      '예제 선택하기',
+      ...data['case_data'].map((item: any) => item.name),
+    ]
 
-  const onClick = () => {
-    // TODO: 추론하기 버튼 클릭 시, 추론 결과 받아오기
-    setInfer('추론 결과')
-  }
+  const onChange = useCallback(
+    (selected: string) => {
+      setSelected(selected)
+    },
+    [setSelected],
+  )
+
+  useEffect(() => {
+    if (data && data.type === 'draw') {
+      setSelectedFile(
+        (data !== null &&
+          data['case_data']?.filter(
+            (item: any) => item.name === selected,
+          )[0]) ||
+          'draw',
+      )
+      return
+    } else if (data && data.type === 'write') {
+      setSelectedFile(
+        (data !== null &&
+          data['case_data']?.filter(
+            (item: any) => item.name === selected,
+          )[0]) ||
+          'write',
+      )
+      return
+    }
+
+    setSelectedFile(
+      (data !== null &&
+        data['case_data']?.filter((item: any) => item.name === selected)[0]) ||
+        'default',
+    )
+  }, [selected, data])
+
+  const onClick = useCallback(() => {
+    if (value) {
+      console.log(value)
+      // 데이터 통신 로직
+    } else {
+      alert('데이터를 입력해주세요.')
+    }
+  }, [value])
+
+  const getInputData = useCallback((data: any) => {
+    setValue(data)
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -38,15 +78,10 @@ const DetailForm = ({ pageId }: DetailFormProps) => {
         label={'예제 실행해보기'}
         className={'detailform-title'}
       />
-
-      <ApiURL api={target.API!} />
+      <ApiURL api={data && data.API} />
       <div className={styles['input-cont']}>
-        {target.file ? (
-          <Input target={target} selected={selected} />
-        ) : (
-          <Input target={target} />
-        )}
-        <Result infer={infer} />
+        {data && <Input selected={selectedFile} getData={getInputData} />}
+        {/* <Result infer={infer} /> */}
       </div>
       {fileList && <DropdownMenu options={fileList} onSelect={onChange} />}
       <Button
