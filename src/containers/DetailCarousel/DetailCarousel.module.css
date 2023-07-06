@@ -6,6 +6,7 @@
   width: 1200px;
   margin: 0 auto;
   padding-bottom: var(--padding-50);
+  padding-top: 200px;
 }
 
 .detailInfo {
