@@ -4,11 +4,16 @@ import { ReactComponent as Stylus } from '@/assets/stylus.svg'
 import { ReactComponent as Reset } from '@/assets/reset.svg'
 import styles from './Canvas.module.css'
 
-const Canvas = () => {
+interface CanvasProps {
+  onChange: (data: string) => void
+}
+
+const Canvas = ({ onChange }: CanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [isDrawing, setIsDrawing] = useState(false)
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null)
-  const [tool, setTool] = useState<'pen' | 'eraser'>('pen') // 'pen' or 'eraser'
+  const [tool, setTool] = useState<'pen' | 'eraser'>('pen')
+  const [canvasData, setCanvasData] = useState<string>('')
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -20,6 +25,16 @@ const Canvas = () => {
     }
   }, [])
 
+  const debounce = (func: Function, delay: number) => {
+    let timeoutId: NodeJS.Timeout
+    return (...args: any[]) => {
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(() => {
+        func(...args)
+      }, delay)
+    }
+  }
+
   const startDrawing = (event: MouseEvent<HTMLCanvasElement>) => {
     setIsDrawing(true)
     const { offsetX, offsetY } = event.nativeEvent
@@ -29,7 +44,7 @@ const Canvas = () => {
     }
   }
 
-  const draw = (event: MouseEvent<HTMLCanvasElement>) => {
+  const draw = debounce((event: MouseEvent<HTMLCanvasElement>) => {
     if (!isDrawing || !context) return
     const { offsetX, offsetY } = event.nativeEvent
     if (tool === 'eraser') {
@@ -42,7 +57,9 @@ const Canvas = () => {
     }
     context.lineTo(offsetX, offsetY)
     context.stroke()
-  }
+    setCanvasData(canvasRef.current?.toDataURL() || '')
+    onChange(canvasData)
+  }, 10)
 
   const stopDrawing = () => {
     setIsDrawing(false)
