@@ -71,6 +71,7 @@ const Canvas = ({ onChange }: CanvasProps) => {
   const clearCanvas = () => {
     if (context) {
       context.clearRect(0, 0, context.canvas.width, context.canvas.height)
+      setCanvasData('')
     }
   }
 
