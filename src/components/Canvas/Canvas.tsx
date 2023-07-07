@@ -25,16 +25,6 @@ const Canvas = ({ onChange }: CanvasProps) => {
     }
   }, [])
 
-  const debounce = (func: Function, delay: number) => {
-    let timeoutId: NodeJS.Timeout
-    return (...args: any[]) => {
-      clearTimeout(timeoutId)
-      timeoutId = setTimeout(() => {
-        func(...args)
-      }, delay)
-    }
-  }
-
   const startDrawing = (event: MouseEvent<HTMLCanvasElement>) => {
     setIsDrawing(true)
     const { offsetX, offsetY } = event.nativeEvent
@@ -44,7 +34,7 @@ const Canvas = ({ onChange }: CanvasProps) => {
     }
   }
 
-  const draw = debounce((event: MouseEvent<HTMLCanvasElement>) => {
+  const draw = (event: MouseEvent<HTMLCanvasElement>) => {
     if (!isDrawing || !context) return
     const { offsetX, offsetY } = event.nativeEvent
     if (tool === 'eraser') {
@@ -59,7 +49,7 @@ const Canvas = ({ onChange }: CanvasProps) => {
     context.stroke()
     setCanvasData(canvasRef.current?.toDataURL() || '')
     onChange(canvasData)
-  }, 10)
+  }
 
   const stopDrawing = () => {
     setIsDrawing(false)
