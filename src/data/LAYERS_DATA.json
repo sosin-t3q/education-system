@@ -29,8 +29,8 @@
         "type": "ANORM",
         "name": "노후 시설물 이미지를<br>이용한 이상탐지"
       },
-      { "id": 8, "type": "CLS", "name": "음성 단어 분류" },
-      { "id": 9, "type": "CLF", "name": "만화 얼굴 군집화" },
+      { "id": 8, "type": "CLS", "name": "만화 얼굴 군집화" },
+      { "id": 9, "type": "CLF", "name": "음성 단어 분류" },
       { "id": 10, "type": "REG", "name": "피아노 악보 생성" },
       { "id": 11, "type": "ANORM", "name": "산업 기계 소리<br>이상탐지" },
       { "id": 12, "type": "CLS", "name": "환경소리 군집화" },
