@@ -6,10 +6,15 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <div className={styles['header-inner']}>
-        <Link path="/">
+        <Link path="/home">
           <Logo className={styles.logo}></Logo>
         </Link>
         <div className={styles.links}>
+          <Link
+            className={`${styles.experience}`}
+            path="/school"
+            children="서당"
+          />
           <Link
             className={`${styles.experience}`}
             path="http://hunmin.demo.t3q.ai/ADVENTURE"
