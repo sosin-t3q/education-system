@@ -4,7 +4,7 @@ import { tableAtom } from '@/atoms'
 import { useSetRecoilState } from 'recoil'
 
 interface LayerProps {
-  variant: '전국민 AI' | '전산업 AI의료' | '전장병 AI' | '개인 AI'
+  variant: '전국민 AI' | '전산업 AI의료' | '전장병 AI'
   className?: string
 }
 
@@ -40,14 +40,6 @@ const Layer = ({ className, variant }: LayerProps) => {
     body = new Array(28)
       .fill(0)
       .map((_, index) => ({ id: index + 1, name: '' }))
-  } else {
-    title = data[3].title
-    // 데이터가 준비되지 않은 값은 레이어 통일성을 위해 인위적으로 배열을 생산함
-    // M - 개인 AI의 경우, DB를 별도로 생성해서 관리하기 때문에 수정될 예정임!
-    //body는 id와 name 속성을 가진 객체가 28개 담긴 배열이다
-    body = new Array(28)
-      .fill(0)
-      .map((_, index) => ({ id: index + 1, name: '' }))
   }
 
   // variant prop에 따라 backgroundColor의 값은 달라진다
@@ -56,9 +48,7 @@ const Layer = ({ className, variant }: LayerProps) => {
       ? { background: '#EAEEFF' }
       : variant === '전산업 AI의료'
       ? { background: '#DBDFFE' }
-      : variant === '전장병 AI'
-      ? { background: '#BFC7FE' }
-      : { background: '#93A4FD' }
+      : { background: '#BFC7FE' }
 
   return (
     // variant prop에 따라 달라진 배경색이 인라인 스타일로 전달된다
@@ -74,7 +64,6 @@ const Layer = ({ className, variant }: LayerProps) => {
       <h3 className={styles.title}>{title}</h3>
       <div className={styles['block-container']}>
         {body?.map((data: LayerDataProps) => {
-          console.log(data)
           return (
             // M - 렌더링이 되어도 빈 값인 데이터들이 많아 id값이 제대로 전달되지 않을 것들이 있음!
             <div key={data.id} className={styles.block}>

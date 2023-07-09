@@ -1,3 +1,7 @@
 export { default as modalAtom } from './modalAtom'
 export { default as tableAtom } from './tableAtom'
-export { default as detailDataAtomAtom } from './detailDataAtom'
+export { default as detailDataAtom } from './detailDataAtom'
+export { default as loadingAtom } from './loadingAtom'
+export { default as resultAtom } from './resultAtom'
+export { default as cartTableAtom } from './cartTableAtom'
+export { default as cartModalAtom } from './cartModal'
