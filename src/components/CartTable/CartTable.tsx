@@ -14,7 +14,6 @@ const CartTable = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    console.log(data)
     setCartTable(data)
     // 서버로부터 데이터를 받아 cartTable에 넣어줌
     // axios

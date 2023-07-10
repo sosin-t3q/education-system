@@ -1,4 +1,6 @@
 import styles from './CartLayer.module.css'
+import data from "@/data/TEST.json";
+import {useState, useEffect} from "react";
 
 interface CartLayerProps {
   className?: string
@@ -6,28 +8,27 @@ interface CartLayerProps {
 
 interface CartLayerDataProps {
   id: number
-  name: string
+  title: string
 }
 
-let data = new Array(28)
-  .fill(0)
-  .map((_, index) => ({ id: index + 1, name: '' }))
-
 const CartLayer = ({ className }: CartLayerProps) => {
+  //blocks는 최대 크기가 28인 빈 배열이다
+  const [blocks, setBlocks] = useState(new Array(28).fill(null));
+
+  useEffect(() => {
+    //서버로 들어온 값과 비교해 blocks 배열을 갱신하는 코드
+    setBlocks(blocks.map((block, index) => data[index] || block));
+  }, [])
+
   return (
     <div className={`${className} ${styles.Layer}`}>
       <h3 className={styles.title}>개인 AI</h3>
       <div className={styles['block-container']}>
-        {data?.map((item: CartLayerDataProps) => {
+        {blocks?.map((block: CartLayerDataProps, index) => {
           return (
-            // M - 렌더링이 되어도 빈 값인 데이터들이 많아 id값이 제대로 전달되지 않을 것들이 있음!
-            <div key={item.id} className={styles.block}>
-              <span
-                className={styles.content}
-                // M - InnerHTML은 XSS 공격에 취약해 사용하면 안 된다!
-                // M - DOMPurift를 사용하면 되지만, npm audit 문제로 우선은 보류했다
-                dangerouslySetInnerHTML={{ __html: item.name }}
-              ></span>
+            <div key={index} className={styles.block}>
+              {/* block에 데이터가 있으면 렌더링이 된다 */}
+              <span className={styles.content}>{block && block.title}</span>
             </div>
           )
         })}
