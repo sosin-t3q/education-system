@@ -5,7 +5,7 @@ import { ReactComponent as Reset } from '@/assets/reset.svg'
 import styles from './Canvas.module.css'
 
 interface CanvasProps {
-  onChange: (data: string) => void
+  onChange: (data: string | null) => void
 }
 
 const Canvas = ({ onChange }: CanvasProps) => {
@@ -61,6 +61,8 @@ const Canvas = ({ onChange }: CanvasProps) => {
   const clearCanvas = () => {
     if (context) {
       context.clearRect(0, 0, context.canvas.width, context.canvas.height)
+      setCanvasData('') // canvasData를 빈 문자열로 설정
+      onChange(null) // onChange에 null 값을 전달
     }
   }
 

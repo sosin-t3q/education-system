@@ -33,7 +33,7 @@ const Input = ({ selected, getData, type }: InputProps) => {
     getData(data)
   }, [selected])
 
-  const canvasData = (data: string) => {
+  const canvasData = (data: string | null) => {
     getData(data)
   }
 
