@@ -1,34 +1,44 @@
 import { ReactComponent as MatchCase } from '@/assets/match_case.svg'
 import styles from './Input.module.css'
-import { Canvas } from '@/components'
+import { Canvas, Log } from '@/components'
 import MidiPlayer from 'react-midi-player'
-import { useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
+import { inputValidationAtom } from '@/atoms/index'
+import { useRecoilState } from 'recoil'
 
 interface InputProps {
-  selected: any
-  getData: any
+  selected: Record<string, string> | null | undefined
+  getData: (data: string | null | undefined) => void
+  type: string
 }
 
-const Input = ({ selected, getData }: InputProps) => {
-  const [value, setValue] = useState<any>('')
-  const data = selected.data
+const Input = ({ selected, getData, type }: InputProps) => {
+  const [value, setValue] = useState<string>('')
+  const data = selected && selected.data
+  const [isValid, setIsValid] = useRecoilState(inputValidationAtom)
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value)
     if (value.trim().length === 0) return
     getData(e.target.value)
   }
 
   useEffect(() => {
-    getData(selected.data)
+    if (!selected)
+      setIsValid({
+        ...isValid,
+        isValid: false,
+        message: '데이터를 입력해주세요.',
+      })
+    getData(data)
   }, [selected])
 
-  const canvasData = (data: any) => {
+  const canvasData = (data: string) => {
     getData(data)
   }
 
   let inner = <p>로딩 중...</p>
-  if (selected === 'default') {
+  if (!selected) {
     inner = (
       <>
         <MatchCase />
@@ -36,7 +46,7 @@ const Input = ({ selected, getData }: InputProps) => {
       </>
     )
   }
-  if (selected === 'write') {
+  if (type === 'write') {
     inner = (
       <label className={styles.textareaLabel}>
         <textarea
@@ -47,8 +57,22 @@ const Input = ({ selected, getData }: InputProps) => {
       </label>
     )
   }
-  if (selected === 'draw') {
+  if (type === 'draw') {
     inner = <Canvas onChange={canvasData} />
+  }
+  if (type === 'log') {
+    return (
+      <div className={styles.selectFile}>
+        {selected ? (
+          <Log data={selected} getData={getData} />
+        ) : (
+          <>
+            <MatchCase />
+            <p>추론 데이터 파일을 선택주세요</p>
+          </>
+        )}
+      </div>
+    )
   }
   if (data && !data.startsWith('data:')) {
     // 문자열로만 데이터가 들어온 경우
@@ -64,7 +88,7 @@ const Input = ({ selected, getData }: InputProps) => {
       // 미디 데이터가 들어온 경우
       inner = <MidiPlayer src={selected.data} />
     } else {
-      inner = <audio controls src={selected.data} />
+      inner = <audio controls src={selected.data} autoPlay={false} />
     }
   }
   if (data && data.includes('video/')) {

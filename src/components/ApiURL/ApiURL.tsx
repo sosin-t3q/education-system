@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import styles from './ApiURL.module.css'
 
 interface ApiURLProps {
-  api: string
+  api: string | null
 }
 
 const ApiURL = ({ api }: ApiURLProps) => {

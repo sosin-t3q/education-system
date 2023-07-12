@@ -8,21 +8,27 @@ import {
 } from '@/components'
 import styles from './DetailForm.module.css'
 import { useCallback, useEffect, useState } from 'react'
-import { detailDataAtomAtom } from '@/atoms/index'
+import { detailDataAtom, inputValidationAtom } from '@/atoms/index'
 import { useRecoilState } from 'recoil'
+import { DataType } from '@/pages/Detail/Detail'
+
+type SelectedFileType = Record<string, string> | null | undefined
 
 interface DetailFormProps {
-  data: any
+  data: DataType | null
+  pageId: string | undefined
 }
 
-const DetailForm = ({ data }: DetailFormProps) => {
+const DetailForm = ({ data, pageId }: DetailFormProps) => {
   const [selected, setSelected] = useState('default')
-  const [selectedFile, setSelectedFile] = useState<any>(null)
-  const [value, setValue] = useRecoilState<any>(detailDataAtomAtom)
+  const [selectedFile, setSelectedFile] = useState<SelectedFileType>(null)
+  const [value, setValue] = useRecoilState(detailDataAtom)
+  const [isValid] = useRecoilState(inputValidationAtom)
+
   const fileList = data &&
-    data['case_data'] && [
+    data['data_list'] && [
       '예제 선택하기',
-      ...data['case_data'].map((item: any) => item.name),
+      ...data['data_list'].map(item => item.name),
     ]
 
   const onChange = useCallback(
@@ -33,39 +39,24 @@ const DetailForm = ({ data }: DetailFormProps) => {
   )
 
   useEffect(() => {
-    if (data && data.type === 'draw') {
-      setSelectedFile(
-        (data !== null &&
-          data['case_data']?.filter(
-            (item: any) => item.name === selected,
-          )[0]) ||
-          'draw',
-      )
-      return
-    } else if (data && data.type === 'write') {
-      setSelectedFile(
-        (data !== null &&
-          data['case_data']?.filter(
-            (item: any) => item.name === selected,
-          )[0]) ||
-          'write',
-      )
-      return
+    if (selected === 'default') {
+      setSelectedFile(null)
+    } else {
+      const target =
+        data && data['data_list'].find(item => item.name === selected)
+      setSelectedFile(target)
     }
-
-    setSelectedFile(
-      (data !== null &&
-        data['case_data']?.filter((item: any) => item.name === selected)[0]) ||
-        'default',
-    )
   }, [selected, data])
 
   const onClick = useCallback(() => {
     if (value) {
-      console.log(value)
+      alert(value)
+      console.log(pageId)
       // 데이터 통신 로직
-    } else {
-      alert('데이터를 입력해주세요.')
+    } else if (!isValid.isValid && isValid.type === 'log') {
+      alert(isValid.message)
+    } else if (!isValid.isValid) {
+      alert(isValid.message)
     }
   }, [value])
 
@@ -82,7 +73,13 @@ const DetailForm = ({ data }: DetailFormProps) => {
       />
       <ApiURL api={data && data.API} />
       <div className={styles['input-cont']}>
-        {data && <Input selected={selectedFile} getData={getInputData} />}
+        {data && (
+          <Input
+            selected={selectedFile}
+            getData={getInputData}
+            type={data['data_type']}
+          />
+        )}
         {/* <Result infer={infer} /> */}
       </div>
       {fileList && <DropdownMenu options={fileList} onSelect={onChange} />}
