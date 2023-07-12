@@ -39,10 +39,10 @@ const Canvas = ({ onChange }: CanvasProps) => {
     const { offsetX, offsetY } = event.nativeEvent
     if (tool === 'eraser') {
       context.globalCompositeOperation = 'destination-out'
-      context.lineWidth = 10
+      context.lineWidth = 21
     } else {
       context.globalCompositeOperation = 'source-over'
-      context.lineWidth = 2
+      context.lineWidth = 21
       context.strokeStyle = '#000000'
     }
     context.lineTo(offsetX, offsetY)
