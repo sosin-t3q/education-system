@@ -1,3 +1,4 @@
+/* 산업 기계 소리 이상탐지 - 음성 이상탐지 */
 import axios from 'axios'
 import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
