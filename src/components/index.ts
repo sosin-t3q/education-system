@@ -17,3 +17,4 @@ export { default as Table } from './Table/Table'
 export { default as Canvas } from './Canvas/Canvas'
 export { default as CartLayer } from './CartLayer/CartLayer'
 export { default as CartTable } from './CartTable/CartTable'
+export {default as Book} from "./Book/Book";
