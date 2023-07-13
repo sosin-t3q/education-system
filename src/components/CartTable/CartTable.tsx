@@ -19,8 +19,8 @@ const CartTable = () => {
     // axios
     //   .get(url, data, config)
     //   .then(res => {
-    //     console.log(res)
-    //     setCartTable(res);
+    //     const data = res.data;
+    //     setCartTable(data);
     //   })
     //   .catch(err => {
     //     console.log(err.message)
