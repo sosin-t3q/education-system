@@ -2,7 +2,7 @@
 import axios from 'axios'
 import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import base64DataToFile from './base64DataToFile'
+import base64DataToFile from '../../base64DataToFile'
 
 const detailData = useRecoilValue<any>(detailDataAtom) // 사용자가 입력한 값을 detailData에 넣어줌
 const setLoading = useSetRecoilState(loadingAtom) // loading 화면을 표시하기 위해 선언

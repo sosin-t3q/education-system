@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import base64DataToFile from './base64DataToFile'
+import base64DataToFile from '../../base64DataToFile'
 
 const detailData = useRecoilValue<any>(detailDataAtom)
 const setLoading = useSetRecoilState(loadingAtom)

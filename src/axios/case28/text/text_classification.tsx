@@ -1,14 +1,13 @@
-/* 스팸메일 이상탐지 - 텍스트 이상탐지 */
+/* 영화 리뷰 텍스트 감정 분석 - 텍스트 분류 */
+/* 이 예제에서 사용자는 text 파일을 선택하거나, 직접 입력할 수 있다 */
 import axios from 'axios'
-import { detailDataAtom, loadingAtom, resultAtom } from '@/atoms'
+import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import { Keyword } from "@/components";
 
 const detailData = useRecoilValue<string | null>(detailDataAtom)
 const setLoading = useSetRecoilState(loadingAtom)
-const setResult = useSetRecoilState(resultAtom)
 
-const textAnomaly = () => {
+const textClustering = () => {
   let data = JSON.stringify({
     word: detailData,
     url: 'http://dl.idro3vub.aica.t3q.ai/model/api/28c4c/inference',
@@ -29,17 +28,14 @@ const textAnomaly = () => {
     .then(res => {
       let json = res.data
       if (json.res == 'true') {
-        var response_data = json.response.data
+        let response_data = json.response.data
         if (response_data == null) {
           response_data = json.response.inference
         }
-        if (response_data == 'ham') {
+        if (response_data == 'pos') {
           // $('div.wrap_next').addClass('show_alert_pass')
-          <Keyword option={1} label={'HAM'} />
-
         } else {
           // $('div.wrap_next').addClass('show_alert_nonpass')
-          <Keyword option={2} label={'SPAM'} />
         }
       } else {
         alert('API 호출에 실패했습니다.')
@@ -53,4 +49,4 @@ const textAnomaly = () => {
     })
 }
 
-export default textAnomaly
+export default textClustering

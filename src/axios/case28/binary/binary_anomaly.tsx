@@ -1,26 +1,19 @@
-/* 환경 소리 군집화 - 음성 군집화 */
+/* 악성코드 분류 - 바이너리 분류 */
 import axios from 'axios'
 import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import base64DataToFile from './base64DataToFile'
-import { Keyword } from '@/components';
+import base64DataToFile from '../../base64DataToFile'
 
 const detailData = useRecoilValue<any>(detailDataAtom)
 const setLoading = useSetRecoilState(loadingAtom)
 
-const audioClustering = () => {
+const binaryAnomaly = () => {
   let data = {
-    file: base64DataToFile(detailData, '오디오이름', 'audio/wav'),
-    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/17551/inference',
+    file: base64DataToFile(detailData, '사진이름', 'image/png'),
+    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/58d37/inference',
   }
 
   setLoading(true)
-
-  let audio_info: any = {
-    Crackingfire: '불타는 소리',
-    Cow: '소 울음소리',
-    Sneezing: '재채기',
-  }
 
   axios
     .post('/inference/file_req_ajx', data, {
@@ -37,12 +30,15 @@ const audioClustering = () => {
           response_data = json.response.inference
         }
         /* 결과 */
-        response_data = audio_info[response_data];
-        // $(".result_alert").html(response_data);
-        // $("div.wrap_next").addClass("show_alert_pass");
-        <Keyword option={1} label={response_data} />
-      } else {
-        alert('API 호출에 실패했습니다.')
+        if (response_data == 'benign') {
+          // 양성 데이터 들어가는 부분
+          // $("div.wrap_next").addClass("show_alert_pass");
+        } else if (response_data == 'malware') {
+          // 악성 데이터 들어가는 부분
+          // $("div.wrap_next").addClass("show_alert_nonpass");
+        } else {
+          alert('API 호출에 실패했습니다.')
+        }
       }
     })
     .catch(err => {
@@ -53,4 +49,4 @@ const audioClustering = () => {
     })
 }
 
-export default audioClustering
+export default binaryAnomaly

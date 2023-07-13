@@ -1,19 +1,21 @@
-/* 허리케인 위성 사진 풍속 예측 - 위성 회귀 */
+/* 음성단어분류 - 음성 분류 */
 import axios from 'axios'
 import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import base64DataToFile from './base64DataToFile'
+import base64DataToFile from '../../base64DataToFile'
 import { Keyword } from '@/components'
 
 const detailData = useRecoilValue<any>(detailDataAtom)
 const setLoading = useSetRecoilState(loadingAtom)
 
-const satelliteRegression = () => {
+const audioClassification = () => {
   let data = {
-    file: base64DataToFile(detailData, '사진이름', 'image/jpeg'),
-    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/8c28d/inference',
+    file: base64DataToFile(detailData, '오디오이름', 'audio/wav'),
+    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/c68e0/inference',
   }
+
   setLoading(true)
+
   axios
     .post('/inference/file_req_ajx', data, {
       headers: {
@@ -28,7 +30,10 @@ const satelliteRegression = () => {
         if (response_data == null) {
           response_data = json.response.inference
         }
-        <Keyword option={1} label={response_data} />
+        // 결과 들어가는 부분
+        // $(".result_alert").html(response_data);
+        // $("div.wrap_next").addClass("show_alert_pass");
+        ;<Keyword option={1} label={response_data} />
       } else {
         alert('API 호출에 실패했습니다.')
       }
@@ -41,4 +46,4 @@ const satelliteRegression = () => {
     })
 }
 
-export default satelliteRegression
+export default audioClassification

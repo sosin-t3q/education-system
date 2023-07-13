@@ -1,20 +1,19 @@
-/* 경북대학교 - 이륜차 위험요소 탐지 1100 */
+/* 허리케인 위성 사진 풍속 예측 - 위성 회귀 */
 import axios from 'axios'
 import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import base64DataToFile from './base64DataToFile'
+import base64DataToFile from '../../base64DataToFile'
+import { Keyword } from '@/components'
 
 const detailData = useRecoilValue<any>(detailDataAtom)
 const setLoading = useSetRecoilState(loadingAtom)
 
-const knu1100 = () => {
+const satelliteRegression = () => {
   let data = {
     file: base64DataToFile(detailData, '사진이름', 'image/jpeg'),
-    url: 'http://dl.aihunmin.t3q.ai/model/api/a88dd/inference',
+    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/8c28d/inference',
   }
-
   setLoading(true)
-
   axios
     .post('/inference/file_req_ajx', data, {
       headers: {
@@ -29,10 +28,7 @@ const knu1100 = () => {
         if (response_data == null) {
           response_data = json.response.inference
         }
-        // content_result = 'data:image/jpg;base64,' + response_data
-
-        // $("#resImgSrc").attr("src", content_result);
-        // $("div.inner_next").addClass("show_img");
+        ;<Keyword option={1} label={response_data} />
       } else {
         alert('API 호출에 실패했습니다.')
       }
@@ -45,4 +41,4 @@ const knu1100 = () => {
     })
 }
 
-export default knu1100
+export default satelliteRegression

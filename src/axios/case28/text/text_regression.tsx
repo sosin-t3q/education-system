@@ -1,21 +1,18 @@
-/* 뉴스 기사 군집화 - 텍스트 군집화 */
+/* 셰익스피어 저작 텍스트 생성 - 텍스트 회귀 */
 import axios from 'axios'
-import { detailDataAtom, loadingAtom, resultAtom } from '@/atoms'
+import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import { Keyword } from '@/components';
+import { Keyword } from '@/components'
 
 const detailData = useRecoilValue<string | null>(detailDataAtom)
 const setLoading = useSetRecoilState(loadingAtom)
-const setResult = useSetRecoilState(resultAtom)
 
-const textClustering = () => {
-  let cluster_info: any = { rec: '취미', comp: '컴퓨터' }
-
-  // 전송 data에는 file 안의 담긴 값과, url 주소를 JSON으로 변환해 같이 보낸다
+const textRegression = () => {
+  // 전송 data에는 textarea 안의 담긴 값과, url 주소를 JSON으로 변환해 같이 보낸다
   // value는 value atom에서 가져온 값이 담긴다(string)
   let data = JSON.stringify({
-    word: detailData?.replace('?', '\\?'),
-    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/61626/inference',
+    word: detailData,
+    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/6fe4c/inference',
   })
 
   setLoading(true)
@@ -32,15 +29,14 @@ const textClustering = () => {
     })
     .then(res => {
       let json = res.data
+      let response_data = json.response.data
+      if (response_data == null) {
+        response_data = json.response.inference
+      }
+      response_data = response_data[0].replaceAll('\n', '<br>')
       if (json.res == 'true') {
-        let response_data = json.response.data
-        if (response_data == null) {
-          response_data = json.response.inference;
-        }
-        response_data = cluster_info[response_data];
-        <Keyword option={1} label={response_data} />
-        // response_data의 '취미' 혹은 '컴퓨터'가 담겨진 결과값이 반환됨
-        setResult(true)
+        // 생성된 텍스트 결과를 보여준다
+        ;<Keyword option={1} label={response_data} />
       } else {
         alert('API 호출에 실패했습니다.')
       }
@@ -53,4 +49,4 @@ const textClustering = () => {
     })
 }
 
-export default textClustering
+export default textRegression

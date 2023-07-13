@@ -3,7 +3,6 @@ import axios from 'axios'
 import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { Keyword } from '@/components'
-// import base64DataToFile from './base64DataToFile'
 
 const detailData = useRecoilValue<any>(detailDataAtom)
 const setLoading = useSetRecoilState(loadingAtom)
@@ -28,8 +27,8 @@ const binaryRegression = () => {
       if (json.res == 'true') {
         let response_data = json.response.data
         if (response_data == null) {
-          response_data = json.response.inference;
-          <Keyword option={1} label={response_data} />
+          response_data = json.response.inference
+          ;<Keyword option={1} label={response_data} />
         } else {
           alert('API 호출에 실패했습니다.')
         }

@@ -1,26 +1,28 @@
+/* 스팸메일 이상탐지 - 텍스트 이상탐지 */
 import axios from 'axios'
-import { detailDataAtom, loadingAtom, resultAtom } from '@/atoms'
+import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import base64DataToFile from './base64DataToFile'
+import { Keyword } from '@/components'
 
-const detailData = useRecoilValue<any>(detailDataAtom)
+const detailData = useRecoilValue<string | null>(detailDataAtom)
 const setLoading = useSetRecoilState(loadingAtom)
-const setResult = useSetRecoilState(resultAtom)
 
-const videoAnomaly = () => {
-  let data = {
-    file: base64DataToFile(detailData, '이미지이름', 'image/gif'),
-    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/90924/inference',
-  }
+const textAnomaly = () => {
+  let data = JSON.stringify({
+    word: detailData,
+    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/28c4c/inference',
+  })
 
   setLoading(true)
 
   axios
-    .post('/inference/file_req_ajx', data, {
+    .post('/inference/text_req_ajx', data, {
       // processData, contentType, dataType은 Axios에서 사용되지 않는 속성이다
+      //HTTP 요청에서 전송하는 데이터의 형식은 JSON 형식
       headers: {
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
       },
+      //서버로부터 들어오는 응답값은 JSON 형식
       responseType: 'json',
     })
     .then(res => {
@@ -30,10 +32,12 @@ const videoAnomaly = () => {
         if (response_data == null) {
           response_data = json.response.inference
         }
-        if (response_data == 'normal') {
+        if (response_data == 'ham') {
           // $('div.wrap_next').addClass('show_alert_pass')
+          ;<Keyword option={1} label={'HAM'} />
         } else {
           // $('div.wrap_next').addClass('show_alert_nonpass')
+          ;<Keyword option={2} label={'SPAM'} />
         }
       } else {
         alert('API 호출에 실패했습니다.')
@@ -47,4 +51,4 @@ const videoAnomaly = () => {
     })
 }
 
-export default videoAnomaly
+export default textAnomaly

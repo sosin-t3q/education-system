@@ -1,20 +1,26 @@
-/* 지표면 위성 사진 군집화 - 위성 군집화 */
+/* 환경 소리 군집화 - 음성 군집화 */
 import axios from 'axios'
 import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import base64DataToFile from './base64DataToFile'
+import base64DataToFile from '../../base64DataToFile'
 import { Keyword } from '@/components'
 
 const detailData = useRecoilValue<any>(detailDataAtom)
 const setLoading = useSetRecoilState(loadingAtom)
 
-const satelliteClustering = () => {
+const audioClustering = () => {
   let data = {
-    file: base64DataToFile(detailData, '사진이름', 'image/png'),
-    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/ff463/inference',
+    file: base64DataToFile(detailData, '오디오이름', 'audio/wav'),
+    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/17551/inference',
   }
+
   setLoading(true)
-  let class_info: any = { forested: '산림화', desertified: '사막화' }
+
+  let audio_info: any = {
+    Crackingfire: '불타는 소리',
+    Cow: '소 울음소리',
+    Sneezing: '재채기',
+  }
 
   axios
     .post('/inference/file_req_ajx', data, {
@@ -30,8 +36,11 @@ const satelliteClustering = () => {
         if (response_data == null) {
           response_data = json.response.inference
         }
-        response_data = class_info[response_data];
-        <Keyword option={1} label={response_data} />
+        /* 결과 */
+        response_data = audio_info[response_data]
+        // $(".result_alert").html(response_data);
+        // $("div.wrap_next").addClass("show_alert_pass");
+        ;<Keyword option={1} label={response_data} />
       } else {
         alert('API 호출에 실패했습니다.')
       }
@@ -44,4 +53,4 @@ const satelliteClustering = () => {
     })
 }
 
-export default satelliteClustering
+export default audioClustering

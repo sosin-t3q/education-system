@@ -1,16 +1,16 @@
-/* 피아노 악보 생성 - 음성 회귀 */
+/* 악성코드 이상탐지 - 바이너리 이상탐지 */
 import axios from 'axios'
 import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import base64DataToFile from './base64DataToFile'
+import base64DataToFile from '../../base64DataToFile'
 
 const detailData = useRecoilValue<any>(detailDataAtom)
 const setLoading = useSetRecoilState(loadingAtom)
 
-const audioRegression = () => {
+const binaryClassification = () => {
   let data = {
-    file: base64DataToFile(detailData, '오디오이름', 'audio/midi'),
-    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/29683/inference',
+    file: base64DataToFile(detailData, '사진이름', 'image/png'),
+    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/09a5a/inference',
   }
 
   setLoading(true)
@@ -29,9 +29,15 @@ const audioRegression = () => {
         if (response_data == null) {
           response_data = json.response.inference
         }
-        // 결과 들어가는 부분
-        // $("#tarMidi").attr("src", "data:audio/midi;base64," + response_data);
-        // $(".inner_next").css('background', 'none');
+        /* 결과 */
+        if (response_data == 'benign') {
+          // 정상 결과 들어가는 부분
+          // $("div.wrap_next").addClass("show_alert_pass");
+        } else {
+          console.log('파손')
+          // 파손 결과 들어가는 부분
+          // $("div.wrap_next").addClass("show_alert_nonpass");
+        }
       } else {
         alert('API 호출에 실패했습니다.')
       }
@@ -44,4 +50,4 @@ const audioRegression = () => {
     })
 }
 
-export default audioRegression
+export default binaryClassification

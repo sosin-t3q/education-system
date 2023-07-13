@@ -1,16 +1,16 @@
-/* 고려대학교 - 가짜 얼굴 판별 서비스 1204 */
+/* 경북대학교 - 이륜차 위험요소 탐지 1100 */
 import axios from 'axios'
 import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import base64DataToFile from './base64DataToFile'
+import base64DataToFile from '../../base64DataToFile'
 
 const detailData = useRecoilValue<any>(detailDataAtom)
 const setLoading = useSetRecoilState(loadingAtom)
 
-const ku1204 = () => {
+const knu1100 = () => {
   let data = {
     file: base64DataToFile(detailData, '사진이름', 'image/jpeg'),
-    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/d29f6/inference',
+    url: 'http://dl.aihunmin.t3q.ai/model/api/a88dd/inference',
   }
 
   setLoading(true)
@@ -29,13 +29,10 @@ const ku1204 = () => {
         if (response_data == null) {
           response_data = json.response.inference
         }
-        if (response_data == 'natural image') {
-          // 정상
-          // $('div.wrap_next').addClass('show_alert_pass')
-        } else if (response_data == 'fake image') {
-          // 비정상
-          // $('div.wrap_next').addClass('show_alert_nonpass')
-        }
+        // content_result = 'data:image/jpg;base64,' + response_data
+
+        // $("#resImgSrc").attr("src", content_result);
+        // $("div.inner_next").addClass("show_img");
       } else {
         alert('API 호출에 실패했습니다.')
       }
@@ -48,4 +45,4 @@ const ku1204 = () => {
     })
 }
 
-export default ku1204
+export default knu1100

@@ -1,26 +1,24 @@
-/* 만화 얼굴 군집화 - 이미지 군집화 */
 import axios from 'axios'
-import { detailDataAtom, loadingAtom, resultAtom } from '@/atoms'
+import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import base64DataToFile from './base64DataToFile'
-import { Keyword } from '@/components';
+import base64DataToFile from '../../base64DataToFile'
+import { Keyword } from '@/components'
 
 const detailData = useRecoilValue<any>(detailDataAtom)
 const setLoading = useSetRecoilState(loadingAtom)
-const setResult = useSetRecoilState(resultAtom)
 
-const imageCluster = () => {
-  // 이미지 이름이랑, 밈타입 알아야할듯?
+let video_info = {
+  CricketShot: '크리켓 슛',
+  PlayingCello: '첼로 연주',
+  Punch: '펀치',
+  ShavingBeard: '면도',
+  TennisSwing: '테니스 스윙',
+}
+
+const videoClassification = () => {
   let data = {
-    file: base64DataToFile(detailData, '이미지이름', 'image/jpeg'),
-    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/48f97/inference',
-  }
-
-  let class_info: any = {
-    // 띄어쓰기 하려고 문자형으로 함
-    'perm hair': '웨이브 머리',
-    'straight hair': '직모',
-    sunglasses: '선글라스',
+    file: base64DataToFile(detailData, '비디오이름', 'video/mp4'),
+    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/067bf/inference',
   }
 
   setLoading(true)
@@ -40,12 +38,11 @@ const imageCluster = () => {
         if (response_data == null) {
           response_data = json.response.inference
         }
-        response_data = class_info[response_data];
+        response_data = video_info[Object.keys(response_data[0])]
         // $('.result_alert').html(response_data)
         // $('div.wrap_next').addClass('show_alert_pass')
-        <Keyword option={1} label={response_data} />
-      }
-       else {
+        ;<Keyword option={1} label={response_data} />
+      } else {
         alert('API 호출에 실패했습니다.')
       }
     })
@@ -57,4 +54,4 @@ const imageCluster = () => {
     })
 }
 
-export default imageCluster
+export default videoClassification

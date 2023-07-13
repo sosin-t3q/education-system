@@ -1,25 +1,30 @@
+/* 손그림 이미지 분류 - 이미지 분류 */
 import axios from 'axios'
-import { detailDataAtom, loadingAtom, resultAtom } from '@/atoms'
+import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import base64DataToFile from './base64DataToFile'
-import { Keyword } from '@/components'
+import base64DataToFile from '../../base64DataToFile'
 
 const detailData = useRecoilValue<any>(detailDataAtom)
 const setLoading = useSetRecoilState(loadingAtom)
-const setResult = useSetRecoilState(resultAtom)
 
-let video_info = {
-  CricketShot: '크리켓 슛',
-  PlayingCello: '첼로 연주',
-  Punch: '펀치',
-  ShavingBeard: '면도',
-  TennisSwing: '테니스 스윙',
+let class_info: any = {
+  ant: '개미',
+  apple: '사과',
+  bus: '버스',
+  butterfly: '나비',
+  cup: '컵',
+  envelope: '봉투',
+  fish: '물고기',
+  giraffe: '기린',
+  lightbulb: '전구',
+  pig: '돼지',
 }
 
-const videoClassification = () => {
+const imageClassification = () => {
+  // 이미지 이름이랑, 밈타입 알아야할듯?
   let data = {
-    file: base64DataToFile(detailData, '비디오이름', 'video/mp4'),
-    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/067bf/inference',
+    file: base64DataToFile(detailData, '이미지이름', 'image/jpeg'),
+    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/a8c58/inference',
   }
 
   setLoading(true)
@@ -27,9 +32,11 @@ const videoClassification = () => {
   axios
     .post('/inference/file_req_ajx', data, {
       // processData, contentType, dataType은 Axios에서 사용되지 않는 속성이다
+      //HTTP 요청에서 전송하는 데이터의 형식은 JSON 형식
       headers: {
         'Content-Type': 'multipart/form-data',
       },
+      //서버로부터 들어오는 응답값은 JSON 형식
       responseType: 'json',
     })
     .then(res => {
@@ -39,11 +46,11 @@ const videoClassification = () => {
         if (response_data == null) {
           response_data = json.response.inference
         }
-        response_data = video_info[Object.keys(response_data[0])];
+        response_data = class_info[response_data]
         // $('.result_alert').html(response_data)
         // $('div.wrap_next').addClass('show_alert_pass')
-        <Keyword option={1} label={response_data} />
       } else {
+        console.log(json)
         alert('API 호출에 실패했습니다.')
       }
     })
@@ -55,4 +62,4 @@ const videoClassification = () => {
     })
 }
 
-export default videoClassification
+export default imageClassification

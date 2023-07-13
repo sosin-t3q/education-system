@@ -2,7 +2,7 @@
 import axios from 'axios'
 import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import base64DataToFile from './base64DataToFile'
+import base64DataToFile from '../../base64DataToFile'
 import { Keyword } from '@/components'
 
 const detailData = useRecoilValue<any>(detailDataAtom)
@@ -36,8 +36,8 @@ const satelliteClassification = () => {
         if (response_data == null) {
           response_data = json.response.inference
         }
-        response_data = class_info[response_data];
-        <Keyword option={1} label={response_data} />
+        response_data = class_info[response_data]
+        ;<Keyword option={1} label={response_data} />
       } else {
         alert('API 호출에 실패했습니다.')
       }
