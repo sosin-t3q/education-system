@@ -32,7 +32,7 @@ const Table = () => {
             {columns?.map((column: { id: number; header: string }) => {
               return (
                 <div key={column.id} className={styles['column-data']}>
-                  <span>{column.header}</span>
+                  <span className={styles['column-text']}>{column.header}</span>
                 </div>
               )
             })}

@@ -6,10 +6,15 @@ const Header = () => {
   return (
     <div className={styles.header}>
       <div className={styles['header-inner']}>
-        <Link path="/home">
+        <Link path="/">
           <Logo className={styles.logo}></Logo>
         </Link>
         <div className={styles.links}>
+        <Link
+            className={`${styles.experience}`}
+            path="/home"
+            children="홈"
+          />
           <Link
             className={`${styles.experience}`}
             path="/school"

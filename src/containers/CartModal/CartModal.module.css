@@ -1,0 +1,30 @@
+@import '../../root.css';
+
+.shadow {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal {
+  background: #93a4fd;
+  padding: 24px 48px;
+  position: relative;
+  border-radius: 20px;
+}
+
+.button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}

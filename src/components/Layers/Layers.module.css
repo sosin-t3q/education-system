@@ -60,16 +60,16 @@
   cursor: pointer;
 }
 
-.container-personal {
+.container-cart {
   z-index: 1;
   transition: all 0.3s ease-in-out;
 }
 
-.container-personal:hover {
+.container-cart:hover {
   transform: translateY(-15%);
 }
 
-.personal {
+.cart {
   position: absolute;
   top: 0;
   left: 420px;
