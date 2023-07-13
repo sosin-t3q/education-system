@@ -24,7 +24,6 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
   const [selectedFile, setSelectedFile] = useState<SelectedFileType>(null)
   const [value, setValue] = useRecoilState(detailDataAtom)
   const [isValid] = useRecoilState(inputValidationAtom)
-
   const fileList = data &&
     data['data_list'] && [
       '예제 선택하기',

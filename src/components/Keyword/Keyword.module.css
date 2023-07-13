@@ -1,0 +1,43 @@
+@import '../../root.css';
+
+.keyword {
+  display: flex;
+  width: 300px;
+  height: 450px;
+  color: var(--font-white);
+  font-size: var(--font-46);
+  font-weight: var(--font-semibold);
+  border-radius: 30px;
+}
+
+.keyword--primary {
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-blue);
+}
+
+.keyword--secondary {
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-red);
+}
+
+.keyword--third {
+  background: url('../../assets/right_button.png');
+  background-repeat: no-repeat;
+  background-position: 50% 40%;
+  background-size: 130px 130px;
+  padding-top: 300px;
+  justify-content: center;
+  background-color: var(--bg-blue);
+}
+
+.keyword--fourth {
+  /* background: url('../../assets/right_button.png'); */
+  background-repeat: no-repeat;
+  background-position: 50% 40%;
+  background-size: 130px 130px;
+  padding-top: 300px;
+  justify-content: center;
+  background-color: var(--bg-red);
+}

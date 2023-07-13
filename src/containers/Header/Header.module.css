@@ -1,8 +1,11 @@
 @import '../../root.css';
 
 .header {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  width: 100%;
   box-shadow: var(--shadow-navbar);
-  margin-bottom: var(--margin-100);
   background-color: var(--bg-primary);
 }
 
@@ -17,6 +20,10 @@
 
 .experience {
   margin-right: var(--margin-20);
+}
+
+.experience:hover {
+  color: var(--font-blue);
 }
 
 .login:hover {

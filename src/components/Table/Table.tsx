@@ -1,69 +1,83 @@
-import TABLE_DATA from '@/data/TABLE_DATA.json'
 import styles from './Table.module.css'
+import data from '@/data/LAYERS_DATA.json'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { tableAtom, modalAtom } from '@/atoms'
 import { useNavigate } from 'react-router-dom'
-import { useRecoilValue } from 'recoil'
-import { tableAtom } from '@/atoms'
 import { ReactComponent as Warning } from '@/assets/warning.svg'
 
 const Table = () => {
   const table = useRecoilValue(tableAtom)
-
-  const layer = TABLE_DATA.find(item => item.title === table)
-
-  const title = layer?.title
-  const columns = layer?.content[0].columns
-  const data = layer?.content[1].data
+  const setModal = useSetRecoilState(modalAtom)
   const navigate = useNavigate()
 
-  // naviate 기능을 지닌 함수
-  const handleNavigate = ({ id }: { id: number }) => {
+  const layer = data.find(item => item.title === table)
+
+  const title = layer?.title
+  const columns = layer?.columns
+  const rows = layer?.rows
+  const body = layer?.body
+
+  const handleNavigate = (id: number) => {
+    setModal(false)
     navigate(`/detail/${id}`)
   }
 
-  if (columns?.length && data?.length) {
+  if (columns && rows && body) {
     return (
-      <table className={styles.table}>
-        <caption className={styles.caption}>{title}</caption>
-        <thead>
-          <tr>
-            {
-              //기둥의 갯수 + 기둥 제목
-              columns?.map(({ id, title }) => {
+      <>
+        <h2 className={styles.title}>{title}</h2>
+        <div className={styles.table}>
+          {/* 테이블 헤더 */}
+          <div className={styles.columns}>
+            {columns?.map((column: { id: number; header: string }) => {
+              return (
+                <div key={column.id} className={styles['column-data']}>
+                  <span className={styles['column-text']}>{column.header}</span>
+                </div>
+              )
+            })}
+          </div>
+          {/* 사이드 헤더 & 바디 데이터 */}
+          <div className={styles.container}>
+            <div className={styles.rows}>
+              {rows?.map((row: { id: number; side: string }) => {
                 return (
-                  <th key={id} className={styles['top-title']}>
-                    <span className={styles['top-title-span']}>{title}</span>
-                  </th>
+                  <div key={row.id} className={styles['row-data']}>
+                    <span>{row.side}</span>
+                  </div>
                 )
-              })
-            }
-          </tr>
-        </thead>
-        <tbody>
-          {data?.map(({ id, side, CLF, REG, ANORM, CLS }) => {
-            return (
-              <tr key={id}>
-                <th className={styles['side-title']}>
-                  <span className={styles['side-title-span']}>{side}</span>
-                </th>
-                <td onClick={() => handleNavigate(CLF)}>{CLF.title}</td>
-                <td onClick={() => handleNavigate(REG)}>{REG.title}</td>
-                <td onClick={() => handleNavigate(ANORM)}>{ANORM.title}</td>
-                <td onClick={() => handleNavigate(CLS)}>{CLS.title}</td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
+              })}
+            </div>
+            <div className={styles.body}>
+              {body?.map((data: { id: number; name: string }) => {
+                return (
+                  // M - InnerHTML은 XSS 공격에 취약해 사용하면 안 된다!
+                  // M - DOMPurify를 사용하면 되지만, npm audit 문제로 우선은 보류했다
+                  <div
+                    key={data.id}
+                    className={styles['body-data']}
+                    onClick={() => handleNavigate(data.id)}
+                  >
+                    <span
+                      dangerouslySetInnerHTML={{ __html: data.name }}
+                    ></span>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      </>
     )
   } else {
     return (
-      <div className={styles['warning-table']}>
-        <span className={styles['warning-title']}>{title}</span>
-        <div className={styles['warning-content']}>
-          <Warning className={styles['warning-symbol']}></Warning>
-          데이터가 아직 준비되지 않았습니다
+      <>
+        <h2 className={styles.title}>{title}</h2>
+        <div className={styles.warning}>
+          <Warning></Warning>
+          <span>데이터가 아직 준비되지 않았습니다</span>
         </div>
-      </div>
+      </>
     )
   }
 }

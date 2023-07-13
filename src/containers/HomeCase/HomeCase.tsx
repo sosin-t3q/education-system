@@ -1,12 +1,12 @@
-// import { useState } from 'react'
 import { Title, Text, Layers } from '@/components'
-import { Modal } from '@/containers'
+import { Modal, CartModal } from '@/containers'
 import styles from './HomeCase.module.css'
 import { useRecoilValue } from 'recoil'
-import { modalAtom } from '@/atoms'
+import { modalAtom, cartModalAtom } from '@/atoms'
 
 const HomeCase = () => {
   const modal = useRecoilValue(modalAtom)
+  const cartModal = useRecoilValue(cartModalAtom)
 
   return (
     <div className={styles.case}>
@@ -26,6 +26,7 @@ const HomeCase = () => {
       </Text>
       <Layers />
       {modal && <Modal></Modal>}
+      {cartModal && <CartModal></CartModal>}
     </div>
   )
 }
