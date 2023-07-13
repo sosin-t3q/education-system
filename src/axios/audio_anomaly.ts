@@ -32,6 +32,7 @@ const audioAnomaly = () => {
         // res.data 가 true이면 (API 응답에 성공하면)
         let response_data = json.response.data
         if (response_data == null) {
+          // json.response.data에 왜 null 값이 들어있으며, 모든 조건문이 null 값이 맞으면 결과값을 가져오도록 설계되었는데 왜 그렇게 되었나요
           // response.data가 null 이면?
           response_data = json.response.inference // response.inference 값을 response_data(결과값)에 넣어줌
         }
