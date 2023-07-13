@@ -1,7 +1,7 @@
 import { atom } from 'recoil'
 
-const loadingAtom = atom({
-  key: 'loading',
+const loadingAtom = atom<boolean>({
+  key: 'loadingAtom',
   default: false,
 })
 

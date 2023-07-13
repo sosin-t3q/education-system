@@ -15,6 +15,7 @@ export { default as Layer } from './Layer/Layer'
 export { default as Layers } from './Layers/Layers'
 export { default as Table } from './Table/Table'
 export { default as Canvas } from './Canvas/Canvas'
+export { default as Keyword } from './Keyword/Keyword'
 export { default as CartLayer } from './CartLayer/CartLayer'
 export { default as CartTable } from './CartTable/CartTable'
 export {default as Book} from "./Book/Book";
