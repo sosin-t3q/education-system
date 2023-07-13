@@ -1,17 +1,20 @@
-/* 신용카드 사기 탐지 - log 이상탐지 */
+/* NBA 선수 포지션 분류 - log 분류 */
 import axios from 'axios'
 import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { Keyword } from '@/components'
 
 const detailData = useRecoilValue<any>(detailDataAtom)
 const setLoading = useSetRecoilState(loadingAtom)
 
-const logAnomaly = () => {
+const logClassification = () => {
   let data = JSON.stringify({
     word: detailData.join(),
-    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/d0fb3/inference',
+    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/7ede0/inference',
   })
   setLoading(true)
+
+  let class_info: any = { Center: '센터', Guard: '가드', Forward: '포워드' }
 
   axios
     .post('/inference/log_req_ajx', data, {
@@ -23,23 +26,14 @@ const logAnomaly = () => {
     .then(res => {
       let json = res.data
       if (json.res == 'true') {
-        // $("#output_log").val(JSON.stringify(json.response));
-        // $("div.wrap_logText").addClass("show_log");
         let response_data = json.response.data
         if (response_data == null) {
           response_data = json.response.inference
         }
-
-        /* 결과 */
-        if (response_data == 'normal_transaction') {
-          // 정상 결과 들어가는 부분
-          // $("div.wrap_next").addClass("show_alert_pass");
-        } else if (response_data == 'fraudulent_transaction') {
-          // 파손 결과 들어가는 부분
-          // $("div.wrap_next").addClass("show_alert_nonpass");
-        } else {
-          alert('API 호출에 실패했습니다.')
-        }
+        response_data = class_info[response_data];
+        <Keyword option={1} label={response_data} />
+      } else {
+        alert('API 호출에 실패했습니다.')
       }
     })
     .catch(err => {
@@ -50,4 +44,4 @@ const logAnomaly = () => {
     })
 }
 
-export default logAnomaly
+export default logClassification

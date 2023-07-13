@@ -2,6 +2,7 @@
 import axios from 'axios'
 import { detailDataAtom, loadingAtom, resultAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { Keyword } from "@/components";
 
 const detailData = useRecoilValue<string | null>(detailDataAtom)
 const setLoading = useSetRecoilState(loadingAtom)
@@ -34,8 +35,11 @@ const textAnomaly = () => {
         }
         if (response_data == 'ham') {
           // $('div.wrap_next').addClass('show_alert_pass')
+          <Keyword option={1} label={'HAM'} />
+
         } else {
           // $('div.wrap_next').addClass('show_alert_nonpass')
+          <Keyword option={2} label={'SPAM'} />
         }
       } else {
         alert('API 호출에 실패했습니다.')
