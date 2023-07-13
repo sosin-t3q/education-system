@@ -19,7 +19,7 @@ const Input = ({ selected, getData, type }: InputProps) => {
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value)
-    if (value.trim().length === 0) return
+    if (value.trim().length === 0) return // 입력된 값이 없다면
     getData(e.target.value)
   }
 
@@ -29,7 +29,7 @@ const Input = ({ selected, getData, type }: InputProps) => {
         ...isValid,
         isValid: false,
         message: '데이터를 입력해주세요.',
-      })
+      }) // 데이터가 없다면 입력 검증 상태를 false로 변경
     getData(data)
   }, [selected])
 

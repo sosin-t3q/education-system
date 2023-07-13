@@ -28,7 +28,7 @@ const Detail = () => {
       try {
         const response = await axios.get('/src/data/Detail_TestCase_Dummy.json')
         const res = response.data
-        const target = res.find((item: ResType) => String(item.id) === id)
+        const target = res.find((item: ResType) => String(item.id) === id) // id에 해당하는 데이터 추출
         setData(target['case_data'])
       } catch (e) {
         alert('데이터 요청을 실패했습니다.')

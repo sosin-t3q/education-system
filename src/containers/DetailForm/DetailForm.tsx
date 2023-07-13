@@ -29,13 +29,13 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
     data['data_list'] && [
       '예제 선택하기',
       ...data['data_list'].map(item => item.name),
-    ]
+    ] // 파일 리스트 배열 생성
 
   const onChange = useCallback(
     (selected: string) => {
-      setSelected(selected)
+      setSelected(selected) // 선택한 파일 이름 저장
     },
-    [setSelected],
+    [selected],
   )
 
   useEffect(() => {
@@ -53,8 +53,6 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
       alert(value)
       console.log(pageId)
       // 데이터 통신 로직
-    } else if (!isValid.isValid && isValid.type === 'log') {
-      alert(isValid.message)
     } else if (!isValid.isValid) {
       alert(isValid.message)
     }
