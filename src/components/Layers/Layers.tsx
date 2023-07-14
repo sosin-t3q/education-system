@@ -1,11 +1,12 @@
 import styles from './Layers.module.css'
 import { useSetRecoilState } from 'recoil'
-import { modalAtom } from '@/atoms'
-import Layer from '../Layer/Layer'
+import { modalAtom, cartModalAtom } from '@/atoms'
+import { Layer, CartLayer } from '@/components'
 
 const Layers = () => {
   // modal state가 true면 모달창이 화면에 보인다
   const setModal = useSetRecoilState(modalAtom)
+  const setCartModal = useSetRecoilState(cartModalAtom)
 
   return (
     <div className={styles.layers}>
@@ -25,11 +26,12 @@ const Layers = () => {
       <div className={styles['container-army']} onClick={() => setModal(true)}>
         <Layer variant="전장병 AI" className={styles.army} />
       </div>
+      {/* CartLayer는 별개로 관리되기 때문에 별도의 컴포넌트에서 관리됨 */}
       <div
-        className={styles['container-personal']}
-        onClick={() => setModal(true)}
+        className={styles['container-cart']}
+        onClick={() => setCartModal(true)}
       >
-        <Layer variant="개인 AI" className={styles.personal} />
+        <CartLayer className={styles.cart} />
       </div>
     </div>
   )

@@ -24,7 +24,8 @@
   font-weight: var(--font-bold);
   margin-left: 10px;
   margin-bottom: 20px;
-  cursor: pointer;
+  position: relative;
+  z-index: 1;
 }
 
 .column-data:first-child {
@@ -33,6 +34,34 @@
 
 .column-data span {
   cursor: pointer;
+  transition: color 0.1s ease-in-out;
+}
+
+.column-data span:hover {
+  color: white;
+}
+
+.column-data span::after {
+  content: "";
+  display: block;
+  width: 180px;
+  height: 620px;
+  border-radius: 10px;
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  z-index: -1;
+  background: transparent;
+  transition: background 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.column-data:first-child span::after {
+  display: none;
+} 
+
+.column-data span:hover::after {
+  background: #3f75ff;
 }
 
 .container {
@@ -56,10 +85,41 @@
   font-size: 16px;
   font-weight: bold;
   margin-right: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .row-data span {
   cursor: pointer;
+  transition: color 0.1s ease-in-out;
+  color: black;
+}
+
+.row-data span:hover {
+  color: white;
+}
+
+.row-data span::after {
+  content: "";
+  display: block;
+  background-color: transparent;
+  width: 800px;
+  height: 90px;
+  border-radius: 10px;
+  position: absolute;
+  z-index: -1;
+  top: -10px;
+  left: 0;
+  transition: background 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.row-data span:hover {
+  color: white;
+}
+
+.row-data span:hover::after {
+  background: #3f75ff;
 }
 
 .body {
@@ -83,6 +143,14 @@
   padding: 0 15px;
   line-height: 16px;
   cursor: pointer;
+  position:relative;
+  z-index: 1;
+  transition: all 0.2s ease-in-out
+}
+
+.body-data:hover {
+  background: #3f75ff;
+  color: white;
 }
 
 .warning {

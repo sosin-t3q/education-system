@@ -12,10 +12,17 @@
 .detailInfo {
   width: 1200px;
   margin-bottom: var(--margin-50);
+  position: relative;
 }
 
 .detail-title {
   margin-bottom: var(--margin-50);
+}
+
+.detail-book {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .my-swiper img {
@@ -29,5 +36,5 @@
 }
 
 .detailFilter {
-  z-index: 99999;
+  z-index: 98;
 }
