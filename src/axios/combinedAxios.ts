@@ -65,7 +65,8 @@ const combinedFunction = (id: any) => {
 
   if (id >= 1 && id <= functionArray.length) {
     const index = id - 1
-    functionArray[index]()
+    console.log(index)
+    // functionArray[index]()
   } else {
     console.log('ID ERROR')
   }

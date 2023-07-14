@@ -13,17 +13,3 @@ const base64DataToFile = async (
 }
 
 export default base64DataToFile
-
-// let file = await base64ToFile(base64Image, "image.jpg", "image/jpeg");
-// let videoFile = await base64ToFile(base64Video, "video.mp4", "video/mp4");
-// let audioFile = await base64ToFile(base64Audio, "audio.mp3", "audio/mpeg");
-
-// ---
-
-// const base64ToFile = async (base64Data, mimeType) => {
-//   let fetchResponse = await fetch(base64Data);
-//   let blob = await fetchResponse.blob();
-
-//   let file = new File([blob], "", { type: mimeType });
-//   return file;
-// };

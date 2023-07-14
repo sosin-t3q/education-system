@@ -23,26 +23,22 @@ const videoClustering = () => {
     .then(res => {
       let json = res.data
       if (json.res == 'true') {
-        let response_image = json.response.all_cluster_image
-        let response_data = json.response.inference_cluster
-
+        // let response_image = json.response.all_cluster_image
+        // let response_data = json.response.inference_cluster
         // $('#resImgSrc').attr('src', 'data:image/jpg;base64,' + response_image)
         // $('div.inner_next').addClass('show_img')
         // $('div.inner_next').css({ 'align-items': 'baseline' })
-
-        const counts = response_data.reduce((pv, cv) => {
-          pv[cv] = (pv[cv] || 0) + 1
-          return pv
-        }, {})
-
-        const keys = Object.keys(counts)
-        let mode = keys[0]
-        keys.forEach((val, idx) => {
-          if (counts[val] > counts[mode]) {
-            mode = val
-          }
-        })
-
+        // const counts = response_data.reduce((pv, cv) => {
+        //   pv[cv] = (pv[cv] || 0) + 1
+        //   return pv
+        // }, {})
+        // const keys = Object.keys(counts)
+        // let mode = keys[0]
+        // // keys.forEach((val, idx) => {
+        //   if (counts[val] > counts[mode]) {
+        //     mode = val
+        //   }
+        // })
         // $('.result_alert').html(mode)
         // $('.result_alert').css({ top: '85%' })
         // $('.inner_next').addClass('show_alert_pass')

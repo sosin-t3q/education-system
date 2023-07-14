@@ -7,7 +7,7 @@ import { Keyword } from '@/components'
 const detailData = useRecoilValue<any>(detailDataAtom)
 const setLoading = useSetRecoilState(loadingAtom)
 
-let video_info = {
+let video_info: any = {
   CricketShot: '크리켓 슛',
   PlayingCello: '첼로 연주',
   Punch: '펀치',
@@ -38,7 +38,9 @@ const videoClassification = () => {
         if (response_data == null) {
           response_data = json.response.inference
         }
-        response_data = video_info[Object.keys(response_data[0])]
+
+        response_data = video_info[response_data]
+        // response_data = video_info[Object.keys(response_data[0])]
         // $('.result_alert').html(response_data)
         // $('div.wrap_next').addClass('show_alert_pass')
         ;<Keyword option={1} label={response_data} />

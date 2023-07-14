@@ -1,13 +1,12 @@
 /* Style Transfer - 이미지 회귀 */
 import axios from 'axios'
-import { detailDataAtom, loadingAtom, resultAtom } from '@/atoms'
+import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import base64DataToFile from '../../base64DataToFile'
-import { Keyword } from '@/components'
+// import { Keyword } from '@/components'
 
 const detailData = useRecoilValue<any>(detailDataAtom)
 const setLoading = useSetRecoilState(loadingAtom)
-const setResult = useSetRecoilState(resultAtom)
 
 const imageRegression = () => {
   // 이미지 이름이랑, 밈타입 알아야할듯?
@@ -16,7 +15,7 @@ const imageRegression = () => {
     url: 'http://dl.idro3vub.aica.t3q.ai/model/api/0335c/inference',
   }
 
-  let content_result = 'None'
+  // let content_result = 'None'
 
   setLoading(true)
 
@@ -37,8 +36,8 @@ const imageRegression = () => {
         if (response_data == null) {
           response_data = json.response.inference
         }
-        content_result = 'data:image/jpg;base64,' + response_data
-        let content_curriculum = json.response.inference_curriculum
+        // content_result = 'data:image/jpg;base64,' + response_data
+        // let content_curriculum = json.response.inference_curriculum
         // $("#resImgSrc").attr("src", "data:image/jpg;base64," + content_curriculum);
         // $("div.inner_next").addClass("show_img");
       } else {

@@ -4,10 +4,12 @@ import axios from 'axios'
 import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 
-const detailData = useRecoilValue<string | null>(detailDataAtom)
-const setLoading = useSetRecoilState(loadingAtom)
+const textClassification = () => {
+  const detailData = useRecoilValue<string | null>(detailDataAtom)
+  const setLoading = useSetRecoilState(loadingAtom)
 
-const textClustering = () => {
+  console.log('testtest')
+
   let data = JSON.stringify({
     word: detailData,
     url: 'http://dl.idro3vub.aica.t3q.ai/model/api/28c4c/inference',
@@ -49,4 +51,4 @@ const textClustering = () => {
     })
 }
 
-export default textClustering
+export default textClassification
