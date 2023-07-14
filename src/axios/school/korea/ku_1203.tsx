@@ -2,20 +2,20 @@
 import axios from 'axios'
 import { detailDataAtom, loadingAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import base64DataToFile from './base64DataToFile'
+import base64DataToFile from '../../base64DataToFile'
 
 const detailData = useRecoilValue<any>(detailDataAtom)
 const setLoading = useSetRecoilState(loadingAtom)
 
 const ku1203 = () => {
-  let chair_leg: any = [
-    '문어형 다리',
-    '일자형 다리',
-    '스툴형 다리',
-    '흔들의자형 다리',
-    '다리 없음',
-    '바형 다리',
-  ]
+  // let chair_leg: any = [
+  //   '문어형 다리',
+  //   '일자형 다리',
+  //   '스툴형 다리',
+  //   '흔들의자형 다리',
+  //   '다리 없음',
+  //   '바형 다리',
+  // ]
   let data = {
     file: base64DataToFile(detailData, '사진이름', 'image/jpeg'),
     url: 'http://dl.aihunmin.t3q.ai/model/api/219ac/inference',
@@ -53,9 +53,10 @@ const ku1203 = () => {
               response_rlt.push(' ' + Object.entries(response_data[0])[i][0])
             }
           }
-          response_rlt.push(
-            ' ' + chair_leg[Object.entries(response_data[0])[0][1]],
-          )
+          response_rlt
+            .push
+            // ' ' + chair_leg[Object.entries(response_data[0])[0][1]],
+            ()
         }
 
         if (json.res == 'true') {
