@@ -8,8 +8,10 @@ import {
 } from '@/components'
 import styles from './DetailForm.module.css'
 import { useCallback, useEffect, useState } from 'react'
-import { detailDataAtom } from '@/atoms/index'
-import { useRecoilState } from 'recoil'
+import { detailDataAtom, resultAtom, loadingAtom } from '@/atoms/index'
+import { useRecoilState, useSetRecoilState } from 'recoil'
+import textClassification from '@/axios/text_classification'
+// import axios from "axios";
 
 interface DetailFormProps {
   data: any
@@ -24,6 +26,10 @@ const DetailForm = ({ data }: DetailFormProps) => {
       '예제 선택하기',
       ...data['case_data'].map((item: any) => item.name),
     ]
+
+    //진우가 추가한 코드
+    const setLoading = useSetRecoilState(loadingAtom);
+    const setResult = useSetRecoilState(resultAtom);
 
   const onChange = useCallback(
     (selected: string) => {
@@ -62,8 +68,7 @@ const DetailForm = ({ data }: DetailFormProps) => {
 
   const onClick = useCallback(() => {
     if (value) {
-      console.log(value)
-      // 데이터 통신 로직
+      textClassification(value, setLoading, setResult);
     } else {
       alert('데이터를 입력해주세요.')
     }

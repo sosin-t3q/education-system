@@ -10,7 +10,7 @@ import 'swiper/css/pagination'
 import 'swiper/swiper.min.css'
 import json from '@/data/PPT_DATA.json'
 import {cartAtom} from "@/atoms/index";
-import { useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import useBook from '@/hooks/useBook'
 
 interface DetailCarouselProps {
@@ -25,18 +25,23 @@ const DetailCarousel = ({ className, pageId }: DetailCarouselProps) => {
   const pageTitle = target?.title; //상세페이지 제목이 담긴다
   const swiperRef = useRef<SwiperRef>(null)
 
-  const {checkBook} = useBook();
+  //찜을 확인하는 기능
+  const { checkBook } = useBook();
 
   //cart에는 장바구니 기능을 위한 페이지 id와 title이 저장된다
-  const setCart = useSetRecoilState(cartAtom);
+  const [cart, setCart] = useRecoilState(cartAtom);
+  
+  useEffect(() => {
+    // 컴포넌트가 렌더링된 다음 cart의 값으로 id, title 키를 가진 객체가 저장된다
+    setCart({id: Number(pageId), title: pageTitle});
+    // checkBook();
+  }, [])
   
   useEffect(() => {
     // 상세페이지가 장바구니에 들어가있는 지를 확인한다
+    // cart Atom을 추적하고 있어, cart Atom이 업데이트된 다음에 실행될 수 있게끔 했다.
     checkBook();
-    // 컴포넌트가 렌더링된 다음 cart의 값으로 id, title 키를 가진 객체가 저장된다
-    setCart({id: pageId, title: pageTitle});
-  }, [])
-
+  }, [cart]);
 
   const imagePaths = Array.from(
     { length: fileList.length },
@@ -60,7 +65,7 @@ const DetailCarousel = ({ className, pageId }: DetailCarouselProps) => {
           targetIndex={index => gotoSlide(index)}
           className={styles.detailFilter}
         />
-        <Book className={styles['detail-book']}></Book>
+        <Book className={styles['detail-book']} />
       </div>
       <Swiper
         ref={swiperRef}
