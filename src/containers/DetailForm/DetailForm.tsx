@@ -2,7 +2,7 @@ import {
   Title,
   ApiURL,
   Input,
-  // Result,
+  Result,
   Button,
   DropdownMenu,
 } from '@/components'
@@ -24,6 +24,9 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
   const [selectedFile, setSelectedFile] = useState<SelectedFileType>(null)
   const [value, setValue] = useRecoilState(detailDataAtom)
   const [isValid] = useRecoilState(inputValidationAtom)
+
+  const [infer, setInfer] = useState<string | null>(null)
+
   const fileList = data &&
     data['data_list'] && [
       '예제 선택하기',
@@ -51,6 +54,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
     if (value) {
       alert(value)
       console.log(pageId)
+      setInfer(value)
       // 데이터 통신 로직
     } else if (!isValid.isValid) {
       alert(isValid.message)
@@ -77,7 +81,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
             type={data['data_type']}
           />
         )}
-        {/* <Result infer={infer} /> */}
+        <Result infer={infer} />
       </div>
       {fileList && <DropdownMenu options={fileList} onSelect={onChange} />}
       <Button
