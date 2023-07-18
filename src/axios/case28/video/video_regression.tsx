@@ -1,22 +1,24 @@
 import axios from 'axios'
-import { detailDataAtom, loadingAtom } from '@/atoms'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
 import base64DataToFile from '../../base64DataToFile'
 
-const detailData = useRecoilValue<any>(detailDataAtom)
-const setLoading = useSetRecoilState(loadingAtom)
+const videoRegression = async (
+  value: any, // 사용자가 입력한 값 (string or base64)
+  formUrl: any, // 사용자가 입력한 api Url
+  setLoading: any, // 로딩
+  // setResult: any,    // 결과 컴포넌트
+) => {
+  const axiosUrl = '/inference/file_req_ajx' // 고정값
+  const convertData = await base64DataToFile(value, 'gifImage', 'image/gif')
+  /* FormData (apiUrl, data) 형태로 전송 */
+  const formData = new FormData()
+  formData.append('url', formUrl)
+  formData.append('file', convertData) // 사용자가 전송할 값이 [문자열] 형태일 때
 
-const videoRegression = () => {
-  let data = {
-    file: base64DataToFile(detailData, '이미지이름', 'image/gif'),
-    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/a937e/inference',
-  }
+  setLoading(true) // 로딩 표시
 
-  setLoading(true)
-
+  /* axios 비동기 통신 함수 */
   axios
-    .post('/inference/file_req_ajx', data, {
-      // processData, contentType, dataType은 Axios에서 사용되지 않는 속성이다
+    .post(axiosUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -25,10 +27,12 @@ const videoRegression = () => {
     .then(res => {
       let json = res.data
       if (json.res == 'true') {
-        var response_data = json.response.data
+        let response_data = json.response.data
         if (response_data == null) {
           response_data = json.response.inference
         }
+        /* 결과값에 따라 결과 컴포넌트 렌더링 */
+        /* response_data => 이미지 base64 src */
         // $('#resImgSrc').attr('src', 'data:image/jpg;base64,' + response_data)
         // $('div.inner_next').addClass('show_img')
       } else {
