@@ -30,6 +30,10 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
       ...data['data_list'].map(item => item.name),
     ] // 파일 리스트 배열 생성
 
+    //진우가 추가한 코드
+    const setLoading = useSetRecoilState(loadingAtom);
+    const setResult = useSetRecoilState(resultAtom);
+
   const onChange = useCallback(
     (selected: string) => {
       setSelected(selected) // 선택한 파일 이름 저장

@@ -1,7 +1,12 @@
 import { atom } from 'recoil'
 
-const cartTableAtom = atom<any[]>({
-  key: 'cartTable',
+interface atomInterface {
+  id: number;
+  title: string;
+}
+
+const cartTableAtom = atom<atomInterface[]>({
+  key: 'cartTableAtom',
   default: [],
 })
 
