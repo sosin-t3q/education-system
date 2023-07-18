@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import styles from './ApiURL.module.css'
 
 interface ApiURLProps {
   api: string | null
+  apiURL: string;
+  setApiURL: any;
 }
 
-const ApiURL = ({ api }: ApiURLProps) => {
-  const [apiURL, setApiURL] = useState<string>('')
+const ApiURL = ({ api, apiURL, setApiURL }: ApiURLProps) => {
 
   useEffect(() => {
     if (api) {

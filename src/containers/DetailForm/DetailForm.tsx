@@ -32,11 +32,16 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
   const [selectedFile, setSelectedFile] = useState<SelectedFileType>(null)
   const [value, setValue] = useRecoilState(detailDataAtom)
   const [isValid] = useRecoilState(inputValidationAtom)
+  const [apiURL, setApiURL] = useState<string>('')
   const fileList = data &&
     data['data_list'] && [
       '예제 선택하기',
       ...data['data_list'].map(item => item.name),
     ] // 파일 리스트 배열 생성
+
+  //진우가 추가한 코드
+  const setLoading = useSetRecoilState(loadingAtom)
+  const setResult = useSetRecoilState(resultAtom)
 
   const onChange = useCallback(
     (selected: string) => {
@@ -78,7 +83,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
         label={'예제 실행해보기'}
         className={'detailform-title'}
       />
-      <ApiURL api={data && data.API} />
+      <ApiURL api={data && data.API} apiURL={apiURL} setApiURL={setApiURL} />
       <div className={styles['input-cont']}>
         {data && (
           <Input
