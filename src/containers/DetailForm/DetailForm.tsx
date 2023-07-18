@@ -16,7 +16,7 @@ import {
 } from '@/atoms/index'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
-import { default as textClassification } from '@/axios/case28/text/text_classification'
+import { default as imageClassification } from '@/axios/case28/image/image_classification'
 
 type SelectedFileType = Record<string, string> | null | undefined
 
@@ -59,7 +59,8 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
     if (value) {
       alert(value)
       console.log(pageId)
-      textClassification(value, setLoading, setResult)
+      /* test */
+      imageClassification(value, formUrl, setLoading)
       // 데이터 통신 로직
     } else if (!isValid.isValid) {
       alert(isValid.message)
