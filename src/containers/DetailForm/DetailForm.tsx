@@ -12,7 +12,7 @@ import {
   detailDataAtom,
   inputValidationAtom,
   loadingAtom,
-  resultAtom,
+  // resultAtom,
 } from '@/atoms/index'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
@@ -27,7 +27,7 @@ interface DetailFormProps {
 
 const DetailForm = ({ data, pageId }: DetailFormProps) => {
   const setLoading = useSetRecoilState(loadingAtom)
-  const setResult = useSetRecoilState(resultAtom)
+  // const setResult = useSetRecoilState(resultAtom)
   const [selected, setSelected] = useState('default')
   const [selectedFile, setSelectedFile] = useState<SelectedFileType>(null)
   const [value, setValue] = useRecoilState(detailDataAtom)
@@ -38,10 +38,6 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
       '예제 선택하기',
       ...data['data_list'].map(item => item.name),
     ] // 파일 리스트 배열 생성
-
-  //진우가 추가한 코드
-  const setLoading = useSetRecoilState(loadingAtom)
-  const setResult = useSetRecoilState(resultAtom)
 
   const onChange = useCallback(
     (selected: string) => {
@@ -65,7 +61,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
       alert(value)
       console.log(pageId)
       /* test */
-      imageClassification(value, formUrl, setLoading)
+      imageClassification(value, apiURL, setLoading)
       // 데이터 통신 로직
     } else if (!isValid.isValid) {
       alert(isValid.message)
