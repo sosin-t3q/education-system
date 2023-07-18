@@ -1,22 +1,25 @@
 /* 피아노 악보 생성 - 음성 회귀 */
 import axios from 'axios'
-import { detailDataAtom, loadingAtom } from '@/atoms'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
 import base64DataToFile from '../../base64DataToFile'
 
-const detailData = useRecoilValue<any>(detailDataAtom)
-const setLoading = useSetRecoilState(loadingAtom)
+const audioRegression = async (
+  value: any, // 사용자가 입력한 값 (string or base64)
+  formUrl: any, // 사용자가 입력한 api Url
+  setLoading: any, // 로딩
+  // setResult: any,    // 결과 컴포넌트
+) => {
+  const axiosUrl = '/inference/file_req_ajx' // 고정값
+  const convertData = await base64DataToFile(value, 'audio', 'audio/midi')
+  /* FormData (apiUrl, data) 형태로 전송 */
+  const formData = new FormData()
+  formData.append('url', formUrl)
+  formData.append('file', convertData) // 사용자가 전송할 값이 [문자열] 형태일 때
 
-const audioRegression = () => {
-  let data = {
-    file: base64DataToFile(detailData, '오디오이름', 'audio/midi'),
-    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/29683/inference',
-  }
+  setLoading(true) // 로딩 표시
 
-  setLoading(true)
-
+  /* axios 비동기 통신 함수 */
   axios
-    .post('/inference/file_req_ajx', data, {
+    .post(axiosUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -29,7 +32,8 @@ const audioRegression = () => {
         if (response_data == null) {
           response_data = json.response.inference
         }
-        // 결과 들어가는 부분
+        /* 결과값에 따라 결과 컴포넌트 렌더링 */
+        /* response_data => 오디오 base64 src */
         // $("#tarMidi").attr("src", "data:audio/midi;base64," + response_data);
         // $(".inner_next").css('background', 'none');
       } else {
