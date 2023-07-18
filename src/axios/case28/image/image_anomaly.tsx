@@ -1,46 +1,42 @@
 /* 노후 시설물 이미지를 이용한 이상탐지 - 이미지 이상탐지 */
 import axios from 'axios'
-import { detailDataAtom, loadingAtom } from '@/atoms'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
 import base64DataToFile from '../../base64DataToFile'
-import { Keyword } from '@/components'
 
-const detailData = useRecoilValue<any>(detailDataAtom)
-const setLoading = useSetRecoilState(loadingAtom)
+const imageAnomaly = async (
+  value: any, // 사용자가 입력한 값 (string or base64)
+  formUrl: any, // 사용자가 입력한 api Url
+  setLoading: any, // 로딩
+  // setResult: any,    // 결과 컴포넌트
+) => {
+  const axiosUrl = '/inference/file_req_ajx' // 고정값
+  const convertData = await base64DataToFile(value, 'image', 'image/jpeg')
+  /* FormData (apiUrl, data) 형태로 전송 */
+  const formData = new FormData()
+  formData.append('url', formUrl)
+  formData.append('file', convertData) // 사용자가 전송할 값이 [문자열] 형태일 때
 
-const imageAnomaly = () => {
-  // 이미지 이름이랑, 밈타입 알아야할듯?
-  let data = {
-    file: base64DataToFile(detailData, '이미지이름', 'image/jpeg'),
-    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/0897f/inference',
-  }
+  setLoading(true) // 로딩 표시
 
-  setLoading(true)
-
+  /* axios 비동기 통신 함수 */
   axios
-    .post('/inference/file_req_ajx', data, {
-      // processData, contentType, dataType은 Axios에서 사용되지 않는 속성이다
+    .post(axiosUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
       responseType: 'json',
     })
     .then(res => {
-      // $("#input_log").val(JSON.stringify(json.request));
       let json = res.data
       if (json.res == 'true') {
-        // $('#output_log').val(JSON.stringify(json.response))
-        // $('div.wrap_logText').addClass('show_log')
-        var response_data = json.response.data
+        let response_data = json.response.data
         if (response_data == null) {
           response_data = json.response.inference
         }
+        /* 결과값에 따라 결과 컴포넌트 렌더링 */
         if (response_data == 'original') {
-          // $('div.wrap_next').addClass('show_alert_pass')
-          ;<Keyword option={1} label={'정상 블록'} />
+          // 정상 블록 컴포넌트
         } else if (response_data == 'discard') {
-          // $('div.wrap_next').addClass('show_alert_nonpass')
-          ;<Keyword option={2} label={'파손 블록'} />
+          // 파손 블록 컴포넌트
         }
       } else {
         alert('API 호출에 실패했습니다.')
