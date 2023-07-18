@@ -1,0 +1,76 @@
+[
+  {
+    "id": 1,
+    "case_data": {
+      "API": "http://파일 선택 유형",
+      "data_type": "file",
+      "data_list": [
+        {
+          "name": "Dummy1",
+          "data": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAIAAAD9b0jDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADOSURBVEhL5ZFRDsMgDENh979zZ9WpBSEpMFWatL0PGizygFKP4yhP87Lvo/yMtNZq1QWSMXSk0ky38rB3J6UCo81LkbENR1Ip+mV0CqkzAikUYtof4qUQYTxP2emYLxKcVDoU2oMJYYiRMGzppFjh+oVyWjAlSlrShyKujbsyJG0tJlLAtptLjAQPJSzqj9PmwE1JJ0WzsChCIhbj4vhSWO1yiZi7qWNDGq4MmT/UByxJddlF5lIa1+8O0n9q1cmWEWz8/nW+91C7/LW0lDets3s9wDazXwAAAABJRU5ErkJggg=="
+        },
+        {
+          "name": "Dummy2",
+          "data": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAIAAAD9b0jDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADOSURBVEhL5ZFRDsMgDENh979zZ9WpBSEpMFWatL0PGizygFKP4yhP87Lvo/yMtNZq1QWSMXSk0ky38rB3J6UCo81LkbENR1Ip+mV0CqkzAikUYtof4qUQYTxP2emYLxKcVDoU2oMJYYiRMGzppFjh+oVyWjAlSlrShyKujbsyJG0tJlLAtptLjAQPJSzqj9PmwE1JJ0WzsChCIhbj4vhSWO1yiZi7qWNDGq4MmT/UByxJddlF5lIa1+8O0n9q1cmWEWz8/nW+91C7/LW0lDets3s9wDazXwAAAABJRU5ErkJggg=="
+        }
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "case_data": {
+      "API": "http://데이터선택x, 직접 텍스트를 입력하는 경우",
+      "data_type": "write",
+      "data_list": null
+    }
+  },
+  {
+    "id": 3,
+    "case_data": {
+      "API": "http://텍스트입력과파일",
+      "data_type": "write",
+      "data_list": [
+        {
+          "name": "example_01",
+          "data": "더미텍스트1"
+        },
+        {
+          "name": "example_02",
+          "data": "더미텍스트1"
+        }
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "case_data": {
+      "API": "http://그림그리기",
+      "data_type": "draw",
+      "data_list": [
+        {
+          "name": "example_01",
+          "data": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAIAAAD9b0jDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADOSURBVEhL5ZFRDsMgDENh979zZ9WpBSEpMFWatL0PGizygFKP4yhP87Lvo/yMtNZq1QWSMXSk0ky38rB3J6UCo81LkbENR1Ip+mV0CqkzAikUYtof4qUQYTxP2emYLxKcVDoU2oMJYYiRMGzppFjh+oVyWjAlSlrShyKujbsyJG0tJlLAtptLjAQPJSzqj9PmwE1JJ0WzsChCIhbj4vhSWO1yiZi7qWNDGq4MmT/UByxJddlF5lIa1+8O0n9q1cmWEWz8/nW+91C7/LW0lDets3s9wDazXwAAAABJRU5ErkJggg=="
+        }
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "case_data": {
+      "API": "http://데이터가 로그인 경우",
+      "data_type": "log",
+      "data_list": [
+        {
+          "name": "example_01",
+          "data": {
+            "FULL_NAME": "로그타입",
+            "TEAM": "TOR",
+            "POS": "PG",
+            "AGE": 22,
+            "GP": 47
+          }
+        }
+      ]
+    }
+  }
+]
