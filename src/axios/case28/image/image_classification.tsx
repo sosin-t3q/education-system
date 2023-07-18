@@ -49,7 +49,6 @@ const imageClassification = async (
         response_data = class_info[response_data]
         // 결과 컴포넌트 자리
       } else {
-        console.log(json)
         alert('API 호출에 실패했습니다.')
       }
     })
