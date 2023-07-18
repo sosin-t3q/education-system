@@ -2,15 +2,21 @@ import {
   Title,
   ApiURL,
   Input,
-  // Result,
+  Result,
   Button,
   DropdownMenu,
 } from '@/components'
 import styles from './DetailForm.module.css'
 import { useCallback, useEffect, useState } from 'react'
-import { detailDataAtom, inputValidationAtom } from '@/atoms/index'
-import { useRecoilState } from 'recoil'
+import {
+  detailDataAtom,
+  inputValidationAtom,
+  loadingAtom,
+  resultAtom,
+} from '@/atoms/index'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
+import { default as textClassification } from '@/axios/case28/text/text_classification'
 
 type SelectedFileType = Record<string, string> | null | undefined
 
@@ -20,6 +26,8 @@ interface DetailFormProps {
 }
 
 const DetailForm = ({ data, pageId }: DetailFormProps) => {
+  const setLoading = useSetRecoilState(loadingAtom)
+  const setResult = useSetRecoilState(resultAtom)
   const [selected, setSelected] = useState('default')
   const [selectedFile, setSelectedFile] = useState<SelectedFileType>(null)
   const [value, setValue] = useRecoilState(detailDataAtom)
@@ -51,6 +59,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
     if (value) {
       alert(value)
       console.log(pageId)
+      textClassification(value, setLoading, setResult)
       // 데이터 통신 로직
     } else if (!isValid.isValid) {
       alert(isValid.message)
@@ -77,7 +86,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
             type={data['data_type']}
           />
         )}
-        {/* <Result infer={infer} /> */}
+        <Result infer={'infer'} />
       </div>
       {fileList && <DropdownMenu options={fileList} onSelect={onChange} />}
       <Button

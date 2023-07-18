@@ -1,42 +1,58 @@
 /* 영화 리뷰 텍스트 감정 분석 - 텍스트 분류 */
 /* 이 예제에서 사용자는 text 파일을 선택하거나, 직접 입력할 수 있다 */
+
+/* 
+수정이 필요한 부분
+
+1. props로 formUrl을 Detailform에서 받아와야 한다. (추론하기를 눌렀을 때 담긴 url로)
+-> 사용자가 수정할 수 있기 때문
+
+2. props 타입 수정
+*/
 import axios from 'axios'
-import { detailDataAtom, loadingAtom } from '@/atoms'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
 
-const textClassification = () => {
-  const detailData = useRecoilValue<string | null>(detailDataAtom)
-  const setLoading = useSetRecoilState(loadingAtom)
+const textClassification = (
+  value: any,
+  setLoading: any,
+  // setResult: any,
+  // formUrl: any,
+) => {
+  setLoading(true) // Loading 컴포넌트 표시
+  const formUrl = 'http://dl.idro3vub.aica.t3q.ai/model/api/28c4c/inference' // props로 받아야됨
+  const axiosUrl = '/inference/text_req_ajx' // 고정값
 
-  console.log('testtest')
+  const formData = new FormData()
+  formData.append('url', formUrl)
 
-  let data = JSON.stringify({
-    word: detailData,
-    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/28c4c/inference',
-  })
+  // 문자열로 반환
+  formData.append('word', value)
 
-  setLoading(true)
+  // 파일로 반환
+  //  formData.append("file", value);
 
   axios
-    .post('/inference/text_req_ajx', data, {
-      // processData, contentType, dataType은 Axios에서 사용되지 않는 속성이다
-      //HTTP 요청에서 전송하는 데이터의 형식은 JSON 형식
+    .post(axiosUrl, formData, {
       headers: {
-        'Content-Type': 'application/json',
+        'content-type': 'multipart/form-data',
       },
-      //서버로부터 들어오는 응답값은 JSON 형식
       responseType: 'json',
-    })
+    }) // Timeout in axios is in ms, so 60000 ms is equal to 600 s
     .then(res => {
+      /* ********* 고정값 ********* */
       let json = res.data
       if (json.res == 'true') {
         let response_data = json.response.data
         if (response_data == null) {
           response_data = json.response.inference
         }
+        /* ********* 고정값 ********* */
         if (response_data == 'pos') {
+          setResult('pos')
+          // 긍정 결과 컴포넌트
+          // props로
           // $('div.wrap_next').addClass('show_alert_pass')
         } else {
+          // 부정 결과 컴포넌트
           // $('div.wrap_next').addClass('show_alert_nonpass')
         }
       } else {
