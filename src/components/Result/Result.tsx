@@ -1,49 +1,52 @@
 import { useEffect, useState } from 'react'
 import styles from './Result.module.css'
 import { ReactComponent as ApprovalDelegation } from '@/assets/approval_delegation.svg'
+import { Keyword } from '@/components'
+import { InferObj } from '@/containers/DetailForm/DetailForm'
 
 interface ResultProps {
-  infer: string | null
+  infer: string | null | InferObj
 }
 
 const Result = ({ infer }: ResultProps) => {
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState<string>('')
+  const [objValue, setObjValue] = useState<InferObj>({ label: '', option: 0 })
 
   useEffect(() => {
-    if (!infer) return
-    setValue(infer)
+    if (infer && typeof infer === 'string') setValue(infer)
+    else if (infer && typeof infer === 'object') setObjValue(infer)
   }, [infer])
 
   // 결과값 - 텍스트 / 키워드 / 이미지 / 오디오 / 비디오
 
+  const isText = value.trim() !== '' && value !== null
+
   switch (true) {
-    case typeof value === 'object': // 키워드
+    case typeof objValue === 'object': // 키워드
       return (
         <div className={styles['result-cont']}>
-          <p>키워드</p>
+          <Keyword label={objValue.label} option={objValue.option} />
         </div>
       )
-    case typeof value === 'string' &&
-      !value.startsWith('data:') &&
-      value !== '': // 문자열
+    case isText && !value.startsWith('data:'): // 문자열
       return (
         <div className={styles['result-cont']}>
           <p>{value}</p>
         </div>
       )
-    case value.includes('data:image/'): // 이미지
+    case isText && value?.includes('data:image/'): // 이미지
       return (
         <div className={styles['result-cont']}>
           <img src={value} alt="" />
         </div>
       )
-    case value.includes('data:audio/'): // 오디오
+    case isText && value?.includes('data:audio/'): // 오디오
       return (
         <div className={styles['result-cont']}>
           <audio controls src={value} autoPlay={false} />
         </div>
       )
-    case value.includes('data:video/'): // 비디오
+    case isText && value?.includes('data:video/'): // 비디오
       return (
         <div className={styles['result-cont']}>
           <video controls src={value} autoPlay={false} />

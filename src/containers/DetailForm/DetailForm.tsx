@@ -12,8 +12,11 @@ import { detailDataAtom, inputValidationAtom } from '@/atoms/index'
 import { useRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
 
+export type InferObj = {
+  label: string
+  option: number
+}
 type SelectedFileType = Record<string, string> | null | undefined
-
 interface DetailFormProps {
   data: DataType | null
   pageId: string | undefined
@@ -25,7 +28,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
   const [value, setValue] = useRecoilState(detailDataAtom)
   const [isValid] = useRecoilState(inputValidationAtom)
 
-  const [infer, setInfer] = useState<string | null>(null)
+  const [infer, setInfer] = useState<string | InferObj | null>(null)
 
   const fileList = data &&
     data['data_list'] && [
@@ -81,14 +84,14 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
             type={data['data_type']}
           />
         )}
-        <Result infer={infer} />
+        <Result infer={{ label: '긍정', option: 3 }} />
       </div>
       {fileList && <DropdownMenu options={fileList} onSelect={onChange} />}
       <Button
         option={1}
         label={'추론하기'}
         onClick={onClick}
-        className={`${styles['button--input']}`}
+        className={styles['button--input']}
       />
     </div>
   )
