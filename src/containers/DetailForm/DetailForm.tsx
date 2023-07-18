@@ -8,8 +8,8 @@ import {
 } from '@/components'
 import styles from './DetailForm.module.css'
 import { useCallback, useEffect, useState } from 'react'
-import { detailDataAtom, inputValidationAtom } from '@/atoms/index'
-import { useRecoilState } from 'recoil'
+import { detailDataAtom, inputValidationAtom, loadingAtom, resultAtom } from '@/atoms/index'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
 
 type SelectedFileType = Record<string, string> | null | undefined
@@ -19,11 +19,13 @@ interface DetailFormProps {
   pageId: string | undefined
 }
 
+
 const DetailForm = ({ data, pageId }: DetailFormProps) => {
   const [selected, setSelected] = useState('default')
   const [selectedFile, setSelectedFile] = useState<SelectedFileType>(null)
   const [value, setValue] = useRecoilState(detailDataAtom)
   const [isValid] = useRecoilState(inputValidationAtom)
+  const [apiURL, setApiURL] = useState<string>('')
   const fileList = data &&
     data['data_list'] && [
       '예제 선택하기',
@@ -54,8 +56,6 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
   const onClick = useCallback(() => {
     if (value) {
       alert(value)
-      console.log(pageId)
-      // 데이터 통신 로직
     } else if (!isValid.isValid) {
       alert(isValid.message)
     }
@@ -72,7 +72,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
         label={'예제 실행해보기'}
         className={'detailform-title'}
       />
-      <ApiURL api={data && data.API} />
+      <ApiURL api={data && data.API} apiURL={apiURL} setApiURL={setApiURL} />
       <div className={styles['input-cont']}>
         {data && (
           <Input
