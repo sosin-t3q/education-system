@@ -8,7 +8,7 @@ import {
 } from '@/components'
 import styles from './DetailForm.module.css'
 import { useCallback, useEffect, useState } from 'react'
-import { detailDataAtomAtom } from '@/atoms/index'
+import { detailDataAtom } from '@/atoms/index'
 import { useRecoilState } from 'recoil'
 
 interface DetailFormProps {
@@ -18,7 +18,7 @@ interface DetailFormProps {
 const DetailForm = ({ data }: DetailFormProps) => {
   const [selected, setSelected] = useState('default')
   const [selectedFile, setSelectedFile] = useState<any>(null)
-  const [value, setValue] = useRecoilState<any>(detailDataAtomAtom)
+  const [value, setValue] = useRecoilState<any>(detailDataAtom)
   const fileList = data &&
     data['case_data'] && [
       '예제 선택하기',

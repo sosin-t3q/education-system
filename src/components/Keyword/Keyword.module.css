@@ -2,10 +2,10 @@
 
 .keyword {
   display: flex;
-  width: 300px;
-  height: 450px;
+  width: 150px;
+  height: 200px;
   color: var(--font-white);
-  font-size: var(--font-46);
+  font-size: var(--font-16);
   font-weight: var(--font-semibold);
   border-radius: 30px;
 }
@@ -13,31 +13,31 @@
 .keyword--primary {
   justify-content: center;
   align-items: center;
-  background-color: var(--bg-blue);
+  background-color: #bcc2f3;
 }
 
 .keyword--secondary {
   justify-content: center;
   align-items: center;
-  background-color: var(--bg-red);
+  background-color: #c75d3d;
 }
 
 .keyword--third {
-  background: url('../../assets/right_button.png');
+  /* background: url('../../assets/right_button.png'); */
   background-repeat: no-repeat;
   background-position: 50% 40%;
-  background-size: 130px 130px;
-  padding-top: 300px;
+  background-size: 50px 50px;
+  padding-top: 130px;
   justify-content: center;
-  background-color: var(--bg-blue);
+  background-color: #bcc2f3;
 }
 
 .keyword--fourth {
   /* background: url('../../assets/right_button.png'); */
   background-repeat: no-repeat;
   background-position: 50% 40%;
-  background-size: 130px 130px;
-  padding-top: 300px;
+  background-size: 50px 50px;
+  padding-top: 130px;
   justify-content: center;
-  background-color: var(--bg-red);
+  background-color: #c75d3d;
 }
