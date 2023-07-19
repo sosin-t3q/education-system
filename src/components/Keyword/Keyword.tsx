@@ -1,21 +1,12 @@
+import { useEffect, useState } from 'react'
 import styles from './Keyword.module.css'
 
 interface KeywordProps {
-  option?: number
   label: string
 }
 
-let className = ''
-
-const Keyword = ({ option, label }: KeywordProps) => {
-  const mode =
-    option === 1
-      ? styles['keyword--primary']
-      : option === 2
-      ? styles['keyword--secondary']
-      : option === 3
-      ? styles['keyword--third']
-      : styles['keyword--fourth']
+const Keyword = ({ label }: KeywordProps) => {
+  const [keyword, setKeyword] = useState({ className: '', option: 3 })
 
   const isLabelPositive =
     label === '긍정' ||
@@ -33,50 +24,63 @@ const Keyword = ({ option, label }: KeywordProps) => {
     label === '부정 거래' ||
     label === '비정상 데이터'
 
-  switch (true) {
-    case isLabelPositive:
-      className = 'positive'
-      break
-    case isLabelNegative:
-      className = 'negative'
-      break
-    case !isLabelNegative && !isLabelPositive:
-      switch (label) {
-        case '개미':
-          className = 'ant'
-          break
-        case '사과':
-          className = 'apple'
-          break
-        case '버스':
-          className = 'bus'
-          break
-        case '나비':
-          className = 'butterfly'
-          break
-        case '컵':
-          className = 'cup'
-          break
-        case '봉투':
-          className = 'envelope'
-          break
-        case '물고기':
-          className = 'fish'
-          break
-        case '기린':
-          className = 'giraffe'
-          break
-        case '전구':
-          className = 'bulb'
-          break
-        case '돼지':
-          className = 'pig'
-          break
-      }
-  }
+  useEffect(() => {
+    switch (true) {
+      case isLabelPositive:
+        setKeyword({ className: 'positive', option: 3 })
+        break
+      case isLabelNegative:
+        setKeyword({ className: 'negative', option: 4 })
+        break
+      case !isLabelNegative && !isLabelPositive:
+        switch (label) {
+          case '개미':
+            setKeyword({ className: 'ant', option: 3 })
+            break
+          case '사과':
+            setKeyword({ className: 'apple', option: 3 })
+            break
+          case '버스':
+            setKeyword({ className: 'bus', option: 3 })
+            break
+          case '나비':
+            setKeyword({ className: 'butterfly', option: 3 })
+            break
+          case '컵':
+            setKeyword({ className: 'butterfly', option: 3 })
+            break
+          case '봉투':
+            setKeyword({ className: 'envelope', option: 3 })
+            break
+          case '물고기':
+            setKeyword({ className: 'fish', option: 3 })
+            break
+          case '기린':
+            setKeyword({ className: 'giraffe', option: 3 })
+            break
+          case '전구':
+            setKeyword({ className: 'bulb', option: 3 })
+            break
+          case '돼지':
+            setKeyword({ className: 'pig', option: 3 })
+            break
+          default:
+            setKeyword({ className: '', option: 1 })
+        }
+    }
+  }, [label])
+
+  const mode =
+    keyword.option === 1
+      ? styles['keyword--primary']
+      : keyword.option === 2
+      ? styles['keyword--secondary']
+      : keyword.option === 3
+      ? styles['keyword--third']
+      : styles['keyword--fourth']
 
   return (
-    <div className={`${styles.keyword} ${mode} ${styles[className]}`}>
+    <div className={`${styles.keyword} ${mode} ${styles[keyword.className]}`}>
       {label}
     </div>
   )
