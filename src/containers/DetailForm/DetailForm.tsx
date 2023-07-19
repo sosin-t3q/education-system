@@ -8,9 +8,15 @@ import {
 } from '@/components'
 import styles from './DetailForm.module.css'
 import { useCallback, useEffect, useState } from 'react'
-import { detailDataAtom, inputValidationAtom } from '@/atoms/index'
-import { useRecoilState } from 'recoil'
+import {
+  detailDataAtom,
+  inputValidationAtom,
+  loadingAtom,
+  // resultAtom,
+} from '@/atoms/index'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
+import { default as imageClassification } from '@/axios/case28/image/image_classification'
 
 export type InferObj = {
   label: string
@@ -23,12 +29,14 @@ interface DetailFormProps {
 }
 
 const DetailForm = ({ data, pageId }: DetailFormProps) => {
+  const setLoading = useSetRecoilState(loadingAtom)
+  // const setResult = useSetRecoilState(resultAtom)
   const [selected, setSelected] = useState('default')
   const [selectedFile, setSelectedFile] = useState<SelectedFileType>(null)
   const [value, setValue] = useRecoilState(detailDataAtom)
   const [isValid] = useRecoilState(inputValidationAtom)
-
   const [infer, setInfer] = useState<string | InferObj | null>(null)
+  const [apiURL, setApiURL] = useState<string>('')
 
   const fileList = data &&
     data['data_list'] && [
@@ -55,10 +63,9 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
 
   const onClick = useCallback(() => {
     if (value) {
-      alert(value)
-      console.log(pageId)
+      /* test */
       setInfer(value)
-      // 데이터 통신 로직
+      imageClassification(value, apiURL, setLoading)
     } else if (!isValid.isValid) {
       alert(isValid.message)
     }
@@ -75,7 +82,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
         label={'예제 실행해보기'}
         className={'detailform-title'}
       />
-      <ApiURL api={data && data.API} />
+      <ApiURL api={data && data.API} apiURL={apiURL} setApiURL={setApiURL} />
       <div className={styles['input-cont']}>
         {data && (
           <Input
@@ -84,7 +91,8 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
             type={data['data_type']}
           />
         )}
-        <Result infer={'dfdsfdfdsfs'} />
+
+        <Result infer={'infer'} />
       </div>
       {fileList && <DropdownMenu options={fileList} onSelect={onChange} />}
       <Button
