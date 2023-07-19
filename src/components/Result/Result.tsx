@@ -22,7 +22,7 @@ const Result = ({ infer }: ResultProps) => {
   const isText = value.trim() !== '' && value !== null
 
   switch (true) {
-    case typeof objValue === 'object': // 키워드
+    case typeof infer === 'object': // 키워드
       return (
         <div className={styles['result-cont']}>
           <Keyword label={objValue.label} option={objValue.option} />

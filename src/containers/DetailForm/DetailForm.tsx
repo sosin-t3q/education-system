@@ -84,7 +84,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
             type={data['data_type']}
           />
         )}
-        <Result infer={{ label: '긍정', option: 3 }} />
+        <Result infer={'dfdsfdfdsfs'} />
       </div>
       {fileList && <DropdownMenu options={fileList} onSelect={onChange} />}
       <Button
