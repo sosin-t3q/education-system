@@ -1,20 +1,14 @@
 /* 도로 위성 사진 분류 - 위성 분류 */
 import axios from 'axios'
-import { detailDataAtom, loadingAtom } from '@/atoms'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
 import base64DataToFile from '../../base64DataToFile'
-import { Keyword } from '@/components'
 
-const detailData = useRecoilValue<any>(detailDataAtom)
-const setLoading = useSetRecoilState(loadingAtom)
-
-const satelliteClassification = () => {
-  let data = {
-    file: base64DataToFile(detailData, '사진이름', 'image/png'),
-    url: 'http://dl.idro3vub.aica.t3q.ai/model/api/f9299/inference',
-  }
-  setLoading(true)
-  let class_info: any = {
+const satelliteClassification = async (
+  value: any, // 사용자가 입력한 값 (string or base64)
+  formUrl: any, // 사용자가 입력한 api Url
+  setLoading: any, // 로딩
+  // setResult: any,    // 결과 컴포넌트
+) => {
+  const class_info: any = {
     freeway: '고속도로',
     intersection: '교차로',
     overpass: '고가도로',
@@ -22,8 +16,18 @@ const satelliteClassification = () => {
     runway: '일반도로',
   }
 
+  const axiosUrl = '/inference/file_req_ajx' // 고정값
+  const convertData = await base64DataToFile(value, 'image', 'image/png')
+  /* FormData (apiUrl, data) 형태로 전송 */
+  const formData = new FormData()
+  formData.append('url', formUrl)
+  formData.append('file', convertData) // 사용자가 전송할 값이 [문자열] 형태일 때
+
+  setLoading(true) // 로딩 표시
+
+  /* axios 비동기 통신 함수 */
   axios
-    .post('/inference/file_req_ajx', data, {
+    .post(axiosUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -36,8 +40,9 @@ const satelliteClassification = () => {
         if (response_data == null) {
           response_data = json.response.inference
         }
+        /* 결과값에 따라 결과 컴포넌트 렌더링 */
         response_data = class_info[response_data]
-        ;<Keyword option={1} label={response_data} />
+        // 결과 컴포넌트 자리
       } else {
         alert('API 호출에 실패했습니다.')
       }
