@@ -18,8 +18,11 @@ import { useRecoilState, useSetRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
 import { default as imageClassification } from '@/axios/case28/image/image_classification'
 
+export type InferObj = {
+  label: string
+  option: number
+}
 type SelectedFileType = Record<string, string> | null | undefined
-
 interface DetailFormProps {
   data: DataType | null
   pageId: string | undefined
@@ -32,7 +35,9 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
   const [selectedFile, setSelectedFile] = useState<SelectedFileType>(null)
   const [value, setValue] = useRecoilState(detailDataAtom)
   const [isValid] = useRecoilState(inputValidationAtom)
+  const [infer, setInfer] = useState<string | InferObj | null>(null)
   const [apiURL, setApiURL] = useState<string>('')
+
   const fileList = data &&
     data['data_list'] && [
       '예제 선택하기',
@@ -58,11 +63,9 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
 
   const onClick = useCallback(() => {
     if (value) {
-      alert(value)
-      console.log(pageId)
       /* test */
+      setInfer(value)
       imageClassification(value, apiURL, setLoading)
-      // 데이터 통신 로직
     } else if (!isValid.isValid) {
       alert(isValid.message)
     }
@@ -88,6 +91,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
             type={data['data_type']}
           />
         )}
+
         <Result infer={'infer'} />
       </div>
       {fileList && <DropdownMenu options={fileList} onSelect={onChange} />}
@@ -95,7 +99,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
         option={1}
         label={'추론하기'}
         onClick={onClick}
-        className={`${styles['button--input']}`}
+        className={styles['button--input']}
       />
     </div>
   )
