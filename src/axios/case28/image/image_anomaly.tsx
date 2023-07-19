@@ -51,7 +51,7 @@ const imageAnomaly = async (
     .finally(() => {
       setLoading(false)
     })
-    return {laber: resultData}
+  return { label: resultData }
 }
 
 export default imageAnomaly
