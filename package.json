@@ -15,6 +15,7 @@
     "dompurify": "^2.4.6",
     "eslint-config-prettier": "^8.8.0",
     "keycloak-js": "^22.0.0",
+    "json-server": "^0.17.3",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
