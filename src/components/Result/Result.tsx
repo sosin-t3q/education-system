@@ -10,7 +10,7 @@ interface ResultProps {
 
 const Result = ({ infer }: ResultProps) => {
   const [value, setValue] = useState<string>('')
-  const [objValue, setObjValue] = useState<InferObj>({ label: '', option: 0 })
+  const [objValue, setObjValue] = useState<InferObj>({ label: '' })
 
   useEffect(() => {
     if (infer && typeof infer === 'string') setValue(infer)
@@ -25,7 +25,7 @@ const Result = ({ infer }: ResultProps) => {
     case typeof infer === 'object': // 키워드
       return (
         <div className={styles['result-cont']}>
-          <Keyword label={objValue.label} option={objValue.option} />
+          <Keyword label={objValue.label} />
         </div>
       )
     case isText && !value.startsWith('data:'): // 문자열
