@@ -14,6 +14,7 @@ const videoRegression = async (
   formData.append('url', formUrl)
   formData.append('file', convertData) // 사용자가 전송할 값이 [문자열] 형태일 때
 
+  let resultData = ''
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 함수 */
@@ -35,6 +36,7 @@ const videoRegression = async (
         /* response_data => 이미지 base64 src */
         // $('#resImgSrc').attr('src', 'data:image/jpg;base64,' + response_data)
         // $('div.inner_next').addClass('show_img')
+        resultData = response_data
       } else {
         alert('API 호출에 실패했습니다.')
       }
@@ -45,6 +47,7 @@ const videoRegression = async (
     .finally(() => {
       setLoading(false)
     })
+    return resultData
 }
 
 export default videoRegression

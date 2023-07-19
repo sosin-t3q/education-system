@@ -15,6 +15,7 @@ const textClassification = (
   formData.append('url', formUrl)
   formData.append('word', value) // 사용자가 전송할 값이 [문자열] 형태일 때
   //  formData.append("file", value);   // 사용자가 전송할 값이 [파일] 형태일 때
+  let resultData = ''
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 함수 */
@@ -35,8 +36,10 @@ const textClassification = (
         }
         /* 결과값에 따라 결과 컴포넌트 렌더링 */
         if (response_data == 'pos') {
+          resultData = '긍정'
           // 긍정 결과 컴포넌트
         } else {
+          resultData = '부정'
           // 부정 결과 컴포넌트
         }
       } else {
@@ -49,6 +52,7 @@ const textClassification = (
     .finally(() => {
       setLoading(false)
     })
+  return { label: resultData }
 }
 
 export default textClassification

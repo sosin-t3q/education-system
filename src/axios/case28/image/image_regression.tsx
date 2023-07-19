@@ -15,6 +15,7 @@ const imageRegression = async (
   formData.append('url', formUrl)
   formData.append('file', convertData) // 사용자가 전송할 값이 [문자열] 형태일 때
 
+  let resultData = ''
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 함수 */
@@ -38,6 +39,7 @@ const imageRegression = async (
         const content_curriculum = json.response.inference_curriculum
         // $("#resImgSrc").attr("src", "data:image/jpg;base64," + content_curriculum);
         // $("div.inner_next").addClass("show_img");
+        resultData = content_result
       } else {
         alert('API 호출에 실패했습니다.')
       }
@@ -48,6 +50,7 @@ const imageRegression = async (
     .finally(() => {
       setLoading(false)
     })
+    return resultData;
 }
 
 export default imageRegression
