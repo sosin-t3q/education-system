@@ -16,7 +16,7 @@ import {
 } from '@/atoms/index'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
-import { default as imageClassification } from '@/axios/case28/image/image_classification'
+import { default as combinedFunction } from '@/axios/combinedAxios'
 
 export type InferObj = {
   label: string
@@ -60,11 +60,15 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
     }
   }, [selected, data])
 
-  const onClick = useCallback(() => {
+  const onClick = useCallback(async () => {
     if (value) {
-      /* test */
-      setInfer(value)
-      imageClassification(value, apiURL, setLoading)
+      const inferResult = await combinedFunction(
+        pageId,
+        value,
+        apiURL,
+        setLoading,
+      )
+      setInfer(inferResult === undefined ? null : inferResult)
     } else if (!isValid.isValid) {
       alert(isValid.message)
     }
