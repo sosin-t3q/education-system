@@ -13,6 +13,7 @@ const binaryRegression = (
   formData.append('url', formUrl)
   formData.append('word', value) // 사용자가 전송할 값이 [문자열] 형태일 때
 
+  let resultData = ''
   setLoading(true) // 로딩 표시
   /* axios 비동기 통신 함수 */
   axios
@@ -30,6 +31,7 @@ const binaryRegression = (
         if (response_data == null) {
           response_data = json.response.inference
           /* 결과 컴포넌트 렌더링 */
+          resultData = response_data
         } else {
           alert('API 호출에 실패했습니다.')
         }
@@ -41,6 +43,7 @@ const binaryRegression = (
     .finally(() => {
       setLoading(false)
     })
+  return { label: resultData }
 }
 
 export default binaryRegression

@@ -21,6 +21,7 @@ const imageCluster = async (
   formData.append('url', formUrl)
   formData.append('file', convertData) // 사용자가 전송할 값이 [문자열] 형태일 때
 
+  let resultData = ''
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 함수 */
@@ -41,6 +42,7 @@ const imageCluster = async (
         /* 결과값에 따라 결과 컴포넌트 렌더링 */
         response_data = class_info[response_data]
         // 결과 컴포넌트 자리
+        resultData = response_data
       } else {
         console.log(json)
         alert('API 호출에 실패했습니다.')
@@ -52,6 +54,7 @@ const imageCluster = async (
     .finally(() => {
       setLoading(false)
     })
+    return {label: resultData}
 }
 
 export default imageCluster
