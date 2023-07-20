@@ -15,6 +15,7 @@ const binaryClustering = async (
   formData.append('url', formUrl)
   formData.append('file', convertData) // 사용자가 전송할 값이 [문자열] 형태일 때
 
+  let resultData = ''
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 함수 */
@@ -35,8 +36,10 @@ const binaryClustering = async (
         /* 결과 */
         if (response_data == 'benign') {
           // 정상 결과 컴포넌트
+          resultData = '정상'
         } else {
           // 파손 결과 컴포넌트
+          resultData = '악성'
         }
       } else {
         alert('API 호출에 실패했습니다.')
@@ -48,6 +51,7 @@ const binaryClustering = async (
     .finally(() => {
       setLoading(false)
     })
+  return { label: resultData }
 }
 
 export default binaryClustering

@@ -13,6 +13,7 @@ const logAnomaly = (
   formData.append('url', formUrl)
   formData.append('word', value) // 사용자가 전송할 값이 [문자열] 형태일 때
 
+  let resultData = ''
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 함수 */
@@ -34,8 +35,10 @@ const logAnomaly = (
         /* 결과 */
         if (response_data == 'normal_transaction') {
           // 정상 결과 컴포넌트
+          resultData = '정상거래'
         } else if (response_data == 'fraudulent_transaction') {
           // 파손 결과 컴포넌트
+          resultData = '부정거래'
         } else {
           alert('API 호출에 실패했습니다.')
         }
@@ -47,6 +50,7 @@ const logAnomaly = (
     .finally(() => {
       setLoading(false)
     })
+  return { label: resultData }
 }
 
 export default logAnomaly

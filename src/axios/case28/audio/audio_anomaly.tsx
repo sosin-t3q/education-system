@@ -15,6 +15,7 @@ const audioAnomaly = async (
   formData.append('url', formUrl)
   formData.append('file', convertData) // 사용자가 전송할 값이 [문자열] 형태일 때
 
+  let resultData = ''
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 시작 */
@@ -35,8 +36,10 @@ const audioAnomaly = async (
         /* 결과값에 따라 결과 컴포넌트 렌더링 */
         if (response_data == 'normal') {
           // 정상 결과 컴포넌트 출력
+          resultData = '정상'
         } else if (response_data == 'abnormal') {
           // 파손 결과 들어가는 부분
+          resultData = '비정상'
         } else {
           alert('API 호출에 실패했습니다.')
         }
@@ -48,6 +51,7 @@ const audioAnomaly = async (
     .finally(() => {
       setLoading(false)
     })
+    return {label: resultData}
 }
 
 export default audioAnomaly

@@ -15,6 +15,7 @@ const audioRegression = async (
   formData.append('url', formUrl)
   formData.append('file', convertData) // 사용자가 전송할 값이 [문자열] 형태일 때
 
+  let resultData = ''
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 함수 */
@@ -36,6 +37,7 @@ const audioRegression = async (
         /* response_data => 오디오 base64 src */
         // $("#tarMidi").attr("src", "data:audio/midi;base64," + response_data);
         // $(".inner_next").css('background', 'none');
+        resultData = response_data
       } else {
         alert('API 호출에 실패했습니다.')
       }
@@ -46,6 +48,7 @@ const audioRegression = async (
     .finally(() => {
       setLoading(false)
     })
+    return resultData
 }
 
 export default audioRegression

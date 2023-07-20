@@ -14,6 +14,7 @@ const textClustering = (
   formData.append('url', formUrl)
   formData.append('word', value.replaceAll('?', '\\?'))
 
+  let resultData = ''
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 함수 */
@@ -36,6 +37,7 @@ const textClustering = (
         /* 결과값에 따라 결과 컴포넌트 렌더링 */
         response_data = cluster_info[response_data]
         // response_data의 '취미' 혹은 '컴퓨터'가 담겨진 결과값이 반환
+        resultData = response_data
       } else {
         alert('API 호출에 실패했습니다.')
       }
@@ -46,6 +48,7 @@ const textClustering = (
     .finally(() => {
       setLoading(false)
     })
+    return {label: resultData}
 }
 
 export default textClustering

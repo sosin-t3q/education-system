@@ -20,7 +20,6 @@ import { default as imageClassification } from '@/axios/case28/image/image_class
 
 export type InferObj = {
   label: string
-  option: number
 }
 type SelectedFileType = Record<string, string> | null | undefined
 interface DetailFormProps {
