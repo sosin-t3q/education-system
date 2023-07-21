@@ -8,7 +8,6 @@
   box-shadow: var(--shadow-navbar);
   background-color: var(--bg-primary);
 }
-
 .header-inner {
   display: flex;
   width: 1200px;
@@ -16,6 +15,7 @@
   margin: 0 auto;
   align-items: center;
   justify-content: space-between;
+  overflow-x: auto;
 }
 
 .experience {
@@ -38,4 +38,10 @@
 
 .login:hover {
   color: var(--font-blue);
+}
+
+@media (max-width: 1200px) {
+  .header-inner {
+    width: 100%; 
+  }
 }
