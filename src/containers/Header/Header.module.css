@@ -26,6 +26,16 @@
   color: var(--font-blue);
 }
 
+.login {
+  background-color: transparent;
+  border: none;
+  color: var(--font-gray-heavy);
+  font-size: var(--font-16);
+  font-weight: var(--font-semibold);
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .login:hover {
   color: var(--font-blue);
 }
