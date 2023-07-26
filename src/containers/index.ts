@@ -7,3 +7,4 @@ export { default as DetailCarousel } from './DetailCarousel/DetailCarousel'
 export { default as HomeCase } from './HomeCase/HomeCase'
 export { default as Modal } from './Modal/Modal'
 export { default as CartModal } from './CartModal/CartModal'
+export { default as VisionModal } from "./VisionModal/VisionModal"
