@@ -1,0 +1,38 @@
+.VisionLayer {
+    background: #DBDFFE;
+    width: 300px;
+    height: 310px;
+    border-radius: 10px;
+    padding: 20px;
+    transform: skew(0deg, 30deg);
+    transform-origin: 0 0;
+  }
+  
+  .title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+  
+    margin: 0;
+    margin-bottom: 50px;
+  }
+
+  .block {
+    background: #fff;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+    padding: 0 10px;
+    margin-bottom: 15px;
+  }
+
+  .block-title {
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .block-icon {
+    width: 12px;
+  }

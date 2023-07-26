@@ -26,19 +26,19 @@
   cursor: pointer;
 }
 
-.container-medical {
+.container-vision {
   z-index: 3;
   transition: all 0.3s ease-in-out;
 }
 
-.container-medical:hover {
+.container-vision:hover {
   transform: translateY(-15%);
 }
 
-.medical {
+.vision {
   position: absolute;
   top: 0;
-  left: 140px;
+  left: 210px;
   z-index: 3;
   cursor: pointer;
 }
