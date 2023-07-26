@@ -39,15 +39,16 @@ const DropdownMenu = ({
   }
 
   return (
-    <div className={`${styles.dropDown} ${className}`}>
+    <div className={`${styles.dropDown} ${className}`} onClick={handleToggle}>
       <div className={styles['dropDown-selected']}>
         <span className={styles['dropDown-selected-title']}>{selected}</span>
         <button
+          aria-label="dropDown-toggle-button"
+          type="button"
           className={styles['dropDown-selected-button']}
-          onClick={handleToggle}
         >
           {/* 토글버튼의 방향에 따라 다른 아이콘을 렌더함 */}
-          {!toggle ? <ArrowDown></ArrowDown> : <ArrowUp></ArrowUp>}
+          {!toggle ? <ArrowDown /> : <ArrowUp />}
         </button>
       </div>
       {/* toggle이 true면 메뉴를 보여줌 */}
