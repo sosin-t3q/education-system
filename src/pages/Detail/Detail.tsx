@@ -44,11 +44,13 @@ const Detail = () => {
   return (
     <div className={styles.detail}>
       <Header />
-      <DetailCarousel
-        pageId={id}
-        className={styles['detail-carousel']}
-      ></DetailCarousel>
-      <DetailForm data={data} pageId={id} />
+      <main>
+        <DetailCarousel
+          pageId={id}
+          className={styles['detail-carousel']}
+        ></DetailCarousel>
+        <DetailForm data={data} pageId={id} />
+      </main>
     </div>
   )
 }

@@ -75,7 +75,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
   }, [])
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <Title
         type={2}
         label={'예제 실행해보기'}
@@ -91,7 +91,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
           />
         )}
 
-        <Result infer={'infer'} />
+        <Result infer={{ label: '정상 블록' }} />
       </div>
       {fileList && <DropdownMenu options={fileList} onSelect={onChange} />}
       <Button
@@ -100,7 +100,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
         onClick={onClick}
         className={styles['button--input']}
       />
-    </div>
+    </section>
   )
 }
 
