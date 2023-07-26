@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, MouseEvent } from 'react'
-import { ReactComponent as Eraser } from '@/assets/Eraser.svg'
+import { ReactComponent as Eraser } from '@/assets/eraser.svg'
 import { ReactComponent as Stylus } from '@/assets/stylus.svg'
 import { ReactComponent as Reset } from '@/assets/reset.svg'
 import styles from './Canvas.module.css'
