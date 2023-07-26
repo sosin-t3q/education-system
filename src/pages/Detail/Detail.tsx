@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import styles from './Detail.module.css'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Book } from '@/components'
 
 type ResType = {
   id: number
@@ -44,7 +45,8 @@ const Detail = () => {
   return (
     <div className={styles.detail}>
       <Header />
-      <main>
+      <main className={styles.detailMain}>
+        <Book className={styles['detail-book']} />
         <DetailCarousel
           pageId={id}
           className={styles['detail-carousel']}

@@ -1,6 +1,6 @@
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
-import { Title, DropdownMenu, Book } from '@/components'
+import { Title, DropdownMenu } from '@/components'
 import { useEffect, useRef } from 'react'
 import styles from './DetailCarousel.module.css'
 import '@/detailSwiper.css'
@@ -65,7 +65,6 @@ const DetailCarousel = ({ className, pageId }: DetailCarouselProps) => {
           targetIndex={index => gotoSlide(index)}
           className={styles.detailFilter}
         />
-        <Book className={styles['detail-book']} />
       </div>
       <Swiper
         ref={swiperRef}
