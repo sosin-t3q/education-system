@@ -22,6 +22,18 @@
   margin-right: var(--margin-20);
 }
 
+.adventure {
+  color: var(--font-gray-heavy);
+  font-size: var(--font-16);
+  font-weight: var(--font-semibold);
+  text-decoration: none;
+  margin-right: var(--margin-20);
+}
+
+.adventure:hover {
+  color: var(--font-blue);
+}
+
 .experience:hover {
   color: var(--font-blue);
 }
@@ -42,6 +54,6 @@
 
 @media (max-width: 1200px) {
   .header-inner {
-    width: 100%; 
+    width: 100%;
   }
 }
