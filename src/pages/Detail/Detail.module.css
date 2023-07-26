@@ -1,5 +1,11 @@
 @import '../../root.css';
 
+.detailMain {
+  width: 1200px;
+  margin: 200px auto 0;
+  position: relative;
+}
+
 .detail {
   background: #f7f8ff;
 }

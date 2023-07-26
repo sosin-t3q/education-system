@@ -7,17 +7,13 @@ const Header = () => {
   const { keycloak, initialized } = useKeycloak();
 
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <div className={styles['header-inner']}>
         <Link path="/">
-          <Logo className={styles.logo}></Logo>
+          <Logo aria-label="AI훈민정음 로고" className={styles.logo} />
         </Link>
         <div className={styles.links}>
-        <Link
-            className={`${styles.experience}`}
-            path="/home"
-            children="홈"
-          />
+          <Link className={`${styles.experience}`} path="/home" children="홈" />
           <Link
             className={`${styles.experience}`}
             path="/school"
@@ -48,7 +44,7 @@ const Header = () => {
             )}
         </div>
       </div>
-    </div>
+    </header>
   )
 }
 
