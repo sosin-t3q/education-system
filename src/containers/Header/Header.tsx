@@ -1,8 +1,11 @@
 import styles from './Header.module.css'
 import { Link } from '@/components'
 import { ReactComponent as Logo } from '@/assets/logo.svg'
+import { useKeycloak } from "@react-keycloak/web";
 
 const Header = () => {
+  const { keycloak, initialized } = useKeycloak();
+
   return (
     <header className={styles.header}>
       <div className={styles['header-inner']}>
@@ -21,11 +24,24 @@ const Header = () => {
             path="http://hunmin.demo.t3q.ai/ADVENTURE"
             children="T3Q.ai 체험하기"
           />
-          <Link
-            className={`${styles.login}`}
-            path="http://hunmin.demo.t3q.ai:8080/auth/realms/t3q_ai_edu/protocol/openid-connect/auth?client_id=common&response_type=code&redirect_uri=http://hunmin.demo.t3q.ai/page-redirector/signIn-AIHUNMIN&scope=openid&state=toAnP"
-            children="로그인"
-          />
+          {!keycloak.authenticated && (
+            <button
+             className={`${styles.login}`}
+              type="button"
+              onClick={() => keycloak.login()}
+            >
+              로그인
+            </button>
+            )}
+            {!!keycloak.authenticated && (
+              <button
+                className={`${styles.login}`}
+                type="button"
+                onClick={() => keycloak.logout()}
+              >
+                로그아웃 
+              </button>
+            )}
         </div>
       </div>
     </header>

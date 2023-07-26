@@ -14,6 +14,8 @@ const textRegression = (
   formData.append('word', value) // 사용자가 전송할 값이 [문자열] 형태일 때
   //  formData.append("file", value);   // 사용자가 전송할 값이 [파일] 형태일 때
 
+  let resultData = ''
+
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 함수 */
@@ -35,6 +37,7 @@ const textRegression = (
       response_data = response_data[0].replaceAll('\n', '<br>')
       if (json.res == 'true') {
         // 생성된 텍스트 결과를 보여준다
+        resultData = response_data
       } else {
         alert('API 호출에 실패했습니다.')
       }
@@ -45,6 +48,7 @@ const textRegression = (
     .finally(() => {
       setLoading(false)
     })
+  return resultData
 }
 
 export default textRegression
