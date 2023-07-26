@@ -7,6 +7,7 @@
   width: 250px;
   position: relative;
   margin-bottom: var(--margin-50);
+  cursor: pointer;
 }
 
 .dropDown-selected {
