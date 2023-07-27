@@ -4,6 +4,7 @@ import styles from './Detail.module.css'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Book } from '@/components'
+import { Helmet } from 'react-helmet-async'
 
 type ResType = {
   id: number
@@ -44,6 +45,12 @@ const Detail = () => {
 
   return (
     <div className={styles.detail}>
+      <Helmet>
+        <title>전국민 AI 훈민정음</title>
+        <meta name="description" content="T3Q.ai" />
+        <meta name="author" content="t3q" />
+        <meta name="keyword" content="T3Q.ai,AI platform,BigData" />
+      </Helmet>
       <Header />
       <main className={styles.detailMain}>
         <Book className={styles['detail-book']} />

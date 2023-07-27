@@ -4,16 +4,19 @@ import App from './App.tsx'
 import { BrowserRouter } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 import { ReactKeycloakProvider } from '@react-keycloak/web'
-import keycloak from './keycloak.ts';
+import keycloak from './keycloak.ts'
+import { HelmetProvider } from 'react-helmet-async'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   // <React.StrictMode>
-    <ReactKeycloakProvider authClient={keycloak}>
-      <BrowserRouter>
-        <RecoilRoot>
+  <ReactKeycloakProvider authClient={keycloak}>
+    <BrowserRouter>
+      <RecoilRoot>
+        <HelmetProvider>
           <App />
-        </RecoilRoot>
-      </BrowserRouter>
-    </ReactKeycloakProvider>
+        </HelmetProvider>
+      </RecoilRoot>
+    </BrowserRouter>
+  </ReactKeycloakProvider>,
   // </React.StrictMode>
 )
