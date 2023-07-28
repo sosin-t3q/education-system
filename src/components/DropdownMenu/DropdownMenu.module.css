@@ -21,6 +21,14 @@
   margin-bottom: var(--margin-10);
 }
 
+.dropDown-selected-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+  max-width: 200px;
+  overflow: hidden;
+}
+
 .dropDown-selected-title,
 .dropDown-selected-button {
   cursor: pointer;
@@ -42,6 +50,15 @@
   border-radius: var(--border-radius-10);
   width: 100%;
   position: absolute;
+  overflow: hidden;
+}
+.dropDownOtionText {
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+  max-width: 230px;
+  overflow: hidden;
 }
 
 .dropDown-option:first-child {
