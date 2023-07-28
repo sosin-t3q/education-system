@@ -11,7 +11,7 @@ const textClassification = (
 ) => {
   const axiosUrl = 'api/inference/text_req_ajx' // 고정값
   // axiosUrl 이 text 또는 log일 때는 JSON.stringify 형태로 전송
-  const convertData = JSON.stringify({
+  const jsonData = JSON.stringify({
     word: value,
     url: formUrl,
   })
@@ -20,7 +20,7 @@ const textClassification = (
 
   /* axios 비동기 통신 함수 */
   axios
-    .post(axiosUrl, convertData, {
+    .post(axiosUrl, jsonData, {
       headers: {
         'Content-Type': 'application/json',
       },
