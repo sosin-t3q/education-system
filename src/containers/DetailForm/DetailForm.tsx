@@ -17,6 +17,7 @@ import {
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
 import { default as combinedFunction } from '@/axios/combinedAxios'
+import addMimeType from '@/utils/addMimeType'
 
 export type InferObj = {
   label: string
@@ -56,7 +57,10 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
     } else {
       const target =
         data && data['data_list'].find(item => item.name === selected)
-      setSelectedFile(target)
+      if (pageId && target) {
+        const mapping = { ...target, data: addMimeType(pageId, target.data) }
+        setSelectedFile(mapping)
+      }
     }
   }, [selected, data])
 
@@ -87,12 +91,14 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
       />
       <ApiURL api={data && data.API} apiURL={apiURL} setApiURL={setApiURL} />
       <div className={styles['input-cont']}>
-        {data && (
+        {data ? (
           <Input
             selected={selectedFile}
             getData={getInputData}
             type={data['data_type']}
           />
+        ) : (
+          <div className={styles.loading}>로딩 중...</div>
         )}
 
         <Result infer={{ label: '정상 블록' }} />
