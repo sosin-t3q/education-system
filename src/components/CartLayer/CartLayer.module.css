@@ -44,5 +44,5 @@
   /* 브라우저 최소 글꼴 10px을 우회하기 위해 tranform 속성을 사용함 */
   transform: scale(0.6);
   /* 브라우저의 줄높이를 조정하기 위해 position:absolute를 사용함 */
-  position: absolute;
+  /* position: absolute; */
 }
