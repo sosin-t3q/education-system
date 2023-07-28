@@ -8,20 +8,22 @@ const logClassification = (
   // setResult: any,    // 결과 컴포넌트
 ) => {
   const class_info: any = { Center: '센터', Guard: '가드', Forward: '포워드' }
-  const axiosUrl = '/inference/log_req_ajx' // 고정값
-  /* FormData (apiUrl, data) 형태로 전송 */
-  const formData = new FormData()
-  formData.append('url', formUrl)
-  formData.append('word', value) // 사용자가 전송할 값이 [문자열] 형태일 때
+  const axiosUrl = 'api/inference/log_req_ajx' // 고정값
+  // axiosUrl 이 text 또는 log일 때는 JSON.stringify 형태로 전송
+  const jsonData = JSON.stringify({
+    url: formUrl,
+    log_data: value,
+  })
 
   let resultData = ''
+
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 함수 */
   axios
-    .post(axiosUrl, formData, {
+    .post(axiosUrl, jsonData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
       },
       //서버로부터 들어오는 응답값은 JSON 형식
       responseType: 'json',
@@ -49,7 +51,7 @@ const logClassification = (
     .finally(() => {
       setLoading(false)
     })
-    return {label: resultData}
+  return { label: resultData }
 }
 
 export default logClassification
