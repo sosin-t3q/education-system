@@ -4,6 +4,7 @@ import styles from './Detail.module.css'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Book } from '@/components'
+import { logKey } from '@/utils'
 
 type ResType = {
   id: number
@@ -27,16 +28,24 @@ const Detail = () => {
   useEffect(() => {
     const getDetailData = async (id: string) => {
       try {
-        const response = await axios.get('/src/data/Detail_TestCase_Dummy.json')
+        const response = await axios.get(
+          `https://cors-anywhere.herokuapp.com/http://aihunmin-edu.t3q.ai/api/backend/subpage/${id}`,
+        )
         const res = response.data
-        const target = res.find((item: ResType) => String(item.id) === id) // id에 해당하는 데이터 추출
-        setData(target['case_data'])
+        if (res['case_data']['data_type'] === 'log') {
+          const caseData = res['case_data']['data_list'].map((item: any) => ({
+            ...item,
+            data: logKey(id, item.data),
+          }))
+          setData({ ...res['case_data'], data_list: caseData })
+        } else {
+          setData(res['case_data'])
+        }
       } catch (e) {
-        alert('데이터 요청을 실패했습니다.')
-        navigate('/home')
+        // alert('데이터 요청을 실패했습니다.')
+        // navigate('/home')
       }
     }
-
     if (id) {
       getDetailData(id)
     }
