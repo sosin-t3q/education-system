@@ -1,14 +1,18 @@
 import styles from './Table.module.css'
 import data from '@/data/LAYERS_DATA.json'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
-import { tableAtom, modalAtom } from '@/atoms'
+import { tableAtom, modalAtom, loadingAtom } from '@/atoms'
 import { useNavigate } from 'react-router-dom'
 import { ReactComponent as Warning } from '@/assets/warning.svg'
+import { useKeycloak } from "@react-keycloak/web";
 
 const Table = () => {
   const table = useRecoilValue(tableAtom)
   const setModal = useSetRecoilState(modalAtom)
+  const setLoading = useSetRecoilState(loadingAtom)
   const navigate = useNavigate()
+  const { keycloak } = useKeycloak();
+  const isLoggedIn = keycloak.authenticated;
 
   const layer = data.find(item => item.title === table)
 
@@ -18,8 +22,17 @@ const Table = () => {
   const body = layer?.body
 
   const handleNavigate = (id: number) => {
-    setModal(false)
-    navigate(`/detail/${id}`)
+    setLoading(true);
+    if (!isLoggedIn) {
+      setModal(false);
+      setTimeout(() => {
+        // Spinner UI 확인을 위한 의도된 딜레이
+        keycloak.login();
+      }, 1000)
+    } else {
+      setModal(false);
+      navigate(`/detail/${id}`)
+    }
   }
 
   if (columns && rows && body) {
