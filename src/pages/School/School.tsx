@@ -4,6 +4,7 @@ import { Title, Text, DropdownMenu } from '@/components'
 import { Header, Card } from '@/containers'
 import schoolsData from '@/data/SCHOOL_CARD.json'
 import { useNavigate } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 
 interface handleNavigateProps {
   id: number
@@ -34,6 +35,12 @@ const School = () => {
 
   return (
     <>
+    <Helmet>
+        <title>전국민 AI 훈민정음</title>
+        <meta name="description" content="T3Q.ai" />
+        <meta name="author" content="t3q" />
+        <meta name="keyword" content="T3Q.ai,AI platform,BigData" />
+      </Helmet>
       {/* 헤더 */}
       <Header />
       <main className={styles.school}>
