@@ -7,12 +7,13 @@ const textRegression = (
   setLoading: any, // 로딩
   // setResult: any,    // 결과 컴포넌트
 ) => {
-  const axiosUrl = '/inference/text_req_ajx' // 고정값
-  /* FormData (apiUrl, data) 형태로 전송 */
-  const formData = new FormData()
-  formData.append('url', formUrl)
-  formData.append('word', value) // 사용자가 전송할 값이 [문자열] 형태일 때
-  //  formData.append("file", value);   // 사용자가 전송할 값이 [파일] 형태일 때
+  const axiosUrl = 'api/inference/text_req_ajx' // 고정값
+
+  // axiosUrl 이 text 또는 log일 때는 JSON.stringify 형태로 전송
+  const convertData = JSON.stringify({
+    word: value,
+    url: formUrl,
+  })
 
   let resultData = ''
 
@@ -20,9 +21,9 @@ const textRegression = (
 
   /* axios 비동기 통신 함수 */
   axios
-    .post(axiosUrl, formData, {
+    .post(axiosUrl, convertData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
       },
       responseType: 'json',
     })
