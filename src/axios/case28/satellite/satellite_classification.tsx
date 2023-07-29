@@ -16,7 +16,7 @@ const satelliteClassification = async (
     runway: '일반도로',
   }
 
-  const axiosUrl = '/inference/file_req_ajx' // 고정값
+  const axiosUrl = 'api/inference/file_req_ajx' // 고정값
   const convertData = await base64DataToFile(value, 'image', 'image/png')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()

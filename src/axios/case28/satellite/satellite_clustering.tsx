@@ -10,7 +10,7 @@ const satelliteClustering = async (
 ) => {
   const class_info: any = { forested: '산림화', desertified: '사막화' }
 
-  const axiosUrl = '/inference/file_req_ajx' // 고정값
+  const axiosUrl = 'api/inference/file_req_ajx' // 고정값
   const convertData = await base64DataToFile(value, 'image', 'image/png')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
@@ -48,7 +48,7 @@ const satelliteClustering = async (
     .finally(() => {
       setLoading(false)
     })
-    return {label: resultData}
+  return { label: resultData }
 }
 
 export default satelliteClustering

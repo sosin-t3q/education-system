@@ -15,7 +15,7 @@ const videoClassification = async (
     TennisSwing: '테니스 스윙',
   }
 
-  const axiosUrl = '/inference/file_req_ajx' // 고정값
+  const axiosUrl = 'api/inference/file_req_ajx' // 고정값
   const convertData = await base64DataToFile(value, 'video', 'video/mp4')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
@@ -53,7 +53,7 @@ const videoClassification = async (
     .finally(() => {
       setLoading(false)
     })
-    return {label: resultData}
+  return { label: resultData }
 }
 
 export default videoClassification

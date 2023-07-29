@@ -14,7 +14,7 @@ const imageCluster = async (
     sunglasses: '선글라스',
   }
 
-  const axiosUrl = '/inference/file_req_ajx' // 고정값
+  const axiosUrl = 'api/inference/file_req_ajx' // 고정값
   const convertData = await base64DataToFile(value, 'image', 'image/png')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
@@ -54,7 +54,7 @@ const imageCluster = async (
     .finally(() => {
       setLoading(false)
     })
-    return {label: resultData}
+  return { label: resultData }
 }
 
 export default imageCluster

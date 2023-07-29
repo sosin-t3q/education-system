@@ -21,7 +21,7 @@ const imageClassification = async (
     pig: '돼지',
   }
 
-  const axiosUrl = '/inference/file_req_ajx' // 고정값
+  const axiosUrl = 'api/inference/file_req_ajx' // 고정값
   const convertData = await base64DataToFile(value, 'image', 'image/png')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
@@ -29,6 +29,7 @@ const imageClassification = async (
   formData.append('file', convertData) // 사용자가 전송할 값이 [문자열] 형태일 때
 
   let resultData = ''
+  console.log(formData)
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 함수 */

@@ -8,7 +8,7 @@ const imageRegression = async (
   setLoading: any, // 로딩
   // setResult: any,    // 결과 컴포넌트
 ) => {
-  const axiosUrl = '/inference/file_req_ajx' // 고정값
+  const axiosUrl = 'api/inference/file_req_ajx' // 고정값
   const convertData = await base64DataToFile(value, 'image', 'image/jpeg')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
@@ -36,7 +36,7 @@ const imageRegression = async (
         /* 결과값에 따라 결과 컴포넌트 렌더링 */
         /* response_data => 이미지 base64 src */
         const content_result = 'data:image/jpg;base64,' + response_data
-        const content_curriculum = json.response.inference_curriculum
+        // const content_curriculum = json.response.inference_curriculum
         // $("#resImgSrc").attr("src", "data:image/jpg;base64," + content_curriculum);
         // $("div.inner_next").addClass("show_img");
         resultData = content_result
@@ -50,7 +50,7 @@ const imageRegression = async (
     .finally(() => {
       setLoading(false)
     })
-    return resultData;
+  return resultData
 }
 
 export default imageRegression
