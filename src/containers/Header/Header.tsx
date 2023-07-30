@@ -4,7 +4,7 @@ import { ReactComponent as Logo } from '@/assets/logo.svg'
 import { useKeycloak } from '@react-keycloak/web'
 
 const Header = () => {
-  const { keycloak, initialized } = useKeycloak()
+  const { keycloak } = useKeycloak()
 
   return (
     <header className={styles.header}>

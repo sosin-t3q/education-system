@@ -2,12 +2,14 @@ import { Title, Text, Layers } from '@/components'
 import { Modal, CartModal, VisionModal } from '@/containers'
 import styles from './HomeCase.module.css'
 import { useRecoilValue } from 'recoil'
-import { modalAtom, cartModalAtom, visionModalAtom } from '@/atoms'
+import { modalAtom, cartModalAtom, visionModalAtom, loadingAtom } from '@/atoms'
+import Spinner from '@/components/Spinner/Spinner'
 
 const HomeCase = () => {
   const modal = useRecoilValue(modalAtom)
   const cartModal = useRecoilValue(cartModalAtom)
   const visionModal = useRecoilValue(visionModalAtom)
+  const loading = useRecoilValue(loadingAtom);
 
   return (
     <div className={styles.case}>
@@ -28,6 +30,7 @@ const HomeCase = () => {
       { modal && <Modal /> }
       { cartModal && <CartModal /> }
       { visionModal && <VisionModal /> }
+      { loading && <Spinner></Spinner> }
     </div>
   )
 }

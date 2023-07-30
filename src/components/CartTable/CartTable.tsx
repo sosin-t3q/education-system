@@ -14,7 +14,7 @@ const CartTable = () => {
 
   useEffect(() => {
     // 서버로부터 데이터를 받아 cartTable에 넣어줌
-    axios.get("http://localhost:5000/books")
+    axios.get("http://aihunmin-edu.t3q.ai/api/backend/custom_layer/delkin")
       .then(res => {
         const data = res.data;
         setCartTable(data);
