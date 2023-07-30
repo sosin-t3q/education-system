@@ -27,7 +27,7 @@ const Table = () => {
       setModal(false);
       setTimeout(() => {
         // Spinner UI 확인을 위한 의도된 딜레이
-        keycloak.login();
+        // keycloak.login();
         setLoading(false);
       }, 1000)
     } else {
