@@ -22,19 +22,22 @@ const Table = () => {
   const body = layer?.body
 
   const handleNavigate = (id: number) => {
-    setLoading(true);
-    if (!isLoggedIn) {
-      setModal(false);
-      setTimeout(() => {
-        // Spinner UI 확인을 위한 의도된 딜레이
-        // keycloak.login();
-        setLoading(false);
-      }, 1000)
-    } else {
+    // setLoading(true);
+    // if (!isLoggedIn) {
+    //   setModal(false);
+    //   setTimeout(() => {
+    //     keycloak.login();
+    //     setLoading(false);
+    //   }, 1000)
+    // } else {
+    //   setModal(false);
+    //   navigate(`/detail/${id}`)
+    //   setLoading(false);
+    // }
+      setLoading(true);
       setModal(false);
       navigate(`/detail/${id}`)
       setLoading(false);
-    }
   }
 
   if (columns && rows && body) {
