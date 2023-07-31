@@ -1,103 +1,80 @@
-import styles from './Table.module.css'
-import data from '@/data/LAYERS_DATA.json'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
-import { tableAtom, modalAtom, loadingAtom } from '@/atoms'
+import { useKeycloak } from "@react-keycloak/web";
 import { useNavigate } from 'react-router-dom'
-import { ReactComponent as Warning } from '@/assets/warning.svg'
-import { useKeycloak } from '@react-keycloak/web'
+import { useSetRecoilState } from 'recoil'
+import DOMPurify from 'dompurify';
+import data from '@/data/layers/AI28_LAYER.json'
+import styles from './Table.module.css'
+import { modalAtom, loadingAtom } from '@/atoms'
+import { handleNavigate } from "@/utils";
 
 const Table = () => {
-  const table = useRecoilValue(tableAtom)
+  // const table = useRecoilValue(tableAtom)
   const setModal = useSetRecoilState(modalAtom)
   const setLoading = useSetRecoilState(loadingAtom)
   const navigate = useNavigate()
-  const { keycloak } = useKeycloak()
-  const isLoggedIn = keycloak.authenticated
+  const { keycloak } = useKeycloak();
+  // const isLoggedIn = keycloak.authenticated;
 
-  const layer = data.find(item => item.title === table)
+    //진우 - 원래라면 useEffect를 사용하는 게 맞는 거 같다
+    const { title, columns, rows, body } = data;
 
-  const title = layer?.title
-  const columns = layer?.columns
-  const rows = layer?.rows
-  const body = layer?.body
-
-  const handleNavigate = (id: number) => {
-    // setLoading(true);
-    // if (!isLoggedIn) {
-    //   setModal(false);
-    //   setTimeout(() => {
-    //     keycloak.login();
-    //     setLoading(false);
-    //   }, 1000)
-    // } else {
-    //   setModal(false);
-    //   navigate(`/detail/${id}`)
-    //   setLoading(false);
-    // }
-    setLoading(true)
-    setModal(false)
-    navigate(`/detail/${id}`)
-    setLoading(false)
-  }
-
-  if (columns && rows && body) {
     return (
       <>
         <h2 className={styles.title}>{title}</h2>
         <div className={styles.table}>
-          {/* 테이블 헤더 */}
+
           <div className={styles.columns}>
-            {columns?.map((column: { id: number; header: string }) => {
-              return (
-                <div key={column.id} className={styles['column-data']}>
-                  <span className={styles['column-text']}>{column.header}</span>
-                </div>
-              )
-            })}
+            {
+              /* 테이블 헤더 */
+              columns.map((column) => {
+                return (
+                  <div key={column.id} className={styles['column-data']}>
+                    <span className={styles['column-text']}>{column.header}</span>
+                  </div>
+                )
+              })
+            }
           </div>
-          {/* 사이드 헤더 & 바디 데이터 */}
+
           <div className={styles.container}>
             <div className={styles.rows}>
-              {rows?.map((row: { id: number; side: string }) => {
-                return (
-                  <div key={row.id} className={styles['row-data']}>
-                    <span>{row.side}</span>
-                  </div>
-                )
-              })}
+              {
+                /* 사이드 헤더 */
+                rows.map((row) => {
+                  return (
+                    <div key={row.id} className={styles['row-data']}>
+                      <span>{row.side}</span>
+                    </div>
+                  )
+                })
+              }
             </div>
             <div className={styles.body}>
-              {body?.map((data: { id: number; name: string }) => {
-                return (
-                  // M - InnerHTML은 XSS 공격에 취약해 사용하면 안 된다!
-                  // M - DOMPurify를 사용하면 되지만, npm audit 문제로 우선은 보류했다
-                  <div
-                    key={data.id}
-                    className={styles['body-data']}
-                    onClick={() => handleNavigate(data.id)}
-                  >
-                    <span
-                      dangerouslySetInnerHTML={{ __html: data.name }}
-                    ></span>
-                  </div>
-                )
-              })}
+              {
+                /* 바디 데이터 */
+                body.map((data) => {
+                  //<br>을 사용하기 위해 dangerouslySetInnerHTML을 사용했다.
+                  //dangerouslySetInnerHTML을 사용으로 인한 XSS 공격을 방지하기 위해 DOMPurify를 사용했다.
+                  const cleanHTML = DOMPurify.sanitize(data.name);
+                  
+                  return (
+                    <div
+                      key={data.id}
+                      className={styles['body-data']}
+                      onClick={() => handleNavigate(data.id, keycloak, setLoading, setModal, navigate)}
+                    >
+                      <span
+                        dangerouslySetInnerHTML={{ __html: cleanHTML }}
+                      ></span>
+                    </div>
+                  )
+                })
+              }
             </div>
           </div>
         </div>
       </>
     )
-  } else {
-    return (
-      <>
-        <h2 className={styles.title}>{title}</h2>
-        <div className={styles.warning}>
-          <Warning></Warning>
-          <span>데이터가 아직 준비되지 않았습니다</span>
-        </div>
-      </>
-    )
-  }
-}
+  } 
 
 export default Table
