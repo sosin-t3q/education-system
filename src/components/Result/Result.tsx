@@ -21,37 +21,39 @@ const Result = ({ infer }: ResultProps) => {
 
   const isText = value.trim() !== '' && value !== null
 
-  switch (true) {
-    case typeof infer === 'object': // 키워드
-      return (
-        <div className={styles['result-cont']}>
-          <Keyword label={objValue.label} />
-        </div>
-      )
-    case isText && !value.startsWith('data:'): // 문자열
-      return (
-        <div className={styles['result-cont']}>
-          <p>{value}</p>
-        </div>
-      )
-    case isText && value?.includes('data:image/'): // 이미지
-      return (
-        <div className={styles['result-cont']}>
-          <img src={value} alt="" />
-        </div>
-      )
-    case isText && value?.includes('data:audio/'): // 오디오
-      return (
-        <div className={styles['result-cont']}>
-          <audio controls src={value} autoPlay={false} />
-        </div>
-      )
-    case isText && value?.includes('data:video/'): // 비디오
-      return (
-        <div className={styles['result-cont']}>
-          <video controls src={value} autoPlay={false} />
-        </div>
-      )
+  if (infer) {
+    switch (true) {
+      case typeof infer === 'object': // 키워드
+        return (
+          <div className={styles['result-cont']}>
+            <Keyword label={objValue.label} />
+          </div>
+        )
+      case isText && !value.startsWith('data:'): // 문자열
+        return (
+          <div className={styles['result-cont']}>
+            <p>{value}</p>
+          </div>
+        )
+      case isText && value?.includes('data:image/'): // 이미지
+        return (
+          <div className={styles['result-cont']}>
+            <img src={value} alt="" />
+          </div>
+        )
+      case isText && value?.includes('data:audio/'): // 오디오
+        return (
+          <div className={styles['result-cont']}>
+            <audio controls src={value} autoPlay={false} />
+          </div>
+        )
+      case isText && value?.includes('data:video/'): // 비디오
+        return (
+          <div className={styles['result-cont']}>
+            <video controls src={value} autoPlay={false} />
+          </div>
+        )
+    }
   }
 
   return (
