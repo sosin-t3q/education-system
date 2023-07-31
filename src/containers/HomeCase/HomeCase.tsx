@@ -9,7 +9,7 @@ const HomeCase = () => {
   const modal = useRecoilValue(modalAtom)
   const cartModal = useRecoilValue(cartModalAtom)
   const visionModal = useRecoilValue(visionModalAtom)
-  const loading = useRecoilValue(loadingAtom);
+  const loading = useRecoilValue(loadingAtom)
 
   return (
     <div className={styles.case}>
@@ -27,10 +27,10 @@ const HomeCase = () => {
         수 있습니다.
       </Text>
       <Layers />
-      { modal && <Modal /> }
-      { cartModal && <CartModal /> }
-      { visionModal && <VisionModal /> }
-      { loading && <Spinner></Spinner> }
+      {modal && <Modal />}
+      {cartModal && <CartModal />}
+      {visionModal && <VisionModal />}
+      {loading && <Spinner></Spinner>}
     </div>
   )
 }

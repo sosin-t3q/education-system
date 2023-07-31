@@ -4,15 +4,15 @@ import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { tableAtom, modalAtom, loadingAtom } from '@/atoms'
 import { useNavigate } from 'react-router-dom'
 import { ReactComponent as Warning } from '@/assets/warning.svg'
-import { useKeycloak } from "@react-keycloak/web";
+import { useKeycloak } from '@react-keycloak/web'
 
 const Table = () => {
   const table = useRecoilValue(tableAtom)
   const setModal = useSetRecoilState(modalAtom)
   const setLoading = useSetRecoilState(loadingAtom)
   const navigate = useNavigate()
-  const { keycloak } = useKeycloak();
-  const isLoggedIn = keycloak.authenticated;
+  const { keycloak } = useKeycloak()
+  const isLoggedIn = keycloak.authenticated
 
   const layer = data.find(item => item.title === table)
 
@@ -34,10 +34,10 @@ const Table = () => {
     //   navigate(`/detail/${id}`)
     //   setLoading(false);
     // }
-      setLoading(true);
-      setModal(false);
-      navigate(`/detail/${id}`)
-      setLoading(false);
+    setLoading(true)
+    setModal(false)
+    navigate(`/detail/${id}`)
+    setLoading(false)
   }
 
   if (columns && rows && body) {
