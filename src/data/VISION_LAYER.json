@@ -1,0 +1,152 @@
+[
+    {
+    "title": "다양한 데이터셋을 활용한 객체 탐지",
+    "data": [
+        {
+            "id": 101,
+            "data_type": "file",
+            "title": "YOLOv8을 이용한 축구 경기장에서 선수와 심판 탐지"
+        },
+        {
+            "id": 102,
+            "data_type": "file",
+            "title": "EfficientDet(D7) TF2을 이용한 혈액 세포 탐지"
+        },
+        {
+            "id": 103,
+            "data_type": "file",
+            "title": "EfficientDet(D7) TF2을 이용한 혈액 세포 탐지"
+        },
+        {
+            "id": 104,
+            "data_type": "file",
+            "title": "YOLOv7을 이용한 일상 사진속에서 91종류 객체 탐지"
+        },
+        {
+            "id": 105,
+            "data_type": "file",
+            "title": "Faster R-CNN을 이용한 혈액 세포 탐지"
+        },
+        {
+            "id": 106,
+            "data_type": "file",
+            "title": "MT-YOLOv6를 이용한 체스 말 탐지"
+        },
+        {
+            "id": 107,
+            "data_type": "file",
+            "title": "YOLOv5를 이용한 혈액 세포 탐지"
+        },
+        {
+            "id": 108,
+            "data_type": "file",
+            "title": "YOLOS를 이용한 혈액 세포 탐지"
+        },
+        {
+            "id": 109,
+            "data_type": "file",
+            "title": "YOLOv3 Keras를 이용한 체스 말 탐지"
+        },
+        {
+            "id": 110,
+            "data_type": "file",
+            "title": "YOLOX를 이용한 혈액 세포 탐지"
+        },
+        {
+            "id": 111,
+            "data_type": "file",
+            "title": "YOLOR를 이용한 혈액 세포 탐지"
+        },
+        {
+            "id": 112,
+            "data_type": "file",
+            "title": "YOLOv3 PyTorch를 이용한 체스 말 탐지"
+        }
+            ]
+    },
+    {
+    "title": "다양한 데이터셋을 활용한 객체 분할",
+    "data": [
+        {
+            "id": 113,
+            "data_type": "file",
+            "title": "YOLOv8 Instance Segmentation을 이용한 식료품 탐지 및 분할"
+        },
+        {
+            "id": 114,
+            "data_type": "file",
+            "title": "YOLOv7 Instance Segmentation을 이용한 콘크리트 균열 탐지 및 분할"
+        },
+        {
+            "id": 115,
+            "data_type": "file",
+            "title": "YOLOv5 Instance Segmentation을 이용한 미국식 수화 판별"
+        },
+        {
+            "id": 116,
+            "data_type": "file",
+            "title": "Mask R-CNN을 이용한 미국식 수화 판별"
+        },
+        {
+            "id": 117,
+            "data_type": "file",
+            "title": "SegFormer을 이용한 풍선 분할"
+        }
+            ]
+    },
+    {
+        "title": "다양한 데이터셋을 활용한 분류",
+        "data": [
+            {
+                "id": 118,
+                "data_type": "file",
+                "title": "YOLOv8 Classification을 이용한 바나나 숙성도 분류"
+            },
+            {
+                "id": 119,
+                "data_type": "file",
+                "title": "YOLOv5 Classification을 이용한 토마토 분류"
+            },
+            {
+                "id": 120,
+                "data_type": "file",
+                "title": "EfficientNet을 이용한 견종 분류"
+            },
+            {
+                "id": 121,
+                "data_type": "file",
+                "title": "Vision Transformer을 이용한 100종류 이미지 분류"
+            },
+            {
+                "id": 122,
+                "data_type": "file",
+                "title": "MobileNet V2 Classification을 이용한 꽃 분류"
+            }
+        ]
+    },
+    {
+    "title": "다양한 알고리즘 더보기",
+    "data": [
+        {
+            "id": 123,
+            "data_type": "file",
+            "title": "YOLOv4 Tiny를 이용한 혈액 세포 탐지"
+        },
+        {
+            "id": 124,
+            "data_type": "file",
+            "title": "YOLOv4 PyTorch를 이용한 혈액 세포 탐지"
+        },
+        {
+            "id": 125,
+            "data_type": "file",
+            "title": "Scaled YOLOv4를 이용한 혈액 세포 탐지"
+        },
+        {
+            "id": 126,
+            "data_type": "file",
+            "title": "Detectron2를 이용한 풍선 탐지"
+        }
+            ]
+    }
+]

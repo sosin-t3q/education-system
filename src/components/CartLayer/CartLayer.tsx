@@ -17,7 +17,7 @@ const CartLayer = ({ className }: CartLayerProps) => {
 
   useEffect(() => {
     // 서버에서 장바구니 데이터를 불러온다
-    axios.get("http://localhost:5000/books")
+    axios.get("http://aihunmin-edu.t3q.ai/api/backend/custom_layer/delkin")
     .then(res => {
       const data = res.data;
       //setBlocks로 blocks를 업데이트할 때 data[index]에 값이 있다면 block에 추가하고 없으면 비어있는 block을 유지한다

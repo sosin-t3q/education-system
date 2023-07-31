@@ -19,7 +19,7 @@ export default defineConfig({
     svgr(),
   ],
   server: {
-    host: 'localhost',
+    host: true,
     port: 3000,
     cors: true,
   },

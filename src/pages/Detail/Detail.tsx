@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Book } from '@/components'
 import { logKey } from '@/utils'
+import { Helmet } from 'react-helmet-async'
 
 type ResType = {
   id: number
@@ -44,6 +45,7 @@ const Detail = () => {
       } catch (e) {
         // alert('데이터 요청을 실패했습니다.')
         // navigate('/home')
+        console.log('실패')
       }
     }
     if (id) {
@@ -53,6 +55,12 @@ const Detail = () => {
 
   return (
     <div className={styles.detail}>
+      <Helmet>
+        <title>전국민 AI 훈민정음</title>
+        <meta name="description" content="T3Q.ai" />
+        <meta name="author" content="t3q" />
+        <meta name="keyword" content="T3Q.ai,AI platform,BigData" />
+      </Helmet>
       <Header />
       <main className={styles.detailMain}>
         <Book className={styles['detail-book']} />
