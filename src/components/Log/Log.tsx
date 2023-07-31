@@ -67,12 +67,12 @@ const Log = ({ data, getData }: LogProps) => {
         for (const key in inputValues) {
           // 입력된 값들을 배열에 저장
           const value = inputValues[key] // 입력된 값
-          if (typeof value !== 'number') {
-            // 입력된 값이 숫자가 아니라면
-            dataArray.push(`'${value}'`) // 문자열로 감싸서 배열에 저장
-          } else {
+          if (!isNaN(Number(value))) {
             // 입력된 값이 숫자라면
-            dataArray.push(value) // 그대로 배열에 저장
+            dataArray.push(`${value}`)
+          } else {
+            // 입력된 값이 숫자가 아니라면
+            dataArray.push(`"${value}"`)
           }
         }
         getData(dataArray.join()) // 배열을 문자열로 변환하여 getData 함수에 전달
