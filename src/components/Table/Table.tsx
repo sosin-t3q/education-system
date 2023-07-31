@@ -22,7 +22,7 @@ const Table = () => {
   const body = layer?.body
 
   const handleNavigate = (id: number) => {
-    setLoading(true)
+    // setLoading(true);
     // if (!isLoggedIn) {
     //   setModal(false);
     //   setTimeout(() => {
@@ -34,11 +34,10 @@ const Table = () => {
     //   navigate(`/detail/${id}`)
     //   setLoading(false);
     // }
-    setTimeout(() => {
-      setModal(false)
-      setLoading(false)
-    }, 1000)
+    setLoading(true)
+    setModal(false)
     navigate(`/detail/${id}`)
+    setLoading(false)
   }
 
   if (columns && rows && body) {
