@@ -8,48 +8,40 @@ const imageRegression = async (
   setLoading: any, // 로딩
   // setResult: any,    // 결과 컴포넌트
 ) => {
-  const axiosUrl = 'api/inference/file_req_ajx' // 고정값
+  const axiosUrl = 'http://aihunmin-edu.t3q.ai/api/inference/file_req_ajx' // 고정값
   const convertData = await base64DataToFile(value, 'image', 'image/jpeg')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
   formData.append('url', formUrl)
-  formData.append('file', convertData) // 사용자가 전송할 값이 [문자열] 형태일 때
-
+  formData.append('file', convertData)
   let resultData = ''
+
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 함수 */
-  axios
-    .post(axiosUrl, formData, {
+  try {
+    const res = await axios.post(axiosUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
-      responseType: 'json',
+      responseType: 'json', //서버로부터 들어오는 응답값은 JSON 형식
     })
-    .then(res => {
-      let json = res.data
-      if (json.res == 'true') {
-        let response_data = json.response.data
-        if (response_data == null) {
-          response_data = json.response.inference
-        }
-        /* 결과값에 따라 결과 컴포넌트 렌더링 */
-        /* response_data => 이미지 base64 src */
-        const content_result = 'data:image/jpg;base64,' + response_data
-        // const content_curriculum = json.response.inference_curriculum
-        // $("#resImgSrc").attr("src", "data:image/jpg;base64," + content_curriculum);
-        // $("div.inner_next").addClass("show_img");
-        resultData = content_result
-      } else {
-        alert('API 호출에 실패했습니다.')
+    let json = res.data
+    if (json.res == 'true') {
+      let response_data = json.response.data
+      if (response_data == null) {
+        response_data = json.response.inference_curriculum
       }
-    })
-    .catch(err => {
-      console.log(err.message)
-    })
-    .finally(() => {
-      setLoading(false)
-    })
+      /* 결과값에 따라 결과 컴포넌트 렌더링 */
+      /* response_data => 이미지 base64 src */
+      const content_result = 'data:image/jpg;base64,' + response_data
+      resultData = content_result // 결과 이미지 src 문자열 반환
+    }
+  } catch (err) {
+    alert('API 호출에 실패했습니다.')
+  } finally {
+    setLoading(false)
+  }
   return resultData
 }
 
