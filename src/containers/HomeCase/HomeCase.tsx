@@ -9,7 +9,7 @@ const HomeCase = () => {
   const modal = useRecoilValue(modalAtom)
   const cartModal = useRecoilValue(cartModalAtom)
   const visionModal = useRecoilValue(visionModalAtom)
-  const loading = useRecoilValue(loadingAtom);
+  const loading = useRecoilValue(loadingAtom)
 
   return (
     <div className={styles.case}>

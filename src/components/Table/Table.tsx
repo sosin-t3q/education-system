@@ -7,7 +7,6 @@ import styles from './Table.module.css'
 import { modalAtom, loadingAtom } from '@/atoms'
 import { handleNavigate } from "@/utils/_index.ts";
 
-
 const Table = () => {
   // const table = useRecoilValue(tableAtom)
   const setModal = useSetRecoilState(modalAtom)

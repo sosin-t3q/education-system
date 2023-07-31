@@ -17,6 +17,7 @@ import {
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
 import { default as combinedFunction } from '@/axios/combinedAxios'
+import addMimeType from '@/utils/addMimeType'
 
 export type InferObj = {
   label: string
@@ -45,7 +46,12 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
 
   const onChange = useCallback(
     (selected: string) => {
-      setSelected(selected) // 선택한 파일 이름 저장
+      if (selected === '예제 선택하기') {
+        setSelected('default')
+        setSelectedFile(null)
+      } else {
+        setSelected(selected)
+      }
     },
     [selected],
   )
@@ -56,23 +62,28 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
     } else {
       const target =
         data && data['data_list'].find(item => item.name === selected)
-      setSelectedFile(target)
+      if (pageId && target) {
+        const mapping = { ...target, data: addMimeType(pageId, target.data) }
+        setSelectedFile(mapping)
+      }
     }
   }, [selected, data])
 
   const onClick = useCallback(async () => {
     if (value) {
+      console.log(value)
       const inferResult = await combinedFunction(
         pageId,
         value,
         apiURL,
         setLoading,
       )
+      console.log(inferResult)
       setInfer(inferResult === undefined ? null : inferResult)
     } else if (!isValid.isValid) {
       alert(isValid.message)
     }
-  }, [value])
+  }, [value, apiURL, setLoading, isValid.isValid, pageId])
 
   const getInputData = useCallback((data: any) => {
     setValue(data)
@@ -87,15 +98,17 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
       />
       <ApiURL api={data && data.API} apiURL={apiURL} setApiURL={setApiURL} />
       <div className={styles['input-cont']}>
-        {data && (
+        {data ? (
           <Input
             selected={selectedFile}
             getData={getInputData}
             type={data['data_type']}
           />
+        ) : (
+          <div className={styles.loading}>로딩 중...</div>
         )}
 
-        <Result infer={{ label: '정상 블록' }} />
+        <Result infer={infer} />
       </div>
       {fileList && <DropdownMenu options={fileList} onSelect={onChange} />}
       <Button

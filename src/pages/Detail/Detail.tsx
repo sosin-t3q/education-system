@@ -4,7 +4,11 @@ import styles from './Detail.module.css'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Book } from '@/components'
+import { logKey } from '@/utils'
 import { Helmet } from 'react-helmet-async'
+import Spinner from '@/components/Spinner/Spinner'
+import { loadingAtom } from '@/atoms'
+import { useRecoilValue } from 'recoil'
 
 type ResType = {
   id: number
@@ -23,22 +27,31 @@ export interface DataType {
 const Detail = () => {
   const { id } = useParams() as { id: string | undefined }
   const [data, setData] = useState<DataType | null>(null)
+  const loading = useRecoilValue(loadingAtom)
   const navigate = useNavigate()
 
   useEffect(() => {
     const getDetailData = async (id: string) => {
       try {
-        const response = await axios.get('/src/data/Detail_TestCase_Dummy.json')
+        const response = await axios.get(
+          `http://aihunmin-edu.t3q.ai/api/backend/subpage/${id}`,
+        )
         const res = response.data
-        const target = res.find((item: ResType) => String(item.id) === id) // id에 해당하는 데이터 추출
-        setData(target['case_data'])
+        if (res['case_data']['data_type'] === 'log') {
+          const caseData = res['case_data']['data_list'].map((item: any) => ({
+            ...item,
+            data: logKey(id, item.data),
+          }))
+          setData({ ...res['case_data'], data_list: caseData })
+        } else {
+          setData(res['case_data'])
+        }
       } catch (e) {
         // alert('데이터 요청을 실패했습니다.')
         // navigate('/home')
-        console.log('실패');
+        console.log('실패')
       }
     }
-
     if (id) {
       getDetailData(id)
     }
@@ -61,6 +74,7 @@ const Detail = () => {
         ></DetailCarousel>
         <DetailForm data={data} pageId={id} />
       </main>
+      {loading && <Spinner></Spinner>}
     </div>
   )
 }
