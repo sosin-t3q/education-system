@@ -47,7 +47,7 @@ const Keyword = ({ label }: KeywordProps) => {
             setKeyword({ className: 'butterfly', option: 3 })
             break
           case '컵':
-            setKeyword({ className: 'butterfly', option: 3 })
+            setKeyword({ className: 'cup', option: 3 })
             break
           case '봉투':
             setKeyword({ className: 'envelope', option: 3 })
