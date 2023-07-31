@@ -30,9 +30,10 @@ const Result = ({ infer }: ResultProps) => {
           </div>
         )
       case isText && !value.startsWith('data:'): // 문자열
+        const replacedValue = value.replace(/<br>/g, '\n')
         return (
           <div className={styles['result-cont']}>
-            <p>{value}</p>
+            <p>{replacedValue}</p>
           </div>
         )
       case isText && value?.includes('data:image/'): // 이미지
