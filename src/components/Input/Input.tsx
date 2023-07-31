@@ -74,7 +74,7 @@ const Input = ({ selected, getData, type }: InputProps) => {
       </div>
     )
   }
-  if (data) {
+  if (data && selected) {
     if (!data.startsWith('data:')) {
       // 문자열로만 데이터가 들어온 경우
       inner = <p className={styles.selectedTxt}>{data}</p>
