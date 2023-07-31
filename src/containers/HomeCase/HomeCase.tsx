@@ -1,5 +1,5 @@
 import { Title, Text, Layers } from '@/components'
-import { Modal, CartModal, VisionModal } from '@/containers'
+import { AI28Modal, CartModal, VisionModal } from '@/containers'
 import styles from './HomeCase.module.css'
 import { useRecoilValue } from 'recoil'
 import { modalAtom, cartModalAtom, visionModalAtom, loadingAtom } from '@/atoms'
@@ -27,7 +27,7 @@ const HomeCase = () => {
         수 있습니다.
       </Text>
       <Layers />
-      { modal && <Modal /> }
+      { modal && <AI28Modal /> }
       { cartModal && <CartModal /> }
       { visionModal && <VisionModal /> }
       { loading && <Spinner></Spinner> }

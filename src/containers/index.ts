@@ -5,6 +5,6 @@ export { default as DetailForm } from './DetailForm/DetailForm'
 export { default as HomeInfo } from './HomeInfo/HomeInfo'
 export { default as DetailCarousel } from './DetailCarousel/DetailCarousel'
 export { default as HomeCase } from './HomeCase/HomeCase'
-export { default as Modal } from './Modal/Modal'
+export { default as AI28Modal } from './AI28Modal/AI28Modal'
 export { default as CartModal } from './CartModal/CartModal'
 export { default as VisionModal } from "./VisionModal/VisionModal"
