@@ -5,7 +5,7 @@ import DOMPurify from 'dompurify';
 import data from '@/data/layers/AI28_LAYER.json'
 import styles from './Table.module.css'
 import { modalAtom, loadingAtom } from '@/atoms'
-import { handleNavigate } from "@/utils/_index.ts";
+import { handleNavigate } from "@/utils";
 
 const Table = () => {
   // const table = useRecoilValue(tableAtom)
