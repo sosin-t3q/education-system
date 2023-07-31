@@ -16,6 +16,7 @@ const textClassification = (
     url: formUrl,
   })
   let resultData = ''
+
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 함수 */

@@ -4,15 +4,15 @@ import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { tableAtom, modalAtom, loadingAtom } from '@/atoms'
 import { useNavigate } from 'react-router-dom'
 import { ReactComponent as Warning } from '@/assets/warning.svg'
-import { useKeycloak } from "@react-keycloak/web";
+import { useKeycloak } from '@react-keycloak/web'
 
 const Table = () => {
   const table = useRecoilValue(tableAtom)
   const setModal = useSetRecoilState(modalAtom)
   const setLoading = useSetRecoilState(loadingAtom)
   const navigate = useNavigate()
-  const { keycloak } = useKeycloak();
-  const isLoggedIn = keycloak.authenticated;
+  const { keycloak } = useKeycloak()
+  const isLoggedIn = keycloak.authenticated
 
   const layer = data.find(item => item.title === table)
 
@@ -22,19 +22,23 @@ const Table = () => {
   const body = layer?.body
 
   const handleNavigate = (id: number) => {
-    setLoading(true);
-    if (!isLoggedIn) {
-      setModal(false);
-      setTimeout(() => {
-        // Spinner UI 확인을 위한 의도된 딜레이
-        // keycloak.login();
-        setLoading(false);
-      }, 1000)
-    } else {
-      setModal(false);
-      navigate(`/detail/${id}`)
-      setLoading(false);
-    }
+    setLoading(true)
+    // if (!isLoggedIn) {
+    //   setModal(false);
+    //   setTimeout(() => {
+    //     keycloak.login();
+    //     setLoading(false);
+    //   }, 1000)
+    // } else {
+    //   setModal(false);
+    //   navigate(`/detail/${id}`)
+    //   setLoading(false);
+    // }
+    setTimeout(() => {
+      setModal(false)
+      setLoading(false)
+    }, 1000)
+    navigate(`/detail/${id}`)
   }
 
   if (columns && rows && body) {
