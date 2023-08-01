@@ -30,7 +30,7 @@ const Detail = () => {
     const getDetailData = async (id: string) => {
       try {
         const response = await axios.get(
-          `http://aihunmin-edu.t3q.ai/api/backend/subpage/${id}`,
+          `http://aihunmin-edu.t3q.ai:8181/api/backend/subpage/${id}`,
         )
         const res = response.data
         if (res['case_data']['data_type'] === 'log') {
