@@ -16,16 +16,16 @@ const textClassification = async (
     url: formUrl,
   })
   let resultData = ''
+
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 함수 */
-
   try {
     const res = await axios.post(axiosUrl, jsonData, {
       headers: {
         'Content-Type': 'application/json',
       },
-      responseType: 'json',
+      responseType: 'json', //서버로부터 들어오는 응답값은 JSON 형식
     })
     let json = res.data
     if (json.res == 'true') {
@@ -47,7 +47,6 @@ const textClassification = async (
   } finally {
     setLoading(false)
   }
-
   return { label: resultData }
 }
 

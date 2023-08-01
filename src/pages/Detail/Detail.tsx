@@ -6,6 +6,9 @@ import axios from 'axios'
 import { Book } from '@/components'
 import { logKey } from '@/utils'
 import { Helmet } from 'react-helmet-async'
+import Spinner from '@/components/Spinner/Spinner'
+import { loadingAtom } from '@/atoms'
+import { useRecoilValue } from 'recoil'
 
 type ResType = {
   id: number
@@ -24,6 +27,7 @@ export interface DataType {
 const Detail = () => {
   const { id } = useParams() as { id: string | undefined }
   const [data, setData] = useState<DataType | null>(null)
+  const loading = useRecoilValue(loadingAtom)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -70,6 +74,7 @@ const Detail = () => {
         ></DetailCarousel>
         <DetailForm data={data} pageId={id} />
       </main>
+      {loading && <Spinner></Spinner>}
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { useSetRecoilState } from 'recoil'
 import styles from './Layers.module.css'
 import { modalAtom, cartModalAtom, visionModalAtom } from '@/atoms'
-import { Layer, VisionLayer, CartLayer } from '@/components'
+import { AI28Layer, VisionLayer, CartLayer } from '@/components'
 
 const Layers = () => {
   // modal state가 true면 모달창이 화면에 보인다
@@ -16,7 +16,7 @@ const Layers = () => {
         className={styles['container-general']}
         onClick={() => setModal(true)}
         >
-        <Layer  className={styles.general} />
+        <AI28Layer  className={styles.general} />
       </div>
       <div
         className={styles['container-vision']}
