@@ -995,7 +995,7 @@
   {
     "id": 109,
     "title": "YOLOv3 Keras를 이용한 체스 말 탐지",
-    "folderName": "yolov3keras_detection",
+    "folderName": "yolov3_keras_detection",
     "category": [
       {
         "name": "소개"
@@ -1064,7 +1064,7 @@
   {
     "id": 112,
     "title": "YOLOv3 PyTorch를 이용한 체스 말 탐지",
-    "folderName": "yolov3torch_detection",
+    "folderName": "yolov3_torch_detection",
     "category": [
       {
         "name": "소개"
