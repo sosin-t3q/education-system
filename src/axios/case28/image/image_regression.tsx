@@ -34,8 +34,7 @@ const imageRegression = async (
       }
       /* 결과값에 따라 결과 컴포넌트 렌더링 */
       /* response_data => 이미지 base64 src */
-      const content_result = 'data:image/jpg;base64,' + response_data
-      resultData = content_result // 결과 이미지 src 문자열 반환
+      resultData = 'data:image/jpg;base64,' + response_data // 결과 이미지 src 문자열 반환
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
