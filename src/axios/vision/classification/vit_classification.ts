@@ -1,16 +1,16 @@
-/* YOLOv8을 이용한 축구 경기장에서 선수와 심판 탐지 */
-/* id = 101 */
+/* Vision Transformer을 이용한 가위바위보 분류 */
+/* id = 121 */
 import axios from 'axios'
 import base64DataToFile from '../../base64DataToFile'
 
-const yolov8Detection = async (
+const vitClassification = async (
   value: any, // 사용자가 입력한 값 (string or base64)
   formUrl: any, // 사용자가 입력한 api Url
   setLoading: any, // 로딩
   // setResult: any,    // 결과 컴포넌트
 ) => {
   const axiosUrl = 'http://aihunmin-edu.t3q.ai/api/inference/file_req_ajx' // 고정값
-  const convertData = await base64DataToFile(value, 'image', 'image/jpeg')
+  const convertData = await base64DataToFile(value, 'image', 'image/png')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
   formData.append('url', formUrl)
@@ -46,4 +46,4 @@ const yolov8Detection = async (
   return resultData
 }
 
-export default yolov8Detection
+export default vitClassification

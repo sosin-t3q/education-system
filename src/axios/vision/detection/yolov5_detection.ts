@@ -1,9 +1,9 @@
-/* YOLOv8을 이용한 축구 경기장에서 선수와 심판 탐지 */
-/* id = 101 */
+/* YOLOv5를 이용한 혈액 세포 탐지 */
+/* id = 107 */
 import axios from 'axios'
 import base64DataToFile from '../../base64DataToFile'
 
-const yolov8Detection = async (
+const yolov5Detection = async (
   value: any, // 사용자가 입력한 값 (string or base64)
   formUrl: any, // 사용자가 입력한 api Url
   setLoading: any, // 로딩
@@ -46,4 +46,4 @@ const yolov8Detection = async (
   return resultData
 }
 
-export default yolov8Detection
+export default yolov5Detection

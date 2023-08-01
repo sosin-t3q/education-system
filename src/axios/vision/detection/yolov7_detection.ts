@@ -39,6 +39,7 @@ const yolov7Detection = async (
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
+    return
   } finally {
     setLoading(false)
   }
