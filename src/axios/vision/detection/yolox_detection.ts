@@ -1,19 +1,20 @@
-/* 악성코드 이상탐지 - 바이너리 이상탐지 */
+/* YOLOX를 이용한 혈액 세포 탐지 */
+/* id = 110 */
 import axios from 'axios'
 import base64DataToFile from '../../base64DataToFile'
 
-const binaryAnomaly = async (
+const yoloxDetection = async (
   value: any, // 사용자가 입력한 값 (string or base64)
   formUrl: any, // 사용자가 입력한 api Url
   setLoading: any, // 로딩
   // setResult: any,    // 결과 컴포넌트
 ) => {
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/file_req_ajx' // 고정값
-  const convertData = await base64DataToFile(value, 'image', 'image/png')
+  const axiosUrl = 'http://aihunmin-edu.t3q.ai/api/inference/file_req_ajx' // 고정값
+  const convertData = await base64DataToFile(value, 'image', 'image/jpeg')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
   formData.append('url', formUrl)
-  formData.append('file', convertData)
+  formData.append('file', convertData) // 사용자가 전송할 값이 [문자열] 형태일 때
   let resultData = ''
 
   setLoading(true) // 로딩 표시
@@ -33,13 +34,8 @@ const binaryAnomaly = async (
         response_data = json.response.inference
       }
       /* 결과값에 따라 결과 컴포넌트 렌더링 */
-      if (response_data == 'benign') {
-        // 양성 컴포넌트
-        resultData = '정상'
-      } else if (response_data == 'malware') {
-        // 악성 컴포넌트
-        resultData = '악성'
-      }
+      /* response_data => 이미지 base64 src */
+      resultData = 'data:image/jpg;base64,' + response_data // 결과 이미지 src 문자열 반환
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
@@ -47,7 +43,7 @@ const binaryAnomaly = async (
   } finally {
     setLoading(false)
   }
-  return { label: resultData }
+  return resultData
 }
 
-export default binaryAnomaly
+export default yoloxDetection

@@ -10,8 +10,16 @@ const addMimeType = (id: string, value: string) => {
     num === 24 ||
     num === 25 ||
     num === 27 ||
-    num === 28
-  const isJpg = num === 6 || num === 22
+    num === 28 ||
+    num === 1100 ||
+    num === 1204
+  const isJpg =
+    num === 6 ||
+    num === 22 ||
+    num === 1201 ||
+    num === 1202 ||
+    num === 1203 ||
+    num === 1205
   const isJpeg = num === 7
   const isGif = num >= 14 && num <= 16
 
@@ -19,6 +27,7 @@ const addMimeType = (id: string, value: string) => {
   const isWavMidi = num === 10
 
   const isAvi = num === 13
+  const isMp4 = num === 1101 || num === 1102
 
   switch (true) {
     case isPng:
@@ -41,6 +50,9 @@ const addMimeType = (id: string, value: string) => {
       break
     case isAvi:
       result = 'data:video/x-msvideo;base64,' + value
+      break
+    case isMp4:
+      result = 'data:video/mp4;base64,' + value
       break
     default:
       result = value

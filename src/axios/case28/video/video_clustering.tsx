@@ -14,7 +14,7 @@ const videoClustering = async (
   setLoading: any, // 로딩
   // setResult: any, // 결과 컴포넌트
 ) => {
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai/api/inference/file_req_ajx' // 고정값
+  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/file_req_ajx' // 고정값
   const convertData = await base64DataToFile(value, 'gifImage', 'image/gif')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
@@ -34,8 +34,11 @@ const videoClustering = async (
     })
     let json = res.data
     if (json.res == 'true') {
-      // let response_image = json.response.all_cluster_image
+      let response_image = json.response.all_cluster_image
       // let response_data = json.response.inference_cluster
+      // console.log(response_data)
+      resultData = 'data:image/jpeg;base64,' + response_image
+
       // $('#resImgSrc').attr('src', 'data:image/jpg;base64,' + response_image)
       // $('div.inner_next').addClass('show_img')
       // $('div.inner_next').css({ 'align-items': 'baseline' })
@@ -56,10 +59,11 @@ const videoClustering = async (
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
+    return
   } finally {
     setLoading(false)
   }
-  return { label: resultData }
+  return resultData
 }
 
 export default videoClustering
