@@ -8,12 +8,14 @@
   background-color: var(--bg-white);
   border-radius: var(--border-radius-10);
   padding: 10px;
+  text-align: center;
 }
 
 .result-cont p {
   font-size: var(--font-16);
   line-height: 1.2;
   width: 100%;
+  color: var(--font-gray-heavy);
 }
 
 .result-cont img {

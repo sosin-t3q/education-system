@@ -9,7 +9,7 @@ const satelliteClustering = async (
   // setResult: any,    // 결과 컴포넌트
 ) => {
   const class_info: any = { forested: '산림화', desertified: '사막화' }
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai/api/inference/file_req_ajx' // 고정값
+  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/file_req_ajx' // 고정값
   const convertData = await base64DataToFile(value, 'image', 'image/png')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
@@ -39,6 +39,7 @@ const satelliteClustering = async (
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
+    return
   } finally {
     setLoading(false)
   }

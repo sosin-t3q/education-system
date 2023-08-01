@@ -54,10 +54,10 @@ const DropdownMenu = ({
       {/* toggle이 true면 메뉴를 보여줌 */}
       {toggle && (
         <ul className={styles['dropDown-options']}>
-          {options.map(option => {
+          {options.map((option, index) => {
             return (
               <li
-                key={option}
+                key={option + index}
                 className={styles['dropDown-option']}
                 onClick={handleClick}
               >
