@@ -8,7 +8,7 @@ const textClustering = async (
   // setResult: any,    // 결과 컴포넌트
 ) => {
   const cluster_info: any = { rec: '취미', comp: '컴퓨터' }
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai/api/inference/text_req_ajx' // 고정값
+  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/text_req_ajx' // 고정값
   // axiosUrl의 값이 text 또는 log로 전송할 때는 JSON.stringify 형태로 전송
   const jsonData = JSON.stringify({
     word: value.replaceAll('?', '\\?'),

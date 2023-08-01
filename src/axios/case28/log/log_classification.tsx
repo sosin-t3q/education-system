@@ -8,7 +8,7 @@ const logClassification = async (
   // setResult: any, // 결과 컴포넌트
 ) => {
   const class_info: any = { Center: '센터', Guard: '가드', Forward: '포워드' }
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai/api/inference/log_req_ajx' // 고정값
+  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/log_req_ajx' // 고정값
   // axiosUrl 이 text 또는 log일 때는 JSON.stringify 형태로 전송
   const jsonData = JSON.stringify({
     url: formUrl,
@@ -39,6 +39,7 @@ const logClassification = async (
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
+    return
   } finally {
     setLoading(false)
   }
