@@ -62,6 +62,7 @@ import {
   yolov8Detection,
   yolov8Segmentation,
   yoloxDetection,
+  yolov4TorchDetection,
 } from './vision'
 
 // id=1인 함수부터 순서대로 미리 배열에 넣고

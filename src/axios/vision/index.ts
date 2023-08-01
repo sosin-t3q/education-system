@@ -26,7 +26,7 @@ export { default as yolov8Segmentation } from './division/yolov8_segmentation'
 export { default as detectronDetection } from './etc/detectron_detection'
 export { default as scaledyolov4Detection } from './etc/scaled_yolov4_detection'
 export { default as yolov4TinyDetection } from './etc/yolov4_tiny_detection'
-export { default as yolov4_torch_detection } from './etc/yolov4_torch_detection'
+export { default as yolov4TorchDetection } from './etc/yolov4_torch_detection'
 
 // test Code
 export { default as sampleCode } from './etc/sample_code'
