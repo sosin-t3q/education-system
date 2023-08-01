@@ -796,6 +796,693 @@
     ]
   },
   {
+    "id": 101,
+    "title": "YOLOv8을 이용한 축구 경기장에서 선수와 심판 탐지",
+    "folderName": "yolov8_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "YOLO"
+      },
+      {
+        "name": "YOLOv8"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 102,
+    "title": "EfficientDet TF2을 이용한 혈액 세포 탐지",
+    "folderName": "efficientdet_tensorflow",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "Bi-FPN"
+      },
+      {
+        "name": "EfficientDet"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 103,
+    "title": "EfficientDet을 이용한 체스 말 탐지",
+    "folderName": "efficientdet_object_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "EfficientDet Object Detection 1"
+      },
+      {
+        "name": "EfficientDet Object Detection 2"
+      },
+      {
+        "name": "BiFPN"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 104,
+    "title": "YOLOv7을 이용한 일상 사진속에서 91종류 객체 탐지",
+    "folderName": "yolov7_object_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "YOLOv7"
+      },
+      {
+        "name": "학습"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 105,
+    "title": "Faster R-CNN을 이용한 혈액 세포 탐지",
+    "folderName": "faster_rcnn_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "전처리"
+      },
+      {
+        "name": "RPN (Region Proposal Network)"
+      },
+      {
+        "name": "Faster R-CNN"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 106,
+    "title": "MT-YOLOv6를 이용한 체스 말 탐지",
+    "folderName": "yolov6_object_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "YOLOv6"
+      },
+      {
+        "name": "전처리 및 학습"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 107,
+    "title": "YOLOv5를 이용한 혈액 세포 탐지",
+    "folderName": "yolov5_object_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "YOLO"
+      },
+      {
+        "name": "YOLOv5"
+      },
+      {
+        "name": "YOLOv5 Backbone"
+      },
+      {
+        "name": "SPP (Spatial Pyramid Pooling)"
+      },
+      {
+        "name": "YOLOv5 Head"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 108,
+    "title": "YOLOS를 이용한 혈액 세포 탐지",
+    "folderName": "yolos_object_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "데이터셋 전처리"
+      },
+      {
+        "name": "전처리"
+      },
+      {
+        "name": "YOLOS (1)"
+      },
+      {
+        "name": "YOLOS (2)"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 109,
+    "title": "YOLOv3 Keras를 이용한 체스 말 탐지",
+    "folderName": "yolov3_keras_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "TFRecord"
+      },
+      {
+        "name": "YOLOv3"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 110,
+    "title": "YOLOX를 이용한 혈액 세포 탐지",
+    "folderName": "yolox_object_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "YOLOX"
+      },
+      {
+        "name": "YOLOR"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 111,
+    "title": "YOLOR을 이용한 혈액 세포 탐지",
+    "folderName": "yolor_object_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "전처리"
+      },
+      {
+        "name": "YOLOR"
+      },
+      {
+        "name": "Implicit Knowledge"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 112,
+    "title": "YOLOv3 PyTorch를 이용한 체스 말 탐지",
+    "folderName": "yolov3_detection_v2",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "YOLO"
+      },
+      {
+        "name": "YOLOv3 (1)"
+      },
+      {
+        "name": "YOLOv3 (2)"
+      },
+      {
+        "name": "K-means clustering"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 113,
+    "title": "YOLOv8 instance Segmentation을 이용한 식료품 탐지 및 분할",
+    "folderName": "yolov8_segmentation",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "결측 데이터 삭제"
+      },
+      {
+        "name": "YOLO"
+      },
+      {
+        "name": "YOLOv8 (1)"
+      },
+      {
+        "name": "YOLOv8 (2)"
+      },
+      {
+        "name": "YOLOv8 segmentation"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 114,
+    "title": "YOLOv7 Instance Segmentation을 이용한 콘크리트 균열 탐지와 분할",
+    "folderName": "yolov7_segmentation",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "YOLOv7"
+      },
+      {
+        "name": "전처리 및 학습"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 115,
+    "title": "YOLOv5 Instance Segmentation을 이용한 미국식 수화 판별",
+    "folderName": "yolov5_instance_segmentation",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "모델"
+      },
+      {
+        "name": "YOLOv5"
+      },
+      {
+        "name": "YOLOv5 Backbone"
+      },
+      {
+        "name": "SPPF"
+      },
+      {
+        "name": "YOLOv5 Head"
+      },
+
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 116,
+    "title": "Mask R-CNN을 이용한 미국식 수화 판별",
+    "folderName": "mask_rcnn_instance_segmentation",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "Mask R-CNN (1)"
+      },
+      {
+        "name": "RPN (Region Proposal Network)"
+      },
+      {
+        "name": "Mask branch"
+      },
+      {
+        "name": "Mask R-CNN (2)"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 117,
+    "title": "SegFormer을 이용한 풍선 분할",
+    "folderName": "detectron_object_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "전처리"
+      },
+      {
+        "name": "Mask R-CNN (1)"
+      },
+      {
+        "name": "RPN (Region Proposal Network)"
+      },
+      {
+        "name": "Mask branch"
+      },
+      {
+        "name": "Mask R-CNN (2)"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 118,
+    "title": "YOLOv8 Classification을 이용한 바나나 숙성도 분류",
+    "folderName": "yolov8_classification",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "YOLO"
+      },
+      {
+        "name": "YOLO (2)"
+      },
+      {
+        "name": "YOLOv8 Classification"
+      },
+      {
+        "name": "NMS"
+      },
+      {
+        "name": "YOLOv8 Classification (2)"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 119,
+    "title": "YOLOv5 Classification을 이용한 토마토 분류",
+    "folderName": "yolov5_classification",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "모델"
+      },
+      {
+        "name": "YOLOv5 Classification"
+      },
+      {
+        "name": "YOLOv5 Classification Backbone"
+      },
+      {
+        "name": "SPPF"
+      },
+      {
+        "name": "YOLOv5 Classification head"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 120,
+    "title": "EfficientNet을 이용한 견종 분류",
+    "folderName": "local_platform_efficientnet_classification",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "TFRecord"
+      },
+      {
+        "name": "원-핫 인코딩"
+      },
+      {
+        "name": "Efficientnet 모델"
+      },
+      {
+        "name": "Efficient 모델"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 121,
+    "title": "Vision Transformer을 이용한 100종류 이미지 분류",
+    "folderName": "vit-classification",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "CIFAR-100"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "ViT 모델 구축"
+      },
+      {
+        "name": "전처리 및 학습"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 122,
+    "title": "MobileNet V2 Classification을 이용한 꽃 분류",
+    "folderName": "mobilenet_classification",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "데이터 구조화"
+      },
+      {
+        "name": "Image resize, tensor 변환"
+      },
+      {
+        "name": "MobileNet V2"
+      },
+      {
+        "name": "Inverted Residual Block"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 123,
+    "title": "YOLOv4 Tiny를 이용한 혈액 세포 탐지",
+    "folderName": "yolov4_tiny_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "YOLO"
+      },
+      {
+        "name": "YOLOv4"
+      },
+      {
+        "name": "YOLOv4 Tiny"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 124,
+    "title": "YOLOv4 PyTorch를 이용한 혈액 세포 탐지",
+    "folderName": "yolov4_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "YOLO"
+      },
+      {
+        "name": "CSPDarknet53"
+      },
+      {
+        "name": "SPP, PAN"
+      },
+      {
+        "name": "YOLOv4"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 125,
+    "title": "Scaled YOLOv4를 이용한 혈액 세포 탐지",
+    "folderName": "scaled_yolov4_detection",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "YOLO"
+      },
+      {
+        "name": "YOLOv4"
+      },
+      {
+        "name": "Scaled YOLOv4"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 126,
+    "title": "Detectron2를 이용한 풍선 탐지",
+    "folderName": "segformer_semantic_segmentation",
+    "category": [
+      {
+        "name": "소개"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "데이터 전처리"
+      },
+      {
+        "name": "SegFormer"
+      },
+      {
+        "name": "SegFormer - Encoder"
+      },
+      {
+        "name": "SegFormer - Decoder"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
     "id": 1100,
     "title": "이륜차 위험 요소 탐지",
     "folderName": "twoWheel_vehicle_hazard",
