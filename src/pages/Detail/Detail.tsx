@@ -4,7 +4,7 @@ import styles from './Detail.module.css'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Book } from '@/components'
-import { logKey } from '@/utils'
+import { logKey, transformPillData } from '@/utils'
 import { Helmet } from 'react-helmet-async'
 import Spinner from '@/components/Spinner/Spinner'
 import { loadingAtom } from '@/atoms'
@@ -43,6 +43,9 @@ const Detail = () => {
             data: logKey(id, item.data),
           }))
           setData({ ...res['case_data'], data_list: caseData })
+        } else if (id === '1202') {
+          const transformData = transformPillData(res['case_data']['data_list'])
+          setData({ ...res['case_data'], data_list: transformData })
         } else {
           setData(res['case_data'])
         }
