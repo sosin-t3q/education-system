@@ -867,7 +867,7 @@
   {
     "id": 104,
     "title": "YOLOv7을 이용한 일상 사진속에서 91종류 객체 탐지",
-    "folderName": "yolov7_object_detection",
+    "folderName": "yolov7_detection",
     "category": [
       {
         "name": "소개"
@@ -914,7 +914,7 @@
   {
     "id": 106,
     "title": "MT-YOLOv6를 이용한 체스 말 탐지",
-    "folderName": "yolov6_object_detection",
+    "folderName": "yolov6_detection",
     "category": [
       {
         "name": "소개"
@@ -936,7 +936,7 @@
   {
     "id": 107,
     "title": "YOLOv5를 이용한 혈액 세포 탐지",
-    "folderName": "yolov5_object_detection",
+    "folderName": "yolov5_detection",
     "category": [
       {
         "name": "소개"
@@ -967,7 +967,7 @@
   {
     "id": 108,
     "title": "YOLOS를 이용한 혈액 세포 탐지",
-    "folderName": "yolos_object_detection",
+    "folderName": "yolos_detection",
     "category": [
       {
         "name": "소개"
@@ -995,7 +995,7 @@
   {
     "id": 109,
     "title": "YOLOv3 Keras를 이용한 체스 말 탐지",
-    "folderName": "yolov3_keras_detection",
+    "folderName": "yolov3keras_detection",
     "category": [
       {
         "name": "소개"
@@ -1017,7 +1017,7 @@
   {
     "id": 110,
     "title": "YOLOX를 이용한 혈액 세포 탐지",
-    "folderName": "yolox_object_detection",
+    "folderName": "yolox_detection",
     "category": [
       {
         "name": "소개"
@@ -1039,7 +1039,7 @@
   {
     "id": 111,
     "title": "YOLOR을 이용한 혈액 세포 탐지",
-    "folderName": "yolor_object_detection",
+    "folderName": "yolor_detection",
     "category": [
       {
         "name": "소개"
@@ -1064,7 +1064,7 @@
   {
     "id": 112,
     "title": "YOLOv3 PyTorch를 이용한 체스 말 탐지",
-    "folderName": "yolov3_detection_v2",
+    "folderName": "yolov3torch_detection",
     "category": [
       {
         "name": "소개"
@@ -1145,7 +1145,7 @@
   {
     "id": 115,
     "title": "YOLOv5 Instance Segmentation을 이용한 미국식 수화 판별",
-    "folderName": "yolov5_instance_segmentation",
+    "folderName": "yolov5_segmentation",
     "category": [
       {
         "name": "소개"
@@ -1177,7 +1177,7 @@
   {
     "id": 116,
     "title": "Mask R-CNN을 이용한 미국식 수화 판별",
-    "folderName": "mask_rcnn_instance_segmentation",
+    "folderName": "maskrcnn_segmentation",
     "category": [
       {
         "name": "소개"
@@ -1205,7 +1205,7 @@
   {
     "id": 117,
     "title": "SegFormer을 이용한 풍선 분할",
-    "folderName": "detectron_object_detection",
+    "folderName": "segformer_segmentation",
     "category": [
       {
         "name": "소개"
@@ -1326,7 +1326,7 @@
   {
     "id": 121,
     "title": "Vision Transformer을 이용한 100종류 이미지 분류",
-    "folderName": "vit-classification",
+    "folderName": "vit_classification",
     "category": [
       {
         "name": "소개"
@@ -1404,7 +1404,7 @@
   {
     "id": 124,
     "title": "YOLOv4 PyTorch를 이용한 혈액 세포 탐지",
-    "folderName": "yolov4_detection",
+    "folderName": "yolov4_torch_detection",
     "category": [
       {
         "name": "소개"
@@ -1457,7 +1457,7 @@
   {
     "id": 126,
     "title": "Detectron2를 이용한 풍선 탐지",
-    "folderName": "segformer_semantic_segmentation",
+    "folderName": "detectron_detection",
     "category": [
       {
         "name": "소개"
