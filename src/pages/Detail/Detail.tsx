@@ -10,11 +10,6 @@ import Spinner from '@/components/Spinner/Spinner'
 import { loadingAtom } from '@/atoms'
 import { useRecoilValue } from 'recoil'
 
-type ResType = {
-  id: number
-  case_data: DataType
-}
-
 export type DataListType = {
   [key: string]: string
 }
