@@ -2,13 +2,12 @@ import { Header, DetailForm, DetailCarousel } from '@/containers'
 import { useNavigate, useParams } from 'react-router-dom'
 import styles from './Detail.module.css'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { Book } from '@/components'
-import { logKey } from '@/utils'
 import { Helmet } from 'react-helmet-async'
 import Spinner from '@/components/Spinner/Spinner'
 import { loadingAtom } from '@/atoms'
 import { useRecoilValue } from 'recoil'
+import { getSubPageData } from '@/axios'
 
 export type DataListType = {
   [key: string]: string
@@ -27,30 +26,17 @@ const Detail = () => {
 
   useEffect(() => {
     const getDetailData = async (id: string) => {
-      try {
-        const response = await axios.get(
-          `http://aihunmin-edu.t3q.ai/api/backend/subpage/${id}`,
-        )
-        const res = response.data
-        if (res['case_data']['data_type'] === 'log') {
-          const caseData = res['case_data']['data_list'].map((item: any) => ({
-            ...item,
-            data: logKey(id, item.data),
-          }))
-          setData({ ...res['case_data'], data_list: caseData })
-        } else {
-          setData(res['case_data'])
-        }
-      } catch (e) {
-        // alert('데이터 요청을 실패했습니다.')
-        // navigate('/home')
-        console.log('실패')
+      const newData = await getSubPageData(id)
+      if (!newData) {
+        alert('데이터 요청을 실패했습니다.')
+        navigate('/home')
       }
+      setData(newData)
     }
     if (id) {
       getDetailData(id)
     }
-  }, [id])
+  }, [])
 
   return (
     <div className={styles.detail}>

@@ -8,7 +8,7 @@ import { useRecoilState } from 'recoil'
 
 interface InputProps {
   selected: Record<string, string> | null | undefined
-  getData: (data: string | null | undefined) => void
+  getData: (data: string | string[] | null | undefined) => void
   type: string
 }
 
@@ -74,7 +74,7 @@ const Input = ({ selected, getData, type }: InputProps) => {
       </div>
     )
   }
-  if (data && selected) {
+  if (typeof data === 'string' && selected) {
     if (!data.startsWith('data:')) {
       // 문자열로만 데이터가 들어온 경우
       inner = <p className={styles.selectedTxt}>{data}</p>
@@ -98,6 +98,16 @@ const Input = ({ selected, getData, type }: InputProps) => {
       // 비디오 데이터가 들어온 경우
       inner = <video controls src={selected.data} />
     }
+  }
+  if (Array.isArray(data) && selected) {
+    // 이미지 데이터가 2개 들어온 경우
+    return (
+      <div className={`${styles.selectFile} ${styles.twoImg} `}>
+        {data.map((item, index) => (
+          <img src={item} alt={`Pill${index}`}></img>
+        ))}
+      </div>
+    )
   }
 
   return <div className={styles.selectFile}>{inner}</div>
