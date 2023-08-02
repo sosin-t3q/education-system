@@ -148,7 +148,7 @@ const combinedFunction = (
     const kyungpookIndex = id - 1100
     let kyungpookFuncArray = [knu1100, knu1101, knu1102]
     return kyungpookFuncArray[kyungpookIndex](value, apiURL, setLoading)
-  } else if (id >= 1100 && id < 1200) {
+  } else if (id >= 1200 && id < 1300) {
     // 고려대학교 예제일 때 (id 1200~1299)
     const koreaIndex = id - 1200
     let koreaFuncArray = [ku1200, ku1201, ku1202, ku1203, ku1204, ku1205]
