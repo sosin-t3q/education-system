@@ -13,7 +13,6 @@ const Table = () => {
   const setLoading = useSetRecoilState(loadingAtom)
   const navigate = useNavigate()
   const { keycloak } = useKeycloak();
-  // const isLoggedIn = keycloak.authenticated;
 
     //진우 - 원래라면 useEffect를 사용하는 게 맞는 거 같다
     const { title, columns, rows, body } = data;
