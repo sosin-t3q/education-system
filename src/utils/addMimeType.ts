@@ -11,11 +11,12 @@ const addMimeType = (id: string, value: string) => {
     num === 25 ||
     num === 27 ||
     num === 28 ||
-    num === 1100 ||
     num === 1204
   const isJpg =
     num === 6 ||
     num === 22 ||
+    (num >= 101 && num <= 126) ||
+    num === 1100 ||
     num === 1201 ||
     num === 1202 ||
     num === 1203 ||

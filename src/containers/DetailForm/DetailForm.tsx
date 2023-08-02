@@ -8,21 +8,19 @@ import {
 } from '@/components'
 import styles from './DetailForm.module.css'
 import { useCallback, useEffect, useState } from 'react'
-import {
-  detailDataAtom,
-  inputValidationAtom,
-  loadingAtom,
-  // resultAtom,
-} from '@/atoms/index'
+import { detailDataAtom, inputValidationAtom, loadingAtom } from '@/atoms/index'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
 import { default as combinedFunction } from '@/axios/combinedAxios'
 import addMimeType from '@/utils/addMimeType'
+import { convertVideo } from '@/axios'
 
 export type InferObj = {
   label: string
 }
+
 type SelectedFileType = Record<string, string> | null | undefined
+
 interface DetailFormProps {
   data: DataType | null
   pageId: string | undefined
@@ -30,7 +28,6 @@ interface DetailFormProps {
 
 const DetailForm = ({ data, pageId }: DetailFormProps) => {
   const setLoading = useSetRecoilState(loadingAtom)
-  // const setResult = useSetRecoilState(resultAtom)
   const [selected, setSelected] = useState('default')
   const [selectedFile, setSelectedFile] = useState<SelectedFileType>(null)
   const [value, setValue] = useRecoilState(detailDataAtom)
@@ -42,7 +39,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
     data['data_list'] && [
       '예제 선택하기',
       ...data['data_list'].map(item => item.name),
-    ] // 파일 리스트 배열 생성
+    ]
 
   const onChange = useCallback(
     (selected: string) => {
@@ -63,6 +60,20 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
       const target =
         data && data['data_list'].find(item => item.name === selected)
       if (pageId && target) {
+        if (pageId === '13') {
+          console.log(target)
+          // convertVideo(target.data, target.name)
+        }
+        if (pageId === '1202') {
+          const mapping = {
+            ...target,
+            data: Array.isArray(target.data)
+              ? target.data.map((item: string) => addMimeType(pageId, item))
+              : addMimeType(pageId, target.data as string),
+          }
+          setSelectedFile(mapping as SelectedFileType)
+          return
+        }
         const mapping = { ...target, data: addMimeType(pageId, target.data) }
         setSelectedFile(mapping)
       }
@@ -78,7 +89,6 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
         apiURL,
         setLoading,
       )
-      console.log(inferResult)
       setInfer(inferResult === undefined ? null : inferResult)
     } else if (!isValid.isValid) {
       alert(isValid.message)

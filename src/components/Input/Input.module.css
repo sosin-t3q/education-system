@@ -95,3 +95,12 @@
   width: 100%;
   padding: 20px 0;
 }
+
+.twoImg {
+  display: flex;
+  flex-direction: row;
+}
+
+.twoImg img {
+  width: 50%;
+}
