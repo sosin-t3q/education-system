@@ -1,4 +1,4 @@
-/* 고려대학교 - 알약 이미지 분류 1202 */
+/* 고려대학교 - 사용자 맞춤 알약 검색 시스템 1202 */
 import axios from 'axios'
 import base64DataToFile from '../../base64DataToFile'
 
@@ -8,12 +8,19 @@ const ku1202 = async (
   setLoading: any, // 로딩
   // setResult: any,    // 결과 컴포넌트
 ) => {
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/file_req_ajx' // 고정값
-  const convertData = await base64DataToFile(value, 'image', 'image/jpeg')
+  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/files_req_ajx' // 고정값
+
+  /* image가 2장이 들어옴 */
+  const imageA = value[0] // 배열에 담긴 첫번째 이미지
+  const imageB = value[1] // 배열에 담긴 두번째 이미지
+  const convertDataA = await base64DataToFile(imageA, 'image', 'image/jpeg')
+  const convertDataB = await base64DataToFile(imageB, 'image', 'image/jpeg')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
   formData.append('url', formUrl)
-  formData.append('file', convertData)
+  formData.append('files', convertDataA)
+  formData.append('files', convertDataB)
+
   let resultData = ''
   let resultValue: any = ''
 
