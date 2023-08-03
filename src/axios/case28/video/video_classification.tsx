@@ -70,3 +70,5 @@ const findMaxValueKey = (data: Record<string, number>[]): string => {
 
   return maxKey
 }
+
+export default videoClassification
