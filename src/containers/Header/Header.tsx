@@ -17,7 +17,8 @@ const Header = () => {
       const authData = {
         access_token: keycloak.token,
         refresh_token: keycloak.refreshToken,
-        id_token: keycloak.idToken
+        id_token: keycloak.idToken,
+        user_id: keycloak.idTokenParsed?.sub
       };
       Cookies.set('user_auth', JSON.stringify(authData), { expires: 1 });
   }}, [initialized, keycloak]);
