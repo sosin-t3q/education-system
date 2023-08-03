@@ -8,7 +8,7 @@ const videoClassification = async (
   setLoading: any, // 로딩
   // setResult: any, // 결과 컴포넌트
 ) => {
-  const video_info: any = {
+  const video_info: Record<string, string> = {
     CricketShot: '크리켓 슛',
     PlayingCello: '첼로 연주',
     Punch: '펀치',
@@ -40,8 +40,10 @@ const videoClassification = async (
         response_data = json.response.inference
       }
       /* 결과값에 따라 결과 컴포넌트 렌더링 */
-      response_data = video_info[response_data]
-      resultData = response_data // 결과값 반환
+      console.log(response_data)
+
+      const result = findMaxValueKey(response_data)
+      resultData = video_info[result] // 결과값 반환
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
@@ -52,4 +54,19 @@ const videoClassification = async (
   return { label: resultData }
 }
 
-export default videoClassification
+const findMaxValueKey = (data: Record<string, number>[]): string => {
+  let maxKey = ''
+  let maxValue = -Infinity
+
+  for (const item of data) {
+    const key = Object.keys(item)[0]
+    const value = Object.values(item)[0]
+
+    if (value > maxValue) {
+      maxKey = key
+      maxValue = value
+    }
+  }
+
+  return maxKey
+}
