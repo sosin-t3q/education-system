@@ -1,28 +1,31 @@
 import { useEffect } from 'react'
 import axios from 'axios'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil'
 import { useNavigate } from 'react-router-dom'
-import { cartTableAtom, cartModalAtom } from '@/atoms'
+import { cartTableAtom, cartModalAtom, userIdAtom } from '@/atoms'
 import { ReactComponent as Warning } from '@/assets/warning.svg'
 import styles from './CartTable.module.css'
 
 const CartTable = () => {
   const [cartTable, setCartTable] = useRecoilState(cartTableAtom)
   const setCartModal = useSetRecoilState(cartModalAtom)
+  const userId = useRecoilValue(userIdAtom);
 
   const navigate = useNavigate()
 
   useEffect(() => {
-    // 서버로부터 데이터를 받아 cartTable에 넣어줌
-    axios.get("http://aihunmin-edu.t3q.ai/api/backend/custom_layer/delkin")
-      .then(res => {
-        const data = res.data;
-        setCartTable(data);
-      })
-      .catch(err => {
-        console.log(err.message)
-      })
-  }, [])
+    if(userId) {
+      // 서버로부터 데이터를 받아 cartTable에 넣어줌
+      axios.get(`http://aihunmin-edu.t3q.ai:8181/api/backend/custom_layer/${userId}`)
+        .then(res => {
+          const data = res.data;
+          setCartTable(data);
+        })
+        .catch(err => {
+          console.log(err.message)
+        })
+    }
+  }, [userId])
 
   //페이지 이동 함수
   const handleNavigate = (id: number) => {

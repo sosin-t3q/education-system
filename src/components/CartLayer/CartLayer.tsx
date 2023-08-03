@@ -1,6 +1,8 @@
 import {useState, useEffect} from "react";
 import axios from 'axios';
 import styles from './CartLayer.module.css'
+import { userIdAtom } from '@/atoms';
+import { useRecoilValue } from 'recoil';
 
 interface CartLayerProps {
   className?: string
@@ -14,19 +16,22 @@ interface CartLayerDataProps {
 const CartLayer = ({ className }: CartLayerProps) => {
   //blocks는 최대 크기가 28인 비어있는 배열이다
   const [blocks, setBlocks] = useState(new Array(28).fill(null));
+  const userId = useRecoilValue(userIdAtom)
 
   useEffect(() => {
-    // 서버에서 장바구니 데이터를 불러온다
-    axios.get("http://aihunmin-edu.t3q.ai/api/backend/custom_layer/delkin")
-    .then(res => {
-      const data = res.data;
-      //setBlocks로 blocks를 업데이트할 때 data[index]에 값이 있다면 block에 추가하고 없으면 비어있는 block을 유지한다
-      setBlocks(blocks.map((block, index) => data[index] || block));
-      })
-      .catch(err => {
-        console.log(err.message);
-      })
-  }, [])
+    if(userId) {
+      // 서버에서 장바구니 데이터를 불러온다
+      axios.get(`http://aihunmin-edu.t3q.ai:8181/api/backend/custom_layer/${userId}`)
+      .then(res => {
+        const data = res.data;
+        //setBlocks로 blocks를 업데이트할 때 data[index]에 값이 있다면 block에 추가하고 없으면 비어있는 block을 유지한다
+        setBlocks(blocks.map((block, index) => data[index] || block));
+        })
+        .catch(err => {
+          console.log(err.message);
+        })
+    }
+  }, [userId])
 
   return (
     <div className={`${className} ${styles.Layer}`}>
