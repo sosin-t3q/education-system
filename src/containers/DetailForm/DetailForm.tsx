@@ -13,7 +13,6 @@ import { useRecoilState, useSetRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
 import { default as combinedFunction } from '@/axios/combinedAxios'
 import addMimeType from '@/utils/addMimeType'
-import { convertVideo } from '@/axios'
 
 export type InferObj = {
   label: string
@@ -60,10 +59,6 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
       const target =
         data && data['data_list'].find(item => item.name === selected)
       if (pageId && target) {
-        if (pageId === '13') {
-          console.log(target)
-          // convertVideo(target.data, target.name)
-        }
         if (pageId === '1202') {
           const mapping = {
             ...target,

@@ -27,8 +27,7 @@ const addMimeType = (id: string, value: string) => {
   const isWav = num === 9 || num === 11 || num === 12
   const isWavMidi = num === 10
 
-  const isAvi = num === 13
-  const isMp4 = num === 1101 || num === 1102
+  const isMp4 = num === 13 || num === 1101 || num === 1102
 
   switch (true) {
     case isPng:
@@ -48,9 +47,6 @@ const addMimeType = (id: string, value: string) => {
       break
     case isWavMidi:
       result = 'data:audio/midi;base64,' + value
-      break
-    case isAvi:
-      result = 'data:video/x-msvideo;base64,' + value
       break
     case isMp4:
       result = 'data:video/mp4;base64,' + value

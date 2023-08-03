@@ -1,4 +1,5 @@
 import { logKey, transformPillData } from '@/utils'
+import { convertVideo } from '@/axios'
 import axios from 'axios'
 
 export interface DataType {
@@ -25,6 +26,9 @@ const fetchData = async (id: string): Promise<DataType | null> => {
         data: logKey(id, item.data),
       }))
       newData = { ...res['case_data'], data_list: caseData }
+    } else if (id === '13') {
+      const data = await convertVideo(res['case_data']['data_list'])
+      newData = { ...res['case_data'], data_list: data }
     } else if (id === '1202') {
       const transformData = transformPillData(res['case_data']['data_list'])
       newData = { ...res['case_data'], data_list: transformData }
