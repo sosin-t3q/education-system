@@ -61,8 +61,13 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
         data && data['data_list'].find(item => item.name === selected)
       if (pageId && target) {
         if (pageId === '13') {
-          console.log(target)
-          // convertVideo(target.data, target.name)
+          convertVideo(target.data).then(res => {
+            const mapping = {
+              ...target,
+              data: res,
+            }
+            setSelectedFile(mapping as SelectedFileType)
+          })
         }
         if (pageId === '1202') {
           const mapping = {
@@ -98,6 +103,8 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
   const getInputData = useCallback((data: any) => {
     setValue(data)
   }, [])
+
+  console.log(infer)
 
   return (
     <section className={styles.container}>
