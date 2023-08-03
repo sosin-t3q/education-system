@@ -35,6 +35,11 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
   const [infer, setInfer] = useState<string | InferObj | null>(null)
   const [apiURL, setApiURL] = useState<string>('')
 
+  // 캐싱을 위한 객체 초기화
+  const [cache, setCache] = useState<Record<string, SelectedFileType | null>>(
+    {},
+  )
+
   const fileList = data &&
     data['data_list'] && [
       '예제 선택하기',
@@ -54,6 +59,11 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
   )
 
   useEffect(() => {
+    // 캐시에서 결과를 찾는 함수
+    const findCachedResult = (selected: string): SelectedFileType | null => {
+      return cache[selected] || null
+    }
+
     if (selected === 'default') {
       setSelectedFile(null)
     } else {
@@ -61,13 +71,26 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
         data && data['data_list'].find(item => item.name === selected)
       if (pageId && target) {
         if (pageId === '13') {
-          convertVideo(target.data).then(res => {
-            const mapping = {
-              ...target,
-              data: res,
+          // 캐시에서 결과를 찾음
+          const cachedResult = findCachedResult(selected)
+
+          if (cachedResult) {
+            setSelectedFile(cachedResult)
+          } else {
+            // 캐시에 없는 경우 컨버트 결과를 얻어와서 캐시에 저장
+            const target =
+              data && data['data_list'].find(item => item.name === selected)
+
+            if (pageId && target) {
+              convertVideo(target.data).then(res => {
+                const mapping = { ...target, data: res as string }
+                setSelectedFile(mapping as SelectedFileType)
+
+                // 캐시에 저장
+                setCache(prevCache => ({ ...prevCache, [selected]: mapping }))
+              })
             }
-            setSelectedFile(mapping as SelectedFileType)
-          })
+          }
         }
         if (pageId === '1202') {
           const mapping = {
