@@ -9,6 +9,12 @@ const yolov8Classification = async (
   setLoading: any, // 로딩
   // setResult: any,    // 결과 컴포넌트
 ) => {
+  const return_parse: any = {
+    '0.Mentah': '풋바나나',
+    '1.Setengah-mentah': '덜 익은 바나나',
+    '3.Matang': '잘 익은 바나나',
+    '4.Terlalu-matang': '많이 익은 바나나',
+  }
   const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/file_req_ajx' // 고정값
   const convertData = await base64DataToFile(value, 'image', 'image/jpeg')
   /* FormData (apiUrl, data) 형태로 전송 */
@@ -34,8 +40,7 @@ const yolov8Classification = async (
         response_data = json.response.inference
       }
       /* 결과값에 따라 결과 컴포넌트 렌더링 */
-      /* response_data => 이미지 base64 src */
-      resultData = 'data:image/jpg;base64,' + response_data // 결과 이미지 src 문자열 반환
+      resultData = return_parse[response_data]
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
@@ -43,7 +48,7 @@ const yolov8Classification = async (
   } finally {
     setLoading(false)
   }
-  return resultData
+  return { label: resultData }
 }
 
 export default yolov8Classification

@@ -73,89 +73,94 @@ const combinedFunction = (
   apiURL: any,
   setLoading: any,
 ) => {
-  if (id >= 1 && id <= 28) {
-    // 훈민정음 case 28일 때 (id 1~28)
-    const hunminIndex = id - 1
-    let hunminFuncArray = [
-      textClassification,
-      textRegression,
-      textAnomaly,
-      textClustering,
-      imageClassification,
-      imageRegression,
-      imageAnomaly,
-      imageClustering,
-      audioClassification,
-      audioRegression,
-      audioAnomaly,
-      audioClustering,
-      videoClassification,
-      videoRegression,
-      videoAnomaly,
-      videoClustering,
-      logClassification,
-      logRegression,
-      logAnomaly,
-      logClustering,
-      satelliteClassification,
-      satelliteRegression,
-      satelliteAnomaly,
-      satelliteClustering,
-      binaryClassification,
-      binaryRegression,
-      binaryAnomaly,
-      binaryClustering,
-    ]
-    return hunminFuncArray[hunminIndex](value, apiURL, setLoading)
-  } else if (id > 100 && id < 200) {
-    // vision 예제일 때 (id 101~199)
-    const visionIndex = id - 101
-    let visionFuncArray = [
-      // 탐지(detection)
-      yolov8Detection,
-      sampleCode,
-      sampleCode,
-      yolov7Detection,
-      sampleCode,
-      yolov6Detection,
-      yolov5Detection,
-      yolosDetection,
-      yolov3KerasDetection,
-      yoloxDetection,
-      yolorDetection,
-      yolov3torchDetection,
-      // 분할(division)
-      yolov8Segmentation,
-      yolov7Segmentation,
-      yolov5Segmentation,
-      maskrcnnSegmentation,
-      segformerSegmentation,
-      // 분류(classification)
-      yolov8Classification,
-      yolov5Classification,
-      sampleCode,
-      vitClassification,
-      mobilenetClassification,
-      // 더보기(etc)
-      yolov4TinyDetection,
-      yolov4TorchDetection,
-      scaledyolov4Detection,
-      detectronDetection,
-    ]
-    return visionFuncArray[visionIndex](value, apiURL, setLoading)
-  } else if (id >= 1100 && id < 1200) {
-    // 경북대학교 예제일 때 (id 1100~1199)
-    const kyungpookIndex = id - 1100
-    let kyungpookFuncArray = [knu1100, knu1101, knu1102]
-    return kyungpookFuncArray[kyungpookIndex](value, apiURL, setLoading)
-  } else if (id >= 1200 && id < 1300) {
-    // 고려대학교 예제일 때 (id 1200~1299)
-    const koreaIndex = id - 1200
-    let koreaFuncArray = [ku1200, ku1201, ku1202, ku1203, ku1204, ku1205]
-    return koreaFuncArray[koreaIndex](value, apiURL, setLoading)
-  } else {
-    console.log('ID ERROR')
-    return
+  switch (true) {
+    case id >= 1 && id <= 28:
+      // 훈민정음 예제일 때 (id 1~28)
+      console.log('훈민정음, id = ', id)
+      const hunminIndex = id - 1
+      let hunminFuncArray = [
+        textClassification,
+        textRegression,
+        textAnomaly,
+        textClustering,
+        imageClassification,
+        imageRegression,
+        imageAnomaly,
+        imageClustering,
+        audioClassification,
+        audioRegression,
+        audioAnomaly,
+        audioClustering,
+        videoClassification,
+        videoRegression,
+        videoAnomaly,
+        videoClustering,
+        logClassification,
+        logRegression,
+        logAnomaly,
+        logClustering,
+        satelliteClassification,
+        satelliteRegression,
+        satelliteAnomaly,
+        satelliteClustering,
+        binaryClassification,
+        binaryRegression,
+        binaryAnomaly,
+        binaryClustering,
+      ]
+      return hunminFuncArray[hunminIndex](value, apiURL, setLoading)
+
+    case id > 100 && id < 200:
+      // 비전 예제일 때 (id 101~199)
+      console.log('VISION, id = ', id)
+      const visionIndex = id - 101
+      let visionFuncArray = [
+        yolov8Detection,
+        sampleCode,
+        sampleCode,
+        yolov7Detection,
+        sampleCode,
+        yolov6Detection,
+        yolov5Detection,
+        yolosDetection,
+        yolov3KerasDetection,
+        yoloxDetection,
+        yolorDetection,
+        yolov3torchDetection,
+        yolov8Segmentation,
+        yolov7Segmentation,
+        yolov5Segmentation,
+        maskrcnnSegmentation,
+        segformerSegmentation,
+        yolov8Classification,
+        yolov5Classification,
+        sampleCode,
+        vitClassification,
+        mobilenetClassification,
+        yolov4TinyDetection,
+        yolov4TorchDetection,
+        scaledyolov4Detection,
+        detectronDetection,
+      ]
+      return visionFuncArray[visionIndex](value, apiURL, setLoading)
+
+    case id >= 1100 && id < 1200:
+      // 경북대학교 예제일 때 (id 1100~1199)
+      console.log('경북대학교, id = ', id)
+      const kyungpookIndex = id - 1100
+      let kyungpookFuncArray = [knu1100, knu1101, knu1102]
+      return kyungpookFuncArray[kyungpookIndex](value, apiURL, setLoading)
+
+    case id < 1300:
+      // 고려대학교 예제일 때 (id 1200~1299)
+      console.log('고려대학교, id = ', id)
+      const koreaIndex = id - 1200
+      let koreaFuncArray = [ku1200, ku1201, ku1202, ku1203, ku1204, ku1205]
+      return koreaFuncArray[koreaIndex](value, apiURL, setLoading)
+
+    default:
+      console.log('ID 값이 잘못되었습니다. 현재 ID값 -> ', id)
+      return
   }
 }
 

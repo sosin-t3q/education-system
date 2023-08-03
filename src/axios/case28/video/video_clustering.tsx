@@ -1,10 +1,4 @@
 /* 얼굴 키포인트가 있는 데이터 군집화 - 영상 군집화 */
-/* 수정 필요 */
-/* 수정 필요 */
-/* 수정 필요 */
-/* 수정 필요 */
-/* 수정 필요 */
-/* 수정 필요 */
 import axios from 'axios'
 import base64DataToFile from '../../base64DataToFile'
 
@@ -21,6 +15,7 @@ const videoClustering = async (
   formData.append('url', formUrl)
   formData.append('file', convertData)
   let resultData = ''
+  let extraData = ''
 
   setLoading(true) // 로딩 표시
 
@@ -35,27 +30,21 @@ const videoClustering = async (
     let json = res.data
     if (json.res == 'true') {
       let response_image = json.response.all_cluster_image
-      // let response_data = json.response.inference_cluster
-      // console.log(response_data)
-      resultData = 'data:image/jpeg;base64,' + response_image
-
-      // $('#resImgSrc').attr('src', 'data:image/jpg;base64,' + response_image)
-      // $('div.inner_next').addClass('show_img')
-      // $('div.inner_next').css({ 'align-items': 'baseline' })
-      // const counts = response_data.reduce((pv, cv) => {
-      //   pv[cv] = (pv[cv] || 0) + 1
-      //   return pv
-      // }, {})
-      // const keys = Object.keys(counts)
-      // let mode = keys[0]
-      // // keys.forEach((val, idx) => {
-      //   if (counts[val] > counts[mode]) {
-      //     mode = val
-      //   }
-      // })
-      // $('.result_alert').html(mode)
-      // $('.result_alert').css({ top: '85%' })
-      // $('.inner_next').addClass('show_alert_pass')
+      let response_data = json.response.inference_cluster
+      resultData = 'data:image/jpeg;base64,' + response_image // $('#resImgSrc').attr('src', 'data:image/jpg;base64,' + response_image)
+      const counts = response_data.reduce((pv: any, cv: any) => {
+        pv[cv] = (pv[cv] || 0) + 1
+        return pv
+      }, {})
+      const keys = Object.keys(counts)
+      let mode = keys[0]
+      keys.forEach((val: any) => {
+        if (counts[val] > counts[mode]) {
+          mode = val
+        }
+      })
+      extraData = mode
+      console.log(extraData)
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
@@ -63,7 +52,7 @@ const videoClustering = async (
   } finally {
     setLoading(false)
   }
-  return resultData
+  return [resultData, extraData]
 }
 
 export default videoClustering
