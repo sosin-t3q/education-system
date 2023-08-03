@@ -1,7 +1,12 @@
 import { Dispatch } from 'react';
+import { useSetRecoilState } from 'recoil'
+import { useKeycloak } from "@react-keycloak/web";
+import { useNavigate } from 'react-router-dom'
 import styles from "./VisionAccordion.module.css";
 import { ReactComponent as ArrowDown } from "@/assets/arrow-down.svg";
 import { ReactComponent as ArrowUp } from "@/assets/arrow-up.svg";
+import { handleNavigate } from "@/utils";
+import { visionModalAtom, loadingAtom } from '@/atoms'
 
 
 interface Props {
@@ -17,6 +22,11 @@ interface Props {
 }
 
 const VisionAccordion = ({title, section, isActiveSection, setActiveIndex, sectionIndex}: Props) => {
+    const { keycloak } = useKeycloak();
+    const setLoading = useSetRecoilState(loadingAtom)
+    const setVisionModal = useSetRecoilState(visionModalAtom)
+    const navigate = useNavigate()
+
     const toggleSection = () => {
         const nextIndex = isActiveSection ? null : sectionIndex;
         setActiveIndex(nextIndex);                               
@@ -32,10 +42,14 @@ const VisionAccordion = ({title, section, isActiveSection, setActiveIndex, secti
                 isActiveSection && ( 
                     <div className={styles.body}>
                         {
-                            section.map(item => {
+                            section.map(data => {
                                 return(
-                                    <div className={styles.block} key={item.id}>
-                                        <span className={styles.text}>{item.title}</span>
+                                    <div 
+                                        className={styles.block} 
+                                        key={data.id}
+                                        onClick={() => handleNavigate(data.id, keycloak, setLoading, setVisionModal, navigate)}
+                                    >
+                                        <span className={styles.text}>{data.title}</span>
                                     </div>
                                 )
                             })
