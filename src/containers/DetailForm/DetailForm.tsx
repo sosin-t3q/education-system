@@ -70,27 +70,35 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
       const target =
         data && data['data_list'].find(item => item.name === selected)
       if (pageId && target) {
+        // if (pageId === '13') {
+        //   // 캐시에서 결과를 찾음
+        //   const cachedResult = findCachedResult(selected)
+        //   if (cachedResult) {
+        //     setSelectedFile(cachedResult)
+        //   } else {
+        //     // 캐시에 없는 경우 컨버트 결과를 얻어와서 캐시에 저장
+        //     const target =
+        //       data && data['data_list'].find(item => item.name === selected)
+
+        //     if (pageId && target) {
+        //       convertVideo(target.data).then(res => {
+        //         const mapping = { ...target, data: res as string }
+        //         setSelectedFile(mapping as SelectedFileType)
+
+        //         // 캐시에 저장
+        //         setCache(prevCache => ({ ...prevCache, [selected]: mapping }))
+        //       })
+        //     }
+        //   }
+        // }
         if (pageId === '13') {
-          // 캐시에서 결과를 찾음
-          const cachedResult = findCachedResult(selected)
+          convertVideo(target.data).then(res => {
+            const mapping = { ...target, data: res as string }
+            setSelectedFile(mapping as SelectedFileType)
 
-          if (cachedResult) {
-            setSelectedFile(cachedResult)
-          } else {
-            // 캐시에 없는 경우 컨버트 결과를 얻어와서 캐시에 저장
-            const target =
-              data && data['data_list'].find(item => item.name === selected)
-
-            if (pageId && target) {
-              convertVideo(target.data).then(res => {
-                const mapping = { ...target, data: res as string }
-                setSelectedFile(mapping as SelectedFileType)
-
-                // 캐시에 저장
-                setCache(prevCache => ({ ...prevCache, [selected]: mapping }))
-              })
-            }
-          }
+            // 캐시에 저장
+            setCache(prevCache => ({ ...prevCache, [selected]: mapping }))
+          })
         }
         if (pageId === '1202') {
           const mapping = {
@@ -107,6 +115,8 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
       }
     }
   }, [selected, data])
+
+  console.log(cache)
 
   const onClick = useCallback(async () => {
     if (value) {
