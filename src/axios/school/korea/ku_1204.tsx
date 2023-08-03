@@ -44,7 +44,7 @@ const ku1204 = async (
   } finally {
     setLoading(false)
   }
-  return resultData
+  return { label: resultData }
 }
 
 export default ku1204
