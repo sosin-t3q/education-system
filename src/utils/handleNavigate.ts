@@ -10,22 +10,21 @@ import Keycloak from 'keycloak-js';
 const handleNavigate = async (id: number, keycloak: Keycloak, setLoading: SetterOrUpdater<boolean>, setModal: SetterOrUpdater<boolean>, navigate: NavigateFunction) => {
 
   const isLoggedIn = keycloak.authenticated;  
-  console.log(isLoggedIn);
 
-  setLoading(true);
-    // if (!isLoggedIn) {
-    //   setModal(false);
-    //   try {
-    //     await keycloak.login();
-    //   } catch (error) {
-    //     console.log("로그인 실패!");
-    //   }
-    //   setLoading(false);
-    // } else {
-    //   setModal(false);
-    //   navigate(`/detail/${id}`)
-    //   setLoading(false);
-    // }
+  // setLoading(true);
+  //   if (!isLoggedIn) {
+  //     setModal(false);
+  //     try {
+  //       await keycloak.login({ redirectUri: window.location.origin + `/detail/${id}` });
+  //     } catch (error) {
+  //       console.log("로그인 실패!");
+  //     }
+  //     setLoading(false);
+  //   } else {
+  //     setModal(false);
+  //     navigate(`/detail/${id}`)
+  //     setLoading(false);
+  //   }
       setLoading(true);
       setModal(false);
       navigate(`/detail/${id}`)
