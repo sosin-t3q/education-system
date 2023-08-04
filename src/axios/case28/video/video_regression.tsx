@@ -1,5 +1,5 @@
 /* 비디오의 다음 프레임 예측 - 영상 회귀 */
-import axios from 'axios'
+import axiosInstance from '@/services/axiosInstance'
 import base64DataToFile from '../../base64DataToFile'
 
 const videoRegression = async (
@@ -20,7 +20,7 @@ const videoRegression = async (
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axios.post(axiosUrl, formData, {
+    const res = await axiosInstance.post(axiosUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },

@@ -1,6 +1,6 @@
 /* 환경 소리 군집화 - 음성 군집화 */
-import axios from 'axios'
 import base64DataToFile from '../../base64DataToFile'
+import axiosInstance from '@/services/axiosInstance'
 
 const audioClustering = async (
   value: any, // 사용자가 입력한 값 (string or base64)
@@ -13,7 +13,7 @@ const audioClustering = async (
     Cow: '소 울음소리',
     Sneezing: '재채기',
   }
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/file_req_ajx' // 고정값
+  const axiosUrl = '/api/inference/file_req_ajx' // 고정값
   const convertData = await base64DataToFile(value, 'audio', 'audio/wav')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
@@ -25,7 +25,7 @@ const audioClustering = async (
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axios.post(axiosUrl, formData, {
+    const res = await axiosInstance.post(axiosUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },

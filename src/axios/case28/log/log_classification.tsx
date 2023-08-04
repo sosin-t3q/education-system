@@ -1,5 +1,5 @@
 /* NBA 선수 포지션 분류 - log 분류 */
-import axios from 'axios'
+import axiosInstance from '@/services/axiosInstance'
 
 const logClassification = async (
   value: any, // 사용자가 입력한 값 (string or base64)
@@ -8,7 +8,7 @@ const logClassification = async (
   // setResult: any, // 결과 컴포넌트
 ) => {
   const class_info: any = { Center: '센터', Guard: '가드', Forward: '포워드' }
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/log_req_ajx' // 고정값
+  const axiosUrl = '/api/inference/log_req_ajx' // 고정값
   // axiosUrl 이 text 또는 log일 때는 JSON.stringify 형태로 전송
   const jsonData = JSON.stringify({
     url: formUrl,
@@ -20,7 +20,7 @@ const logClassification = async (
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axios.post(axiosUrl, jsonData, {
+    const res = await axiosInstance.post(axiosUrl, jsonData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },

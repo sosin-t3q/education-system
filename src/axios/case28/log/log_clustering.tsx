@@ -1,5 +1,5 @@
 /* 포켓몬 스탯에 따른 군집화 - log 군집화 */
-import axios from 'axios'
+import axiosInstance from '@/services/axiosInstance'
 
 const logClustering = async (
   value: any, // 사용자가 입력한 값 (string or base64)
@@ -14,7 +14,7 @@ const logClustering = async (
     'physical bad, magical bad': '모든 능력치 부족',
   }
 
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/log_req_ajx' // 고정값
+  const axiosUrl = '/api/inference/log_req_ajx' // 고정값
   // axiosUrl 이 text 또는 log일 때는 JSON.stringify 형태로 전송
   const jsonData = JSON.stringify({
     url: formUrl,
@@ -26,7 +26,7 @@ const logClustering = async (
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axios.post(axiosUrl, jsonData, {
+    const res = await axiosInstance.post(axiosUrl, jsonData, {
       headers: {
         'Content-Type': 'application/json',
       },
