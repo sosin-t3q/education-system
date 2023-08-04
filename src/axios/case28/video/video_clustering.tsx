@@ -44,7 +44,7 @@ const videoClustering = async (
         }
       })
       extraData = mode
-      resultData = resultData + extraData
+      resultData = `${resultData} and ${extraData}`
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
