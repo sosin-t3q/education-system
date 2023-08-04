@@ -1,8 +1,7 @@
-import axios from 'axios'
+import axiosInstance from '@/services/axiosInstance';
 
 const convertVideo = async (videoArray: { name: string; data: string }[]) => {
-  const url =
-    'https://cors-anywhere.herokuapp.com/http://aihunmin-edu.t3q.ai:8181/api/converter/video'
+  const url ='/api/converter/video'
 
   try {
     const convertedVideos = await Promise.all(
@@ -11,7 +10,7 @@ const convertVideo = async (videoArray: { name: string; data: string }[]) => {
           video_to_base64: video.data,
         })
 
-        const res = await axios.post(url, jsonData, {
+        const res = await axiosInstance.post(url, jsonData, {
           headers: {
             'Content-Type': 'application/json',
           },
