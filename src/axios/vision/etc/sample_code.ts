@@ -1,6 +1,6 @@
 /* SAMPLE CODE */
 /* 이 코드는 아직 구현되지 않은 예제 페이지에서 사용되기 위해 제작되었습니다. */
-import axios from 'axios'
+import axiosInstance from '@/services/axiosInstance'
 import base64DataToFile from '../../base64DataToFile'
 
 const sampleCode = async (
@@ -9,7 +9,7 @@ const sampleCode = async (
   setLoading: any, // 로딩
   // setResult: any,    // 결과 컴포넌트
 ) => {
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/file_req_ajx' // 고정값
+  const axiosUrl = '/api/inference/file_req_ajx' // 고정값
   const convertData = await base64DataToFile(value, 'image', 'image/png')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
@@ -21,7 +21,7 @@ const sampleCode = async (
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axios.post(axiosUrl, formData, {
+    const res = await axiosInstance.post(axiosUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
