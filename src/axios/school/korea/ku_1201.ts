@@ -1,15 +1,15 @@
-/* 경북대학교 - 버스 승객 승하차 감지 1101 */
-import axios from 'axios'
+/* 고려대학교 - 건축물 노후도 진단 1201 */
 import base64DataToFile from '../../base64DataToFile'
+import axiosInstance from '@/services/axiosInstance'
 
-const knu1101 = async (
+const ku1201 = async (
   value: any, // 사용자가 입력한 값 (string or base64)
   formUrl: any, // 사용자가 입력한 api Url
   setLoading: any, // 로딩
   // setResult: any,    // 결과 컴포넌트
 ) => {
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/file_req_ajx' // 고정값
-  const convertData = await base64DataToFile(value, 'video', 'video/mp4')
+  const axiosUrl = '/api/inference/file_req_ajx' // 고정값
+  const convertData = await base64DataToFile(value, 'image', 'image/jpeg')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
   formData.append('url', formUrl)
@@ -20,7 +20,7 @@ const knu1101 = async (
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axios.post(axiosUrl, formData, {
+    const res = await axiosInstance.post(axiosUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -30,11 +30,11 @@ const knu1101 = async (
     if (json.res == 'true') {
       let response_data = json.response.data
       if (response_data == null) {
-        response_data = json.response.inference
+        response_data = json.response.inference_curriculum
       }
       /* 결과값에 따라 결과 컴포넌트 렌더링 */
-      /* response_data => 비디오 base64 src */
-      resultData = 'data:video/mp4;base64,' + response_data // 결과 이미지 src 문자열 반환
+      /* response_data => 이미지 base64 src */
+      resultData = 'data:image/jpg;base64,' + response_data // 결과 이미지 src 문자열 반환
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
@@ -44,4 +44,4 @@ const knu1101 = async (
   return resultData
 }
 
-export default knu1101
+export default ku1201
