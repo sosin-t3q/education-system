@@ -1,18 +1,15 @@
 import styles from './Navigation.module.css'
+import { navigationAtom } from '@/atoms'
+import { useRecoilState } from 'recoil'
 
-type Tab = 'introduce' | 'performance'
+const Navigation = () => {
+  const [activeTab, setActiveTab] = useRecoilState(navigationAtom)
 
-interface NavigationProps {
-  activeTab: Tab
-  onTabChange: (tab: Tab) => void
-}
-
-const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
   return (
     <nav className={styles.navigation}>
       <ul className={styles.list}>
         <li
-          onClick={() => onTabChange('introduce')}
+          onClick={() => setActiveTab('introduce')}
           className={
             activeTab === 'introduce'
               ? `${styles['list-item']} ${styles.active}`
@@ -22,7 +19,7 @@ const Navigation = ({ activeTab, onTabChange }: NavigationProps) => {
           AI훈민정음 소개
         </li>
         <li
-          onClick={() => onTabChange('performance')}
+          onClick={() => setActiveTab('performance')}
           className={
             activeTab === 'performance'
               ? `${styles['list-item']} ${styles.active}`

@@ -77,7 +77,6 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
 
   const onClick = useCallback(async () => {
     if (value) {
-      console.log(value)
       const inferResult = await combinedFunction(
         pageId,
         value,

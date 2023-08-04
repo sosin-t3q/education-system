@@ -17,7 +17,6 @@ const convertVideo = async (videoArray: { name: string; data: string }[]) => {
           responseType: 'json',
         })
 
-        console.log(`통신 요청 들어감 (${video.name})`)
         const resData = res.data
         return {
           name: video.name,
@@ -28,7 +27,7 @@ const convertVideo = async (videoArray: { name: string; data: string }[]) => {
 
     return convertedVideos
   } catch (e) {
-    console.log('변환 실패', e)
+    alert('비디오 변환 실패')
     return []
   }
 }

@@ -1,6 +1,6 @@
 /* YOLOv8 Classification을 이용한 바나나 숙성도 분류 */
 /* id = 118 */
-import axios from 'axios'
+import axiosInstance from '@/services/axiosInstance'
 import base64DataToFile from '../../base64DataToFile'
 
 const yolov8Classification = async (
@@ -15,7 +15,7 @@ const yolov8Classification = async (
     '3.Matang': '잘 익은 바나나',
     '4.Terlalu-matang': '많이 익은 바나나',
   }
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/file_req_ajx' // 고정값
+  const axiosUrl = '/api/inference/file_req_ajx' // 고정값
   const convertData = await base64DataToFile(value, 'image', 'image/jpeg')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
@@ -27,7 +27,7 @@ const yolov8Classification = async (
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axios.post(axiosUrl, formData, {
+    const res = await axiosInstance.post(axiosUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },

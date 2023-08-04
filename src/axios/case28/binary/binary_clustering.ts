@@ -1,27 +1,28 @@
-/* 신용카드 사기 탐지 - log 이상탐지 */
-import axios from 'axios'
+/* 악성코드 군집화 - 바이너리 군집화 */
+import axiosInstance from '@/services/axiosInstance'
+import base64DataToFile from '../../base64DataToFile'
 
-const logAnomaly = async (
+const binaryClustering = async (
   value: any, // 사용자가 입력한 값 (string or base64)
   formUrl: any, // 사용자가 입력한 api Url
   setLoading: any, // 로딩
   // setResult: any,    // 결과 컴포넌트
 ) => {
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/log_req_ajx' // 고정값
-  // axiosUrl 이 text 또는 log일 때는 JSON.stringify 형태로 전송
-  const jsonData = JSON.stringify({
-    url: formUrl,
-    log_data: value,
-  })
+  const axiosUrl = '/api/inference/file_req_ajx' // 고정값
+  const convertData = await base64DataToFile(value, 'image', 'image/png')
+  /* FormData (apiUrl, data) 형태로 전송 */
+  const formData = new FormData()
+  formData.append('url', formUrl)
+  formData.append('file', convertData)
   let resultData = ''
 
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axios.post(axiosUrl, jsonData, {
+    const res = await axiosInstance.post(axiosUrl, formData, {
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
       },
       responseType: 'json', //서버로부터 들어오는 응답값은 JSON 형식
     })
@@ -32,12 +33,12 @@ const logAnomaly = async (
         response_data = json.response.inference
       }
       /* 결과값에 따라 결과 컴포넌트 렌더링 */
-      if (response_data == 'normal_transaction') {
+      if (response_data == 'benign') {
         // 정상 결과 컴포넌트
-        resultData = '정상거래'
-      } else if (response_data == 'fraudulent_transaction') {
+        resultData = '정상'
+      } else {
         // 파손 결과 컴포넌트
-        resultData = '부정거래'
+        resultData = '악성'
       }
     }
   } catch (err) {
@@ -49,4 +50,4 @@ const logAnomaly = async (
   return { label: resultData }
 }
 
-export default logAnomaly
+export default binaryClustering

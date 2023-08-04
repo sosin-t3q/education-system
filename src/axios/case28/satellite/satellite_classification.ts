@@ -1,15 +1,22 @@
-/* 허리케인 위성 사진 풍속 예측 - 위성 회귀 */
-import axios from 'axios'
+/* 도로 위성 사진 분류 - 위성 분류 */
+import axiosInstance from '@/services/axiosInstance'
 import base64DataToFile from '../../base64DataToFile'
 
-const satelliteRegression = async (
+const satelliteClassification = async (
   value: any, // 사용자가 입력한 값 (string or base64)
   formUrl: any, // 사용자가 입력한 api Url
   setLoading: any, // 로딩
   // setResult: any, // 결과 컴포넌트
 ) => {
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/file_req_ajx' // 고정값
-  const convertData = await base64DataToFile(value, 'image', 'image/jpeg')
+  const class_info: any = {
+    freeway: '고속도로',
+    intersection: '교차로',
+    overpass: '고가도로',
+    parkinglot: '주차장',
+    runway: '일반도로',
+  }
+  const axiosUrl = '/api/inference/file_req_ajx' // 고정값
+  const convertData = await base64DataToFile(value, 'image', 'image/png')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
   formData.append('url', formUrl)
@@ -20,7 +27,7 @@ const satelliteRegression = async (
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axios.post(axiosUrl, formData, {
+    const res = await axiosInstance.post(axiosUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -33,7 +40,8 @@ const satelliteRegression = async (
         response_data = json.response.inference
       }
       /* 결과값에 따라 결과 컴포넌트 렌더링 */
-      resultData = '' + response_data[0]
+      response_data = class_info[response_data]
+      resultData = response_data // 결과값 반환
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
@@ -41,7 +49,7 @@ const satelliteRegression = async (
   } finally {
     setLoading(false)
   }
-  return resultData
+  return { label: resultData }
 }
 
-export default satelliteRegression
+export default satelliteClassification

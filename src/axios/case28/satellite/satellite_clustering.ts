@@ -1,20 +1,16 @@
-/* 환경 소리 군집화 - 음성 군집화 */
-import axios from 'axios'
+/* 지표면 위성 사진 군집화 - 위성 군집화 */
+import axiosInstance from '@/services/axiosInstance'
 import base64DataToFile from '../../base64DataToFile'
 
-const audioClustering = async (
+const satelliteClustering = async (
   value: any, // 사용자가 입력한 값 (string or base64)
   formUrl: any, // 사용자가 입력한 api Url
   setLoading: any, // 로딩
   // setResult: any,    // 결과 컴포넌트
 ) => {
-  const audio_info: any = {
-    Crackingfire: '불타는 소리',
-    Cow: '소 울음소리',
-    Sneezing: '재채기',
-  }
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/file_req_ajx' // 고정값
-  const convertData = await base64DataToFile(value, 'audio', 'audio/wav')
+  const class_info: any = { forested: '산림화', desertified: '사막화' }
+  const axiosUrl = '/api/inference/file_req_ajx' // 고정값
+  const convertData = await base64DataToFile(value, 'image', 'image/png')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
   formData.append('url', formUrl)
@@ -25,7 +21,7 @@ const audioClustering = async (
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axios.post(axiosUrl, formData, {
+    const res = await axiosInstance.post(axiosUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -38,7 +34,7 @@ const audioClustering = async (
         response_data = json.response.inference
       }
       /* 결과값에 따라 결과 컴포넌트 렌더링 */
-      response_data = audio_info[response_data]
+      response_data = class_info[response_data]
       resultData = response_data // 결과값 반환
     }
   } catch (err) {
@@ -50,4 +46,4 @@ const audioClustering = async (
   return { label: resultData }
 }
 
-export default audioClustering
+export default satelliteClustering

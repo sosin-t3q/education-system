@@ -6,11 +6,12 @@ interface LinkProps {
   path: string
   children?: ReactNode
   className?: string
+  onClick?: () => void
 }
 
-const Link = ({ path, children, className }: LinkProps) => {
+const Link = ({ path, children, className, onClick }: LinkProps) => {
   return (
-    <ReactRouterLink to={path} className={`${styles.link} ${className}`}>
+    <ReactRouterLink to={path} onClick={onClick} className={`${styles.link} ${className}`}>
       {children}
     </ReactRouterLink>
   )

@@ -1,9 +1,8 @@
-/* SegFormer를 이용한 풍선 분할 */
-/* id = 117 */
+/* Style Transfer - 이미지 회귀 */
 import axiosInstance from '@/services/axiosInstance'
 import base64DataToFile from '../../base64DataToFile'
 
-const segformerSegmentation = async (
+const imageRegression = async (
   value: any, // 사용자가 입력한 값 (string or base64)
   formUrl: any, // 사용자가 입력한 api Url
   setLoading: any, // 로딩
@@ -14,7 +13,7 @@ const segformerSegmentation = async (
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
   formData.append('url', formUrl)
-  formData.append('file', convertData) // 사용자가 전송할 값이 [문자열] 형태일 때
+  formData.append('file', convertData)
   let resultData = ''
 
   setLoading(true) // 로딩 표시
@@ -31,7 +30,7 @@ const segformerSegmentation = async (
     if (json.res == 'true') {
       let response_data = json.response.data
       if (response_data == null) {
-        response_data = json.response.inference
+        response_data = json.response.inference_curriculum
       }
       /* 결과값에 따라 결과 컴포넌트 렌더링 */
       /* response_data => 이미지 base64 src */
@@ -39,11 +38,10 @@ const segformerSegmentation = async (
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
-    return
   } finally {
     setLoading(false)
   }
   return resultData
 }
 
-export default segformerSegmentation
+export default imageRegression
