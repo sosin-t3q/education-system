@@ -1,14 +1,14 @@
-/* 경북대학교 - 이륜차 위험요소 탐지 1100 */
-import axios from 'axios'
+/* 고려대학교 - 가짜 얼굴 판별 서비스 1204 */
 import base64DataToFile from '../../base64DataToFile'
+import axiosInstance from '@/services/axiosInstance'
 
-const knu1100 = async (
+const ku1204 = async (
   value: any, // 사용자가 입력한 값 (string or base64)
   formUrl: any, // 사용자가 입력한 api Url
   setLoading: any, // 로딩
   // setResult: any,    // 결과 컴포넌트
 ) => {
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/file_req_ajx' // 고정값
+  const axiosUrl = '/api/inference/file_req_ajx' // 고정값
   const convertData = await base64DataToFile(value, 'image', 'image/jpeg')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
@@ -20,7 +20,7 @@ const knu1100 = async (
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axios.post(axiosUrl, formData, {
+    const res = await axiosInstance.post(axiosUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -33,15 +33,18 @@ const knu1100 = async (
         response_data = json.response.inference
       }
       /* 결과값에 따라 결과 컴포넌트 렌더링 */
-      /* response_data => 이미지 base64 src */
-      resultData = 'data:image/jpg;base64,' + response_data // 결과 이미지 src 문자열 반환
+      if (response_data == 'natural image') {
+        resultData = '정상'
+      } else if (response_data == 'fake image') {
+        resultData = '비정상'
+      }
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
   } finally {
     setLoading(false)
   }
-  return resultData
+  return { label: resultData }
 }
 
-export default knu1100
+export default ku1204
