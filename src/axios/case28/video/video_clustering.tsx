@@ -44,7 +44,7 @@ const videoClustering = async (
         }
       })
       extraData = mode
-      console.log(extraData)
+      resultData = resultData + extraData
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
@@ -52,7 +52,7 @@ const videoClustering = async (
   } finally {
     setLoading(false)
   }
-  return [resultData, extraData]
+  return resultData
 }
 
 export default videoClustering
