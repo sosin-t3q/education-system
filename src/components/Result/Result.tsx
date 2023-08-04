@@ -13,8 +13,6 @@ const Result = ({ infer }: ResultProps) => {
   const [value, setValue] = useState<string>('')
   const [objValue, setObjValue] = useState<InferObj>({ label: '' })
 
-  // console.log(infer)
-
   useEffect(() => {
     if (infer && typeof infer === 'string') setValue(infer)
     else if (infer && typeof infer === 'object') setObjValue(infer)
