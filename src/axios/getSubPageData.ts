@@ -1,6 +1,7 @@
 import { logKey, transformPillData } from '@/utils'
 import { convertVideo } from '@/axios'
 import axios from 'axios'
+import { SetterOrUpdater } from 'recoil'
 
 export interface DataType {
   API: string
@@ -12,7 +13,12 @@ export type DataListType = {
   [key: string]: string
 }
 
-const fetchData = async (id: string): Promise<DataType | null> => {
+const fetchData = async (
+  id: string,
+  setLoading: SetterOrUpdater<boolean>,
+): Promise<DataType | null> => {
+  setLoading(true)
+
   try {
     const response = await axios.get(
       `http://aihunmin-edu.t3q.ai:8181/api/backend/subpage/${id}`,
@@ -39,6 +45,8 @@ const fetchData = async (id: string): Promise<DataType | null> => {
     return newData
   } catch (e) {
     return null
+  } finally {
+    setLoading(false)
   }
 }
 

@@ -2,11 +2,10 @@ import { Header, DetailForm, DetailCarousel } from '@/containers'
 import { useNavigate, useParams } from 'react-router-dom'
 import styles from './Detail.module.css'
 import { useEffect, useState } from 'react'
-import { Book } from '@/components'
+import { Book, Spinner } from '@/components'
 import { Helmet } from 'react-helmet-async'
-import Spinner from '@/components/Spinner/Spinner'
 import { loadingAtom } from '@/atoms'
-import { useRecoilValue } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { getSubPageData } from '@/axios'
 
 export type DataListType = {
@@ -22,11 +21,12 @@ const Detail = () => {
   const { id } = useParams() as { id: string | undefined }
   const [data, setData] = useState<DataType | null>(null)
   const loading = useRecoilValue(loadingAtom)
+  const setLoading = useSetRecoilState(loadingAtom)
   const navigate = useNavigate()
 
   useEffect(() => {
     const getDetailData = async (id: string) => {
-      const newData = await getSubPageData(id)
+      const newData = await getSubPageData(id, setLoading)
       if (!newData) {
         alert('데이터 요청을 실패했습니다.')
         navigate('/home')
@@ -55,7 +55,7 @@ const Detail = () => {
         ></DetailCarousel>
         <DetailForm data={data} pageId={id} />
       </main>
-      {loading && <Spinner></Spinner>}
+      {loading && <Spinner />}
     </div>
   )
 }

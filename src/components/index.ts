@@ -20,6 +20,7 @@ export { default as Keyword } from './Keyword/Keyword'
 export { default as CartLayer } from './CartLayer/CartLayer'
 export { default as CartTable } from './CartTable/CartTable'
 export { default as Book } from './Book/Book'
-export { default as PrivateRoute } from "./PrivateRoute/PrivateRoute"
-export { default as VisionLayer } from "./VisionLayer/VisionLayer"
-export { default as VisionAccordion } from "./VisionAccordion/VisionAccordion"
+export { default as PrivateRoute } from './PrivateRoute/PrivateRoute'
+export { default as VisionLayer } from './VisionLayer/VisionLayer'
+export { default as VisionAccordion } from './VisionAccordion/VisionAccordion'
+export { default as Spinner } from './Spinner/Spinner'
