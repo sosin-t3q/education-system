@@ -1,17 +1,13 @@
-import { useState } from 'react'
 import styles from './Home.module.css'
 import { Header, HomeCase, HomeInfo } from '@/containers'
 import { Navigation } from '@/components'
 import { Helmet } from 'react-helmet-async'
-
-type Tab = 'introduce' | 'performance'
+import { navigationAtom } from '@/atoms'
+import { useRecoilValue } from 'recoil'
 
 const Home = () => {
-  const [activeTab, setActiveTab] = useState<Tab>('introduce')
+  const activeTab = useRecoilValue(navigationAtom)
 
-  const handleTabChange = (tab: Tab) => {
-    setActiveTab(tab)
-  }
   return (
     <div className={styles.home}>
       <Helmet>
@@ -21,7 +17,7 @@ const Home = () => {
         <meta name="keyword" content="T3Q.ai,AI platform,BigData" />
       </Helmet>
       <Header />
-      <Navigation activeTab={activeTab} onTabChange={handleTabChange} />
+      <Navigation />
 
       {activeTab === 'introduce' && <HomeInfo />}
       {activeTab === 'performance' && <HomeCase />}
