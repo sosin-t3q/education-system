@@ -1,31 +1,31 @@
-/* 스팸메일 이상탐지 - 텍스트 이상탐지 */
+/* 산업 기계 소리 이상탐지 - 음성 이상탐지 */
 import axiosInstance from '@/services/axiosInstance'
+import base64DataToFile from '../../base64DataToFile'
 
-const textAnomaly = async (
+const audioAnomaly = async (
   value: any, // 사용자가 입력한 값 (string or base64)
   formUrl: any, // 사용자가 입력한 api Url
   setLoading: any, // 로딩
   // setResult: any,    // 결과 컴포넌트
 ) => {
-  const axiosUrl = '/api/inference/text_req_ajx' // 고정값
-  // axiosUrl 이 text 또는 log일 때는 JSON.stringify 형태로 전송
-  const jsonData = JSON.stringify({
-    word: value,
-    url: formUrl,
-  })
+  const axiosUrl = '/api/inference/file_req_ajx' // 고정값
+  const convertData = await base64DataToFile(value, 'audio', 'audio/wav')
+  /* FormData (apiUrl, data) 형태로 전송 */
+  const formData = new FormData()
+  formData.append('url', formUrl)
+  formData.append('file', convertData) // 사용자가 전송할 값이 [문자열] 형태일 때
   let resultData = ''
 
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axiosInstance.post(axiosUrl, jsonData, {
+    const res = await axiosInstance.post(axiosUrl, formData, {
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
       },
       responseType: 'json', //서버로부터 들어오는 응답값은 JSON 형식
     })
-    /* response_data에 결과값 반환 */
     let json = res.data
     if (json.res == 'true') {
       let response_data = json.response.data
@@ -33,12 +33,12 @@ const textAnomaly = async (
         response_data = json.response.inference
       }
       /* 결과값에 따라 결과 컴포넌트 렌더링 */
-      if (response_data == 'ham') {
-        resultData = 'HAM'
-        // HAM 카드 컴포넌트
-      } else {
-        resultData = 'SPAM'
-        // SPAM 카드 컴포넌트
+      if (response_data == 'normal') {
+        // 정상 결과 컴포넌트 출력
+        resultData = '정상'
+      } else if (response_data == 'abnormal') {
+        // 파손 결과 들어가는 부분
+        resultData = '비정상'
       }
     }
   } catch (err) {
@@ -50,4 +50,4 @@ const textAnomaly = async (
   return { label: resultData }
 }
 
-export default textAnomaly
+export default audioAnomaly

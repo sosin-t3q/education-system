@@ -1,32 +1,30 @@
-/* 뉴스 기사 군집화 - 텍스트 군집화 */
+/* 악성코드 이상탐지 - 바이너리 이상탐지 */
 import axiosInstance from '@/services/axiosInstance'
+import base64DataToFile from '../../base64DataToFile'
 
-const textClustering = async (
+const binaryAnomaly = async (
   value: any, // 사용자가 입력한 값 (string or base64)
   formUrl: any, // 사용자가 입력한 api Url
   setLoading: any, // 로딩
-  // setResult: any,    // 결과 컴포넌트
 ) => {
-  const cluster_info: any = { rec: '취미', comp: '컴퓨터' }
-  const axiosUrl = '/api/inference/text_req_ajx' // 고정값
-  // axiosUrl의 값이 text 또는 log로 전송할 때는 JSON.stringify 형태로 전송
-  const jsonData = JSON.stringify({
-    word: value.replaceAll('?', '\\?'),
-    url: formUrl,
-  })
+  const axiosUrl = '/api/inference/file_req_ajx' // 고정값
+  const convertData = await base64DataToFile(value, 'image', 'image/png')
+  /* FormData (apiUrl, data) 형태로 전송 */
+  const formData = new FormData()
+  formData.append('url', formUrl)
+  formData.append('file', convertData)
   let resultData = ''
 
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axiosInstance.post(axiosUrl, jsonData, {
+    const res = await axiosInstance.post(axiosUrl, formData, {
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
       },
       responseType: 'json', //서버로부터 들어오는 응답값은 JSON 형식
     })
-    /* response_data에 결과값 반환 */
     let json = res.data
     if (json.res == 'true') {
       let response_data = json.response.data
@@ -34,16 +32,21 @@ const textClustering = async (
         response_data = json.response.inference
       }
       /* 결과값에 따라 결과 컴포넌트 렌더링 */
-      response_data = cluster_info[response_data]
-      // response_data의 '취미' 혹은 '컴퓨터'가 담겨진 결과값이 반환
-      resultData = response_data
+      if (response_data == 'benign') {
+        // 양성 컴포넌트
+        resultData = '정상'
+      } else if (response_data == 'malware') {
+        // 악성 컴포넌트
+        resultData = '악성'
+      }
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
+    return
   } finally {
     setLoading(false)
   }
   return { label: resultData }
 }
 
-export default textClustering
+export default binaryAnomaly

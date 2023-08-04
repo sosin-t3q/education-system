@@ -1,32 +1,31 @@
-/* 뉴스 기사 군집화 - 텍스트 군집화 */
+/* 피아노 악보 생성 - 음성 회귀 */
 import axiosInstance from '@/services/axiosInstance'
+import base64DataToFile from '../../base64DataToFile'
 
-const textClustering = async (
+const audioRegression = async (
   value: any, // 사용자가 입력한 값 (string or base64)
   formUrl: any, // 사용자가 입력한 api Url
   setLoading: any, // 로딩
   // setResult: any,    // 결과 컴포넌트
 ) => {
-  const cluster_info: any = { rec: '취미', comp: '컴퓨터' }
-  const axiosUrl = '/api/inference/text_req_ajx' // 고정값
-  // axiosUrl의 값이 text 또는 log로 전송할 때는 JSON.stringify 형태로 전송
-  const jsonData = JSON.stringify({
-    word: value.replaceAll('?', '\\?'),
-    url: formUrl,
-  })
+  const axiosUrl = '/api/inference/file_req_ajx' // 고정값
+  const convertData = await base64DataToFile(value, 'audio', 'audio/midi')
+  /* FormData (apiUrl, data) 형태로 전송 */
+  const formData = new FormData()
+  formData.append('url', formUrl)
+  formData.append('file', convertData) // 사용자가 전송할 값이 [문자열] 형태일 때
   let resultData = ''
 
   setLoading(true) // 로딩 표시
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axiosInstance.post(axiosUrl, jsonData, {
+    const res = await axiosInstance.post(axiosUrl, formData, {
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
       },
       responseType: 'json', //서버로부터 들어오는 응답값은 JSON 형식
     })
-    /* response_data에 결과값 반환 */
     let json = res.data
     if (json.res == 'true') {
       let response_data = json.response.data
@@ -34,16 +33,15 @@ const textClustering = async (
         response_data = json.response.inference
       }
       /* 결과값에 따라 결과 컴포넌트 렌더링 */
-      response_data = cluster_info[response_data]
-      // response_data의 '취미' 혹은 '컴퓨터'가 담겨진 결과값이 반환
-      resultData = response_data
+      /* response_data => 오디오 base64 src */
+      resultData = 'data:audio/midi;base64,' + response_data // 결과 오디오 src 문자열 반환
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
   } finally {
     setLoading(false)
   }
-  return { label: resultData }
+  return resultData
 }
 
-export default textClustering
+export default audioRegression

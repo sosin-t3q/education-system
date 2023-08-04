@@ -17,11 +17,10 @@ interface Props {
     }[]
     isActiveSection: boolean;
     setActiveIndex: Dispatch<React.SetStateAction<number | null>>;
-    sectionIndex: number;
-
+    sectionIndex: number
 }
 
-const VisionAccordion = ({title, section, isActiveSection, setActiveIndex, sectionIndex}: Props) => {
+const VisionAccordion = ({ title, section, isActiveSection, setActiveIndex, sectionIndex }: Props) => {
     const { keycloak } = useKeycloak();
     const setLoading = useSetRecoilState(loadingAtom)
     const setVisionModal = useSetRecoilState(visionModalAtom)
@@ -29,23 +28,23 @@ const VisionAccordion = ({title, section, isActiveSection, setActiveIndex, secti
 
     const toggleSection = () => {
         const nextIndex = isActiveSection ? null : sectionIndex;
-        setActiveIndex(nextIndex);                               
+        setActiveIndex(nextIndex);
     }
 
     return (
         <>
             <div className={styles.title} onClick={toggleSection}>
                 <span>{title}</span>
-                { isActiveSection ? <ArrowUp /> : <ArrowDown /> }
+                {isActiveSection ? <ArrowUp /> : <ArrowDown />}
             </div>
             {
-                isActiveSection && ( 
+                isActiveSection && (
                     <div className={styles.body}>
                         {
                             section.map(data => {
-                                return(
-                                    <div 
-                                        className={styles.block} 
+                                return (
+                                    <div
+                                        className={styles.block}
                                         key={data.id}
                                         onClick={() => handleNavigate(data.id, keycloak, setLoading, setVisionModal, navigate)}
                                     >

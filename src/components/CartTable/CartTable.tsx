@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
-import axios from 'axios'
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import styles from './CartTable.module.css'
 import { cartTableAtom, cartModalAtom, userIdAtom } from '@/atoms'
 import { ReactComponent as Warning } from '@/assets/warning.svg'
-import styles from './CartTable.module.css'
 
 const CartTable = () => {
   const [cartTable, setCartTable] = useRecoilState(cartTableAtom)

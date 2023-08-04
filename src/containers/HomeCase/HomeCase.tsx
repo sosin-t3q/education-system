@@ -19,7 +19,7 @@ const HomeCase = () => {
         label="전국민 AI훈민정음 28가지 사례"
       ></Title>
       <Text className={styles.p}>
-        인공지능에서 다루는 데이터 7종, 인공지능이 하는 태스크 4가지를 조합한
+        인공지능에서 다루는 데이터 7종, 인공지능이 하는 태스크 4가지를 조합한{" "} 
         <span style={{ fontWeight: 700 }}>
           28가지 우수케이스를 통합 플랫폼에 <br /> 탑재한 사례집
         </span>
