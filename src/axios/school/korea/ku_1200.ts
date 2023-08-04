@@ -1,6 +1,5 @@
 /* 고려대학교 - 버스 승객 이상행동 감지 1200 */
-
-import axios from 'axios'
+import axiosInstance from '@/services/axiosInstance'
 
 const ku1200 = async (
   value: any, // 사용자가 입력한 값 (text or base64)
@@ -8,7 +7,7 @@ const ku1200 = async (
   setLoading: any, // 로딩
   // setResult: any,    // 결과 컴포넌트
 ) => {
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/text_req_ajx' // 고정값
+  const axiosUrl = '/api/inference/text_req_ajx' // 고정값
   // axiosUrl 이 text 또는 log일 때는 JSON.stringify 형태로 전송
   const jsonData = JSON.stringify({
     word: value,
@@ -20,7 +19,7 @@ const ku1200 = async (
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axios.post(axiosUrl, jsonData, {
+    const res = await axiosInstance.post(axiosUrl, jsonData, {
       headers: {
         'Content-Type': 'application/json',
       },
