@@ -11,3 +11,4 @@ export { default as loadingAtom } from './loadingAtom'
 export { default as visionModalAtom } from "./visionModalAtom"
 export { default as isLoggedInAtom } from "./isLoggedInAtom"
 export { default as userIdAtom } from "./userIdAtom"
+export { default as navigationAtom } from "./navigationAtom"

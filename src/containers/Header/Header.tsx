@@ -3,13 +3,14 @@ import { Link } from '@/components'
 import { ReactComponent as Logo } from '@/assets/logo.svg'
 import { useKeycloak } from '@react-keycloak/web'
 import { useEffect } from 'react'
-import Cookies from 'js-cookie';
-import { isLoggedInAtom } from '@/atoms'
-import { useRecoilValue } from 'recoil'
+import Cookies from 'js-cookie'
+import { isLoggedInAtom, navigationAtom } from '@/atoms'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 
 const Header = () => {
   const { keycloak, initialized } = useKeycloak()
-  const isLoggedIn = useRecoilValue(isLoggedInAtom);
+  const setActiveTab = useSetRecoilState(navigationAtom)
+  const isLoggedIn = useRecoilValue(isLoggedInAtom)
 
   useEffect(() => {
     //로그인을 하면 값이 들어온다
@@ -18,10 +19,11 @@ const Header = () => {
         access_token: keycloak.token,
         refresh_token: keycloak.refreshToken,
         id_token: keycloak.idToken,
-        user_id: keycloak.idTokenParsed?.sub
-      };
-      Cookies.set('user_auth', JSON.stringify(authData), { expires: 1 });
-  }}, [initialized, keycloak]);
+        user_id: keycloak.idTokenParsed?.sub,
+      }
+      Cookies.set('user_auth', JSON.stringify(authData), { expires: 1 })
+    }
+  }, [initialized, keycloak])
 
   return (
     <header className={styles.header}>
@@ -30,7 +32,18 @@ const Header = () => {
           <Logo aria-label="AI훈민정음 로고" className={styles.logo} />
         </Link>
         <div className={styles.links}>
-          <Link className={`${styles.experience}`} path="/home" children="홈" />
+          <Link
+            className={`${styles.experience}`}
+            onClick={() => setActiveTab('introduce')}
+            path="/home"
+            children="홈"
+          />
+          <Link
+            className={`${styles.experience}`}
+            onClick={() => setActiveTab('performance')}
+            path="/home"
+            children="수행"
+          />
           <Link
             className={`${styles.experience}`}
             path="/school"
@@ -56,10 +69,11 @@ const Header = () => {
               className={`${styles.login}`}
               type="button"
               onClick={() => {
-                keycloak.logout({ redirectUri: window.location.origin + '/home' });
-                Cookies.remove('user_auth');
-                }
-              }
+                keycloak.logout({
+                  redirectUri: window.location.origin + '/home',
+                })
+                Cookies.remove('user_auth')
+              }}
             >
               로그아웃
             </button>
