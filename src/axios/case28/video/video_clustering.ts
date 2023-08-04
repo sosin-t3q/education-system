@@ -1,5 +1,5 @@
 /* 얼굴 키포인트가 있는 데이터 군집화 - 영상 군집화 */
-import axios from 'axios'
+import axiosInstance from '@/services/axiosInstance'
 import base64DataToFile from '../../base64DataToFile'
 
 const videoClustering = async (
@@ -8,7 +8,7 @@ const videoClustering = async (
   setLoading: any, // 로딩
   // setResult: any, // 결과 컴포넌트
 ) => {
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/file_req_ajx' // 고정값
+  const axiosUrl = '/api/inference/file_req_ajx' // 고정값
   const convertData = await base64DataToFile(value, 'gifImage', 'image/gif')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
@@ -21,7 +21,7 @@ const videoClustering = async (
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axios.post(axiosUrl, formData, {
+    const res = await axiosInstance.post(axiosUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },

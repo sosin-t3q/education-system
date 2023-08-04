@@ -1,15 +1,22 @@
-/* 노후 시설물 이미지를 이용한 이상탐지 - 이미지 이상탐지 */
-import axios from 'axios'
+/* 비디오 행동 분류 - 영상 분류 */
+import axiosInstance from '@/services/axiosInstance'
 import base64DataToFile from '../../base64DataToFile'
 
-const imageAnomaly = async (
+const videoClassification = async (
   value: any, // 사용자가 입력한 값 (string or base64)
   formUrl: any, // 사용자가 입력한 api Url
   setLoading: any, // 로딩
   // setResult: any, // 결과 컴포넌트
 ) => {
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/file_req_ajx' // 고정값
-  const convertData = await base64DataToFile(value, 'image', 'image/jpeg')
+  const video_info: Record<string, string> = {
+    CricketShot: '크리켓 슛',
+    PlayingCello: '첼로 연주',
+    Punch: '펀치',
+    ShavingBeard: '면도',
+    TennisSwing: '테니스 스윙',
+  }
+  const axiosUrl = '/api/inference/file_req_ajx' // 고정값
+  const convertData = await base64DataToFile(value, 'video', 'video/mp4')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
   formData.append('url', formUrl)
@@ -20,7 +27,7 @@ const imageAnomaly = async (
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axios.post(axiosUrl, formData, {
+    const res = await axiosInstance.post(axiosUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -33,13 +40,10 @@ const imageAnomaly = async (
         response_data = json.response.inference
       }
       /* 결과값에 따라 결과 컴포넌트 렌더링 */
-      if (response_data == 'original') {
-        // 정상 블록
-        resultData = '정상 블록'
-      } else if (response_data == 'discard') {
-        // 파손 블록
-        resultData = '파손 블록'
-      }
+      console.log(response_data)
+
+      const result = findMaxValueKey(response_data)
+      resultData = video_info[result] // 결과값 반환
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
@@ -50,4 +54,21 @@ const imageAnomaly = async (
   return { label: resultData }
 }
 
-export default imageAnomaly
+const findMaxValueKey = (data: Record<string, number>[]): string => {
+  let maxKey = ''
+  let maxValue = -Infinity
+
+  for (const item of data) {
+    const key = Object.keys(item)[0]
+    const value = Object.values(item)[0]
+
+    if (value > maxValue) {
+      maxKey = key
+      maxValue = value
+    }
+  }
+
+  return maxKey
+}
+
+export default videoClassification

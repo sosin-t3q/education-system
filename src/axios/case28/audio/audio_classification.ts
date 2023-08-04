@@ -1,15 +1,15 @@
-/* 악성코드 군집화 - 바이너리 군집화 */
-import axios from 'axios'
+/* 음성단어분류 - 음성 분류 */
 import base64DataToFile from '../../base64DataToFile'
+import axiosInstance from '@/services/axiosInstance'
 
-const binaryClustering = async (
+const audioClassification = async (
   value: any, // 사용자가 입력한 값 (string or base64)
   formUrl: any, // 사용자가 입력한 api Url
   setLoading: any, // 로딩
   // setResult: any,    // 결과 컴포넌트
 ) => {
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/file_req_ajx' // 고정값
-  const convertData = await base64DataToFile(value, 'image', 'image/png')
+  const axiosUrl = '/api/inference/file_req_ajx' // 고정값
+  const convertData = await base64DataToFile(value, 'audio', 'audio/wav')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
   formData.append('url', formUrl)
@@ -20,7 +20,7 @@ const binaryClustering = async (
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axios.post(axiosUrl, formData, {
+    const res = await axiosInstance.post(axiosUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -33,13 +33,7 @@ const binaryClustering = async (
         response_data = json.response.inference
       }
       /* 결과값에 따라 결과 컴포넌트 렌더링 */
-      if (response_data == 'benign') {
-        // 정상 결과 컴포넌트
-        resultData = '정상'
-      } else {
-        // 파손 결과 컴포넌트
-        resultData = '악성'
-      }
+      resultData = response_data
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
@@ -50,4 +44,4 @@ const binaryClustering = async (
   return { label: resultData }
 }
 
-export default binaryClustering
+export default audioClassification

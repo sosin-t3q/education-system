@@ -1,15 +1,14 @@
-/* 비디오의 다음 프레임 예측 - 영상 회귀 */
-import axios from 'axios'
+/* 악성코드 이상탐지 - 바이너리 이상탐지 */
+import axiosInstance from '@/services/axiosInstance'
 import base64DataToFile from '../../base64DataToFile'
 
-const videoRegression = async (
+const binaryAnomaly = async (
   value: any, // 사용자가 입력한 값 (string or base64)
   formUrl: any, // 사용자가 입력한 api Url
   setLoading: any, // 로딩
-  // setResult: any, // 결과 컴포넌트
 ) => {
-  const axiosUrl = 'http://aihunmin-edu.t3q.ai:8181/api/inference/file_req_ajx' // 고정값
-  const convertData = await base64DataToFile(value, 'gifImage', 'image/gif')
+  const axiosUrl = '/api/inference/file_req_ajx' // 고정값
+  const convertData = await base64DataToFile(value, 'image', 'image/png')
   /* FormData (apiUrl, data) 형태로 전송 */
   const formData = new FormData()
   formData.append('url', formUrl)
@@ -20,7 +19,7 @@ const videoRegression = async (
 
   /* axios 비동기 통신 함수 */
   try {
-    const res = await axios.post(axiosUrl, formData, {
+    const res = await axiosInstance.post(axiosUrl, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -33,8 +32,13 @@ const videoRegression = async (
         response_data = json.response.inference
       }
       /* 결과값에 따라 결과 컴포넌트 렌더링 */
-      /* response_data => 이미지 base64 src */
-      resultData = 'data:image/jpg;base64,' + response_data // 결과 이미지 src 문자열 반환
+      if (response_data == 'benign') {
+        // 양성 컴포넌트
+        resultData = '정상'
+      } else if (response_data == 'malware') {
+        // 악성 컴포넌트
+        resultData = '악성'
+      }
     }
   } catch (err) {
     alert('API 호출에 실패했습니다.')
@@ -42,7 +46,7 @@ const videoRegression = async (
   } finally {
     setLoading(false)
   }
-  return resultData
+  return { label: resultData }
 }
 
-export default videoRegression
+export default binaryAnomaly
