@@ -23,3 +23,4 @@ export { default as Book } from './Book/Book'
 export { default as PrivateRoute } from "./PrivateRoute/PrivateRoute"
 export { default as VisionLayer } from "./VisionLayer/VisionLayer"
 export { default as VisionAccordion } from "./VisionAccordion/VisionAccordion"
+export { default as ScrollTop } from "./ScrollTop/ScrollTop"
