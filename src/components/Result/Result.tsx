@@ -13,6 +13,8 @@ const Result = ({ infer }: ResultProps) => {
   const [value, setValue] = useState<string>('')
   const [objValue, setObjValue] = useState<InferObj>({ label: '' })
 
+  // console.log(infer)
+
   useEffect(() => {
     if (infer && typeof infer === 'string') setValue(infer)
     else if (infer && typeof infer === 'object') setObjValue(infer)
@@ -42,6 +44,16 @@ const Result = ({ infer }: ResultProps) => {
           return (
             <div className={styles['result-cont']}>
               <p>이미지를 불러올 수 없습니다.</p>
+            </div>
+          )
+        }
+        if (value?.includes('and')) {
+          // case16 : 얼굴 키포인트가 있는 데이터 군집화
+          const [img, keyword] = value.split(' and ')
+          return (
+            <div className={styles['result-cont']}>
+              <img src={img} alt="결과" />
+              <Keyword label={keyword} />
             </div>
           )
         }
