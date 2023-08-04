@@ -4,7 +4,7 @@ import { visionModalAtom } from '@/atoms'
 import styles from './VisionModal.module.css'
 import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
 import { VisionAccordion } from '@/components'
-import sections from "@/data/VISION_LAYER.json";
+import sections from "@/data/layers/VISION_LAYER.json";
 
 const VisionModal = () => {
     const setVisionModal = useSetRecoilState(visionModalAtom);

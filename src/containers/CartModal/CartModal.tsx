@@ -1,9 +1,9 @@
-import styles from './CartModal.module.css'
-import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
-import { CartTable } from '@/components'
-import { useSetRecoilState } from 'recoil'
-import { cartModalAtom } from '@/atoms'
 import { MouseEvent } from 'react'
+import { useSetRecoilState } from 'recoil'
+import styles from './CartModal.module.css'
+import { cartModalAtom } from '@/atoms'
+import { CartTable } from '@/components'
+import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
 
 const CartModal = () => {
   // CartModal state의 값이 false면 화면에 보이지 않고, true면 보인다
