@@ -18,7 +18,6 @@
   background: var(--bg-white);
   border-radius: var(--border-radius-10);
   padding: 0 var(--padding-20);
-  margin-bottom: var(--margin-10);
 }
 
 .dropDown-selected-title {
