@@ -1,0 +1,26 @@
+.recordButton {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: block;
+  background-color: var(--bg-blue);
+  padding: 10px var(--padding-10);
+  color: var(--bg-white);
+  margin-bottom: var(--margin-50);
+  border-radius: var(--border-radius-10);
+}
+
+.recordSpan {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.recordSpan svg {
+  color: red;
+}
+
+.recordSpan.stop svg {
+  color: white !important;
+}
