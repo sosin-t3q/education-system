@@ -53,3 +53,9 @@
   padding: 10px;
   overflow: hidden;
 }
+
+.fileList {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

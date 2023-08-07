@@ -5,6 +5,7 @@ import {
   Result,
   Button,
   DropdownMenu,
+  RecordButton,
 } from '@/components'
 import styles from './DetailForm.module.css'
 import { useCallback, useEffect, useState } from 'react'
@@ -93,6 +94,12 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
     setValue(data)
   }, [])
 
+  const isAudio = fileList && pageId === '9'
+
+  if (pageId === '9' && data) {
+    data['data_type'] = 'record'
+  }
+
   return (
     <section className={styles.container}>
       <Title
@@ -114,7 +121,10 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
 
         <Result infer={infer} />
       </div>
-      {fileList && <DropdownMenu options={fileList} onSelect={onChange} />}
+      <div className={styles.fileList}>
+        {fileList && <DropdownMenu options={fileList} onSelect={onChange} />}
+        {isAudio && <RecordButton />}
+      </div>
       <Button
         option={1}
         label={'추론하기'}
