@@ -1,22 +1,19 @@
 import { useState } from 'react'
 import { BsFillRecordFill, BsFillStopFill } from 'react-icons/bs'
+import { RecordAtom } from '@/atoms'
+import { useRecoilState } from 'recoil'
 import styles from './RecordButton.module.css'
 
-interface RecordButtonProps {
-  onClick: () => void
-}
-
-const RecordButton = ({ onClick }: RecordButtonProps) => {
-  const [isRecording, setIsRecording] = useState<boolean>(false)
+const RecordButton = () => {
+  const [isRecording, setIsRecording] = useRecoilState(RecordAtom)
   const [audioStream, setAudioStream] = useState<MediaStream | null>(null)
-  const [recordedBase64, setRecordedBase64] = useState<string | null>(null)
 
   // 녹음 시작 함수
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
       setAudioStream(stream)
-      setIsRecording(true)
+      setIsRecording(prev => ({ ...prev, recording: true }))
 
       // stream을 MediaRecorder에 연결하고 데이터 수집
       const mediaRecorder = new MediaRecorder(stream)
@@ -57,7 +54,7 @@ const RecordButton = ({ onClick }: RecordButtonProps) => {
           const base64String = await blobToBase64(recordedBlob)
           const result = 'data:audio/wav;base64,' + base64String
 
-          setRecordedBase64(result)
+          setIsRecording(prev => ({ ...prev, base64: result }))
         } catch (error) {
           alert('음성 데이터를 변환할 수 없습니다.')
         }
@@ -69,30 +66,25 @@ const RecordButton = ({ onClick }: RecordButtonProps) => {
     }
   }
 
-  console.log(recordedBase64)
-
   const stopRecording = () => {
     if (audioStream) {
       audioStream.getTracks().forEach(track => track.stop())
     }
     setAudioStream(null)
-    setIsRecording(false)
+    setIsRecording(prev => ({ ...prev, recording: false }))
   }
 
   const handleClick = () => {
-    if (isRecording) stopRecording()
-    else if (!isRecording) {
-      setRecordedBase64(null)
+    if (isRecording.recording) stopRecording()
+    else if (!isRecording.recording) {
+      setIsRecording(prev => ({ ...prev, base64: '' }))
       startRecording()
     }
-
-    // 상위 컴포넌트로 base64 데이터 전달
-    onClick()
   }
 
   return (
     <button type="button" className={styles.recordButton} onClick={handleClick}>
-      {!isRecording ? (
+      {!isRecording.recording ? (
         <span className={styles.recordSpan}>
           <BsFillRecordFill />
           녹음 시작
