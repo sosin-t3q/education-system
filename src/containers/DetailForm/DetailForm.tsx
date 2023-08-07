@@ -97,7 +97,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
   const isAudio = fileList && pageId === '9'
 
   if (pageId === '9' && data) {
-    data['data_type'] = 'audio'
+    data['data_type'] = 'record'
   }
 
   return (
@@ -123,7 +123,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
       </div>
       <div className={styles.fileList}>
         {fileList && <DropdownMenu options={fileList} onSelect={onChange} />}
-        {isAudio && <RecordButton onClick={() => {}} />}
+        {isAudio && <RecordButton />}
       </div>
       <Button
         option={1}

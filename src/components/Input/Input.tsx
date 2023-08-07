@@ -1,9 +1,9 @@
 import { ReactComponent as MatchCase } from '@/assets/match_case.svg'
 import styles from './Input.module.css'
-import { Canvas, Log } from '@/components'
+import { Canvas, Log, Recording } from '@/components'
 import MidiPlayer from 'react-midi-player'
 import { ChangeEvent, useEffect, useState } from 'react'
-import { inputValidationAtom } from '@/atoms/index'
+import { RecordAtom, inputValidationAtom } from '@/atoms'
 import { useRecoilState } from 'recoil'
 
 interface InputProps {
@@ -16,6 +16,8 @@ const Input = ({ selected, getData, type }: InputProps) => {
   const [value, setValue] = useState<string>('')
   const data = selected && selected.data
   const [isValid, setIsValid] = useRecoilState(inputValidationAtom)
+  const [isRecord] = useRecoilState(RecordAtom)
+  const { recording, base64: recordBase64 } = isRecord
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value)
@@ -24,6 +26,11 @@ const Input = ({ selected, getData, type }: InputProps) => {
   }
 
   useEffect(() => {
+    if (!recording && recordBase64.trim() !== '') {
+      getData(recordBase64)
+
+      return
+    }
     if (!selected)
       setIsValid({
         ...isValid,
@@ -31,7 +38,9 @@ const Input = ({ selected, getData, type }: InputProps) => {
         message: '데이터를 입력해주세요.',
       }) // 데이터가 없다면 입력 검증 상태를 false로 변경
     getData(data)
-  }, [selected])
+  }, [selected, recording, recordBase64])
+
+  console.log(recording, recordBase64)
 
   const canvasData = (data: string | null) => {
     getData(data)
@@ -74,6 +83,29 @@ const Input = ({ selected, getData, type }: InputProps) => {
       </div>
     )
   }
+
+  if (type === 'record') {
+    return (
+      <div className={styles.selectFile}>
+        {selected && !recording ? (
+          <audio controls src={selected.data} autoPlay={false} />
+        ) : recording ? (
+          <Recording />
+        ) : !recording && recordBase64.trim() !== '' ? (
+          <audio controls src={recordBase64} autoPlay={false} />
+        ) : (
+          <>
+            <MatchCase />
+            <p>
+              추론 데이터 파일을 선택하거나 <br />
+              녹음 버튼을 눌러 음성을 녹음해주세요.
+            </p>
+          </>
+        )}
+      </div>
+    )
+  }
+
   if (typeof data === 'string' && selected) {
     if (!data.startsWith('data:')) {
       // 문자열로만 데이터가 들어온 경우
