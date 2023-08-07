@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { BsFillRecordFill, BsFillStopFill } from 'react-icons/bs'
 import { RecordAtom } from '@/atoms'
 import { useRecoilState } from 'recoil'
@@ -7,6 +7,14 @@ import styles from './RecordButton.module.css'
 const RecordButton = () => {
   const [isRecording, setIsRecording] = useRecoilState(RecordAtom)
   const [audioStream, setAudioStream] = useState<MediaStream | null>(null)
+
+  useEffect(() => {
+    return () => {
+      // 컴포넌트 언마운트 시 녹음 상태 초기화
+      stopRecording()
+      setIsRecording({ recording: false, base64: '' })
+    }
+  }, [])
 
   // 녹음 시작 함수
   const startRecording = async () => {
