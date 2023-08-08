@@ -31,25 +31,25 @@ const addMimeType = (id: string, value: string) => {
 
   switch (true) {
     case isPng:
-      result = 'data:image/png;base64,' + value
+      result = `data:image/png;base64,${value}`
       break
     case isJpg:
-      result = 'data:image/jpg;base64,' + value
+      result = `data:image/jpg;base64,${value}`
       break
     case isJpeg:
-      result = 'data:image/jpeg;base64,' + value
+      result = `data:image/jpeg;base64,${value}`
       break
     case isGif:
-      result = 'data:image/gif;base64,' + value
+      result = `data:image/gif;base64,${value}`
       break
     case isWav:
-      result = 'data:audio/wav;base64,' + value
+      result = `data:audio/wav;base64,${value}`
       break
     case isWavMidi:
-      result = 'data:audio/midi;base64,' + value
+      result = `data:audio/midi;base64,${value}`
       break
     case isMp4:
-      result = 'data:video/mp4;base64,' + value
+      result = `data:video/mp4;base64,${value}`
       break
     default:
       result = value

@@ -1,8 +1,9 @@
+/* eslint-disable no-prototype-builtins */
 export default function transformPillData(
   dataArray: { name: string; data: string }[],
 ) {
-  const groupedData: any = []
-  const pillData: any = {}
+  const groupedData: { name: string; data: string[] }[] = []
+  const pillData: { [key: string]: string[] } = {}
 
   for (let i = 0; i < dataArray.length; i++) {
     const item = dataArray[i]

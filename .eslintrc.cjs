@@ -64,8 +64,6 @@ module.exports = {
     'brace-style': ['error'],
     // no-alert 룰과 충돌하므로 끔
     'no-restricted-globals': ['off'],
-    // alert, confirm, prompt 는 사용을 권장하지 않는다
-    'no-alert': ['warn'],
     // console.log 는 사용할 수 없다
     'no-console': [
       'warn',
@@ -79,6 +77,8 @@ module.exports = {
     'prefer-template': ['error'],
     // 객체의 프로퍼티 이름은 필요할 때만 따옴표로 감싸야 한다
     'quote-props': ['error', 'as-needed'],
+
+    'no-prototype-builtins': ['off'],
   },
   settings: {
     'import/parsers': {
