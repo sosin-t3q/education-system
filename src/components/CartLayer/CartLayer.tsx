@@ -28,8 +28,8 @@ const CartLayer = ({ className }: CartLayerProps) => {
           //setBlocks로 blocks를 업데이트할 때 data[index]에 값이 있다면 block에 추가하고 없으면 비어있는 block을 유지한다
           setBlocks(blocks.map((block, index) => data[index] || block))
         })
-        .catch(err => {
-          console.log(err.message)
+        .catch(() => {
+          alert('장바구니 데이터를 불러오는데 실패했습니다.')
         })
     }
   }, [userId])

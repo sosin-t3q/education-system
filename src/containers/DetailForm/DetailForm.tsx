@@ -91,6 +91,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
     }
   }, [value, apiURL, setLoading, isValid.isValid, pageId])
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const getInputData = useCallback((data: any) => {
     setValue(data)
   }, [])
