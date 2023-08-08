@@ -2,7 +2,7 @@ import { atom } from 'recoil'
 
 const userIdAtom = atom({
   key: 'userIdAtom',
-  default: ""
+  default: ''
 })
 
 export default userIdAtom
