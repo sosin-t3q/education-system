@@ -36,7 +36,6 @@ const Detail = () => {
     const getDetailData = async (id: string) => {
       const newData = await getSubPageData(id, setLoading)
       if (!newData) {
-        alert('데이터 요청을 실패했습니다.')
         navigate('/home')
       }
       setData(newData)
