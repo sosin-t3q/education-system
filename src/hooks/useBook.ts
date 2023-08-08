@@ -8,6 +8,7 @@ const useBook = () => {
   const userId = useRecoilValue(userIdAtom)
   const setBook = useSetRecoilState(bookAtom)
   const setCartTable = useSetRecoilState(cartTableAtom)
+  const cartTable = useRecoilValue(cartTableAtom)
 
   // 확인하는 함수
   const checkBook = () => {
@@ -15,6 +16,8 @@ const useBook = () => {
       .get(`/api/backend/custom_layer/${userId}`)
       .then(res => {
         const data = res.data
+        //장바구니 데이터를 cartTable로 업데이트 시킨다
+        setCartTable([...data])
         //cart.id에는 상세페이지의 id가 들어있는데, 이 값이 이미 data 배열 안에 있다면 book의 값은 true, 아니면 false다
         const isBook = data.some(
           (item: { id: number; title: string }) => item.id === cart.id,
@@ -26,7 +29,7 @@ const useBook = () => {
         }
       })
       .catch(() => {
-        alert('찜 목록을 불러오는데에 실패했습니다.')
+        alert('장바구니를 불러오는 것에 실패했습니다.')
       })
   }
 
@@ -35,16 +38,16 @@ const useBook = () => {
     setBook(true)
     axiosInstance
       .get(`/api/backend/append_interest/${userId}/${cart.id}`)
-      .then(res => {
-        //cart가 추가된 배열 데이터인 res.data가 들어옴
-        const data = res.data
-        //cartTable에 data 배열 값을 전달함
+      .then(() => {
         setBook(true)
-        setCartTable(data)
-        alert('추가됐습니다!')
+        if (cartTable.length >= 28) {
+          alert('장바구니가 최대 갯수에 도달했습니다!')
+        } else {
+          alert('장바구니에 예제가 추가됐습니다!')
+        }
       })
       .catch(() => {
-        alert('찜 추가에 실패했습니다.')
+        alert('장바구니에 예제를 추가하는 것에 실패했습니다.')
         setBook(false)
       })
   }
@@ -55,10 +58,10 @@ const useBook = () => {
       .get(`/api/backend/delete_interest/${userId}/${cart.id}`)
       .then(() => {
         setBook(false)
-        alert('제거됐습니다!')
+        alert('장바구니에서 예제가 제거됐습니다!')
       })
       .catch(() => {
-        alert('찜 제거에 실패했습니다.')
+        alert('장바구니에서 예제를 제거하는 것에 실패했습니다.')
       })
   }
 
