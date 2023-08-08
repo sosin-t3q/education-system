@@ -3,7 +3,7 @@
 // import { useKeycloak } from "@react-keycloak/web";
 
 // const PrivateRoute = ({ children }:{children: ReactNode}) => {
-    
+
 //     const { keycloak } = useKeycloak();
 //     const isLoggedIn = keycloak.authenticated;
 
@@ -13,25 +13,25 @@
 // export default PrivateRoute;
 
 //Ver2.
-import { useKeycloak } from "@react-keycloak/web";
-import { useEffect, ReactNode } from 'react';
+import { useKeycloak } from '@react-keycloak/web'
+import { useEffect, ReactNode } from 'react'
 
-const PrivateRoute = ({ children }:{ children: ReactNode }) => {
-  const { keycloak } = useKeycloak();
+const PrivateRoute = ({ children }: { children: ReactNode }) => {
+  const { keycloak } = useKeycloak()
 
-  const isLoggedIn = keycloak.authenticated;
+  const isLoggedIn = keycloak.authenticated
 
   useEffect(() => {
     if (!isLoggedIn) {
-      keycloak.login();
+      keycloak.login()
     }
-  }, [isLoggedIn, keycloak]);
+  }, [isLoggedIn, keycloak])
 
   if (!isLoggedIn) {
     return <div>Loading...</div>
   }
 
-  return children;
-};
+  return children
+}
 
-export default PrivateRoute;
+export default PrivateRoute

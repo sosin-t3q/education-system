@@ -70,7 +70,7 @@ const Header = () => {
               type="button"
               onClick={() => {
                 keycloak.logout({
-                  redirectUri: window.location.origin + '/home',
+                  redirectUri: `${window.location.origin}/home`,
                 })
                 Cookies.remove('user_auth')
               }}

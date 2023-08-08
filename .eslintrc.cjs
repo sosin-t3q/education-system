@@ -79,6 +79,7 @@ module.exports = {
     'quote-props': ['error', 'as-needed'],
 
     'no-prototype-builtins': ['off'],
+    'react-hooks/exhaustive-deps': ['off'],
   },
   settings: {
     'import/parsers': {

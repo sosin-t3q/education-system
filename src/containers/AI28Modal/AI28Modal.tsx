@@ -2,7 +2,7 @@ import { useSetRecoilState } from 'recoil'
 import { Table } from '@/components'
 import { modalAtom } from '@/atoms'
 import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
-import { preventBubbling } from "@/utils";
+import { preventBubbling } from '@/utils'
 import styles from './AI28Modal.module.css'
 
 const AI28Modal = () => {
@@ -10,10 +10,10 @@ const AI28Modal = () => {
 
   return (
     <div
-    className={styles.shadow}
-    onClick={() => {
-      setModal(false)
-    }}
+      className={styles.shadow}
+      onClick={() => {
+        setModal(false)
+      }}
     >
       <div
         className={styles.modal}

@@ -3,12 +3,11 @@ import styles from './ApiURL.module.css'
 
 interface ApiURLProps {
   api: string | null
-  apiURL: string;
-  setApiURL: any;
+  apiURL: string
+  setApiURL: React.Dispatch<React.SetStateAction<string>>
 }
 
 const ApiURL = ({ api, apiURL, setApiURL }: ApiURLProps) => {
-
   useEffect(() => {
     if (api) {
       setApiURL(api)

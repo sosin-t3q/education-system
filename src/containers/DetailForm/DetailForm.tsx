@@ -68,6 +68,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
               : addMimeType(pageId, target.data as string),
           }
           setSelectedFile(mapping as SelectedFileType)
+
           return
         }
         const mapping = { ...target, data: addMimeType(pageId, target.data) }

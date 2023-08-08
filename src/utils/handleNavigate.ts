@@ -22,8 +22,8 @@ const handleNavigate = async (
       await keycloak.login({
         redirectUri: `${window.location.origin}/detail/${id}`,
       })
-    } catch (error) {
-      console.log('로그인 실패!')
+    } catch (err) {
+      alert('로그인에 실패했습니다.')
     }
     setLoading(false)
   } else {
