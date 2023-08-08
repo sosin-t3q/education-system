@@ -7,7 +7,7 @@ const Layers = () => {
   // modal state가 true면 모달창이 화면에 보인다
   const setModal = useSetRecoilState(modalAtom)
   const setCartModal = useSetRecoilState(cartModalAtom)
-  const setVisionModal = useSetRecoilState(visionModalAtom);
+  const setVisionModal = useSetRecoilState(visionModalAtom)
 
   return (
     <div className={styles.layers}>
@@ -15,8 +15,8 @@ const Layers = () => {
       <div
         className={styles['container-general']}
         onClick={() => setModal(true)}
-        >
-        <AI28Layer  className={styles.general} />
+      >
+        <AI28Layer className={styles.general} />
       </div>
       <div
         className={styles['container-vision']}

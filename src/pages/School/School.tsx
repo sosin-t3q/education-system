@@ -10,6 +10,13 @@ interface handleNavigateProps {
   id: number
 }
 
+interface SchoolType {
+  id: number
+  badge: string
+  title: string
+  content: string
+}
+
 const School = () => {
   const navigate = useNavigate()
 
@@ -35,7 +42,7 @@ const School = () => {
 
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>전국민 AI 훈민정음</title>
         <meta name="description" content="T3Q.ai" />
         <meta name="author" content="t3q" />
@@ -58,7 +65,7 @@ const School = () => {
         <Title type={2} label={pageTitle} className={styles.subtitle}></Title>
         {/* 학교 렌더링 */}
         <div className={styles['card-container']}>
-          {selectedSchoolCards.map((school: any) => (
+          {selectedSchoolCards.map((school: SchoolType) => (
             <Card
               key={school.id}
               badge={school.badge}

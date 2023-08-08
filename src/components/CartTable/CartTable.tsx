@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import axiosInstance from '@/services/axiosInstance'
 import styles from './CartTable.module.css'
 import { cartTableAtom, cartModalAtom, userIdAtom } from '@/atoms'
 import { ReactComponent as Warning } from '@/assets/warning.svg'
@@ -9,20 +9,23 @@ import { ReactComponent as Warning } from '@/assets/warning.svg'
 const CartTable = () => {
   const [cartTable, setCartTable] = useRecoilState(cartTableAtom)
   const setCartModal = useSetRecoilState(cartModalAtom)
-  const userId = useRecoilValue(userIdAtom);
+  const userId = useRecoilValue(userIdAtom)
 
   const navigate = useNavigate()
 
   useEffect(() => {
-    if(userId) {
+    if (userId) {
       // 서버로부터 데이터를 받아 cartTable에 넣어줌
-      axios.get(`http://aihunmin-edu.t3q.ai:8181/api/backend/custom_layer/${userId}`)
+      axiosInstance
+        .get(
+          `http://aihunmin-edu.t3q.ai:8181/api/backend/custom_layer/${userId}`,
+        )
         .then(res => {
-          const data = res.data;
-          setCartTable(data);
+          const data = res.data
+          setCartTable(data)
         })
-        .catch(err => {
-          console.log(err.message)
+        .catch(() => {
+          alert('데이터를 불러오는데 실패했습니다.')
         })
     }
   }, [userId])
@@ -58,17 +61,17 @@ const CartTable = () => {
         </div>
       </>
     )
-  } else {
-    return (
-      <>
-        <h2 className={styles.title}>개인 AI</h2>
-        <div className={styles.warning}>
-          <Warning></Warning>
-          <span>데이터를 추가해주세요!</span>
-        </div>
-      </>
-    )
   }
+
+  return (
+    <>
+      <h2 className={styles.title}>개인 AI</h2>
+      <div className={styles.warning}>
+        <Warning></Warning>
+        <span>데이터를 추가해주세요!</span>
+      </div>
+    </>
+  )
 }
 
 export default CartTable

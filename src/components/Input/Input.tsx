@@ -40,8 +40,6 @@ const Input = ({ selected, getData, type }: InputProps) => {
     getData(data)
   }, [selected, recording, recordBase64])
 
-  console.log(recording, recordBase64)
-
   const canvasData = (data: string | null) => {
     getData(data)
   }
@@ -125,8 +123,6 @@ const Input = ({ selected, getData, type }: InputProps) => {
       }
     }
     if (data.includes('video/')) {
-      if (data.includes('video/x-msvideo')) {
-      }
       // 비디오 데이터가 들어온 경우
       inner = <video controls src={selected.data} />
     }

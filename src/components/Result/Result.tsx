@@ -21,6 +21,7 @@ const Result = ({ infer }: ResultProps) => {
   // 결과값 - 텍스트 / 키워드 / 이미지 / 오디오 / 비디오
 
   const isText = value.trim() !== '' && value !== null
+  const replacedValue = value.replace(/<br>/g, '\n')
 
   if (infer) {
     switch (true) {
@@ -31,7 +32,6 @@ const Result = ({ infer }: ResultProps) => {
           </div>
         )
       case isText && !value.startsWith('data:'): // 문자열
-        const replacedValue = value.replace(/<br>/g, '\n')
         return (
           <div className={styles['result-cont']}>
             <p>{replacedValue}</p>
@@ -48,6 +48,7 @@ const Result = ({ infer }: ResultProps) => {
         if (value?.includes('and')) {
           // case16 : 얼굴 키포인트가 있는 데이터 군집화
           const [img, keyword] = value.split(' and ')
+
           return (
             <div className={styles['result-cont']}>
               <img src={img} alt="결과" />
@@ -55,6 +56,7 @@ const Result = ({ infer }: ResultProps) => {
             </div>
           )
         }
+
         return (
           <div className={styles['result-cont']}>
             <img src={value} alt="결과" />
@@ -68,13 +70,14 @@ const Result = ({ infer }: ResultProps) => {
               <MidiPlayer src={value} />
             </div>
           )
-        } else {
-          return (
-            <div className={styles['result-cont']}>
-              <audio controls src={value} autoPlay={false} />
-            </div>
-          )
         }
+
+        return (
+          <div className={styles['result-cont']}>
+            <audio controls src={value} autoPlay={false} />
+          </div>
+        )
+
       case isText && value?.includes('data:video/'): // 비디오
         return (
           <div className={styles['result-cont']}>

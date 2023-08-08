@@ -19,3 +19,7 @@
   margin-bottom: var(--margin-120);
   line-height: 24px;
 }
+
+.span {
+  font-weight: 700;
+}

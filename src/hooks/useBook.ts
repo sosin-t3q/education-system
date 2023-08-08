@@ -1,67 +1,71 @@
 // import axios from 'axios';
-import { cartAtom, cartTableAtom, bookAtom, userIdAtom } from '@/atoms';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import axiosInstance from '@/services/axiosInstance';
+import { cartAtom, cartTableAtom, bookAtom, userIdAtom } from '@/atoms'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
+import axiosInstance from '@/services/axiosInstance'
 
 const useBook = () => {
-    const cart = useRecoilValue(cartAtom);
-    const userId = useRecoilValue(userIdAtom);
-    const setBook = useSetRecoilState(bookAtom);
-    const setCartTable = useSetRecoilState(cartTableAtom);
-    const cartTable = useRecoilValue(cartTableAtom);
+  const cart = useRecoilValue(cartAtom)
+  const userId = useRecoilValue(userIdAtom)
+  const setBook = useSetRecoilState(bookAtom)
+  const setCartTable = useSetRecoilState(cartTableAtom)
+  const cartTable = useRecoilValue(cartTableAtom)
 
-    // 확인하는 함수
-    const checkBook = () => {
-                axiosInstance.get(`/api/backend/custom_layer/${userId}`)
-                .then(res => { 
-                    const data = res.data;
-                    //장바구니 데이터를 cartTable로 업데이트 시킨다
-                    setCartTable([...data]);
-                    //cart.id에는 상세페이지의 id가 들어있는데, 이 값이 이미 data 배열 안에 있다면 book의 값은 true, 아니면 false다
-                    const isBook = data.some((item:{ id: number, title: string }) => item.id === cart.id);
-                    if(isBook) {
-                        setBook(true);
-                    } else {
-                        setBook(false);
-                    }
-                })
-                .catch(err => {
-                    console.log(err.message);
-                })
-    }
+  // 확인하는 함수
+  const checkBook = () => {
+    axiosInstance
+      .get(`/api/backend/custom_layer/${userId}`)
+      .then(res => {
+        const data = res.data
+        //장바구니 데이터를 cartTable로 업데이트 시킨다
+        setCartTable([...data])
+        //cart.id에는 상세페이지의 id가 들어있는데, 이 값이 이미 data 배열 안에 있다면 book의 값은 true, 아니면 false다
+        const isBook = data.some(
+          (item: { id: number; title: string }) => item.id === cart.id,
+        )
+        if (isBook) {
+          setBook(true)
+        } else {
+          setBook(false)
+        }
+      })
+      .catch(() => {
+        alert('장바구니를 불러오는 것에 실패했습니다.')
+      })
+  }
 
-    // 추가하는 함수
-    const addBook = () => {
-            setBook(true);
-            axiosInstance.get(`/api/backend/append_interest/${userId}/${cart.id}`)
-                .then(() => {
-                    setBook(true);
-                    console.log(cartTable.length);
-                    if(cartTable.length >= 28) {
-                        alert("장바구니가 최대 갯수에 도달했습니다!")
-                    } else {
-                        alert("장바구니에 예제가 추가됐습니다!");
-                    }
-                })
-                .catch(err => {
-                    console.log(err.message);
-                    setBook(false);
-                })
-    }
+  // 추가하는 함수
+  const addBook = () => {
+    setBook(true)
+    axiosInstance
+      .get(`/api/backend/append_interest/${userId}/${cart.id}`)
+      .then(() => {
+        setBook(true)
+        if (cartTable.length >= 28) {
+          alert('장바구니가 최대 갯수에 도달했습니다!')
+        } else {
+          alert('장바구니에 예제가 추가됐습니다!')
+        }
+      })
+      .catch(() => {
+        alert('장바구니에 예제를 추가하는 것에 실패했습니다.')
+        setBook(false)
+      })
+  }
 
-    //삭제하는 함수
-    const deleteBook = () => {
-        axiosInstance.get(`/api/backend/delete_interest/${userId}/${cart.id}`)
-        .then(() => {
-            setBook(false);
-            alert("장바구니에서 예제가 제거됐습니다!")
-        })
-        .catch(err => {
-            console.log(err.message);
-        })
-    }
+  //삭제하는 함수
+  const deleteBook = () => {
+    axiosInstance
+      .get(`/api/backend/delete_interest/${userId}/${cart.id}`)
+      .then(() => {
+        setBook(false)
+        alert('장바구니에서 예제가 제거됐습니다!')
+      })
+      .catch(() => {
+        alert('장바구니에서 예제를 제거하는 것에 실패했습니다.')
+      })
+  }
 
-    return {checkBook, addBook, deleteBook};
+  return { checkBook, addBook, deleteBook }
 }
 
-export default useBook;
+export default useBook

@@ -13,22 +13,24 @@ const handleNavigate = async (
   setModal: SetterOrUpdater<boolean>,
   navigate: NavigateFunction,
 ) => {
-  const isLoggedIn = keycloak.authenticated;
+  const isLoggedIn = keycloak.authenticated
 
-  setLoading(true);
-    if (!isLoggedIn) {
-      setModal(false);
-      try {
-        await keycloak.login({ redirectUri: window.location.origin + `/detail/${id}` });
-      } catch (error) {
-        console.log("로그인 실패!");
-      }
-      setLoading(false);
-    } else {
-      setModal(false);
-      navigate(`/detail/${id}`)
-      setLoading(false);
+  setLoading(true)
+  if (!isLoggedIn) {
+    setModal(false)
+    try {
+      await keycloak.login({
+        redirectUri: `${window.location.origin}/detail/${id}`,
+      })
+    } catch (err) {
+      alert('로그인에 실패했습니다.')
     }
+    setLoading(false)
+  } else {
+    setModal(false)
+    navigate(`/detail/${id}`)
+    setLoading(false)
+  }
   // setLoading(true)
   // setModal(false)
   // navigate(`/detail/${id}`)

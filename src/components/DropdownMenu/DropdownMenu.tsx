@@ -34,8 +34,12 @@ const DropdownMenu = ({
     const index = options.indexOf(li.innerText)
     setSelected(li.innerText)
     setToggle(false)
-    onSelect && onSelect(li.innerText)
-    targetIndex && targetIndex(index)
+    if (onSelect) {
+      onSelect(li.innerText)
+    }
+    if (targetIndex) {
+      targetIndex(index)
+    }
   }
 
   return (

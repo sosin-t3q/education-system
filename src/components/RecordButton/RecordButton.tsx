@@ -8,15 +8,6 @@ const RecordButton = () => {
   const [isRecording, setIsRecording] = useRecoilState(RecordAtom)
   const [audioStream, setAudioStream] = useState<MediaStream | null>(null)
 
-  useEffect(() => {
-    return () => {
-      // 컴포넌트 언마운트 시 녹음 상태 초기화
-      stopRecording()
-      setIsRecording({ recording: false, base64: '' })
-    }
-  }, [])
-
-  // 녹음 시작 함수
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
@@ -60,7 +51,7 @@ const RecordButton = () => {
         try {
           // 녹음된 Blob 데이터를 Base64 문자열로 변환
           const base64String = await blobToBase64(recordedBlob)
-          const result = 'data:audio/wav;base64,' + base64String
+          const result = `data:audio/wav;base64,${base64String}`
 
           setIsRecording(prev => ({ ...prev, base64: result }))
         } catch (error) {
@@ -81,6 +72,15 @@ const RecordButton = () => {
     setAudioStream(null)
     setIsRecording(prev => ({ ...prev, recording: false }))
   }
+  useEffect(() => {
+    return () => {
+      // 컴포넌트 언마운트 시 녹음 상태 초기화
+      stopRecording()
+      setIsRecording({ recording: false, base64: '' })
+    }
+  }, [])
+
+  // 녹음 시작 함수
 
   const handleClick = () => {
     if (isRecording.recording) stopRecording()

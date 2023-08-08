@@ -54,6 +54,7 @@ const Log = ({ data, getData }: LogProps) => {
             isValid: false,
           })
           getData(null)
+
           return
         }
 

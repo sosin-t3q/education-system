@@ -68,6 +68,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
               : addMimeType(pageId, target.data as string),
           }
           setSelectedFile(mapping as SelectedFileType)
+
           return
         }
         const mapping = { ...target, data: addMimeType(pageId, target.data) }
@@ -90,6 +91,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
     }
   }, [value, apiURL, setLoading, isValid.isValid, pageId])
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const getInputData = useCallback((data: any) => {
     setValue(data)
   }, [])
