@@ -1,7 +1,7 @@
-import axiosInstance from '@/services/axiosInstance';
+import axiosInstance from '@/services/axiosInstance'
 
 const convertVideo = async (videoArray: { name: string; data: string }[]) => {
-  const url ='/api/converter/video'
+  const url = '/api/converter/video'
 
   try {
     const convertedVideos = await Promise.all(
@@ -18,6 +18,7 @@ const convertVideo = async (videoArray: { name: string; data: string }[]) => {
         })
 
         const resData = res.data
+
         return {
           name: video.name,
           data: resData.data,
@@ -27,7 +28,8 @@ const convertVideo = async (videoArray: { name: string; data: string }[]) => {
 
     return convertedVideos
   } catch (e) {
-    alert('비디오 변환 실패')
+    alert('비디오 변환을 실패했습니다.')
+
     return []
   }
 }
