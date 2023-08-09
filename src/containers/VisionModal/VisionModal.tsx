@@ -1,19 +1,15 @@
-import { useState, MouseEvent } from 'react'
+import { useState } from 'react'
 import { useSetRecoilState } from 'recoil'
 import { visionModalAtom } from '@/atoms'
 import styles from './VisionModal.module.css'
 import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
 import { VisionAccordion } from '@/components'
 import sections from '@/data/layers/VISION_LAYER.json'
+import { preventBubbling } from '@/utils'
 
 const VisionModal = () => {
   const setVisionModal = useSetRecoilState(visionModalAtom)
   const [activeIndex, setActiveIndex] = useState<number | null>(-1)
-
-  // 이벤트 버블링을 막아주는 함수
-  const preventBubbling = (e: MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation()
-  }
 
   return (
     <div

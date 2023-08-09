@@ -10,22 +10,20 @@ function App() {
 
   /* user_auth 쿠키를 확인하는 함수 */
   const { keycloak } = useKeycloak()
-  const setIsLoggedIn = useSetRecoilState(isLoggedInAtom);
-  const setUserId = useSetRecoilState(userIdAtom);
+  const setIsLoggedIn = useSetRecoilState(isLoggedInAtom)
+  const setUserId = useSetRecoilState(userIdAtom)
 
   useEffect(() => {
-    const userAuth = Cookies.get('user_auth');
+    const userAuth = Cookies.get('user_auth')
     
     if (userAuth) {
-      const userAuthObject = JSON.parse(userAuth);
-      const userId = userAuthObject.user_id;
-      setIsLoggedIn(true);
-      setUserId(userId);
-      console.log('user_auth 쿠키가 존재합니다.');
+      const userAuthObject = JSON.parse(userAuth)
+      const userId = userAuthObject.user_id
+      setIsLoggedIn(true)
+      setUserId(userId)
     } else {
-      setIsLoggedIn(false);
-      setUserId("");
-      console.log('user_auth 쿠키가 존재하지 않습니다.');
+      setIsLoggedIn(false)
+      setUserId('')
     }
   }, [keycloak.authenticated])
 

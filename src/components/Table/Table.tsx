@@ -8,13 +8,11 @@ import { modalAtom, loadingAtom } from '@/atoms'
 import { handleNavigate } from '@/utils'
 
 const Table = () => {
-  // const table = useRecoilValue(tableAtom)
   const setModal = useSetRecoilState(modalAtom)
   const setLoading = useSetRecoilState(loadingAtom)
   const navigate = useNavigate()
   const { keycloak } = useKeycloak()
 
-  //진우 - 원래라면 useEffect를 사용하는 게 맞는 거 같다
   const { title, columns, rows, body } = data
 
   return (

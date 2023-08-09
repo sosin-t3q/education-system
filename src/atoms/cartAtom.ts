@@ -7,7 +7,7 @@ interface atomInterface {
 
 const cartAtom = atom<atomInterface>({
   key: 'cartAtom',
-  default: { id: 0, title: "" }
+  default: { id: 0, title: '' }
 })
 
 export default cartAtom
