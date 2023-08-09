@@ -1,4 +1,4 @@
-import { useState, MouseEvent } from 'react'
+import { useState } from 'react'
 import { useSetRecoilState } from 'recoil'
 import { visionModalAtom } from '@/atoms'
 import styles from './VisionModal.module.css'

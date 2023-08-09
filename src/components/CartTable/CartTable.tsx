@@ -18,7 +18,7 @@ const CartTable = () => {
       // 서버로부터 데이터를 받아 cartTable에 넣어줌
       axiosInstance
         .get(
-          `http://aihunmin-edu.t3q.ai:8181/api/backend/custom_layer/${userId}`,
+          `/api/backend/custom_layer/${userId}`,
         )
         .then(res => {
           const data = res.data
