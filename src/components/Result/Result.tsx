@@ -45,7 +45,7 @@ const Result = ({ infer }: ResultProps) => {
             </div>
           )
         }
-        if (value?.includes('and')) {
+        if (value?.includes(' and ')) {
           // case16 : 얼굴 키포인트가 있는 데이터 군집화
           const [img, keyword] = value.split(' and ')
 
