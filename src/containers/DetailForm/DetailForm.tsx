@@ -20,6 +20,7 @@ export type InferObj = {
 }
 
 type SelectedFileType = Record<string, string> | null | undefined
+export type InputType = string | string[] | null | undefined
 
 interface DetailFormProps {
   data: DataType | null
@@ -91,9 +92,8 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
     }
   }, [value, apiURL, setLoading, isValid.isValid, pageId])
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const getInputData = useCallback((data: any) => {
-    setValue(data)
+  const getInputData = useCallback((data: InputType) => {
+    setValue(data as InputType)
   }, [])
 
   const isAudio = fileList && pageId === '9'
