@@ -6,12 +6,14 @@ import { preventBubbling } from '@/utils'
 import styles from './AI28Modal.module.css'
 
 const AI28Modal = () => {
+  //modal의 값에 따라 AI28Modal의 렌더링이 결정된다
   const setModal = useSetRecoilState(modalAtom)
 
   return (
     <div
       className={styles.shadow}
       onClick={() => {
+        //클릭할 경우 modal이 false로 업데이트 된다
         setModal(false)
       }}
     >
@@ -23,6 +25,7 @@ const AI28Modal = () => {
       >
         <Table></Table>
         <CloseButton
+          //클릭할 경우 modal이 false로 업데이트 된다
           onClick={() => setModal(false)}
           className={styles.button}
         ></CloseButton>

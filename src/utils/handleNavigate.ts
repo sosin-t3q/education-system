@@ -31,10 +31,6 @@ const handleNavigate = async (
     navigate(`/detail/${id}`)
     setLoading(false)
   }
-  // setLoading(true)
-  // setModal(false)
-  // navigate(`/detail/${id}`)
-  // setLoading(false)
 }
 
 export default handleNavigate
