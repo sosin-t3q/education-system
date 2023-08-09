@@ -23,10 +23,12 @@ const fetchData = async (
     const res = response.data
     let newData: DataType | null = null
 
-    const caseData = res['case_data']['data_list'].map((item: any) => ({
-      ...item,
-      data: logKey(id, item.data),
-    }))
+    const caseData = res['case_data']['data_list'].map(
+      (item: DataListType) => ({
+        ...item,
+        data: logKey(id, item.data),
+      }),
+    )
 
     const data = await convertVideo(res['case_data']['data_list'])
 
