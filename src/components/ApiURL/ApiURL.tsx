@@ -15,7 +15,7 @@ const ApiURL = ({ api, apiURL, setApiURL }: ApiURLProps) => {
   useEffect(() => {
     if (api) {
       setApiURL(api)
-    } else if (!loading) {
+    } else if (loading) {
       setApiURL('api url 로딩중입니다.')
     } else {
       setApiURL('api url 로드에 실패했습니다.')
