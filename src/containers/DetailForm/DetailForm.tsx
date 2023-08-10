@@ -12,8 +12,10 @@ import { useCallback, useEffect, useState } from 'react'
 import { detailDataAtom, inputValidationAtom, loadingAtom } from '@/atoms/index'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
-import { default as combinedFunction } from '@/axios/combinedAxios'
+// import { default as combinedFunction } from '@/axios/combinedAxios'
 import addMimeType from '@/utils/addMimeType'
+
+import { default as combinedProcessor } from '@/axios/combinedProcessor'
 
 export type InferObj = {
   label: string
@@ -79,7 +81,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
 
   const onClick = useCallback(async () => {
     if (value) {
-      const inferResult = await combinedFunction(
+      const inferResult = await combinedProcessor(
         pageId,
         value,
         apiURL,
