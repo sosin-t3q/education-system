@@ -35,7 +35,7 @@ const fetchData = async (
           newData = { ...res['case_data'], data_list: caseData }
         }
         break
-      case id === '13':
+      case id === '13' || id === '1207':
         {
           const data = await convertVideo(res['case_data']['data_list'])
           newData = { ...res['case_data'], data_list: data }
