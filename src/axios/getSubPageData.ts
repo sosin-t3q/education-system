@@ -53,8 +53,6 @@ const fetchData = async (
 
     return newData
   } catch (e) {
-    alert('상세페이지 데이터를 불러오는데 실패했습니다.')
-
     return null
   } finally {
     setLoading(false)

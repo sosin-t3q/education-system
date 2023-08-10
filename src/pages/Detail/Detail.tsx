@@ -5,7 +5,7 @@ import {
   AI28Modal,
   VisionModal,
 } from '@/containers'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import styles from './Detail.module.css'
 import { useEffect, useState } from 'react'
 import { Book, LayersView, Spinner } from '@/components'
@@ -30,14 +30,11 @@ const Detail = () => {
   const setLoading = useSetRecoilState(loadingAtom)
   const modal = useRecoilValue(modalAtom)
   const visionModal = useRecoilValue(visionModalAtom)
-  const navigate = useNavigate()
 
   useEffect(() => {
     const getDetailData = async (id: string) => {
       const newData = await getSubPageData(id, setLoading)
-      if (!newData) {
-        navigate('/home')
-      }
+
       setData(newData)
     }
     if (id) {
