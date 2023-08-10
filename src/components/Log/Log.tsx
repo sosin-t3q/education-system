@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './Log.module.css'
 import { inputValidationAtom } from '@/atoms/index'
 import { useSetRecoilState } from 'recoil'
@@ -96,7 +96,6 @@ const Log = ({ data, getData }: LogProps) => {
               type="text"
               value={inputValues[key] || ''}
               readOnly
-              // onChange={handleChange}
             />
           </div>
         ))}
