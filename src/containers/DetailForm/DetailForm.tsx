@@ -10,7 +10,7 @@ import {
 import styles from './DetailForm.module.css'
 import { useCallback, useEffect, useState } from 'react'
 import { detailDataAtom, inputValidationAtom, loadingAtom } from '@/atoms/index'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
 import { default as combinedFunction } from '@/axios/combinedAxios'
 import addMimeType from '@/utils/addMimeType'
@@ -28,7 +28,7 @@ interface DetailFormProps {
 }
 
 const DetailForm = ({ data, pageId }: DetailFormProps) => {
-  const setLoading = useSetRecoilState(loadingAtom)
+  const [loading, setLoading] = useRecoilState(loadingAtom)
   const [selected, setSelected] = useState('default')
   const [selectedFile, setSelectedFile] = useState<SelectedFileType>(null)
   const [value, setValue] = useRecoilState(detailDataAtom)
@@ -117,8 +117,10 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
             getData={getInputData}
             type={data['data_type']}
           />
+        ) : loading ? (
+          <div className={styles.loading}>데이터 로딩 중...</div>
         ) : (
-          <div className={styles.loading}>로딩 중...</div>
+          <div className={styles.loading}>데이터 로드에 실패했습니다.</div>
         )}
 
         <Result infer={infer} />

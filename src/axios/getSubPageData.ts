@@ -23,27 +23,29 @@ const fetchData = async (
     const res = response.data
     let newData: DataType | null = null
 
-    const caseData = res['case_data']['data_list'].map(
-      (item: DataListType) => ({
-        ...item,
-        data: logKey(id, item.data),
-      }),
-    )
-
-    const data = await convertVideo(res['case_data']['data_list'])
-
-    const transformData = transformPillData(res['case_data']['data_list'])
-
     switch (true) {
       case res['case_data']['data_type'] === 'log':
-        newData = { ...res['case_data'], data_list: caseData }
+        {
+          const caseData = res['case_data']['data_list'].map(
+            (item: DataListType) => ({
+              ...item,
+              data: logKey(id, item.data),
+            }),
+          )
+          newData = { ...res['case_data'], data_list: caseData }
+        }
         break
-      case id === '13':
-        newData = { ...res['case_data'], data_list: data }
+      case id === '13' || id === '1207':
+        {
+          const data = await convertVideo(res['case_data']['data_list'])
+          newData = { ...res['case_data'], data_list: data }
+        }
         break
       case id === '1202':
-        newData = { ...res['case_data'], data_list: transformData }
-
+        {
+          const transformData = transformPillData(res['case_data']['data_list'])
+          newData = { ...res['case_data'], data_list: transformData }
+        }
         break
       default:
         newData = res['case_data']
@@ -51,8 +53,6 @@ const fetchData = async (
 
     return newData
   } catch (e) {
-    alert('상세페이지 데이터를 불러오는데 실패했습니다.')
-
     return null
   } finally {
     setLoading(false)
