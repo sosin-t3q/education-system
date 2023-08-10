@@ -6,8 +6,9 @@
   z-index: 99;
   width: 100%;
   box-shadow: var(--shadow-navbar);
-  background-color: var(--bg-primary);
+  background-color: #ffffff;
 }
+
 .header-inner {
   display: flex;
   width: 1200px;
