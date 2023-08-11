@@ -5,6 +5,7 @@ const textRegression = async (
   value: any, // 사용자가 입력한 값 (string or base64)
   formUrl: any, // 사용자가 입력한 api Url
   setLoading: any, // 로딩
+  setAlert: any,
   // setResult: any,    // 결과 컴포넌트
 ) => {
   const axiosUrl = '/api/inference/text_req_ajx' // 고정값
@@ -39,7 +40,7 @@ const textRegression = async (
       resultData = response_data
     }
   } catch (err) {
-    alert('API 호출에 실패했습니다.')
+    setAlert(true)
     return
   } finally {
     setLoading(false)
