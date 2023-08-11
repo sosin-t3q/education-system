@@ -3,8 +3,8 @@ import Cookies from 'js-cookie'
 import { Routes, Route } from 'react-router-dom'
 import { useKeycloak } from '@react-keycloak/web'
 import { Intro, Home, Detail, School } from '@/pages'
-import { isLoggedInAtom, userIdAtom } from './atoms'
-import { useSetRecoilState } from 'recoil'
+import { isLoggedInAtom, userIdAtom, isModalOpenAtom } from './atoms'
+import { useSetRecoilState, useRecoilValue } from 'recoil'
 
 function App() {
 
@@ -12,6 +12,7 @@ function App() {
   const { keycloak } = useKeycloak()
   const setIsLoggedIn = useSetRecoilState(isLoggedInAtom)
   const setUserId = useSetRecoilState(userIdAtom)
+  const isModalOpen = useRecoilValue(isModalOpenAtom);
 
   useEffect(() => {
     const userAuth = Cookies.get('user_auth')
@@ -26,6 +27,14 @@ function App() {
       setUserId('')
     }
   }, [keycloak.authenticated])
+
+  useEffect(() => {
+    if(isModalOpen) {
+      document.body.classList.add('no-scroll')
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }, [isModalOpen])
 
   return (
     <div className="app">

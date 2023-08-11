@@ -18,6 +18,7 @@
   background: var(--bg-white);
   border-radius: var(--border-radius-10);
   padding: 0 var(--padding-20);
+  margin-bottom: 10px;
 }
 
 .dropDown-selected-title {
@@ -58,7 +59,17 @@
   word-break: break-all;
   max-width: 230px;
   overflow: hidden;
+  margin: var(--margin-10) 0;
+  padding: 0 var(--padding-20);
 }
+
+/* .dropDownOptionText:first-child {
+  margin-top: var(--margin-15);
+}
+
+.dropDownOptionText:last-child {
+  margin-bottom: var(--margin-15);
+} */
 
 .dropDown-option:first-child {
   margin-top: var(--margin-15);
@@ -69,8 +80,8 @@
 }
 
 .dropDown-option {
-  margin: var(--margin-10) 0;
-  padding: 0 var(--padding-20);
+  /* margin: var(--margin-10) 0; */
+  /* padding: 0 var(--padding-20); */
   color: var(--font-gray-light);
 }
 

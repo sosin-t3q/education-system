@@ -72,6 +72,7 @@ const combinedFunction = (
   value: any,
   apiURL: any,
   setLoading: any,
+  setAlert: any,
 ) => {
   switch (true) {
     case id >= 1 && id <= 28:
@@ -108,7 +109,7 @@ const combinedFunction = (
         binaryAnomaly,
         binaryClustering,
       ]
-      return hunminFuncArray[hunminIndex](value, apiURL, setLoading)
+      return hunminFuncArray[hunminIndex](value, apiURL, setLoading, setAlert)
 
     case id > 100 && id < 200:
       // 비전 예제일 때 (id 101~199)

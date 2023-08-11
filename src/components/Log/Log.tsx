@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './Log.module.css'
 import { inputValidationAtom } from '@/atoms/index'
 import { useSetRecoilState } from 'recoil'
@@ -15,14 +15,6 @@ interface LogProps {
 const Log = ({ data, getData }: LogProps) => {
   const [inputValues, setInputValues] = useState<{ [key: string]: string }>({}) // 입력된 값 저장
   const setIsValid = useSetRecoilState(inputValidationAtom) // 입력된 값 검증 상태 저장
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = e.target // 이벤트 객체에서 id, value 추출
-    setInputValues(prevInputValues => ({
-      ...prevInputValues,
-      [id]: value, // id를 키로 value를 값으로 하는 객체를 상태에 저장
-    }))
-  }
 
   useEffect(() => {
     const defaultInputValues = data?.data as unknown as {
@@ -103,7 +95,7 @@ const Log = ({ data, getData }: LogProps) => {
               id={key}
               type="text"
               value={inputValues[key] || ''}
-              onChange={handleChange}
+              readOnly
             />
           </div>
         ))}
