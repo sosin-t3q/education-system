@@ -15,6 +15,7 @@ export interface DataType {
 const fetchData = async (
   id: string,
   setLoading: SetterOrUpdater<boolean>,
+  setAlert: SetterOrUpdater<{ visible: boolean; option: string }>, // 알림창 컴포넌트 상태관리
 ): Promise<DataType | null> => {
   setLoading(true)
 
@@ -37,7 +38,10 @@ const fetchData = async (
         break
       case id === '13' || id === '1207':
         {
-          const data = await convertVideo(res['case_data']['data_list'])
+          const data = await convertVideo(
+            res['case_data']['data_list'],
+            setAlert,
+          )
           newData = { ...res['case_data'], data_list: data }
         }
         break

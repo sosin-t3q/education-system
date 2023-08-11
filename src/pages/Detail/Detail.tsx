@@ -31,10 +31,11 @@ const Detail = () => {
   const modal = useRecoilValue(modalAtom)
   const visionModal = useRecoilValue(visionModalAtom)
   const alertModal = useRecoilValue(alertAtom)
+  const setAlert = useSetRecoilState(alertAtom)
 
   useEffect(() => {
     const getDetailData = async (id: string) => {
-      const newData = await getSubPageData(id, setLoading)
+      const newData = await getSubPageData(id, setLoading, setAlert)
 
       setData(newData)
     }
