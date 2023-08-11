@@ -11,7 +11,7 @@ import {
 
 const combinedProcessor = (
   id: string | undefined,
-  value: string,
+  value: string | string[],
   apiURL: string,
   setLoading: SetterOrUpdater<boolean>,
   setAlert: SetterOrUpdater<boolean>,
