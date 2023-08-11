@@ -23,6 +23,8 @@ const AlertModal = ({ option }: AlertProps) => {
         return <p>비디오 변환을 실패했습니다.</p>
       case 'recordError':
         return <p>음성 데이터를 변환할 수 없습니다.</p>
+      case 'recordStartError':
+        return <p>음성 녹음을 시작할 수 없습니다.</p>
       default:
         return <p>오류가 발생했습니다.</p>
     }
