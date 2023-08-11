@@ -1,5 +1,6 @@
 .canvasWrap {
   position: relative;
+  touch-action: none;
 }
 
 .btnWrap {

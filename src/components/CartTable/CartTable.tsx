@@ -3,12 +3,13 @@ import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil'
 import { useNavigate } from 'react-router-dom'
 import axiosInstance from '@/services/axiosInstance'
 import styles from './CartTable.module.css'
-import { cartTableAtom, cartModalAtom, userIdAtom } from '@/atoms'
+import { cartTableAtom, cartModalAtom, userIdAtom, isModalOpenAtom } from '@/atoms'
 import { ReactComponent as Warning } from '@/assets/warning.svg'
 
 const CartTable = () => {
   const [cartTable, setCartTable] = useRecoilState(cartTableAtom)
   const setCartModal = useSetRecoilState(cartModalAtom)
+  const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
   const userId = useRecoilValue(userIdAtom)
 
   const navigate = useNavigate()
@@ -50,7 +51,10 @@ const CartTable = () => {
                   <div
                     key={data.id}
                     className={styles['body-data']}
-                    onClick={() => handleNavigate(data.id)}
+                    onClick={() => {
+                      setIsModalOpen(false);
+                      handleNavigate(data.id)
+                    }}
                   >
                     <span>{data.title}</span>
                   </div>

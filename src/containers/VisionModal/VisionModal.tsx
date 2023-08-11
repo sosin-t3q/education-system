@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSetRecoilState } from 'recoil'
-import { visionModalAtom } from '@/atoms'
+import { visionModalAtom, isModalOpenAtom } from '@/atoms'
 import styles from './VisionModal.module.css'
 import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
 import { VisionAccordion } from '@/components'
@@ -9,6 +9,7 @@ import { preventBubbling } from '@/utils'
 
 const VisionModal = () => {
   const setVisionModal = useSetRecoilState(visionModalAtom)
+  const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
   const [activeIndex, setActiveIndex] = useState<number | null>(-1)
 
   return (
@@ -16,6 +17,7 @@ const VisionModal = () => {
       className={styles.shadow}
       onClick={() => {
         setVisionModal(false)
+        setIsModalOpen(false)
       }}
     >
       <div
@@ -40,7 +42,10 @@ const VisionModal = () => {
           )
         })}
         <CloseButton
-          onClick={() => setVisionModal(false)}
+          onClick={() => {
+            setVisionModal(false)
+            setIsModalOpen(false)
+          }}
           className={styles.button}
         ></CloseButton>
       </div>
