@@ -1,22 +1,28 @@
+import { useSetRecoilState } from 'recoil'
 import styles from './AlertModal.module.css'
 import { ReactNode } from 'react'
+import { alertAtom } from '@/atoms'
 
 interface AlertProps {
-  onClick?: () => void
-  children: ReactNode
-  className?: string
-  buttonName: string
+  children?: ReactNode
 }
 
-const AlertModal = ({ children, buttonName }: AlertProps) => {
+const AlertModal = ({ children }: AlertProps) => {
+  const setAlert = useSetRecoilState(alertAtom)
+  const closeModal = () => {
+    setAlert(false)
+  }
+
   return (
-    <div className={styles.alertModal}>
-      <div className={styles.textBox}>
-        <p>{children}</p>
+    <div className={styles.shadow}>
+      <div className={styles.alertModal}>
+        <div className={styles.textBox}>
+          <p>{children}</p>
+        </div>
+        <button type="button" className={styles.button} onClick={closeModal}>
+          확인
+        </button>
       </div>
-      <button type="button" className={styles.button}>
-        {buttonName}
-      </button>
     </div>
   )
 }
