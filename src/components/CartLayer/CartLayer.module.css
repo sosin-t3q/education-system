@@ -38,11 +38,12 @@
   text-align: center;
   background: #fff;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.04);
+  position: relative;
 }
 
 .content {
   /* 브라우저 최소 글꼴 10px을 우회하기 위해 tranform 속성을 사용함 */
-  transform: scale(0.6);
+  transform: scale(0.5);
   /* 브라우저의 줄높이를 조정하기 위해 position:absolute를 사용함 */
   /* position: absolute; */
 }
