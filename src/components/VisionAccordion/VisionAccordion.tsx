@@ -57,8 +57,8 @@ const VisionAccordion = ({
                     data.id,
                     keycloak,
                     setLoading,
-                    setVisionModal,
                     navigate,
+                    setVisionModal
                   )
                   }
                 }
