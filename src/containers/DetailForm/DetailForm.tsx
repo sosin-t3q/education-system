@@ -9,8 +9,13 @@ import {
 } from '@/components'
 import styles from './DetailForm.module.css'
 import { useCallback, useEffect, useState } from 'react'
-import { detailDataAtom, inputValidationAtom, loadingAtom } from '@/atoms/index'
-import { useRecoilState } from 'recoil'
+import {
+  alertAtom,
+  detailDataAtom,
+  inputValidationAtom,
+  loadingAtom,
+} from '@/atoms/index'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
 import { default as combinedFunction } from '@/axios/combinedAxios'
 import addMimeType from '@/utils/addMimeType'
@@ -35,6 +40,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
   const [isValid] = useRecoilState(inputValidationAtom)
   const [infer, setInfer] = useState<string | InferObj | null>(null)
   const [apiURL, setApiURL] = useState<string>('')
+  const setAlert = useSetRecoilState(alertAtom)
 
   const fileList = data &&
     data['data_list'] && [
@@ -85,6 +91,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
         value,
         apiURL,
         setLoading,
+        setAlert,
       )
       setInfer(inferResult === undefined ? null : inferResult)
     } else if (!isValid.isValid) {

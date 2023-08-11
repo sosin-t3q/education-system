@@ -14,4 +14,5 @@ export { default as userIdAtom } from './userIdAtom'
 export { default as navigationAtom } from './navigationAtom'
 export { default as RecordAtom } from './recordAtom'
 export { default as layersAtom } from './layersAtom'
-export {default as isModalOpenAtom} from "./isModalOpenAtom"
+export { default as alertAtom } from './alertAtom'
+export { default as isModalOpenAtom } from './isModalOpenAtom'
