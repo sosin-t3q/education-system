@@ -27,6 +27,21 @@ const Canvas = ({ onChange }: CanvasProps) => {
     }
   }, [])
 
+  const getCanvasTouchPosition = (
+    canvas: HTMLCanvasElement | null,
+    touchEvent: React.TouchEvent<HTMLCanvasElement>,
+  ): { x: number; y: number } => {
+    if (!canvas) {
+      return { x: 0, y: 0 }
+    }
+
+    const rect = canvas.getBoundingClientRect()
+    const x = touchEvent.touches[0].clientX - rect.left
+    const y = touchEvent.touches[0].clientY - rect.top
+
+    return { x, y }
+  }
+
   const startDrawing = (event: MouseEvent<HTMLCanvasElement>) => {
     setIsDrawing(true) // 그리기 상태를 true로 설정
     const { offsetX, offsetY } = event.nativeEvent // 마우스 이벤트 객체에서 offsetX, offsetY 추출
@@ -37,22 +52,53 @@ const Canvas = ({ onChange }: CanvasProps) => {
     }
   }
 
+  const startDrawingTouch = (event: React.TouchEvent<HTMLCanvasElement>) => {
+    setIsDrawing(true)
+    const { x, y } = getCanvasTouchPosition(canvasRef.current, event)
+    if (context) {
+      context.beginPath()
+      context.moveTo(x, y)
+    }
+  }
+
   const draw = (event: MouseEvent<HTMLCanvasElement>) => {
     if (!isDrawing || !context) return // 그리기 상태가 아니거나 캔버스 2D 렌더링 컨텍스트가 존재하지 않는다면 함수 종료
     const { offsetX, offsetY } = event.nativeEvent
+    context.lineCap = 'round'
+    context.lineWidth = 21
+    context.strokeStyle = '#000000'
+
     if (tool === 'eraser') {
       // 지우개 도구를 선택했다면
       context.globalCompositeOperation = 'destination-out' // 캔버스에 그려진 이미지를 지움
-      context.lineWidth = 21 // 지우개 두께를 21로 설정
     } else {
-      context.globalCompositeOperation = 'source-over' // 캔버스에 그려진 이미지를 덮음
-      context.lineWidth = 21 // 펜 두께를 21로 설정
-      context.strokeStyle = '#000000'
+      context.globalCompositeOperation = 'source-over' // 캔버스에 그려진 이미지를 덮음 // 펜 두께를 21로 설정
     }
     context.lineTo(offsetX, offsetY) // 지정된 좌표까지 선을 그림
     context.stroke()
     setCanvasData(canvasRef.current?.toDataURL() || '') // 캔버스 데이터를 상태에 저장
     onChange(canvasData) // onChange에 캔버스 데이터 전달
+  }
+
+  const drawTouch = (event: React.TouchEvent<HTMLCanvasElement>) => {
+    if (!isDrawing || !context) return
+    // const touch = event.touches[0]
+    const { x, y } = getCanvasTouchPosition(canvasRef.current, event)
+
+    context.lineWidth = 21
+    context.lineCap = 'round'
+    context.strokeStyle = '#000000'
+    if (tool === 'pen') {
+      context.globalCompositeOperation = 'source-over'
+    } else if (tool === 'eraser') {
+      context.globalCompositeOperation = 'destination-out'
+    }
+
+    context.lineTo(x, y)
+    context.stroke()
+
+    setCanvasData(canvasRef.current!.toDataURL())
+    onChange(canvasData)
   }
 
   const stopDrawing = () => {
@@ -104,6 +150,9 @@ const Canvas = ({ onChange }: CanvasProps) => {
         onMouseMove={draw}
         onMouseUp={stopDrawing}
         onMouseLeave={stopDrawing}
+        onTouchStart={startDrawingTouch}
+        onTouchMove={drawTouch}
+        onTouchEnd={stopDrawing}
       />
     </div>
   )
