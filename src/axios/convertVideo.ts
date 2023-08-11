@@ -1,6 +1,10 @@
 import axiosInstance from '@/services/axiosInstance'
+import { SetterOrUpdater } from 'recoil'
 
-const convertVideo = async (videoArray: { name: string; data: string }[]) => {
+const convertVideo = async (
+  videoArray: { name: string; data: string }[],
+  setAlert: SetterOrUpdater<{ visible: boolean; option: number }>, // 알림창 컴포넌트 상태관리
+) => {
   const url = '/api/converter/video'
 
   try {
@@ -28,7 +32,7 @@ const convertVideo = async (videoArray: { name: string; data: string }[]) => {
 
     return convertedVideos
   } catch (e) {
-    alert('비디오 변환을 실패했습니다.')
+    setAlert({ visible: true, option: 3 })
 
     return []
   }
