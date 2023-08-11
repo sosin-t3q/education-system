@@ -64,9 +64,7 @@ const Detail = () => {
       {modal && <AI28Modal />}
       {visionModal && <VisionModal />}
       {loading && <Spinner />}
-      {alertModal && (
-        <AlertModal>서버에서 데이터를 불러올 수 없습니다!</AlertModal>
-      )}
+      {alertModal.visible && <AlertModal option={alertModal.option} />}
     </div>
   )
 }
