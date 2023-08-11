@@ -5,10 +5,11 @@ const base64DataToFile = async (
   filename: string,
   mimeType: string,
 ) => {
-  let fetchResponse = await fetch(base64Data)
-  let blob = await fetchResponse.blob()
+  const fetchResponse = await fetch(base64Data)
+  const blob = await fetchResponse.blob()
 
-  let file = new File([blob], filename, { type: mimeType })
+  const file = new File([blob], filename, { type: mimeType })
+
   return file
 }
 

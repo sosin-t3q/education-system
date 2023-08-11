@@ -5,4 +5,4 @@ const isLoggedInAtom = atom({
   default: false,
 })
 
-export default isLoggedInAtom;
+export default isLoggedInAtom

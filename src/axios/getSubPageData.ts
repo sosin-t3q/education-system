@@ -1,16 +1,15 @@
 import { logKey, transformPillData } from '@/utils'
 import { convertVideo } from '@/axios'
-import axios from 'axios'
+import axiosInstance from '@/services/axiosInstance'
 import { SetterOrUpdater } from 'recoil'
 
+export type DataListType = {
+  [key: string]: string
+}
 export interface DataType {
   API: string
   data_list: DataListType[]
   data_type: string
-}
-
-export type DataListType = {
-  [key: string]: string
 }
 
 const fetchData = async (
@@ -20,28 +19,33 @@ const fetchData = async (
   setLoading(true)
 
   try {
-    const response = await axios.get(
-      `http://aihunmin-edu.t3q.ai:8181/api/backend/subpage/${id}`,
-    )
+    const response = await axiosInstance.get(`/api/backend/subpage/${id}`)
     const res = response.data
     let newData: DataType | null = null
 
     switch (true) {
       case res['case_data']['data_type'] === 'log':
-        const caseData = res['case_data']['data_list'].map((item: any) => ({
-          ...item,
-          data: logKey(id, item.data),
-        }))
-        newData = { ...res['case_data'], data_list: caseData }
+        {
+          const caseData = res['case_data']['data_list'].map(
+            (item: DataListType) => ({
+              ...item,
+              data: logKey(id, item.data),
+            }),
+          )
+          newData = { ...res['case_data'], data_list: caseData }
+        }
         break
-      case id === '13':
-        const data = await convertVideo(res['case_data']['data_list'])
-        newData = { ...res['case_data'], data_list: data }
+      case id === '13' || id === '1207':
+        {
+          const data = await convertVideo(res['case_data']['data_list'])
+          newData = { ...res['case_data'], data_list: data }
+        }
         break
       case id === '1202':
-        const transformData = transformPillData(res['case_data']['data_list'])
-        newData = { ...res['case_data'], data_list: transformData }
-
+        {
+          const transformData = transformPillData(res['case_data']['data_list'])
+          newData = { ...res['case_data'], data_list: transformData }
+        }
         break
       default:
         newData = res['case_data']

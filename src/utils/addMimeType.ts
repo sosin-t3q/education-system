@@ -20,14 +20,15 @@ const addMimeType = (id: string, value: string) => {
     num === 1201 ||
     num === 1202 ||
     num === 1203 ||
-    num === 1205
+    num === 1205 ||
+    num === 1209
   const isJpeg = num === 7
   const isGif = num >= 14 && num <= 16
 
   const isWav = num === 9 || num === 11 || num === 12
   const isWavMidi = num === 10
 
-  const isMp4 = num === 13 || num === 1101 || num === 1102
+  const isMp4 = num === 13 || num === 1101 || num === 1102 || num === 1207
 
   switch (true) {
     case isPng:

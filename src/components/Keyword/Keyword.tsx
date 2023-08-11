@@ -80,9 +80,21 @@ const Keyword = ({ label }: KeywordProps) => {
       : styles['keyword--fourth']
 
   return (
-    <div className={`${styles.keyword} ${mode} ${styles[keyword.className]}`}>
-      {label}
-    </div>
+    <>
+      {!label ? (
+        <div
+          className={`${styles.keyword} ${mode} ${styles['keyword--empty']}`}
+        >
+          추론 결과 없음
+        </div>
+      ) : (
+        <div
+          className={`${styles.keyword} ${mode} ${styles[keyword.className]}`}
+        >
+          {label}
+        </div>
+      )}
+    </>
   )
 }
 

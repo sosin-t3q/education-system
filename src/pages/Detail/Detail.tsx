@@ -5,12 +5,12 @@ import {
   AI28Modal,
   VisionModal,
 } from '@/containers'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import styles from './Detail.module.css'
 import { useEffect, useState } from 'react'
-import { Book, LayersView, Spinner } from '@/components'
+import { Book, LayersView, Spinner, AlertModal } from '@/components'
 import { Helmet } from 'react-helmet-async'
-import { loadingAtom, modalAtom, visionModalAtom } from '@/atoms'
+import { loadingAtom, modalAtom, visionModalAtom, alertAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { getSubPageData } from '@/axios'
 
@@ -30,15 +30,12 @@ const Detail = () => {
   const setLoading = useSetRecoilState(loadingAtom)
   const modal = useRecoilValue(modalAtom)
   const visionModal = useRecoilValue(visionModalAtom)
-  const navigate = useNavigate()
+  const alertModal = useRecoilValue(alertAtom)
 
   useEffect(() => {
     const getDetailData = async (id: string) => {
       const newData = await getSubPageData(id, setLoading)
-      if (!newData) {
-        alert('데이터 요청을 실패했습니다.')
-        navigate('/home')
-      }
+
       setData(newData)
     }
     if (id) {
@@ -67,6 +64,9 @@ const Detail = () => {
       {modal && <AI28Modal />}
       {visionModal && <VisionModal />}
       {loading && <Spinner />}
+      {alertModal && (
+        <AlertModal>서버에서 데이터를 불러올 수 없습니다!</AlertModal>
+      )}
     </div>
   )
 }

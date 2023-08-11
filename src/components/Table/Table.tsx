@@ -4,17 +4,16 @@ import { useSetRecoilState } from 'recoil'
 import DOMPurify from 'dompurify'
 import data from '@/data/layers/AI28_LAYER.json'
 import styles from './Table.module.css'
-import { modalAtom, loadingAtom } from '@/atoms'
+import { modalAtom, loadingAtom, isModalOpenAtom } from '@/atoms'
 import { handleNavigate } from '@/utils'
 
 const Table = () => {
-  // const table = useRecoilValue(tableAtom)
   const setModal = useSetRecoilState(modalAtom)
   const setLoading = useSetRecoilState(loadingAtom)
+  const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
   const navigate = useNavigate()
   const { keycloak } = useKeycloak()
 
-  //진우 - 원래라면 useEffect를 사용하는 게 맞는 거 같다
   const { title, columns, rows, body } = data
 
   return (
@@ -59,14 +58,16 @@ const Table = () => {
                   <div
                     key={data.id}
                     className={styles['body-data']}
-                    onClick={() =>
-                      handleNavigate(
-                        data.id,
-                        keycloak,
-                        setLoading,
-                        setModal,
-                        navigate,
-                      )
+                    onClick={() => {
+                        setIsModalOpen(false)
+                        handleNavigate(
+                          data.id,
+                          keycloak,
+                          setLoading,
+                          setModal,
+                          navigate,
+                        )
+                      }
                     }
                   >
                     <span

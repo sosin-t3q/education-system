@@ -9,7 +9,12 @@ import {
 } from '@/components'
 import styles from './DetailForm.module.css'
 import { useCallback, useEffect, useState } from 'react'
-import { detailDataAtom, inputValidationAtom, loadingAtom } from '@/atoms/index'
+import {
+  alertAtom,
+  detailDataAtom,
+  inputValidationAtom,
+  loadingAtom,
+} from '@/atoms/index'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
 // import { default as combinedFunction } from '@/axios/combinedAxios'
@@ -22,6 +27,7 @@ export type InferObj = {
 }
 
 type SelectedFileType = Record<string, string> | null | undefined
+export type InputType = string | string[] | null | undefined
 
 interface DetailFormProps {
   data: DataType | null
@@ -29,13 +35,14 @@ interface DetailFormProps {
 }
 
 const DetailForm = ({ data, pageId }: DetailFormProps) => {
-  const setLoading = useSetRecoilState(loadingAtom)
+  const [loading, setLoading] = useRecoilState(loadingAtom)
   const [selected, setSelected] = useState('default')
   const [selectedFile, setSelectedFile] = useState<SelectedFileType>(null)
   const [value, setValue] = useRecoilState(detailDataAtom)
   const [isValid] = useRecoilState(inputValidationAtom)
   const [infer, setInfer] = useState<string | InferObj | null>(null)
   const [apiURL, setApiURL] = useState<string>('')
+  const setAlert = useSetRecoilState(alertAtom)
 
   const fileList = data &&
     data['data_list'] && [
@@ -86,6 +93,7 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
         value,
         apiURL,
         setLoading,
+        setAlert,
       )
       setInfer(inferResult === undefined ? null : inferResult)
     } else if (!isValid.isValid) {
@@ -93,9 +101,8 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
     }
   }, [value, apiURL, setLoading, isValid.isValid, pageId])
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const getInputData = useCallback((data: any) => {
-    setValue(data)
+  const getInputData = useCallback((data: InputType) => {
+    setValue(data as InputType)
   }, [])
 
   const isAudio = fileList && pageId === '9'
@@ -119,8 +126,10 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
             getData={getInputData}
             type={data['data_type']}
           />
+        ) : loading ? (
+          <div className={styles.loading}>데이터 로딩 중...</div>
         ) : (
-          <div className={styles.loading}>로딩 중...</div>
+          <div className={styles.loading}>데이터 로드에 실패했습니다.</div>
         )}
 
         <Result infer={infer} />
