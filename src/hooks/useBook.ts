@@ -28,8 +28,9 @@ const useBook = () => {
           setBook(false)
         }
       })
-      .catch(() => {
-        setAlert({visible: true, option: 'cartError'})
+      .catch((err) => {
+        console.log(err.message)
+        // setAlert({visible: true, option: 'cartError'})
       })
   }
 
