@@ -31,7 +31,7 @@
 
 .button--input {
   display: block;
-  margin: var(--margin-50) auto 0;
+  margin: var(--margin-100) auto 0;
   font-size: var(--font-20);
   height: 40px;
   width: 100px;
