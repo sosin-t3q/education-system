@@ -23,6 +23,14 @@ const AlertModal = ({ option }: AlertProps) => {
         return <p>비디오 변환을 실패했습니다.</p>
       case 'recordError':
         return <p>음성 데이터를 변환할 수 없습니다.</p>
+      case 'cartError':
+        return <p>개인AI 데이터 호출을 실패했습니다.</p>
+      case 'cartAdd':
+        return <p>예제를 추가했습니다!</p>
+      case 'cartRemove':
+        return <p>예제를 제거했습니다!</p>
+      case 'cartMaxError':
+        return <p>개인AI에 저장된 예제가 최대 갯수에 도달했습니다!</p>
       case 'recordStartError':
         return <p>음성 녹음을 시작할 수 없습니다.</p>
       default:
