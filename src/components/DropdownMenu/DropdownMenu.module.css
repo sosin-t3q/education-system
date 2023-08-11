@@ -50,8 +50,26 @@
   border-radius: var(--border-radius-10);
   width: 100%;
   position: absolute;
-  overflow: hidden;
+  overflow-y: auto; /* 내용이 높이를 초과하면 수직 스크롤바 활성화 */
+  max-height: 200px;
+  scrollbar-width: thin; /* Firefox를 위한 속성 */
+  scrollbar-color: var(--bg-blue) #fff; /* Firefox를 위한 속성 */
 }
+
+/* 웹킷 브라우저(Chrome, Safari)에서 스크롤 디자인 변경 */
+.dropDown-options::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dropDown-options::-webkit-scrollbar-thumb {
+  background-color: var(--bg-blue); /* 스크롤바 썸네일 색상 */
+  border-radius: 4px;
+}
+
+.dropDown-options::-webkit-scrollbar-track {
+  background-color: #fff; /* 스크롤바 트랙 색상 */
+}
+
 .dropDownOtionText {
   display: block;
   text-overflow: ellipsis;
