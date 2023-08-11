@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import { BsFillRecordFill, BsFillStopFill } from 'react-icons/bs'
-import { RecordAtom } from '@/atoms'
-import { useRecoilState } from 'recoil'
+import { RecordAtom, alertAtom } from '@/atoms'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import styles from './RecordButton.module.css'
 
 const RecordButton = () => {
   const [isRecording, setIsRecording] = useRecoilState(RecordAtom)
   const [audioStream, setAudioStream] = useState<MediaStream | null>(null)
+  const setAlert = useSetRecoilState(alertAtom)
 
   const startRecording = async () => {
     try {
@@ -32,18 +33,14 @@ const RecordButton = () => {
           new Promise<string>((resolve, reject) => {
             const reader = new FileReader()
             reader.onerror = () => {
-              reject(new Error('음성 데이터를 변환할 수 없습니다.'))
+              reject(new Error())
             }
             reader.onload = () => {
               if (typeof reader.result === 'string') {
                 const base64String = reader.result.split(',')[1]
                 resolve(base64String)
               } else {
-                reject(
-                  new Error(
-                    'Base64 변환 오류: 문자열이 아닌 데이터 형식입니다.',
-                  ),
-                )
+                reject(new Error())
               }
             }
             reader.readAsDataURL(blob)
@@ -55,13 +52,17 @@ const RecordButton = () => {
 
           setIsRecording(prev => ({ ...prev, base64: result }))
         } catch (error) {
-          alert('음성 데이터를 변환할 수 없습니다.')
+          setAlert({ visible: true, option: 'recordError' })
+          setIsRecording(prev => ({ ...prev, recording: false }))
+          // alert('음성 데이터를 변환할 수 없습니다.')
         }
       }
 
       mediaRecorder.start()
     } catch (error) {
-      alert('음성 녹음을 시작할 수 없습니다.')
+      setAlert({ visible: true, option: 'recordStartError' })
+      setIsRecording(prev => ({ ...prev, recording: false }))
+      // alert('음성 녹음을 시작할 수 없습니다.')
     }
   }
 

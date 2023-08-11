@@ -31,7 +31,8 @@ const AlertModal = ({ option }: AlertProps) => {
         return <p>예제를 제거했습니다!</p>
       case 'cartMaxError':
         return <p>개인AI에 저장된 예제가 최대 갯수에 도달했습니다!</p>
-        
+      case 'recordStartError':
+        return <p>음성 녹음을 시작할 수 없습니다.</p>
       default:
         return <p>오류가 발생했습니다.</p>
     }
