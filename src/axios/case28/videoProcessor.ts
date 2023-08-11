@@ -4,7 +4,7 @@ import { SetterOrUpdater } from 'recoil'
 
 const videoProcessor = async (
   mode: 'classification' | 'anomaly' | 'clustering' | 'regression' | string,
-  value: string, // 사용자가 입력한 값 (input)
+  value: string | string[], // 사용자가 입력한 값 (input)
   formUrl: string, // 사용자가 입력한 API Url
   setLoading: SetterOrUpdater<boolean>, // 로딩 컴포넌트
   setAlert: SetterOrUpdater<boolean>,

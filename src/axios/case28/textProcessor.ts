@@ -3,7 +3,7 @@ import { SetterOrUpdater } from 'recoil'
 
 const textProcessor = async (
   mode: 'classification' | 'anomaly' | 'clustering' | 'regression' | string,
-  value: string, // 사용자가 입력한 값 (input)
+  value: string | string[], // 사용자가 입력한 값 (input)
   formUrl: string, // 사용자가 입력한 API Url
   setLoading: SetterOrUpdater<boolean>, // 로딩 컴포넌트
   setAlert: SetterOrUpdater<boolean>,
@@ -37,8 +37,7 @@ const textProcessor = async (
         /* CASE : 영화 리뷰 텍스트 감정 분석 - Classification */
         case 'classification':
           resultData = response_data === 'pos' ? '긍정' : '부정'
-          console.log(resultData)
-
+          break
         /* CASE : 스팸메일 이상탐지 - Anomaly */
         case 'anomaly':
           resultData = response_data === 'ham' ? 'HAM' : 'SPAM'
