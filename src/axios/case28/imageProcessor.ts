@@ -1,4 +1,4 @@
-import axiosRequest from '@/axios/case28/axiosRequest'
+import axiosRequest from '@/axios/axiosRequest'
 import base64DataToFile from '@/axios/base64DataToFile'
 import { SetterOrUpdater } from 'recoil'
 

@@ -1,4 +1,4 @@
-import axiosRequest from '@/axios/case28/axiosRequest'
+import axiosRequest from '@/axios/axiosRequest'
 import { SetterOrUpdater } from 'recoil'
 
 const logProcessor = async (
