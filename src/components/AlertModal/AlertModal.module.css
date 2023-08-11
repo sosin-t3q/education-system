@@ -1,0 +1,44 @@
+@import '../../root.css';
+
+.alertModal {
+  width: 300px;
+  height: 150px;
+  border-radius: var(--border-radius-10);
+  background-color: var(--bg-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.textBox {
+  border: 1px solid salmon;
+  width: 260px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+
+  font-weight: var(--font-medium);
+  font-size: var(--font-14);
+
+  margin-left: var(--padding-20);
+  margin-right: var(--padding-20);
+}
+
+.button {
+  border: none;
+  outline: none;
+  width: 300px;
+  height: 50px;
+  color: var(--font-white);
+  font-weight: var(--font-bold);
+  font-size: var(--font-14);
+  background-color: var(--bg-grey);
+  border-radius: 0 0 var(--border-radius-10) var(--border-radius-10);
+}
+
+.button:hover {
+  background-color: var(--bg-blue);
+  cursor: pointer;
+}
