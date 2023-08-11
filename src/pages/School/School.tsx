@@ -5,10 +5,10 @@ import { Header, Card } from '@/containers'
 import schoolsData from '@/data/SCHOOL_CARD.json'
 import { useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-
-interface handleNavigateProps {
-  id: number
-}
+import { handleNavigate } from '@/utils'
+import { useKeycloak } from '@react-keycloak/web'
+import { loadingAtom, modalAtom } from '@/atoms'
+import { useSetRecoilState } from 'recoil'
 
 interface SchoolType {
   id: number
@@ -19,11 +19,9 @@ interface SchoolType {
 
 const School = () => {
   const navigate = useNavigate()
-
-  // naviate 기능을 지닌 함수
-  const handleNavigate = ({ id }: handleNavigateProps) => {
-    navigate(`/detail/${id}`)
-  }
+  const { keycloak } = useKeycloak()
+  const setLoading = useSetRecoilState(loadingAtom)
+  const setModal = useSetRecoilState(modalAtom)
 
   const [selectedSchool, setSelectedSchool] = useState<
     '경북대학교' | '고려대학교'
@@ -72,7 +70,13 @@ const School = () => {
               title={school.title}
               content={school.content}
               cardColor={selectedSchool === '고려대학교' ? 'korea' : 'kyungbuk'}
-              onClickCard={() => handleNavigate({ id: school.id })}
+              onClickCard={() => handleNavigate(
+                school.id, 
+                keycloak,
+                setLoading,
+                setModal,
+                navigate )
+              }
             />
           ))}
         </div>
