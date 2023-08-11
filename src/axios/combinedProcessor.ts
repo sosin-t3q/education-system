@@ -14,7 +14,7 @@ const combinedProcessor = (
   value: string | string[],
   apiURL: string,
   setLoading: SetterOrUpdater<boolean>,
-  setAlert: SetterOrUpdater<boolean>,
+  setAlert: SetterOrUpdater<{ visible: boolean; option: number }>,
 ) => {
   const hunminArray = [
     textProcessor,

@@ -6,7 +6,7 @@ const logProcessor = async (
   value: string | string[], // 사용자가 입력한 값 (input)
   formUrl: string, // 사용자가 입력한 API Url
   setLoading: SetterOrUpdater<boolean>, // 로딩 컴포넌트
-  setAlert: SetterOrUpdater<boolean>,
+  setAlert: SetterOrUpdater<{ visible: boolean; option: number }>, // 알림창 컴포넌트 상태관리
 ) => {
   const apiType = 'log'
   let resultData = ''
@@ -70,7 +70,7 @@ const logProcessor = async (
       }
     }
   } catch (err) {
-    setAlert(true)
+    setAlert({ visible: true, option: 1 })
 
     return
   } finally {
