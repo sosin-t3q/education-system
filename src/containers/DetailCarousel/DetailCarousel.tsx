@@ -25,6 +25,13 @@ const DetailCarousel = ({ className, pageId }: DetailCarouselProps) => {
   const pageTitle = target?.title //상세페이지 제목이 담긴다
   const swiperRef = useRef<SwiperRef>(null)
 
+  // 이미지 로드 실패시 기본 이미지를 로드하는 함수
+  const handleImageError = (
+    e: React.SyntheticEvent<HTMLImageElement, Event>,
+  ) => {
+    e.currentTarget.src = '/src/assets/default.jpg' // 임의의 이미지 경로
+  }
+
   //찜을 확인하는 기능
   const { checkBook } = useBook()
 
@@ -75,7 +82,11 @@ const DetailCarousel = ({ className, pageId }: DetailCarouselProps) => {
       >
         {imagePaths.map((path, index) => (
           <SwiperSlide key={index}>
-            <img src={path} alt={`Slide ${index + 1}`} />
+            <img
+              src={path}
+              alt={`Slide ${index + 1}`}
+              onError={handleImageError} // 이미지 로드 실패시 기본 이미지 호출
+            />
           </SwiperSlide>
         ))}
       </Swiper>
