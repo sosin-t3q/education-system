@@ -97,7 +97,8 @@ const DetailForm = ({ data, pageId }: DetailFormProps) => {
       )
       setInfer(inferResult === undefined ? null : inferResult)
     } else if (!isValid.isValid) {
-      alert(isValid.message)
+      // alert(isValid.message)
+      setAlert({ visible: true, option: 3 })
     }
   }, [value, apiURL, setLoading, isValid.isValid, pageId])
 

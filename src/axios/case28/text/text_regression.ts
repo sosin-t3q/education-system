@@ -40,7 +40,7 @@ const textRegression = async (
       resultData = response_data
     }
   } catch (err) {
-    setAlert(true)
+    setAlert({ visible: true, option: 1 })
     return
   } finally {
     setLoading(false)
