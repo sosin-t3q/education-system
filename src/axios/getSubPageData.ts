@@ -15,7 +15,7 @@ export interface DataType {
 const fetchData = async (
   id: string,
   setLoading: SetterOrUpdater<boolean>,
-  setAlert: SetterOrUpdater<{ visible: boolean; option: number }>, // 알림창 컴포넌트 상태관리
+  setAlert: SetterOrUpdater<{ visible: boolean; option: string }>, // 알림창 컴포넌트 상태관리
 ): Promise<DataType | null> => {
   setLoading(true)
 

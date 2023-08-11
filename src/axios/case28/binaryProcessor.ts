@@ -7,7 +7,7 @@ const binaryProcessor = async (
   value: string | string[], // 사용자가 입력한 값 (input)
   formUrl: string, // 사용자가 입력한 API Url
   setLoading: SetterOrUpdater<boolean>, // 로딩 컴포넌트
-  setAlert: SetterOrUpdater<{ visible: boolean; option: number }>, // 알림창 컴포넌트 상태관리
+  setAlert: SetterOrUpdater<{ visible: boolean; option: string }>, // 알림창 컴포넌트 상태관리
 ) => {
   let convertData: string | FormData
   let apiType = 'file'
@@ -59,7 +59,7 @@ const binaryProcessor = async (
       }
     }
   } catch (err) {
-    setAlert({ visible: true, option: 1 })
+    setAlert({ visible: true, option: 'axiosError' })
 
     return
   } finally {

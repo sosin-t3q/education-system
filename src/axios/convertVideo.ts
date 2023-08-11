@@ -3,7 +3,7 @@ import { SetterOrUpdater } from 'recoil'
 
 const convertVideo = async (
   videoArray: { name: string; data: string }[],
-  setAlert: SetterOrUpdater<{ visible: boolean; option: number }>, // 알림창 컴포넌트 상태관리
+  setAlert: SetterOrUpdater<{ visible: boolean; option: string }>, // 알림창 컴포넌트 상태관리
 ) => {
   const url = '/api/converter/video'
 
@@ -32,7 +32,7 @@ const convertVideo = async (
 
     return convertedVideos
   } catch (e) {
-    setAlert({ visible: true, option: 3 })
+    setAlert({ visible: true, option: 'videoError' })
 
     return []
   }

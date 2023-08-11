@@ -3,23 +3,26 @@ import styles from './AlertModal.module.css'
 import { alertAtom } from '@/atoms'
 
 interface AlertProps {
-  option: number
+  option: string
 }
 
 const AlertModal = ({ option }: AlertProps) => {
   const setAlert = useSetRecoilState(alertAtom)
+
   const closeModal = () => {
-    setAlert({ visible: false, option: 0 })
+    setAlert({ visible: false, option: 'default' })
   }
 
-  const getMessage = (option: number) => {
+  const getMessage = (option: string) => {
     switch (option) {
-      case 1:
+      case 'axiosError':
         return <p>서버에서 데이터를 불러올 수 없습니다!</p>
-      case 2:
-        return <p>2번 에러메세지</p>
-      case 3:
-        return <p>3번 에러메세지</p>
+      case 'nullError':
+        return <p>데이터를 입력해주세요.</p>
+      case 'videoError':
+        return <p>비디오 변환을 실패했습니다.</p>
+      case 'recordError':
+        return <p>음성 데이터를 변환할 수 없습니다.</p>
       default:
         return <p>오류가 발생했습니다.</p>
     }
