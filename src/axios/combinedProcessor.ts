@@ -14,6 +14,7 @@ const combinedProcessor = (
   value: string,
   apiURL: string,
   setLoading: SetterOrUpdater<boolean>,
+  setAlert: SetterOrUpdater<boolean>,
 ) => {
   const hunminArray = [
     textProcessor,
@@ -37,7 +38,13 @@ const combinedProcessor = (
       taskIndex = (targetId - 1) % 4
       targetTask = tasks[taskIndex]
 
-      return hunminArray[funcIndex](targetTask, value, apiURL, setLoading)
+      return hunminArray[funcIndex](
+        targetTask,
+        value,
+        apiURL,
+        setLoading,
+        setAlert,
+      )
     }
 
     default:
