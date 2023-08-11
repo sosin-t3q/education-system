@@ -1,5 +1,5 @@
-import { useRecoilValue } from 'recoil'
-import { layersAtom } from '@/atoms'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { isModalOpenAtom, layersAtom } from '@/atoms'
 import styles from './LayersView.module.css'
 import { ReactComponent as LayerIconEmpty } from '@/assets/layersIcon.svg'
 import { ReactComponent as LayerIconFill } from '@/assets/setlayersIcon.svg'
@@ -12,6 +12,7 @@ interface LayersViewProps {
 
 const LayersView = ({ className }: LayersViewProps) => {
   const view = useRecoilValue(layersAtom)
+  const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
 
   const { returnLayers } = useLayers()
 
@@ -23,7 +24,11 @@ const LayersView = ({ className }: LayersViewProps) => {
     <button
       type="button"
       className={`${className} ${styles.layersView}`}
-      onClick={handleLayers}
+      onClick={() => {
+          setIsModalOpen(true)
+          handleLayers()
+        }
+      }
       aria-label="예제 전체보기"
     >
       {view === false ? <LayerIconEmpty /> : <LayerIconFill />}

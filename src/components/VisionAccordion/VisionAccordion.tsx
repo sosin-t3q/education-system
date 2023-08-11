@@ -6,7 +6,7 @@ import styles from './VisionAccordion.module.css'
 import { ReactComponent as ArrowDown } from '@/assets/arrow-down.svg'
 import { ReactComponent as ArrowUp } from '@/assets/arrow-up.svg'
 import { handleNavigate } from '@/utils'
-import { visionModalAtom, loadingAtom } from '@/atoms'
+import { visionModalAtom, loadingAtom, isModalOpenAtom } from '@/atoms'
 
 interface Props {
   title: string
@@ -29,6 +29,7 @@ const VisionAccordion = ({
   const { keycloak } = useKeycloak()
   const setLoading = useSetRecoilState(loadingAtom)
   const setVisionModal = useSetRecoilState(visionModalAtom)
+  const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
   const navigate = useNavigate()
 
   const toggleSection = () => {
@@ -50,6 +51,8 @@ const VisionAccordion = ({
                 className={styles.block}
                 key={data.id}
                 onClick={() =>
+                  {
+                  setIsModalOpen(false)
                   handleNavigate(
                     data.id,
                     keycloak,
@@ -57,6 +60,7 @@ const VisionAccordion = ({
                     setVisionModal,
                     navigate,
                   )
+                  }
                 }
               >
                 <span className={styles.text}>{data.title}</span>
