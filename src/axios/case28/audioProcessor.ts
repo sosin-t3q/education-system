@@ -7,6 +7,7 @@ const audioProcessor = async (
   value: string, // 사용자가 입력한 값 (input)
   formUrl: string, // 사용자가 입력한 API Url
   setLoading: SetterOrUpdater<boolean>, // 로딩 컴포넌트
+  setAlert: SetterOrUpdater<boolean>,
 ) => {
   const apiType = 'file'
   let convertData: File
@@ -71,7 +72,7 @@ const audioProcessor = async (
       }
     }
   } catch (err) {
-    alert('API 호출에 실패하였습니다.')
+    setAlert(true)
 
     return
   } finally {

@@ -6,6 +6,7 @@ const textProcessor = async (
   value: string, // 사용자가 입력한 값 (input)
   formUrl: string, // 사용자가 입력한 API Url
   setLoading: SetterOrUpdater<boolean>, // 로딩 컴포넌트
+  setAlert: SetterOrUpdater<boolean>,
 ) => {
   const apiType = 'text'
   let resultData = ''
@@ -36,7 +37,7 @@ const textProcessor = async (
         /* CASE : 영화 리뷰 텍스트 감정 분석 - Classification */
         case 'classification':
           resultData = response_data === 'pos' ? '긍정' : '부정'
-          break
+          console.log(resultData)
 
         /* CASE : 스팸메일 이상탐지 - Anomaly */
         case 'anomaly':
@@ -59,7 +60,7 @@ const textProcessor = async (
       }
     }
   } catch (err) {
-    alert('API 호출에 실패하였습니다.')
+    setAlert(true)
 
     return
   } finally {
