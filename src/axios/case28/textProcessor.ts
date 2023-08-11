@@ -19,7 +19,7 @@ const textProcessor = async (
 
   const convertData = JSON.stringify({
     url: formUrl,
-    log_data: value,
+    word: value,
   })
 
   setLoading(true)
