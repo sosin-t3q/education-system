@@ -41,7 +41,6 @@ const DetailCarousel = ({ className, pageId }: DetailCarouselProps) => {
   useEffect(() => {
     // 컴포넌트가 렌더링된 다음 cart의 값으로 id, title 키를 가진 객체가 저장된다
     setCart({ id: Number(pageId), title: pageTitle })
-    // checkBook();
   }, [])
 
   useEffect(() => {
