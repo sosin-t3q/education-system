@@ -2,6 +2,7 @@ import { useState, MouseEvent, useEffect } from 'react'
 import styles from './DropdownMenu.module.css'
 import { ReactComponent as ArrowUp } from '@/assets/arrow-up.svg'
 import { ReactComponent as ArrowDown } from '@/assets/arrow-down.svg'
+import { useParams } from 'react-router-dom'
 
 interface DropdownMenu {
   className?: string
@@ -16,6 +17,7 @@ const DropdownMenu = ({
   onSelect,
   targetIndex,
 }: DropdownMenu) => {
+  const {id} = useParams()
   const [toggle, setToggle] = useState(false)
   const [selected, setSelected] = useState('')
 
@@ -23,7 +25,7 @@ const DropdownMenu = ({
     if (options?.length > 0) {
       setSelected(options[0])
     }
-  }, [])
+  }, [id])
 
   const handleToggle = () => {
     setToggle(!toggle)
