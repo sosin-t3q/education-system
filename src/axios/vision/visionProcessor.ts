@@ -38,6 +38,7 @@ const visionProcessor = async (
   const formData = new FormData()
   formData.append('url', formUrl)
   formData.append('file', convertData)
+  formData.append('detail_id', targetId)
 
   setLoading(true)
 
