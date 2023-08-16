@@ -64,8 +64,8 @@ const Table = () => {
                           data.id,
                           keycloak,
                           setLoading,
-                          setModal,
                           navigate,
+                          setModal
                         )
                       }
                     }

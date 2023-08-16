@@ -1,37 +1,11 @@
-//Ver1.
-// import { ReactNode } from "react";
-// import { useKeycloak } from "@react-keycloak/web";
+import { Navigate, Outlet } from 'react-router-dom';
+import { useRecoilValue } from 'recoil'
+import { isLoggedInAtom } from '@/atoms'
 
-// const PrivateRoute = ({ children }:{children: ReactNode}) => {
+const PrivateRoute = () => {
+  const isLoggedIn = useRecoilValue(isLoggedInAtom);
 
-//     const { keycloak } = useKeycloak();
-//     const isLoggedIn = keycloak.authenticated;
-
-//     return isLoggedIn ? children : null;
-// };
-
-// export default PrivateRoute;
-
-//Ver2.
-import { useKeycloak } from '@react-keycloak/web'
-import { useEffect, ReactNode } from 'react'
-
-const PrivateRoute = ({ children }: { children: ReactNode }) => {
-  const { keycloak } = useKeycloak()
-
-  const isLoggedIn = keycloak.authenticated
-
-  useEffect(() => {
-    if (!isLoggedIn) {
-      keycloak.login()
-    }
-  }, [isLoggedIn, keycloak])
-
-  if (!isLoggedIn) {
-    return <div>Loading...</div>
-  }
-
-  return children
+  return isLoggedIn ? <Outlet /> : <Navigate to="/home"/>
 }
 
-export default PrivateRoute
+export default PrivateRoute;

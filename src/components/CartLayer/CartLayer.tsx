@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import styles from './CartLayer.module.css'
-import { userIdAtom } from '@/atoms'
-import { useRecoilValue } from 'recoil'
+import { userIdAtom, alertAtom } from '@/atoms'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import axiosInstance from '@/services/axiosInstance'
 
 interface CartLayerProps {
@@ -17,6 +17,7 @@ const CartLayer = ({ className }: CartLayerProps) => {
   //blocks는 최대 크기가 28인 비어있는 배열이다
   const [blocks, setBlocks] = useState(new Array(28).fill(null))
   const userId = useRecoilValue(userIdAtom)
+  const setAlert = useSetRecoilState(alertAtom)
 
   useEffect(() => {
     if (userId) {
@@ -29,7 +30,7 @@ const CartLayer = ({ className }: CartLayerProps) => {
           setBlocks(blocks.map((block, index) => data[index] || block))
         })
         .catch(() => {
-          alert('장바구니 데이터를 불러오는데 실패했습니다.')
+          setAlert({visible: true, option: 'cartError'})
         })
     }
   }, [userId])

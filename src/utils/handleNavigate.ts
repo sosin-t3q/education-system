@@ -10,14 +10,17 @@ const handleNavigate = async (
   id: number,
   keycloak: Keycloak,
   setLoading: SetterOrUpdater<boolean>,
-  setModal: SetterOrUpdater<boolean>,
   navigate: NavigateFunction,
+  setModal: SetterOrUpdater<boolean> | null = null,
 ) => {
   const isLoggedIn = keycloak.authenticated
 
   setLoading(true)
   if (!isLoggedIn) {
-    setModal(false)
+    if(setModal) {
+      setModal(false)
+    }
+
     try {
       await keycloak.login({
         redirectUri: `${window.location.origin}/detail/${id}`,
@@ -27,7 +30,9 @@ const handleNavigate = async (
     }
     setLoading(false)
   } else {
-    setModal(false)
+    if(setModal) {
+      setModal(false)
+    }
     navigate(`/detail/${id}`)
     setLoading(false)
   }
