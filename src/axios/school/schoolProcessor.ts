@@ -250,6 +250,7 @@ const schoolProcessor = async (
           break
 
         case 1207: // HTTPConnectionPool
+          console.log('value = ', value)
           console.log('response_data =', response_data)
           break
 
