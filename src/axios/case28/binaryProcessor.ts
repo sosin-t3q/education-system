@@ -3,6 +3,7 @@ import axiosRequest from '@/axios/axiosRequest'
 import { SetterOrUpdater } from 'recoil'
 
 const binaryProcessor = async (
+  targetId: any,
   mode: 'classification' | 'anomaly' | 'clustering' | 'regression' | string,
   value: string | string[], // 사용자가 입력한 값 (input)
   formUrl: string, // 사용자가 입력한 API Url
@@ -28,6 +29,7 @@ const binaryProcessor = async (
     convertData = new FormData()
     convertData.append('url', formUrl)
     convertData.append('file', convertImage)
+    convertData.append('detail_id', targetId)
   }
 
   setLoading(true)
