@@ -8,12 +8,12 @@ import { useSetRecoilState, useRecoilValue } from 'recoil'
 
 function App() {
 
-  /* user_auth 쿠키를 확인하는 함수 */
   const { keycloak } = useKeycloak()
   const setIsLoggedIn = useSetRecoilState(isLoggedInAtom)
   const setUserId = useSetRecoilState(userIdAtom)
   const isModalOpen = useRecoilValue(isModalOpenAtom);
 
+  /* user_auth 쿠키를 확인함  */
   useEffect(() => {
     const userAuth = Cookies.get('user_auth')
     
@@ -28,6 +28,7 @@ function App() {
     }
   }, [keycloak.authenticated])
 
+  /* 모달창이 열려있으면 스크롤바를 제거함 */
   useEffect(() => {
     if(isModalOpen) {
       document.body.classList.add('no-scroll')
