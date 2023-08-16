@@ -1,11 +1,15 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { useRecoilValue } from 'recoil'
-import { isLoggedInAtom } from '@/atoms'
+import Cookies from 'js-cookie';
 
 const PrivateRoute = () => {
-  const isLoggedIn = useRecoilValue(isLoggedInAtom);
+  const userAuth = Cookies.get('user_auth')
 
-  return isLoggedIn ? <Outlet /> : <Navigate to="/home"/>
+  if(userAuth) {
+    return  <Outlet />
+  } else {
+    return <Navigate to="/home"/>
+  }
+
 }
 
 export default PrivateRoute;
