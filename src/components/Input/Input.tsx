@@ -43,6 +43,13 @@ const Input = ({ selected, getData, type }: InputProps) => {
       }) // 데이터가 없다면 입력 검증 상태를 false로 변경
 
     if ((pageId === '13' || pageId === '1207') && selected) {
+      if (pageId === '1207') {
+        const value = `data:video/mp4;base64,${selected['original_data']}`
+        getData(value)
+
+        return
+      }
+
       getData(selected['original_data'])
 
       return
