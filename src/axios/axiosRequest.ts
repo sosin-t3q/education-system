@@ -6,7 +6,7 @@ const axiosRequest = async (
 ) => {
   const axiosUrl = `/api/inference/${apiType}_req_ajx`
   // eslint-disable-next-line no-constant-condition
-  if (apiType === 'files' || 'file') {
+  if (apiType === 'files' || 'file' || 'canvas') {
     const res = await axiosInstance.post(axiosUrl, dataTransfer, {
       headers: {
         'Content-Type': 'multipart/form-data',
