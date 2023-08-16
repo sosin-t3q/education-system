@@ -26,6 +26,7 @@ const convertVideo = async (
         return {
           name: video.name,
           data: resData.data,
+          original_data: video.data,
         }
       }),
     )
