@@ -9,8 +9,8 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/swiper.min.css'
 import json from '@/data/PPT_DATA.json'
-import { cartAtom } from '@/atoms/index'
-import { useRecoilState } from 'recoil'
+import { cartAtom, userIdAtom } from '@/atoms/index'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import useBook from '@/hooks/useBook'
 
 interface DetailCarouselProps {
@@ -24,6 +24,7 @@ const DetailCarousel = ({ className, pageId }: DetailCarouselProps) => {
   const folderName = target?.folderName
   const pageTitle = target?.title //상세페이지 제목이 담긴다
   const swiperRef = useRef<SwiperRef>(null)
+  const userId = useRecoilValue(userIdAtom)
 
   // 이미지 로드 실패시 기본 이미지를 로드하는 함수
   const handleImageError = (
@@ -41,14 +42,15 @@ const DetailCarousel = ({ className, pageId }: DetailCarouselProps) => {
   useEffect(() => {
     // 컴포넌트가 렌더링된 다음 cart의 값으로 id, title 키를 가진 객체가 저장된다
     setCart({ id: Number(pageId), title: pageTitle })
-    // checkBook();
   }, [])
-
+  
   useEffect(() => {
     // 상세페이지가 장바구니에 들어가있는 지를 확인한다
     // cart Atom을 추적하고 있어, cart Atom이 업데이트된 다음에 실행될 수 있게끔 했다.
-    checkBook()
-  }, [cart])
+    if(userId) {
+      checkBook()
+    }
+  }, [cart, userId])
 
   const imagePaths = Array.from(
     { length: fileList.length },

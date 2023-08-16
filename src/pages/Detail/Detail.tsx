@@ -42,7 +42,7 @@ const Detail = () => {
     if (id) {
       getDetailData(id)
     }
-  }, [])
+  }, [id])
 
   return (
     <div className={styles.detail}>
@@ -60,7 +60,7 @@ const Detail = () => {
           pageId={id}
           className={styles['detail-carousel']}
         ></DetailCarousel>
-        <DetailForm data={data} pageId={id} />
+        <DetailForm data={data} />
       </main>
       {modal && <AI28Modal />}
       {visionModal && <VisionModal />}

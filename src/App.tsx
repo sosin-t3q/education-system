@@ -5,15 +5,16 @@ import { useKeycloak } from '@react-keycloak/web'
 import { Intro, Home, Detail, School } from '@/pages'
 import { isLoggedInAtom, userIdAtom, isModalOpenAtom } from './atoms'
 import { useSetRecoilState, useRecoilValue } from 'recoil'
+import { PrivateRoute } from '@/components'
 
 function App() {
 
-  /* user_auth 쿠키를 확인하는 함수 */
   const { keycloak } = useKeycloak()
   const setIsLoggedIn = useSetRecoilState(isLoggedInAtom)
   const setUserId = useSetRecoilState(userIdAtom)
   const isModalOpen = useRecoilValue(isModalOpenAtom);
 
+  /* user_auth 쿠키를 확인함  */
   useEffect(() => {
     const userAuth = Cookies.get('user_auth')
     
@@ -28,6 +29,7 @@ function App() {
     }
   }, [keycloak.authenticated])
 
+  /* 모달창이 열려있으면 스크롤바를 제거함 */
   useEffect(() => {
     if(isModalOpen) {
       document.body.classList.add('no-scroll')
@@ -41,7 +43,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Intro />}></Route>
         <Route path="/home" element={<Home />}></Route>
-        <Route path="/detail/:id" element={<Detail />}></Route>
+        <Route element={<PrivateRoute />}>
+          <Route path="/detail/:id" element={<Detail />}></Route>
+        </Route>
         <Route path="/school" element={<School />}></Route>
         <Route path="*" element={<div>404 페이지</div>}></Route>
       </Routes>
