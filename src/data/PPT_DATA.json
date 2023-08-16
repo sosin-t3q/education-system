@@ -1775,5 +1775,114 @@
         "name": "기대 효과"
       }
     ]
+  },
+  {
+    "id": 1206,
+    "title": "개인화 감성 이모티콘 생성 서비스",
+    "folderName": "ge_nemo_3",
+    "category": [
+      {
+        "name": "제목"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "어노테이션"
+      },
+      {
+        "name": "Stable Diffusion"
+      },
+      {
+        "name": "Fine-tuning Stable Diffusion"
+      },
+      {
+        "name": "출력 결과"
+      }
+    ]
+  },
+  {
+    "id": 1207,
+    "title": "Tracking & Image Captioning",
+    "folderName": "tracking_image_captioning_6",
+    "category": [
+      {
+        "name": "제목"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "Tracking"
+      },
+      {
+        "name": "Super resolution"
+      },
+      {
+        "name": "Data Augmentation"
+      },
+      {
+        "name": "Fine-Tuning"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 1208,
+    "title": "Non financial business analysis report",
+    "folderName": "non_financial_business_analysis_report_8",
+    "category": [
+      {
+        "name": "제목"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "전처리부분-표제어추출"
+      },
+      {
+        "name": "전처리부분-불용어제거"
+      },
+      {
+        "name": "모델설명(Roberta)"
+      },
+      {
+        "name": "모델설명(Tweet Roberta base sentiment)"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
+  },
+  {
+    "id": 1209,
+    "title": "상표 이미지 유사도 검색 서비스",
+    "folderName": "trademark_image_similarity_search_service_11",
+    "category": [
+      {
+        "name": "제목"
+      },
+      {
+        "name": "데이터셋"
+      },
+      {
+        "name": "전처리"
+      },
+      {
+        "name": "SimCLR"
+      },
+      {
+        "name": "ORB"
+      },
+      {
+        "name": "추론 결과"
+      },
+      {
+        "name": "추론 결과"
+      }
+    ]
   }
 ]
