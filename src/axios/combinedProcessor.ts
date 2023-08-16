@@ -9,31 +9,7 @@ import {
   videoProcessor,
 } from '@/axios/case28'
 
-import {
-  detectronDetection,
-  maskrcnnSegmentation,
-  mobilenetClassification,
-  sampleCode,
-  scaledyolov4Detection,
-  segformerSegmentation,
-  vitClassification,
-  yolorDetection,
-  yolosDetection,
-  yolov3KerasDetection,
-  yolov3torchDetection,
-  yolov4TinyDetection,
-  yolov5Classification,
-  yolov5Detection,
-  yolov5Segmentation,
-  yolov6Detection,
-  yolov7Detection,
-  yolov7Segmentation,
-  yolov8Classification,
-  yolov8Detection,
-  yolov8Segmentation,
-  yoloxDetection,
-  yolov4TorchDetection,
-} from './vision'
+import { visionProcessor } from '@/axios/vision'
 
 import {
   knu1100,
@@ -86,37 +62,13 @@ const combinedProcessor = (
     }
     case targetId > 100 && targetId < 200: {
       // 비전 예제일 때 (id 101~199)
-      const visionIndex = targetId - 101
-      const visionFuncArray = [
-        yolov8Detection,
-        sampleCode,
-        sampleCode,
-        yolov7Detection,
-        sampleCode,
-        yolov6Detection,
-        yolov5Detection,
-        yolosDetection,
-        yolov3KerasDetection,
-        yoloxDetection,
-        yolorDetection,
-        yolov3torchDetection,
-        yolov8Segmentation,
-        yolov7Segmentation,
-        yolov5Segmentation,
-        maskrcnnSegmentation,
-        segformerSegmentation,
-        yolov8Classification,
-        yolov5Classification,
-        sampleCode,
-        vitClassification,
-        mobilenetClassification,
-        yolov4TinyDetection,
-        yolov4TorchDetection,
-        scaledyolov4Detection,
-        detectronDetection,
-      ]
-
-      return visionFuncArray[visionIndex](value, apiURL, setLoading)
+      return visionProcessor(
+        targetId,
+        value,
+        apiURL,
+        setLoading,
+        setAlert,
+      )
     }
 
     case targetId >= 1100 && targetId < 1200: {
