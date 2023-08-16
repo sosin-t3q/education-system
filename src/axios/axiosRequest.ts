@@ -5,27 +5,27 @@ const axiosRequest = async (
   apiType: string,
 ) => {
   const axiosUrl = `/api/inference/${apiType}_req_ajx`
-  // eslint-disable-next-line no-constant-condition
-  if (apiType === 'files' || 'file' || 'canvas') {
-    const res = await axiosInstance.post(axiosUrl, dataTransfer, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-      responseType: 'json',
-    })
+  let contentType = ''
 
-    return res.data
-    // eslint-disable-next-line no-constant-condition
-  } else if (apiType === 'text' || 'log') {
-    const res = await axiosInstance.post(axiosUrl, dataTransfer, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      responseType: 'json', //서버로부터 들어오는 응답값은 JSON 형식
-    })
+  // files, file, canvas로 전송하는 API는 form-data 형식으로 전송
+  if (['files', 'file', 'canvas'].includes(apiType)) {
+    contentType = 'multipart/form-data'
 
-    return res.data
+    // text, log로 전송하는 API는 json 형식으로 전송
+  } else if (['text', 'log'].includes(apiType)) {
+    contentType = 'application/json'
+  } else {
+    throw new Error('잘못된 API 타입입니다.')
   }
+
+  const res = await axiosInstance.post(axiosUrl, dataTransfer, {
+    headers: {
+      'Content-Type': contentType,
+    },
+    responseType: 'json',
+  })
+
+  return res.data
 }
 
 export default axiosRequest
