@@ -1807,7 +1807,7 @@
   {
     "id": 1206,
     "title": "개인화 감성 이모티콘 생성 서비스",
-    "folderName": "test",
+    "folderName": "ge_nemo_3",
     "category": [
       {
         "name": "제목"
@@ -1816,26 +1816,23 @@
         "name": "데이터셋"
       },
       {
-        "name": "test1"
+        "name": "어노테이션"
       },
       {
-        "name": "test2"
+        "name": "Stable Diffusion"
       },
       {
-        "name": "test3"
+        "name": "Fine-tuning Stable Diffusion"
       },
       {
-        "name": "test4"
-      },
-      {
-        "name": "test5"
+        "name": "출력 결과"
       }
     ]
   },
   {
     "id": 1207,
-    "title": "CCTV 인물 분석",
-    "folderName": "test",
+    "title": "Tracking & Image Captioning",
+    "folderName": "tracking_image_captioning_6",
     "category": [
       {
         "name": "제목"
@@ -1844,26 +1841,26 @@
         "name": "데이터셋"
       },
       {
-        "name": "test1"
+        "name": "Tracking"
       },
       {
-        "name": "test2"
+        "name": "Super resolution"
       },
       {
-        "name": "test3"
+        "name": "Data Augmentation"
       },
       {
-        "name": "test4"
+        "name": "Fine-Tuning"
       },
       {
-        "name": "test5"
+        "name": "추론 결과"
       }
     ]
   },
   {
     "id": 1208,
-    "title": "비재무정보 분석",
-    "folderName": "test",
+    "title": "Non financial business analysis report",
+    "folderName": "non_financial_business_analysis_report_8",
     "category": [
       {
         "name": "제목"
@@ -1872,26 +1869,26 @@
         "name": "데이터셋"
       },
       {
-        "name": "test1"
+        "name": "전처리부분-표제어추출"
       },
       {
-        "name": "test2"
+        "name": "전처리부분-불용어제거"
       },
       {
-        "name": "test3"
+        "name": "모델설명(Roberta)"
       },
       {
-        "name": "test4"
+        "name": "모델설명(Tweet Roberta base sentiment)"
       },
       {
-        "name": "test5"
+        "name": "추론 결과"
       }
     ]
   },
   {
     "id": 1209,
     "title": "상표 이미지 유사도 검색 서비스",
-    "folderName": "test",
+    "folderName": "trademark_image_similarity_search_service_11",
     "category": [
       {
         "name": "제목"
@@ -1900,19 +1897,19 @@
         "name": "데이터셋"
       },
       {
-        "name": "test1"
+        "name": "전처리"
       },
       {
-        "name": "test2"
+        "name": "SimCLR"
       },
       {
-        "name": "test3"
+        "name": "ORB"
       },
       {
-        "name": "test4"
+        "name": "추론 결과"
       },
       {
-        "name": "test5"
+        "name": "추론 결과"
       }
     ]
   }
