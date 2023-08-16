@@ -1,0 +1,109 @@
+{
+  "schools": [
+    {
+      "id": 1100,
+      "axios": "file",
+      "inputType": "image/jpeg",
+      "returnType": true,
+      "dataInfo": ""
+    },
+    {
+      "id": 1101,
+      "axios": "file",
+      "inputType": "video/mp4",
+      "returnType": true,
+      "dataInfo": ""
+    },
+    {
+      "id": 1102,
+      "axios": "file",
+      "inputType": "video/mp4",
+      "returnType": true,
+      "dataInfo": ""
+    },
+    {
+      "id": 1103,
+      "axios": "text",
+      "inputType": "text",
+      "returnType": true,
+      "dataInfo": ""
+    },
+    {
+      "id": 1200,
+      "axios": "text",
+      "inputType": "text",
+      "returnType": false,
+      "dataInfo": ""
+    },
+    {
+      "id": 1201,
+      "axios": "file",
+      "inputType": "image/jpeg",
+      "returnType": true,
+      "dataInfo": ""
+    },
+    {
+      "id": 1202,
+      "axios": "files",
+      "inputType": "doubleJpeg",
+      "returnType": true,
+      "dataInfo": ""
+    },
+    {
+      "id": 1203,
+      "axios": "file",
+      "inputType": "image/png",
+      "returnType": false,
+      "dataInfo": [
+        "문어형 다리",
+        "일자형 다리",
+        "스툴형 다리",
+        "흔들의자형 다리",
+        "다리 없음",
+        "바형 다리"
+      ]
+    },
+    {
+      "id": 1204,
+      "axios": "file",
+      "inputType": "image/jpeg",
+      "returnType": false,
+      "dataInfo": ""
+    },
+    {
+      "id": 1205,
+      "axios": "file",
+      "inputType": "image/jpeg",
+      "returnType": true,
+      "dataInfo": ""
+    },
+    {
+      "id": 1206,
+      "axios": "text",
+      "inputType": "text",
+      "returnType": false,
+      "dataInfo": ""
+    },
+    {
+      "id": 1207,
+      "axios": "file",
+      "inputType": "video/mp4",
+      "returnType": true,
+      "dataInfo": ""
+    },
+    {
+      "id": 1208,
+      "axios": "text",
+      "inputType": "text",
+      "returnType": false,
+      "dataInfo": ""
+    },
+    {
+      "id": 1209,
+      "axios": "file",
+      "inputType": "image/jpeg",
+      "returnType": true,
+      "dataInfo": ""
+    }
+  ]
+}
