@@ -10,6 +10,7 @@ export interface DataType {
   API: string
   data_list: DataListType[]
   data_type: string
+  original_data_list: DataListType[]
 }
 
 const fetchData = async (
@@ -36,13 +37,16 @@ const fetchData = async (
           newData = { ...res['case_data'], data_list: caseData }
         }
         break
-      case id === '13':
+      case id === '13' || id === '1207':
         {
           const data = await convertVideo(
             res['case_data']['data_list'],
             setAlert,
           )
-          newData = { ...res['case_data'], data_list: data }
+          newData = {
+            ...res['case_data'],
+            data_list: data,
+          }
         }
         break
       case id === '1202':

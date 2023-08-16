@@ -5,6 +5,7 @@ import MidiPlayer from 'react-midi-player'
 import { ChangeEvent, useEffect, useState } from 'react'
 import { RecordAtom, inputValidationAtom } from '@/atoms'
 import { useRecoilState } from 'recoil'
+import { useParams } from 'react-router-dom'
 
 interface InputProps {
   selected: Record<string, string> | null | undefined
@@ -13,6 +14,7 @@ interface InputProps {
 }
 
 const Input = ({ selected, getData, type }: InputProps) => {
+  const { id: pageId } = useParams() as { id: string | undefined }
   const [value, setValue] = useState<string>('')
   const data = selected && selected.data
   const [isValid, setIsValid] = useRecoilState(inputValidationAtom)
@@ -24,6 +26,8 @@ const Input = ({ selected, getData, type }: InputProps) => {
     if (value.trim().length === 0) return // 입력된 값이 없다면
     getData(e.target.value)
   }
+
+  console.log(selected)
 
   useEffect(() => {
     if (!recording && recordBase64.trim() !== '') {
@@ -37,6 +41,12 @@ const Input = ({ selected, getData, type }: InputProps) => {
         isValid: false,
         message: '데이터를 입력해주세요.',
       }) // 데이터가 없다면 입력 검증 상태를 false로 변경
+
+    if ((pageId === '13' || pageId === '1207') && selected) {
+      getData(selected['original_data'])
+
+      return
+    }
     getData(data)
   }, [selected, recording, recordBase64])
 
