@@ -5,6 +5,7 @@ import { useKeycloak } from '@react-keycloak/web'
 import { Intro, Home, Detail, School } from '@/pages'
 import { isLoggedInAtom, userIdAtom, isModalOpenAtom } from './atoms'
 import { useSetRecoilState, useRecoilValue } from 'recoil'
+import { PrivateRoute } from '@/components'
 
 function App() {
 
@@ -42,7 +43,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Intro />}></Route>
         <Route path="/home" element={<Home />}></Route>
-        <Route path="/detail/:id" element={<Detail />}></Route>
+        <Route element={<PrivateRoute />}>
+          <Route path="/detail/:id" element={<Detail />}></Route>
+        </Route>
         <Route path="/school" element={<School />}></Route>
         <Route path="*" element={<div>404 페이지</div>}></Route>
       </Routes>
