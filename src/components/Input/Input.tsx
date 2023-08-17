@@ -27,8 +27,6 @@ const Input = ({ selected, getData, type }: InputProps) => {
     getData(e.target.value)
   }
 
-  console.log(selected)
-
   useEffect(() => {
     if (!recording && recordBase64.trim() !== '') {
       getData(recordBase64)

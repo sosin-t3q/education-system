@@ -64,8 +64,6 @@ const DetailForm = ({ data }: DetailFormProps) => {
     [selected],
   )
 
-  console.log(value)
-
   useEffect(() => {
     setSelected('default')
     setSelectedFile(null)
