@@ -23,8 +23,8 @@ const getInputType = async (inputType: string, value: string) => {
     case 'doubleJpeg': {
       const imageA = value[0]
       const imageB = value[1]
-      convertDataA = await base64DataToFile(imageA, 'image', 'image/jpeg')
-      convertDataB = await base64DataToFile(imageB, 'image', 'image/jpeg')
+      convertDataA = await base64DataToFile(imageA, 'imageA', 'image/jpeg')
+      convertDataB = await base64DataToFile(imageB, 'imageB', 'image/jpeg')
       break
     }
     default:
@@ -56,12 +56,10 @@ const getApiType = (
 
     case 'files': {
       const formData = new FormData()
-      if (convertFile) {
-        formData.append('url', formUrl)
-        formData.append('files', convertDataA)
-        formData.append('files', convertDataB)
-        formData.append('detail_id', targetId)
-      }
+      formData.append('url', formUrl)
+      formData.append('files', convertDataA)
+      formData.append('files', convertDataB)
+      formData.append('detail_id', targetId)
 
       return formData
     }
@@ -114,7 +112,7 @@ const schoolProcessor = async (
 
       switch (targetId) {
         case 1100:
-        case 1205:
+        case 1205: // 정상작동
           resultData = `data:image/jpg;base64,${response_data}`
           break
 
@@ -167,7 +165,7 @@ const schoolProcessor = async (
           resultData = `data:image/jpg;base64,${response_data}`
           break
 
-        case 1202: //400 Error There was an error parsing the body
+        case 1202: // 정상작동
           {
             const res_score = []
             let resultValue = ''
@@ -180,19 +178,11 @@ const schoolProcessor = async (
                 resultValue = response_data[0][data_for]
               }
             }
-            if (json.res == 'true') {
-              resultData = `
-                알약명 : ${resultValue['NAME']}
-                <br>
-                색: ${resultValue['COLOR']}
-                <br>
-                효능: 1.${resultValue['EFFECT'].split('1.')[1]}
-                <br>
-                모양: ${resultValue['MY']}
-                <br>
-                용법: ${resultValue['USAGE']}
-                <br>`
-            }
+            resultData = `
+              알약명: ${resultValue.NAME} <br>
+              색상: ${resultValue.COLOR} <br>
+              모양: ${resultValue.MY}
+                `
           }
           break
 
