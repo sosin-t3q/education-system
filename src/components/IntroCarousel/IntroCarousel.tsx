@@ -1,21 +1,20 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination } from 'swiper'
 import { Title, Text, Button } from '@/components'
+import { useNavigate } from 'react-router-dom'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/swiper.min.css'
-import styles from './Carousel.module.css'
 import '@/introSwiper.css'
-
-import { useNavigate } from 'react-router-dom'
+import styles from './IntroCarousel.module.css'
 
 interface CarouselProps {
   className: string
 }
 
-const Carousel = ({ className }: CarouselProps) => {
-  const navigate = useNavigate()
+const IntroCarousel = ({ className }: CarouselProps) => {
+  const navigate = useNavigate() // 페이지 이동을 위해 useNavigate() 사용
 
   const goHome = () => {
     navigate('/home')
@@ -29,13 +28,13 @@ const Carousel = ({ className }: CarouselProps) => {
     <>
       <Swiper
         className={className}
-        centeredSlides={true}
+        centeredSlides={true} // 슬라이드 중앙 정렬
         autoplay={{
-          delay: 3000,
-          disableOnInteraction: true,
+          delay: 3000, // 자동재생 주기 3초
+          disableOnInteraction: true, // 사용자의 상호작용 발생시 자동재생 정지
         }}
         pagination={{
-          clickable: true,
+          clickable: true, // 페이지네이션 버튼을 클릭하여 해당 슬라이드로 이동
         }}
         modules={[Autoplay, Pagination]}
       >
@@ -124,4 +123,4 @@ const Carousel = ({ className }: CarouselProps) => {
   )
 }
 
-export default Carousel
+export default IntroCarousel
