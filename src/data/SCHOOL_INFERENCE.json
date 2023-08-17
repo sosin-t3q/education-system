@@ -53,7 +53,7 @@
       "id": 1203,
       "axios": "file",
       "inputType": "image/png",
-      "returnType": false,
+      "returnType": true,
       "dataInfo": [
         "문어형 다리",
         "일자형 다리",
