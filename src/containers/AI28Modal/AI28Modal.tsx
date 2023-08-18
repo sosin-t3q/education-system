@@ -1,6 +1,6 @@
 import { useSetRecoilState } from 'recoil'
 import styles from './AI28Modal.module.css'
-import { Table } from '@/components'
+import { AI28Table } from '@/components'
 import { preventBubbling } from '@/utils'
 import { isModalOpenAtom, AI28ModalAtom } from '@/atoms'
 import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
@@ -28,7 +28,7 @@ const AI28Modal = () => {
           preventBubbling(e)
         }}
       >
-        <Table />
+        <AI28Table />
         <CloseButton
           className={styles.button}
           onClick={closeModal}

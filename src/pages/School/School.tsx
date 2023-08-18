@@ -70,12 +70,12 @@ const School = () => {
               content={school.content}
               cardColor={selectedSchool === '고려대학교' ? 'korea' : 'kyungbuk'}
               onClickCard={() => {
-                handleNavigate(
-                  school.id, 
-                  keycloak,
-                  setLoading,
-                  navigate 
-                )
+                // handleNavigate(
+                //   school.id, 
+                //   keycloak,
+                //   setLoading,
+                //   navigate 
+                // )
                 }
               }
             />

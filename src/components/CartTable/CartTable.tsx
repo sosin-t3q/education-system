@@ -1,25 +1,26 @@
 import { useEffect } from 'react'
-import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil'
-import axiosInstance from '@/services/axiosInstance'
+import Cookies from 'js-cookie'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import styles from './CartTable.module.css'
-import { cartTableAtom, cartModalAtom, userIdAtom, isModalOpenAtom, loadingAtom } from '@/atoms'
+import axiosInstance from '@/services/axiosInstance'
+import useHandleNavigate from '@/hooks/useHandleNavigate'
 import { ReactComponent as Warning } from '@/assets/warning.svg'
-import { handleNavigate } from '@/utils';
-import { useKeycloak } from '@react-keycloak/web'
-import { useNavigate } from 'react-router-dom'
+import { cartTableAtom, cartModalAtom, isModalOpenAtom, alertAtom } from '@/atoms'
 
 
 const CartTable = () => {
-  const [cartTable, setCartTable] = useRecoilState(cartTableAtom)
+  const setAlert = useSetRecoilState(alertAtom)
   const setCartModal = useSetRecoilState(cartModalAtom)
   const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
-  const userId = useRecoilValue(userIdAtom)
-  const navigate = useNavigate()
-  const { keycloak } = useKeycloak()
-  const setLoading = useSetRecoilState(loadingAtom)
+  const [cartTable, setCartTable] = useRecoilState(cartTableAtom)
+
+  const checkAuthNavigation = useHandleNavigate();
+
+  const userAuth = Cookies.get("user_auth")
 
   useEffect(() => {
-    if (userId) {
+    if (userAuth) {
+      const userId = JSON.parse(userAuth).user_id
       // 서버로부터 데이터를 받아 cartTable에 넣어줌
       axiosInstance
         .get(
@@ -30,10 +31,10 @@ const CartTable = () => {
           setCartTable(data)
         })
         .catch(() => {
-          alert('데이터를 불러오는데 실패했습니다.')
+          setAlert({visible: true, option: 'cartError'})
         })
     }
-  }, [userId])
+  }, [userAuth])
 
   // cartTable은 빈 배열을 가지고 있기 때문에, 배열의 길이로 렌더링 조건을 설정했다
   if (cartTable.length > 0) {
@@ -51,13 +52,7 @@ const CartTable = () => {
                     className={styles['body-data']}
                     onClick={() => {
                       setIsModalOpen(false);
-                      handleNavigate(
-                        data.id,                    
-                        keycloak,
-                        setLoading,
-                        navigate,
-                        setCartModal
-                        )
+                      checkAuthNavigation(data.id, setCartModal)
                     }}
                   >
                     <span>{data.title}</span>
@@ -76,7 +71,7 @@ const CartTable = () => {
       <h2 className={styles.title}>개인 AI</h2>
       <div className={styles.warning}>
         <Warning></Warning>
-        <span>데이터를 추가해주세요!</span>
+        <span>로그인된 사용자만 접근할 수 있습니다!</span>
       </div>
     </>
   )

@@ -1,14 +1,12 @@
 import { Dispatch } from 'react'
 import { useSetRecoilState } from 'recoil'
-import { useKeycloak } from '@react-keycloak/web'
-import { useNavigate } from 'react-router-dom'
 import styles from './VisionAccordion.module.css'
-import { ReactComponent as ArrowDown } from '@/assets/arrow-down.svg'
+import useHandleNavigate from '@/hooks/useHandleNavigate'
+import { visionModalAtom, isModalOpenAtom } from '@/atoms'
 import { ReactComponent as ArrowUp } from '@/assets/arrow-up.svg'
-import { handleNavigate } from '@/utils'
-import { visionModalAtom, loadingAtom, isModalOpenAtom } from '@/atoms'
+import { ReactComponent as ArrowDown } from '@/assets/arrow-down.svg'
 
-interface Props {
+interface VisionAccordionProps {
   title: string
   section: {
     id: number
@@ -25,12 +23,11 @@ const VisionAccordion = ({
   isActiveSection,
   setActiveIndex,
   sectionIndex,
-}: Props) => {
-  const { keycloak } = useKeycloak()
-  const setLoading = useSetRecoilState(loadingAtom)
+}: VisionAccordionProps) => {
   const setVisionModal = useSetRecoilState(visionModalAtom)
   const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
-  const navigate = useNavigate()
+
+  const checkAuthNavigation = useHandleNavigate();
 
   const toggleSection = () => {
     const nextIndex = isActiveSection ? null : sectionIndex
@@ -52,16 +49,9 @@ const VisionAccordion = ({
                 key={data.id}
                 onClick={() =>
                   {
-                  setIsModalOpen(false)
-                  handleNavigate(
-                    data.id,
-                    keycloak,
-                    setLoading,
-                    navigate,
-                    setVisionModal
-                  )
-                  }
-                }
+                    setIsModalOpen(false)
+                    checkAuthNavigation(data.id, setVisionModal)
+                  }}
               >
                 <span className={styles.text}>{data.title}</span>
               </div>
