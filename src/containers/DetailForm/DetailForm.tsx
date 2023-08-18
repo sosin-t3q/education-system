@@ -21,7 +21,7 @@ import { DataType } from '@/pages/Detail/Detail'
 import addMimeType from '@/utils/addMimeType'
 
 import { default as combinedProcessor } from '@/axios/combinedProcessor'
-import { useLocation, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 export type InferObj = {
   label: string
@@ -37,7 +37,7 @@ interface DetailFormProps {
 
 const DetailForm = ({ data }: DetailFormProps) => {
   const [loading, setLoading] = useRecoilState(loadingAtom)
-  const { id:pageId } = useParams() as { id: string | undefined }
+  const { id: pageId } = useParams() as { id: string | undefined }
   const [selected, setSelected] = useState('default')
   const [selectedFile, setSelectedFile] = useState<SelectedFileType>(null)
   const [value, setValue] = useRecoilState(detailDataAtom)
@@ -68,7 +68,7 @@ const DetailForm = ({ data }: DetailFormProps) => {
     setSelected('default')
     setSelectedFile(null)
     setInfer(null)
-  },[pageId])
+  }, [pageId])
 
   useEffect(() => {
     if (selected === 'default') {

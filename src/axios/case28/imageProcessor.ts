@@ -2,15 +2,31 @@ import axiosRequest from '@/axios/axiosRequest'
 import base64DataToFile from '@/axios/base64DataToFile'
 import { SetterOrUpdater } from 'recoil'
 
+let apiType = 'file'
+
+const getConvertData = async (mode: string, value: string | string[]) => {
+  // eslint-disable-next-line no-constant-condition
+  if (mode === 'anomaly' || 'regression') {
+    // Image anomaly, regression 예제는 image/jpeg 파일로 변환하여 전송
+    return await base64DataToFile(value, 'image', 'image/jpeg')
+  } else if (mode === 'classification') {
+    apiType = 'canvas'
+
+    return await base64DataToFile(value, 'image', 'image/png')
+  }
+
+  // 나머지 예제는 image/png 파일로 변환하여 전송
+  return await base64DataToFile(value, 'image', 'image/png')
+}
+
 const imageProcessor = async (
+  targetId: any,
   mode: 'classification' | 'anomaly' | 'clustering' | 'regression' | string,
   value: string | string[], // 사용자가 입력한 값 (input)
   formUrl: string, // 사용자가 입력한 API Url
   setLoading: SetterOrUpdater<boolean>, // 로딩 컴포넌트
   setAlert: SetterOrUpdater<{ visible: boolean; option: string }>, // 알림창 컴포넌트 상태관리
 ) => {
-  const apiType = 'file'
-  let convertData: File
   let resultData = ''
   let returnDirectly = false
 
@@ -37,24 +53,30 @@ const imageProcessor = async (
     sunglasses: '선글라스',
   }
 
-  // eslint-disable-next-line no-constant-condition
-  if (mode === 'anomaly' || 'regression') {
-    // Image anomaly, regression 예제는 image/jpeg 파일로 변환하여 전송
-    convertData = await base64DataToFile(value, 'image', 'image/jpeg')
-  } else {
-    // 나머지 예제는 image/png 파일로 변환하여 전송
-    convertData = await base64DataToFile(value, 'image', 'image/png')
-  }
+  const convertData = await getConvertData(mode, value)
+
+  // // eslint-disable-next-line no-constant-condition
+  // if (mode === 'anomaly' || 'regression') {
+  //   // Image anomaly, regression 예제는 image/jpeg 파일로 변환하여 전송
+  //   convertData = await base64DataToFile(value, 'image', 'image/jpeg')
+  // } else if (mode === 'classification') {
+  //   apiType = 'canvas'
+  // } else {
+  //   // 나머지 예제는 image/png 파일로 변환하여 전송
+  //   convertData = await base64DataToFile(value, 'image', 'image/png')
+  // }
 
   /* FormData에 전달받은 값을 입력 */
   const formData = new FormData()
   formData.append('url', formUrl)
   formData.append('file', convertData)
+  formData.append('detail_id', targetId)
 
   setLoading(true)
 
   try {
     const json = await axiosRequest(formData, apiType)
+
     if (json.res == 'true') {
       let response_data = json.response.data
       if (response_data == null) {
@@ -78,7 +100,7 @@ const imageProcessor = async (
 
         /* CASE : 노후 시설물 이미지를 이용한 이상탐지 - Anomaly */
         case 'anomaly':
-          resultData = response_data === 'original' ? '정상 블록' : '파손 블록'
+          resultData = response_data == 'original' ? '정상 블록' : '파손 블록'
           break
 
         /* CASE : 환경 소리 군집화 - Clustering */
@@ -87,6 +109,7 @@ const imageProcessor = async (
           break
 
         default:
+          resultData = '작동안됨'
           break
       }
     }
