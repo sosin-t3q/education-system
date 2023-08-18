@@ -1,4 +1,3 @@
-import styles from './Home.module.css'
 import { Header, HomeCase, HomeInfo } from '@/containers'
 import { Navigation } from '@/components'
 import { Helmet } from 'react-helmet-async'
@@ -9,7 +8,7 @@ const Home = () => {
   const activeTab = useRecoilValue(navigationAtom)
 
   return (
-    <div className={styles.home}>
+    <div>
       <Helmet>
         <title>전국민 AI 훈민정음</title>
         <meta name="description" content="T3Q.ai" />

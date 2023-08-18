@@ -29,7 +29,6 @@ const useBook = () => {
         }
       })
       .catch(() => {
-        // alert('장바구니 데이터를 불러오지 못했습니다')
         setAlert({visible: true, option: 'cartError'})
       })
   }
@@ -42,15 +41,12 @@ const useBook = () => {
       .then(() => {
         setBook(true)
         if (cartTable.length >= 28) {
-          // alert('장바구니가 최대 갯수에 도달했습니다!')
           setAlert({visible: true, option: 'cartMaxError'})
         } else {
-          // alert('장바구니에 예제가 추가됐습니다!')
           setAlert({visible: true, option: 'cartAdd'})
         }
       })
       .catch(() => {
-        // alert('장바구니에 예제를 추가하는 것에 실패했습니다.')
         setAlert({visible: true, option: 'cartError'})
         setBook(false)
       })
@@ -62,11 +58,9 @@ const useBook = () => {
       .get(`/api/backend/delete_interest/${userId}/${cart.id}`)
       .then(() => {
         setBook(false)
-        // alert('장바구니에서 예제가 제거됐습니다!')
         setAlert({visible: true, option: 'cartRemove'})
       })
       .catch(() => {
-        // alert('장바구니에서 예제를 제거하는 것에 실패했습니다.')
         setAlert({visible: true, option: 'cartError'})
       })
   }

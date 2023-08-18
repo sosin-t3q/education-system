@@ -10,6 +10,7 @@ export interface DataType {
   API: string
   data_list: DataListType[]
   data_type: string
+  original_data_list: DataListType[]
 }
 
 const fetchData = async (
@@ -42,7 +43,10 @@ const fetchData = async (
             res['case_data']['data_list'],
             setAlert,
           )
-          newData = { ...res['case_data'], data_list: data }
+          newData = {
+            ...res['case_data'],
+            data_list: data,
+          }
         }
         break
       case id === '1202':

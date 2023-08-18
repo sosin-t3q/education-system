@@ -3,6 +3,7 @@ import base64DataToFile from '@/axios/base64DataToFile'
 import { SetterOrUpdater } from 'recoil'
 
 const audioProcessor = async (
+  targetId: any,
   mode: 'classification' | 'anomaly' | 'clustering' | 'regression' | string,
   value: string | string[], // 사용자가 입력한 값 (input)
   formUrl: string, // 사용자가 입력한 API Url
@@ -12,6 +13,7 @@ const audioProcessor = async (
   const apiType = 'file'
   let convertData: File
   let resultData = ''
+  let returnDirectly = false
 
   type infoType = {
     [key: string]: string
@@ -35,6 +37,7 @@ const audioProcessor = async (
   const formData = new FormData()
   formData.append('url', formUrl)
   formData.append('file', convertData)
+  formData.append('detail_id', targetId)
 
   setLoading(true)
 
@@ -55,6 +58,7 @@ const audioProcessor = async (
         /* CASE : 피아노 악보 생성 - Regression  */
         case 'regression':
           resultData = `data:audio/midi;base64,${response_data}`
+          returnDirectly = true
           break
 
         /* CASE : 산업 기계 소리 이상탐지 - Anomaly */
@@ -77,6 +81,9 @@ const audioProcessor = async (
     return
   } finally {
     setLoading(false)
+  }
+  if (returnDirectly) {
+    return resultData
   }
 
   return { label: resultData }

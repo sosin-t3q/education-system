@@ -39,8 +39,9 @@
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  column-gap: 60px;
+  width: 1100px;
+  margin: 0 auto;
+  column-gap: 70px;
   row-gap: 50px;
   margin-bottom: var(--margin-100);
   font-size: var(--font-16);
