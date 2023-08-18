@@ -6,7 +6,7 @@ import schoolsData from '@/data/SCHOOL_CARD.json'
 import { useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 
-interface handleNavigateProps {
+interface HandleNavigateProps {
   id: number
 }
 
@@ -17,28 +17,47 @@ interface SchoolType {
   content: string
 }
 
+interface SchoolData {
+  [schoolName: string]: {
+    color: string;
+    title: string;
+  };
+}
+
+
 const School = () => {
   const navigate = useNavigate()
 
-  // naviate 기능을 지닌 함수
-  const handleNavigate = ({ id }: handleNavigateProps) => {
+  const handleNavigate = ({ id }: HandleNavigateProps) => {
     navigate(`/detail/${id}`)
   }
 
-  const [selectedSchool, setSelectedSchool] = useState<
-    '경북대학교' | '고려대학교'
-  >('경북대학교')
+  const schoolData: SchoolData = {
+    경북대학교: {
+      color: 'kyungbuk',
+      title: '경북대학교',
+    },
+    고려대학교: {
+      color: 'korea',
+      title: '고려대학교',
+    },
+    // 필요한 경우 더 많은 학교, 색상 및 제목을 추가합니다
+  }
+
+  const [selectedSchool, setSelectedSchool] = useState<'경북대학교' | '고려대학교'>('경북대학교')
+
 
   const handleSchoolChange = (school: string) => {
-    if (school === '경북대학교' || school === '고려대학교') {
+    if (schoolData[school]) {
       setSelectedSchool(school)
     }
   }
 
-  const selectedSchoolCards = schoolsData.schools[selectedSchool] || []
+  const selectedSchoolData = schoolData[selectedSchool]
+  const cardColor = selectedSchoolData.color
+  const pageTitle = selectedSchoolData.title
 
-  const pageTitle =
-    selectedSchool === '경북대학교' ? '경북대학교' : '고려대학교'
+  const selectedSchoolCards = schoolsData.schools[selectedSchool] || []
 
   return (
     <>
@@ -46,20 +65,20 @@ const School = () => {
         <title>전국민 AI 훈민정음</title>
         <meta name="description" content="T3Q.ai" />
         <meta name="author" content="t3q" />
-        <meta name="keyword" content="T3Q.ai,AI platform,BigData" />
+        <meta name="keyword" content="T3Q.ai, AI 플랫폼, 빅데이터" />
       </Helmet>
       {/* 헤더 */}
       <Header />
       <main className={styles.school}>
         {/* 인트로 */}
-        <Title type={1} label="AI훈민정음 서당" className={styles.title} />
+        <Title type={1} label="AI 훈민정음 서당" className={styles.title} />
         <Text className={styles.text}>
-          T3Q.ai를 이용한 각 대학별 프로젝트 결과물
+          T3Q.ai를 이용한 각 대학 프로젝트 결과물
         </Text>
         {/* 메뉴 */}
         <DropdownMenu
           className={styles.menu}
-          options={['경북대학교', '고려대학교']}
+          options={Object.keys(schoolData)}
           onSelect={handleSchoolChange}
         ></DropdownMenu>
         <Title type={2} label={pageTitle} className={styles.subtitle}></Title>
@@ -71,7 +90,7 @@ const School = () => {
               badge={school.badge}
               title={school.title}
               content={school.content}
-              cardColor={selectedSchool === '고려대학교' ? 'korea' : 'kyungbuk'}
+              cardColor={cardColor}
               onClickCard={() => handleNavigate({ id: school.id })}
             />
           ))}
@@ -81,4 +100,4 @@ const School = () => {
   )
 }
 
-export default School
+export default School;
