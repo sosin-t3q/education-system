@@ -30,8 +30,8 @@
     },
     {
       "id": 1200,
-      "axios": "text",
-      "inputType": "text",
+      "axios": "error",
+      "inputType": "error",
       "returnType": false,
       "dataInfo": ""
     },
@@ -95,7 +95,7 @@
       "id": 1208,
       "axios": "text",
       "inputType": "text",
-      "returnType": false,
+      "returnType": true,
       "dataInfo": ""
     },
     {
