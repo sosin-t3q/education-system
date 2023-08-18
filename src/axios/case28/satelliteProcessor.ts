@@ -80,7 +80,7 @@ const satelliteProcessor = async (
         /* CASE : 픽셀의 다중 스펙트럼 값을 이용한 이상탐지 - Anomaly */
         case 'anomaly':
           resultData =
-            response_data === 'normal data' ? '정상 데이터' : '비정상 데이터'
+            response_data == 'normal data' ? '정상 데이터' : '비정상 데이터'
           break
 
         /* CASE : 지표면 위성 사진 군집화 - Clustering */
