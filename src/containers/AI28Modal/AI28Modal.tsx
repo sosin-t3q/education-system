@@ -1,39 +1,38 @@
 import { useSetRecoilState } from 'recoil'
-import { Table } from '@/components'
-import { isModalOpenAtom, modalAtom } from '@/atoms'
-import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
-import { preventBubbling } from '@/utils'
 import styles from './AI28Modal.module.css'
+import { Table } from '@/components'
+import { preventBubbling } from '@/utils'
+import { isModalOpenAtom, AI28ModalAtom } from '@/atoms'
+import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
 
-const AI28Modal = () => {
-  //modal의 값에 따라 AI28Modal의 렌더링이 결정된다
-  const setModal = useSetRecoilState(modalAtom)
+const AI28Modal = () => {  
+
+  const setModal = useSetRecoilState(AI28ModalAtom)
   const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
+  
+  //모달창 닫힘
+  const closeModal = () => {
+    setModal(false)
+    setIsModalOpen(false);
+  }
 
   return (
     <div
       className={styles.shadow}
-      onClick={() => {
-        //클릭할 경우 modal이 false로 업데이트 된다
-        setModal(false)
-        setIsModalOpen(false);
-      }}
+      onClick={closeModal}
     >
       <div
         className={styles.modal}
         onClick={e => {
+          //이벤트 버블링 방지
           preventBubbling(e)
         }}
       >
-        <Table></Table>
+        <Table />
         <CloseButton
-          //클릭할 경우 modal이 false로 업데이트 된다
-          onClick={() => {
-              setModal(false)
-              setIsModalOpen(false)
-            }}
           className={styles.button}
-        ></CloseButton>
+          onClick={closeModal}
+        />
       </div>
     </div>
   )

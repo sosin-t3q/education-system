@@ -4,11 +4,11 @@ import { useSetRecoilState } from 'recoil'
 import DOMPurify from 'dompurify'
 import data from '@/data/layers/AI28_LAYER.json'
 import styles from './Table.module.css'
-import { modalAtom, loadingAtom, isModalOpenAtom } from '@/atoms'
+import { AI28ModalAtom, loadingAtom, isModalOpenAtom } from '@/atoms'
 import { handleNavigate } from '@/utils'
 
 const Table = () => {
-  const setModal = useSetRecoilState(modalAtom)
+  const setModal = useSetRecoilState(AI28ModalAtom)
   const setLoading = useSetRecoilState(loadingAtom)
   const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
   const navigate = useNavigate()

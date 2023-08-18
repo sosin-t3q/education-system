@@ -1,11 +1,11 @@
-import styles from './Header.module.css'
-import { Link } from '@/components'
-import { ReactComponent as Logo } from '@/assets/logo.svg'
-import { useKeycloak } from '@react-keycloak/web'
 import { useEffect } from 'react'
 import Cookies from 'js-cookie'
-import { isLoggedInAtom, navigationAtom } from '@/atoms'
+import { useKeycloak } from '@react-keycloak/web'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
+import styles from './Header.module.css'
+import { Link } from '@/components'
+import { isLoggedInAtom, navigationAtom } from '@/atoms'
+import { ReactComponent as Logo } from '@/assets/logo.svg'
 
 const Header = () => {
   const { keycloak, initialized } = useKeycloak()

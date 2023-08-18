@@ -1,4 +1,4 @@
-export { default as modalAtom } from './modalAtom'
+export { default as AI28ModalAtom } from './AI28ModalAtom'
 export { default as detailDataAtom } from './detailDataAtom'
 export { default as inputValidationAtom } from './inputValidationAtom'
 export { default as cartTableAtom } from './cartTableAtom'

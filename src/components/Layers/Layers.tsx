@@ -1,45 +1,38 @@
-import { useSetRecoilState } from 'recoil'
+import { useSetRecoilState, SetterOrUpdater  } from 'recoil'
 import styles from './Layers.module.css'
-import { modalAtom, cartModalAtom, visionModalAtom, isModalOpenAtom } from '@/atoms'
 import { AI28Layer, VisionLayer, CartLayer } from '@/components'
+import { AI28ModalAtom, cartModalAtom, visionModalAtom, isModalOpenAtom } from '@/atoms'
 
 const Layers = () => {
-  // modal state가 true면 모달창이 화면에 보인다
-  const setModal = useSetRecoilState(modalAtom)
-  const setCartModal = useSetRecoilState(cartModalAtom)
+
+  const setAI28Modal = useSetRecoilState(AI28ModalAtom)
   const setVisionModal = useSetRecoilState(visionModalAtom)
+  const setCartModal = useSetRecoilState(cartModalAtom)
   const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
+
+  // 모달창 열기
+  const openModal = (setModal: SetterOrUpdater<boolean>) => {
+    setModal(true)
+    setIsModalOpen(true)
+  }
 
   return (
     <div className={styles.layers}>
-      {/* M - 마우스호버 애니메이션을 위해 각 <Layer />는 <div>로 감싸짐 */}
       <div
         className={styles['container-general']}
-        onClick={() => {
-            setModal(true)
-            setIsModalOpen(true)
-          }
-        }
+        onClick={() => openModal(setAI28Modal)}
       >
         <AI28Layer className={styles.general} />
       </div>
       <div
         className={styles['container-vision']}
-        onClick={() => {
-            setVisionModal(true)
-            setIsModalOpen(true)
-          }
-        }
+        onClick={() => openModal(setVisionModal)}
       >
         <VisionLayer className={styles.vision} />
       </div>
       <div
         className={styles['container-cart']}
-        onClick={() => {
-            setCartModal(true)
-            setIsModalOpen(true)
-          }
-        }
+        onClick={() => openModal(setCartModal)}
       >
         <CartLayer className={styles.cart} />
       </div>

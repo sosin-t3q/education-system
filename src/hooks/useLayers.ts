@@ -1,10 +1,10 @@
-import { cartAtom, modalAtom, visionModalAtom } from '@/atoms'
+import { cartAtom, AI28ModalAtom, visionModalAtom } from '@/atoms'
 import { useNavigate } from 'react-router-dom'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 
 const useLayers = () => {
   const cart = useRecoilValue(cartAtom)
-  const setModal = useSetRecoilState(modalAtom)
+  const setModal = useSetRecoilState(AI28ModalAtom)
   const setVisionModal = useSetRecoilState(visionModalAtom)
   const navigate = useNavigate()
 

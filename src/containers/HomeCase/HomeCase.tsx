@@ -2,11 +2,11 @@ import { Title, Text, Layers, AlertModal } from '@/components'
 import { AI28Modal, CartModal, VisionModal } from '@/containers'
 import styles from './HomeCase.module.css'
 import { useRecoilValue } from 'recoil'
-import { modalAtom, cartModalAtom, visionModalAtom, loadingAtom, alertAtom } from '@/atoms'
+import { AI28ModalAtom, cartModalAtom, visionModalAtom, loadingAtom, alertAtom } from '@/atoms'
 import Spinner from '@/components/Spinner/Spinner'
 
 const HomeCase = () => {
-  const modal = useRecoilValue(modalAtom)
+  const modal = useRecoilValue(AI28ModalAtom)
   const cartModal = useRecoilValue(cartModalAtom)
   const visionModal = useRecoilValue(visionModalAtom)
   const loading = useRecoilValue(loadingAtom)

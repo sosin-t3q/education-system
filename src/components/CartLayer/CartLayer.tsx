@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
+import Cookies from 'js-cookie'
 import styles from './CartLayer.module.css'
-import { userIdAtom, alertAtom } from '@/atoms'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { alertAtom } from '@/atoms'
+import { useSetRecoilState } from 'recoil'
 import axiosInstance from '@/services/axiosInstance'
 
 interface CartLayerProps {
@@ -16,12 +17,14 @@ interface CartLayerDataProps {
 const CartLayer = ({ className }: CartLayerProps) => {
   //blocks는 최대 크기가 28인 비어있는 배열이다
   const [blocks, setBlocks] = useState(new Array(28).fill(null))
-  const userId = useRecoilValue(userIdAtom)
   const setAlert = useSetRecoilState(alertAtom)
+  const userAuth = Cookies.get("user_auth")
 
   useEffect(() => {
-    if (userId) {
-      // 서버에서 장바구니 데이터를 불러온다
+    if (userAuth) {
+      //사용자가 로그인했다면 쿠키값에서 user_id를 저장시키고, 장바구니 데이터를 불러온다
+      const userId = JSON.parse(userAuth).user_id
+
       axiosInstance
         .get(`/api/backend/custom_layer/${userId}`)
         .then(res => {
@@ -33,7 +36,7 @@ const CartLayer = ({ className }: CartLayerProps) => {
           setAlert({visible: true, option: 'cartError'})
         })
     }
-  }, [userId])
+  }, [userAuth])
 
   return (
     <div className={`${className} ${styles.Layer}`}>

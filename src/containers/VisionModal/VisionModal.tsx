@@ -1,35 +1,39 @@
 import { useState } from 'react'
 import { useSetRecoilState } from 'recoil'
-import { visionModalAtom, isModalOpenAtom } from '@/atoms'
 import styles from './VisionModal.module.css'
-import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
-import { VisionAccordion } from '@/components'
 import sections from '@/data/layers/VISION_LAYER.json'
 import { preventBubbling } from '@/utils'
+import { VisionAccordion } from '@/components'
+import { visionModalAtom, isModalOpenAtom } from '@/atoms'
+import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
 
 const VisionModal = () => {
+  
   const setVisionModal = useSetRecoilState(visionModalAtom)
   const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
   const [activeIndex, setActiveIndex] = useState<number | null>(-1)
 
+  //모달창 닫힘
+  const closeModal = () => {
+    setVisionModal(false)
+    setIsModalOpen(false);
+  }
+
   return (
     <div
       className={styles.shadow}
-      onClick={() => {
-        setVisionModal(false)
-        setIsModalOpen(false)
-      }}
+      onClick={closeModal}
     >
       <div
         className={styles.modal}
         onClick={e => {
+          //이벤트 버블링 방지
           preventBubbling(e)
         }}
       >
         <h2 className={styles.title}>AI훈민정음-VISION</h2>
         {sections.map((section, index) => {
           const { title, data } = section
-
           return (
             <VisionAccordion
               key={index}
@@ -38,16 +42,13 @@ const VisionModal = () => {
               isActiveSection={index === activeIndex}
               setActiveIndex={setActiveIndex}
               sectionIndex={index}
-            ></VisionAccordion>
+            />
           )
         })}
         <CloseButton
-          onClick={() => {
-            setVisionModal(false)
-            setIsModalOpen(false)
-          }}
           className={styles.button}
-        ></CloseButton>
+          onClick={closeModal}
+        />
       </div>
     </div>
   )
