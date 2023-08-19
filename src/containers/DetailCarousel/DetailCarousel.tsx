@@ -42,7 +42,7 @@ const DetailCarousel = ({ className, pageId }: DetailCarouselProps) => {
   useEffect(() => {
     // 컴포넌트가 렌더링된 다음 cart의 값으로 id, title 키를 가진 객체가 저장된다
     setCart({ id: Number(pageId), title: pageTitle })
-  }, [])
+  }, [pageId, pageTitle])
   
   useEffect(() => {
     // 상세페이지가 장바구니에 들어가있는 지를 확인한다
