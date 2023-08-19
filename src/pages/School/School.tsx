@@ -1,13 +1,11 @@
-import styles from './School.module.css'
-import { useState } from 'react'
-import { Title, Text, DropdownMenu } from '@/components'
-import { Header, Card } from '@/containers'
-import schoolsData from '@/data/SCHOOL_CARD.json'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { handleNavigate } from '@/utils'
-import { useKeycloak } from '@react-keycloak/web'
-import { loadingAtom } from '@/atoms'
+import { Title, Text, DropdownMenu } from '@/components'
+import styles from './School.module.css'
+import schoolsData from '@/data/SCHOOL_CARD.json'
+import useHandleNavigate from '@/hooks/useHandleNavigate'
+import { Header, Card } from '@/containers'
+import { isModalOpenAtom } from '@/atoms'
 import { useSetRecoilState } from 'recoil'
 
 interface SchoolType {
@@ -26,9 +24,6 @@ interface SchoolData {
 
 
 const School = () => {
-  const navigate = useNavigate()
-  const { keycloak } = useKeycloak()
-  const setLoading = useSetRecoilState(loadingAtom)
 
   const schoolData: SchoolData = {
     경북대학교: {
@@ -43,6 +38,8 @@ const School = () => {
   }
 
   const [selectedSchool, setSelectedSchool] = useState<'경북대학교' | '고려대학교'>('경북대학교')
+  const checkAuthNavigation = useHandleNavigate()
+  const setIsModalOpen = useSetRecoilState(isModalOpenAtom);
 
 
   const handleSchoolChange = (school: string) => {
@@ -56,6 +53,11 @@ const School = () => {
   const pageTitle = selectedSchoolData.title
 
   const selectedSchoolCards = schoolsData.schools[selectedSchool] || []
+
+  //서당페이지에서 레이아웃을 클릭할 경우 스크롤이 사라지는 걸 방지하기 위한 방법
+  useEffect(() => {
+    setIsModalOpen(false);
+  }, [])
 
   return (
     <>
@@ -88,18 +90,11 @@ const School = () => {
               badge={school.badge}
               title={school.title}
               content={school.content}
-              cardColor={selectedSchool === '고려대학교' ? 'korea' : 'kyungbuk'}
-              // onClickCard={() => {
-              //   // handleNavigate(
-              //   //   school.id, 
-              //   //   keycloak,
-              //   //   setLoading,
-              //   //   navigate 
-              //   // )
-              //   }
-              // }
-              // cardColor={cardColor}
-              // // onClickCard={() => handleNavigate({ id: school.id })}
+              cardColor={cardColor}
+              onClickCard={() => {
+                checkAuthNavigation(school.id)
+                }
+              }
             />
           ))}
         </div>
