@@ -11,7 +11,7 @@ const useHandleNavigate = () => {
   const navigate = useNavigate()
   const { keycloak } = useKeycloak()
   
-  const checkAuthNavigation = async (id: number, setModal: SetterOrUpdater<boolean>) => {
+  const checkAuthNavigation = async (id: number, setModal?: SetterOrUpdater<boolean>) => {
     setLoading(true)
     if (setModal) {
       // setModal을 옵셔널로 줬기 때문에 undefined가 들어올 수도 있다.

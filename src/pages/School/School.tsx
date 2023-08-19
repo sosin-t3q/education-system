@@ -22,6 +22,10 @@ interface SchoolData {
   };
 }
 
+interface SchoolName {
+  name: '경북대학교' | '고려대학교';
+}
+
 
 const School = () => {
 
@@ -37,12 +41,12 @@ const School = () => {
     // 필요한 경우 더 많은 학교, 색상 및 제목을 추가합니다
   }
 
-  const [selectedSchool, setSelectedSchool] = useState<'경북대학교' | '고려대학교'>('경북대학교')
+  const [selectedSchool, setSelectedSchool] = useState<SchoolName['name']>('경북대학교')
   const checkAuthNavigation = useHandleNavigate()
   const setIsModalOpen = useSetRecoilState(isModalOpenAtom);
 
 
-  const handleSchoolChange = (school: string) => {
+  const handleSchoolChange = (school: SchoolName['name']) => {
     if (schoolData[school]) {
       setSelectedSchool(school)
     }
