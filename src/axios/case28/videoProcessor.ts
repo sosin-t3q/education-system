@@ -87,7 +87,7 @@ const videoProcessor = async (
 
         /* CASE : 보행자 도로 위 이상행동 탐지 - Anomaly */
         case 'anomaly':
-          resultData = response_data === 'normal' ? '정상' : '비정상'
+          resultData = response_data == 'normal' ? '정상' : '비정상'
           break
 
         /* CASE : 얼굴 키포인트가 있는 데이터 군집화 - Clustering */

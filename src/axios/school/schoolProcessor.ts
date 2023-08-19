@@ -78,7 +78,7 @@ const getApiType = (
 }
 
 const schoolProcessor = async (
-  targetId: number,
+  targetId: string | number, // 타입 어떤걸로 할지 수정
   value: string | string[],
   formUrl: string,
   setLoading: SetterOrUpdater<boolean>,
@@ -117,55 +117,23 @@ const schoolProcessor = async (
           break
 
         case 1101:
-        case 1102:
+        case 1102: // 정상작동
           resultData = `data:video/mp4;base64,${response_data}`
           break
 
-        case 1103:
+        case 1103: // 500 에러, PPT 자료 없음
           resultData = response_data[0].replaceAll('\n', '<br>')
           break
-        case 1200: // 에러
-          {
-            const response_arr = []
-            const response_rlt = []
-
-            if (response_data == 'There is no data') {
-              response_arr.push('해당 단어를 찾을 수 없습니다.')
-            } else if (
-              response_data[0]['negative'] > response_data[0]['neutral'] &&
-              response_data[0]['negative'] > response_data[0]['postive']
-            ) {
-              response_arr.push('부정')
-            } else if (
-              response_data[0]['neutral'] > response_data[0]['postive']
-            ) {
-              response_arr.push('중립')
-            } else {
-              response_arr.push('긍정')
-            }
-
-            for (let i = 1; i < 6; i++) {
-              response_arr.push(response_data[i][0])
-            }
-
-            if (json.res == 'true') {
-              if (response_arr[0] == '해당 단어를 찾을 수 없습니다.') {
-                resultData = response_arr[0]
-              } else if (response_arr[0] != '해당 단어를 찾을 수 없습니다.') {
-                for (let i = 1; i < response_arr.length; i++) {
-                  response_rlt.push(` ${response_arr[i]}`)
-                }
-                resultData = `이 단어는 ${response_arr[0]}적인 단어입니다. <br>연관어로는 ${response_rlt}이(가) 있습니다.`
-              }
-            }
-          }
+        case 1200: // 추론 안되게 처리완료
+          // 동작 중지
           break
 
-        case 1201: // 에러
+        case 1201: // 정상작동
+          response_data = json.response.image
           resultData = `data:image/jpg;base64,${response_data}`
           break
 
-        case 1202: // 정상작동
+        case 1202: // 샘플 3번 정상작동, 샘플 1번 2번 받아오는 이미지 오류
           {
             const res_score = []
             let resultValue = ''
@@ -245,7 +213,13 @@ const schoolProcessor = async (
           break
 
         case 1208: // 500 에러
-          console.log('response_data =', response_data)
+          response_data = json.response
+          for (const i in response_data) {
+            console.log(`${i} : ${response_data[i]}`)
+          }
+
+          resultData = response_data
+
           break
 
         case 1209: // HTTPConnectionPool
@@ -253,15 +227,16 @@ const schoolProcessor = async (
           break
 
         default:
-          console.log(
-            '지정하지 않은 예제 return 값 확인 response_data =',
-            response_data,
-          )
+          return setAlert({ visible: true, option: 'IDError' })
           break
       }
     }
   } catch (err) {
-    setAlert({ visible: true, option: 'axiosError' })
+    if (targetId == 1200) {
+      return setAlert({ visible: true, option: 'DBError' })
+    }
+
+    return setAlert({ visible: true, option: 'axiosError' })
 
     return
   } finally {
