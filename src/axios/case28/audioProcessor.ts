@@ -63,7 +63,7 @@ const audioProcessor = async (
 
         /* CASE : 산업 기계 소리 이상탐지 - Anomaly */
         case 'anomaly':
-          resultData = response_data === 'normal' ? '정상' : '비정상'
+          resultData = response_data == 'normal' ? '정상' : '비정상'
           break
 
         /* CASE : 환경 소리 군집화 - Clustering */
