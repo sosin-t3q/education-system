@@ -5,14 +5,22 @@ import { useKeycloak } from '@react-keycloak/web'
 import { Intro, Home, Detail, School } from '@/pages'
 import { isLoggedInAtom, userIdAtom, isModalOpenAtom } from './atoms'
 import { useSetRecoilState, useRecoilValue } from 'recoil'
-import { PrivateRoute } from '@/components'
+import { useCookie } from '@/hooks/_index'
+// import { PrivateRoute } from '@/components'
 
 function App() {
 
-  const { keycloak } = useKeycloak()
-  const setIsLoggedIn = useSetRecoilState(isLoggedInAtom)
   const setUserId = useSetRecoilState(userIdAtom)
   const isModalOpen = useRecoilValue(isModalOpenAtom);
+  const setIsLoggedIn = useSetRecoilState(isLoggedInAtom)
+
+  const { createUserCookie } = useCookie();
+  const { keycloak, initialized } = useKeycloak()
+
+  useEffect(() => {
+    //로그인을 사용자 쿠키가 생성된다
+    createUserCookie();
+  }, [initialized, keycloak])
 
   /* user_auth 쿠키를 확인함  */
   useEffect(() => {
