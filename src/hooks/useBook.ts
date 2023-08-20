@@ -23,7 +23,7 @@ const useBook = () => {
         const result = await axiosInstance.get(`/api/backend/custom_layer/${userId}`) //개인AI 배열 데이터 호출
         const data = result.data //호출된 배열 데이터 저장
 
-        //장바구니 비교를 위해 호출된 배열 데이터 cartTable에 저장
+        //장바구니 최댓값 비교를 위해 호출된 배열 데이터 cartTable에 저장
         setCartTable([...data])
 
         const isBook = data.some(
