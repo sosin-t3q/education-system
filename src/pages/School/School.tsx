@@ -61,7 +61,7 @@ const School = () => {
   return (
     <>
       <Helmet>
-        <title>전국민 AI 훈민정음</title>
+        <title>전국민 AI 훈민정음 | 서당</title>
         <meta name="description" content="T3Q.ai" />
         <meta name="author" content="t3q" />
         <meta name="keyword" content="T3Q.ai, AI 플랫폼, 빅데이터" />

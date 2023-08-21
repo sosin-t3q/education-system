@@ -17,11 +17,10 @@ import {
 } from '@/atoms/index'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
-// import { default as combinedFunction } from '@/axios/combinedAxios'
 import addMimeType from '@/utils/addMimeType'
-
 import { default as combinedProcessor } from '@/axios/combinedProcessor'
 import { useParams } from 'react-router-dom'
+import { convertVideo } from '@/axios'
 
 export type InferObj = {
   label: string
@@ -32,7 +31,6 @@ export type InputType = string | string[] | null | undefined
 
 interface DetailFormProps {
   data: DataType | null
-  // pageId: string | undefined
 }
 
 const DetailForm = ({ data }: DetailFormProps) => {
@@ -46,11 +44,73 @@ const DetailForm = ({ data }: DetailFormProps) => {
   const [apiURL, setApiURL] = useState<string>('')
   const setAlert = useSetRecoilState(alertAtom)
 
+  const [cacheData, setCacheData] = useState<
+    Record<string, SelectedFileType | null>
+  >({})
+
   const fileList = data &&
     data['data_list'] && [
       '예제 선택하기',
       ...data['data_list'].map(item => item.name),
     ]
+
+  const isAudio = fileList && pageId === '9'
+  if (pageId === '9' && data) {
+    data['data_type'] = 'record'
+  }
+
+  useEffect(() => {
+    setSelected('default')
+    setSelectedFile(null)
+    setInfer(null)
+  }, [pageId])
+
+  useEffect(() => {
+    if (selected === 'default') {
+      setSelectedFile(null)
+
+      return
+    }
+    const target =
+      data && data['data_list'].find(item => item.name === selected)
+    if (pageId && target) {
+      if (pageId === '1202') {
+        const mapping = {
+          ...target,
+          data: Array.isArray(target.data)
+            ? target.data.map((item: string) => addMimeType(pageId, item))
+            : addMimeType(pageId, target.data as string),
+        }
+        setSelectedFile(mapping as SelectedFileType)
+
+        return
+      }
+
+      if (pageId === '13' || pageId === '1207') {
+        if (cacheData[selected]) {
+          setSelectedFile(cacheData[selected])
+
+          return
+        }
+
+        convertVideo(target.data, setAlert).then(
+          (res: Record<string, string> | undefined) => {
+            if (!res) return
+            const mapping = {
+              ...target,
+              data: res.convertedVideo,
+              original_data: res.originalData,
+            }
+            setSelectedFile(mapping as SelectedFileType)
+            setCacheData(prevCache => ({ ...prevCache, [selected]: mapping }))
+          },
+        )
+      }
+
+      const mapping = { ...target, data: addMimeType(pageId, target.data) }
+      setSelectedFile(mapping)
+    }
+  }, [selected, data, pageId, cacheData])
 
   const onChange = useCallback(
     (selected: string) => {
@@ -63,36 +123,6 @@ const DetailForm = ({ data }: DetailFormProps) => {
     },
     [selected],
   )
-
-  useEffect(() => {
-    setSelected('default')
-    setSelectedFile(null)
-    setInfer(null)
-  }, [pageId])
-
-  useEffect(() => {
-    if (selected === 'default') {
-      setSelectedFile(null)
-    } else {
-      const target =
-        data && data['data_list'].find(item => item.name === selected)
-      if (pageId && target) {
-        if (pageId === '1202') {
-          const mapping = {
-            ...target,
-            data: Array.isArray(target.data)
-              ? target.data.map((item: string) => addMimeType(pageId, item))
-              : addMimeType(pageId, target.data as string),
-          }
-          setSelectedFile(mapping as SelectedFileType)
-
-          return
-        }
-        const mapping = { ...target, data: addMimeType(pageId, target.data) }
-        setSelectedFile(mapping)
-      }
-    }
-  }, [selected, data])
 
   const onClick = useCallback(async () => {
     if (value) {
@@ -112,12 +142,6 @@ const DetailForm = ({ data }: DetailFormProps) => {
   const getInputData = useCallback((data: InputType) => {
     setValue(data as InputType)
   }, [])
-
-  const isAudio = fileList && pageId === '9'
-
-  if (pageId === '9' && data) {
-    data['data_type'] = 'record'
-  }
 
   return (
     <section className={styles.container}>

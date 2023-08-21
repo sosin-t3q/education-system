@@ -32,6 +32,7 @@
   --font-40: 40px;
   --font-46: 46px;
   --font-64: 64px;
+  --font-150: 150px;
 
   /* 폰트 굵기 */
   --font-regular: 400;
@@ -52,6 +53,7 @@
   --margin-50: 50px;
   --margin-100: 100px;
   --margin-120: 120px;
+  --margin-150: 150px;
   --margin-200: 200px;
   --margin-250: 250px;
   --margin-300: 300px;
