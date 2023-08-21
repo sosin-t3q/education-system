@@ -59,7 +59,7 @@ const logProcessor = async (
         /* CASE : 신용카드 사기 탐지 - Anomaly */
         case 'anomaly':
           resultData =
-            response_data === 'normal_transaction' ? '정상거래' : '부정거래'
+            response_data == 'normal_transaction' ? '정상거래' : '부정거래'
           break
 
         /* CASE : 포켓몬 스탯에 따른 군집화 - Clustering */

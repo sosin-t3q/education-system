@@ -1,6 +1,6 @@
-import { cartAtom, modalAtom, visionModalAtom } from '@/atoms'
 import { useNavigate } from 'react-router-dom'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { cartAtom, modalAtom, visionModalAtom } from '@/atoms'
 
 const useLayers = () => {
   const cart = useRecoilValue(cartAtom)
@@ -17,7 +17,7 @@ const useLayers = () => {
       case id > 100 && id < 200: // 비전 예제일 때 (id 101~199)
         setVisionModal(true)
         break
-      case id >= 1100:
+      case id >= 1100: // 학교 예제일 때 (id > 1100)
         navigate('/school')
         break
       default:

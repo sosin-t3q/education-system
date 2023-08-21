@@ -47,7 +47,7 @@ const binaryProcessor = async (
         /* CASE : 악성코드 이상탐지 - Anomaly */
         /* CASE : 악성코드 군집화 - Clustering */
         case 'classification' || 'anomaly' || 'clustering':
-          resultData = response_data === 'benign' ? '정상' : '악성'
+          resultData = response_data == 'benign' ? '정상' : '악성'
           break
 
         /* CASE : 악성코드 감염 예측 - Regression  */

@@ -38,11 +38,11 @@ const textProcessor = async (
       switch (mode) {
         /* CASE : 영화 리뷰 텍스트 감정 분석 - Classification */
         case 'classification':
-          resultData = response_data === 'pos' ? '긍정' : '부정'
+          resultData = response_data == 'pos' ? '긍정' : '부정'
           break
         /* CASE : 스팸메일 이상탐지 - Anomaly */
         case 'anomaly':
-          resultData = response_data === 'ham' ? 'HAM' : 'SPAM'
+          resultData = response_data == 'ham' ? 'HAM' : 'SPAM'
           break
 
         /* CASE : 뉴스 기사 군집화 - Clustering */
