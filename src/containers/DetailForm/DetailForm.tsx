@@ -17,11 +17,10 @@ import {
 } from '@/atoms/index'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
-// import { default as combinedFunction } from '@/axios/combinedAxios'
 import addMimeType from '@/utils/addMimeType'
-
 import { default as combinedProcessor } from '@/axios/combinedProcessor'
 import { useParams } from 'react-router-dom'
+import { convertVideo } from '@/axios'
 
 export type InferObj = {
   label: string
@@ -32,7 +31,6 @@ export type InputType = string | string[] | null | undefined
 
 interface DetailFormProps {
   data: DataType | null
-  // pageId: string | undefined
 }
 
 const DetailForm = ({ data }: DetailFormProps) => {
@@ -45,6 +43,10 @@ const DetailForm = ({ data }: DetailFormProps) => {
   const [infer, setInfer] = useState<string | InferObj | null>(null)
   const [apiURL, setApiURL] = useState<string>('')
   const setAlert = useSetRecoilState(alertAtom)
+
+  const [cacheData, setCacheData] = useState<
+    Record<string, SelectedFileType | null>
+  >({})
 
   const fileList = data &&
     data['data_list'] && [
@@ -88,11 +90,36 @@ const DetailForm = ({ data }: DetailFormProps) => {
 
           return
         }
+
+        if (pageId === '13' || pageId === '1207') {
+          // eslint-disable-next-line max-depth
+          if (cacheData[selected]) {
+            setSelectedFile(cacheData[selected])
+
+            return
+          }
+
+          convertVideo(target.data, setAlert).then(
+            (res: Record<string, string> | undefined) => {
+              if (!res) return
+              const mapping = {
+                ...target,
+                data: res.convertedVideo,
+                original_data: res.originalData,
+              }
+              setSelectedFile(mapping as SelectedFileType)
+
+              // 캐시에 저장
+              setCacheData(prevCache => ({ ...prevCache, [selected]: mapping }))
+            },
+          )
+        }
+
         const mapping = { ...target, data: addMimeType(pageId, target.data) }
         setSelectedFile(mapping)
       }
     }
-  }, [selected, data])
+  }, [selected, data, pageId, cacheData])
 
   const onClick = useCallback(async () => {
     if (value) {

@@ -17,7 +17,7 @@ const DropdownMenu = ({
   onSelect,
   targetIndex,
 }: DropdownMenu) => {
-  const {id} = useParams()
+  const { id } = useParams()
   const [toggle, setToggle] = useState(false)
   const [selected, setSelected] = useState('')
 
