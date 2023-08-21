@@ -26,7 +26,13 @@ const visionProcessor = async (
   }
 
   // eslint-disable-next-line no-constant-condition
-  if (targetId === 121 || 123 || 124 || 125 || 126) {
+  if (
+    targetId === 121 ||
+    targetId === 123 ||
+    targetId === 124 ||
+    targetId === 125 ||
+    targetId === 126
+  ) {
     // image/png 파일로 변환하여 전송
     convertData = await base64DataToFile(value, 'image', 'image/png')
   } else {
@@ -60,6 +66,13 @@ const visionProcessor = async (
 
         /* CASE : 121 */
         case 121:
+          resultData = response_data
+          /* returnAround true이면 { label: resultData }를 바로 return 한다 */
+          returnAround = true
+          break
+
+        /* CASE : 122 */
+        case 122:
           resultData = response_data
           /* returnAround true이면 { label: resultData }를 바로 return 한다 */
           returnAround = true
