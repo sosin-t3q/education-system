@@ -1,24 +1,20 @@
-import { useKeycloak } from '@react-keycloak/web'
-import { useNavigate } from 'react-router-dom'
-import { useSetRecoilState } from 'recoil'
 import DOMPurify from 'dompurify'
+import { useSetRecoilState } from 'recoil'
+import styles from './AI28Table.module.css'
 import data from '@/data/layers/AI28_LAYER.json'
-import styles from './Table.module.css'
-import { modalAtom, loadingAtom, isModalOpenAtom } from '@/atoms'
-import { handleNavigate } from '@/utils'
+import useHandleNavigate from '@/hooks/useHandleNavigate'
+import { AI28ModalAtom, isModalOpenAtom } from '@/atoms'
 
-const Table = () => {
-  const setModal = useSetRecoilState(modalAtom)
-  const setLoading = useSetRecoilState(loadingAtom)
+const AI28Table = () => {
+  const checkAuthNavigation = useHandleNavigate();
+  const setAI28Modal = useSetRecoilState(AI28ModalAtom)
   const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
-  const navigate = useNavigate()
-  const { keycloak } = useKeycloak()
-
-  const { title, columns, rows, body } = data
+  
+  const { columns, rows, body } = data
 
   return (
     <>
-      <h2 className={styles.title}>{title}</h2>
+      <h2 className={styles.title}>전국민 AI</h2>
       <div className={styles.table}>
         <div className={styles.columns}>
           {
@@ -60,13 +56,7 @@ const Table = () => {
                     className={styles['body-data']}
                     onClick={() => {
                         setIsModalOpen(false)
-                        handleNavigate(
-                          data.id,
-                          keycloak,
-                          setLoading,
-                          navigate,
-                          setModal
-                        )
+                        checkAuthNavigation(data.id, setAI28Modal)
                       }
                     }
                   >
@@ -84,4 +74,4 @@ const Table = () => {
   )
 }
 
-export default Table
+export default AI28Table

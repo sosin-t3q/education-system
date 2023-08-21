@@ -2,12 +2,17 @@ import DOMPurify from 'dompurify'
 import styles from './AI28Layer.module.css'
 import data from '@/data/layers/AI28_LAYER.json'
 
+interface AI28LayerProps {
+  className?: string
+}
+
 interface DataProps {
   id: number
   name: string
 }
 
-const AI28Layer = ({ className }: { className: string }) => {
+const AI28Layer = ({ className }: AI28LayerProps) => {
+
   const { body } = data
 
   return (
@@ -15,17 +20,19 @@ const AI28Layer = ({ className }: { className: string }) => {
       <h3 className={styles.title}>전국민 AI</h3>
       <div className={styles['block-container']}>
         {body.map((data: DataProps) => {
+
+          //XSS 공격 방지를 위한 DOM정제
           const cleanHTML = DOMPurify.sanitize(data.name)
 
-          return (
-            <div key={data.id} className={styles.block}>
-              <span
-                className={styles.content}
-                dangerouslySetInnerHTML={{ __html: cleanHTML }}
-              ></span>
-            </div>
-          )
-        })}
+            return (
+              <div key={data.id} className={styles.block}>
+                <span
+                  className={styles.content}
+                  dangerouslySetInnerHTML={{ __html: cleanHTML }}
+                ></span>
+              </div>
+            )}
+          )}
       </div>
     </div>
   )

@@ -1,29 +1,15 @@
+import Cookies from 'js-cookie'
+import { useKeycloak } from '@react-keycloak/web'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import styles from './Header.module.css'
 import { Link } from '@/components'
-import { ReactComponent as Logo } from '@/assets/logo.svg'
-import { useKeycloak } from '@react-keycloak/web'
-import { useEffect } from 'react'
-import Cookies from 'js-cookie'
 import { isLoggedInAtom, navigationAtom } from '@/atoms'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { ReactComponent as Logo } from '@/assets/logo.svg'
 
 const Header = () => {
-  const { keycloak, initialized } = useKeycloak()
-  const setActiveTab = useSetRecoilState(navigationAtom)
+  const { keycloak } = useKeycloak()
   const isLoggedIn = useRecoilValue(isLoggedInAtom)
-
-  useEffect(() => {
-    //로그인을 하면 값이 들어온다
-    if (keycloak.authenticated) {
-      const authData = {
-        access_token: keycloak.token,
-        refresh_token: keycloak.refreshToken,
-        id_token: keycloak.idToken,
-        user_id: keycloak.idTokenParsed?.sub,
-      }
-      Cookies.set('user_auth', JSON.stringify(authData), { expires: 1 })
-    }
-  }, [initialized, keycloak])
+  const setActiveTab = useSetRecoilState(navigationAtom)
 
   return (
     <header className={styles.header}>
@@ -50,14 +36,14 @@ const Header = () => {
             children="서당"
           />
           <a href="/adventure" className={`${styles.adventure}`}>
-            {' '}
-            T3Q.ai 체험하기{' '}
+            T3Q.ai 체험하기
           </a>
           {!isLoggedIn && (
             <button
               className={`${styles.login}`}
               type="button"
               onClick={() => {
+                //키클락 로그인 페이지로 이동
                 keycloak.login()
               }}
             >
@@ -69,6 +55,7 @@ const Header = () => {
               className={`${styles.login}`}
               type="button"
               onClick={() => {
+                //로그아웃 이후 /home으로 이동한 다음 user_auth 쿠키 제거
                 keycloak.logout({
                   redirectUri: `${window.location.origin}/home`,
                 })

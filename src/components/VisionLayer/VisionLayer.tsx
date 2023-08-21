@@ -1,7 +1,11 @@
 import styles from './VisionLayer.module.css'
 import { ReactComponent as ArrowDown } from '@/assets/arrow-down.svg'
 
-const VisionLayer = ({ className }: { className: string }) => {
+interface VisionLayerProps {
+  className?: string
+}
+
+const VisionLayer = ({ className }: VisionLayerProps) => {
   return (
     <div className={`${className} ${styles.VisionLayer}`}>
       <h3 className={styles.title}>AI훈민정음-VISION</h3>

@@ -7,6 +7,7 @@ const PrivateRoute = () => {
   if(userAuth) {
     return  <Outlet />
   } else {
+    console.log("여기가 문제임ㅋ")
     return <Navigate to="/home"/>
   }
 
