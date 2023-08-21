@@ -2,23 +2,6 @@ import axiosRequest from '@/axios/axiosRequest'
 import base64DataToFile from '@/axios/base64DataToFile'
 import { SetterOrUpdater } from 'recoil'
 
-let apiType = 'file'
-
-const getConvertData = async (mode: string, value: string | string[]) => {
-  // eslint-disable-next-line no-constant-condition
-  if (mode === 'anomaly' || 'regression') {
-    // Image anomaly, regression 예제는 image/jpeg 파일로 변환하여 전송
-    return await base64DataToFile(value, 'image', 'image/jpeg')
-  } else if (mode === 'classification') {
-    apiType = 'canvas'
-
-    return await base64DataToFile(value, 'image', 'image/png')
-  }
-
-  // 나머지 예제는 image/png 파일로 변환하여 전송
-  return await base64DataToFile(value, 'image', 'image/png')
-}
-
 const imageProcessor = async (
   targetId: any,
   mode: 'classification' | 'anomaly' | 'clustering' | 'regression' | string,
@@ -29,6 +12,9 @@ const imageProcessor = async (
 ) => {
   let resultData = ''
   let returnDirectly = false
+  let apiType = 'file'
+  let convertData: File
+  const typeCheck = typeof value
 
   type infoType = {
     [key: string]: string
@@ -53,18 +39,21 @@ const imageProcessor = async (
     sunglasses: '선글라스',
   }
 
-  const convertData = await getConvertData(mode, value)
-
-  // // eslint-disable-next-line no-constant-condition
-  // if (mode === 'anomaly' || 'regression') {
-  //   // Image anomaly, regression 예제는 image/jpeg 파일로 변환하여 전송
-  //   convertData = await base64DataToFile(value, 'image', 'image/jpeg')
-  // } else if (mode === 'classification') {
-  //   apiType = 'canvas'
-  // } else {
-  //   // 나머지 예제는 image/png 파일로 변환하여 전송
-  //   convertData = await base64DataToFile(value, 'image', 'image/png')
-  // }
+  // eslint-disable-next-line no-constant-condition
+  if (mode === 'anomaly' || mode === 'regression') {
+    // Image anomaly, regression 예제는 image/jpeg 파일로 변환하여 전송
+    convertData = await base64DataToFile(value, 'image', 'image/jpeg')
+  } else if (mode === 'classification') {
+    if (typeCheck == 'object') {
+      apiType = 'canvas'
+      convertData = await base64DataToFile(value[1], 'image', 'image/png')
+    } else {
+      convertData = await base64DataToFile(value, 'image', 'image/jpeg')
+    }
+  } else {
+    // 나머지 예제는 image/png 파일로 변환하여 전송
+    convertData = await base64DataToFile(value, 'image', 'image/png')
+  }
 
   /* FormData에 전달받은 값을 입력 */
   const formData = new FormData()
