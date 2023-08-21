@@ -56,7 +56,8 @@ const Input = ({ selected, getData, type }: InputProps) => {
   }, [selected, recording, recordBase64])
 
   const canvasData = (data: string | null) => {
-    getData(data)
+    if (!data) return
+    getData(['drawData', data])
   }
 
   let inner = <p>로딩 중...</p>

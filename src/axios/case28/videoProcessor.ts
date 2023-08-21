@@ -1,5 +1,6 @@
 import axiosRequest from '@/axios/axiosRequest'
 import base64DataToFile from '@/axios/base64DataToFile'
+import { videoBase64toFile } from '@/axios'
 import { SetterOrUpdater } from 'recoil'
 
 const videoProcessor = async (
@@ -31,7 +32,7 @@ const videoProcessor = async (
   // eslint-disable-next-line no-constant-condition
   if (mode === 'classification') {
     // video classification 예제는 image/jpeg 파일로 변환하여 전송
-    convertData = await base64DataToFile(value, 'video', 'video/mp4')
+    convertData = await videoBase64toFile(value as string, 'video', 'video/mp4')
   } else {
     // 나머지 예제는 image/gif 파일로 변환하여 전송
     convertData = await base64DataToFile(value, 'gifImage', 'image/gif')
