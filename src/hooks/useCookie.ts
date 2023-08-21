@@ -20,6 +20,26 @@ const useCookie = () => {
         }
     }
 
+    //사용자 쿠키 확인
+    // const checkUserCookie = () => {
+    //     const userCookie = Cookies.get("user_auth")
+        
+    //     if(userCookie) {
+    //         return true
+    //     } else {
+    //         false
+    //     }
+    // }
+
+    // const getUserId = () => {
+    //     const userCookie = Cookies.get("user_auth")
+
+    //     if(userCookie) {
+    //         const userId = JSON.parse(userCookie).user_id
+    //         return userId;
+    //     } 
+    // }
+
     return { createUserCookie }
 }
 

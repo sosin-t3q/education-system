@@ -3,39 +3,35 @@ import Cookies from 'js-cookie'
 import { Routes, Route } from 'react-router-dom'
 import { useKeycloak } from '@react-keycloak/web'
 import { Intro, Home, Detail, School } from '@/pages'
-import { isLoggedInAtom, userIdAtom, isModalOpenAtom } from './atoms'
+import { isLoggedInAtom, isModalOpenAtom } from './atoms'
 import { useSetRecoilState, useRecoilValue } from 'recoil'
 import { useCookie } from '@/hooks/_index'
 // import { PrivateRoute } from '@/components'
 
 function App() {
 
-  const setUserId = useSetRecoilState(userIdAtom)
   const isModalOpen = useRecoilValue(isModalOpenAtom);
   const setIsLoggedIn = useSetRecoilState(isLoggedInAtom)
 
   const { createUserCookie } = useCookie();
-  const { keycloak, initialized } = useKeycloak()
+  const { keycloak } = useKeycloak()
+  const userAuth = Cookies.get("user_auth")
 
   useEffect(() => {
-    //로그인을 사용자 쿠키가 생성된다
-    createUserCookie();
-  }, [initialized, keycloak])
+    //키클락을 경유해 로그인을 했으며 user_auth 쿠키가 없다면 쿠키를 생성한다
+    if(keycloak.authenticated && !userAuth) {
+      createUserCookie();
+    }
+  }, [keycloak.authenticated])
 
   /* user_auth 쿠키를 확인함  */
   useEffect(() => {
-    const userAuth = Cookies.get('user_auth')
-    
     if (userAuth) {
-      const userAuthObject = JSON.parse(userAuth)
-      const userId = userAuthObject.user_id
       setIsLoggedIn(true)
-      setUserId(userId)
     } else {
       setIsLoggedIn(false)
-      setUserId('')
     }
-  }, [keycloak.authenticated])
+  }, [keycloak.authenticated, userAuth])
 
   /* 모달창이 열려있으면 스크롤바를 제거함 */
   useEffect(() => {
