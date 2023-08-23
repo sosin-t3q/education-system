@@ -12,6 +12,7 @@ import {
 import { visionProcessor } from '@/axios/vision'
 
 import schoolProcessor from './school/schoolProcessor'
+import { CancelTokenSource } from 'axios'
 
 const combinedProcessor = (
   id: string | undefined,
@@ -19,6 +20,7 @@ const combinedProcessor = (
   apiURL: string,
   setLoading: SetterOrUpdater<boolean>,
   setAlert: SetterOrUpdater<{ visible: boolean; option: string }>,
+  source: CancelTokenSource,
 ) => {
   const hunminArray = [
     textProcessor,
@@ -42,29 +44,38 @@ const combinedProcessor = (
       taskIndex = (targetId - 1) % 4
       targetTask = tasks[taskIndex]
 
-      return hunminArray[funcIndex](
+      // return hunminArray[funcIndex](
+      //   targetId,
+      //   targetTask,
+      //   value,
+      //   apiURL,
+      //   setLoading,
+      //   setAlert,
+      // )
+      return textProcessor(
         targetId,
         targetTask,
         value,
         apiURL,
         setLoading,
         setAlert,
+        source,
       )
     }
-    case targetId > 100 && targetId < 200: {
-      // 비전 예제일 때 (id 101~199)
-      return visionProcessor(
-        targetId,
-        value,
-        apiURL,
-        setLoading,
-        setAlert,
-      )
-    }
+    // case targetId > 100 && targetId < 200: {
+    //   // 비전 예제일 때 (id 101~199)
+    //   return visionProcessor(
+    //     targetId,
+    //     value,
+    //     apiURL,
+    //     setLoading,
+    //     setAlert,
+    //   )
+    // }
 
-    case targetId >= 1100 && targetId < 1300: {
-      return schoolProcessor(targetId, value, apiURL, setLoading, setAlert)
-    }
+    // case targetId >= 1100 && targetId < 1300: {
+    //   return schoolProcessor(targetId, value, apiURL, setLoading, setAlert)
+    // }
 
     default:
       console.log(
