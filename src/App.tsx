@@ -3,15 +3,14 @@ import Cookies from 'js-cookie'
 import { Routes, Route } from 'react-router-dom'
 import { useKeycloak } from '@react-keycloak/web'
 import { Intro, Home, Detail, School, Error } from '@/pages'
-import { isLoggedInAtom, isModalOpenAtom } from './atoms'
-import { useSetRecoilState, useRecoilValue } from 'recoil'
+import { isModalOpenAtom } from './atoms'
+import { useRecoilValue } from 'recoil'
 import { useCookie } from '@/hooks/_index'
 // import { PrivateRoute } from '@/components'
 
 function App() {
 
   const isModalOpen = useRecoilValue(isModalOpenAtom);
-  const setIsLoggedIn = useSetRecoilState(isLoggedInAtom)
 
   const { createUserCookie } = useCookie();
   const { keycloak } = useKeycloak()
@@ -23,15 +22,6 @@ function App() {
       createUserCookie();
     }
   }, [keycloak.authenticated])
-
-  /* user_auth 쿠키를 확인함  */
-  useEffect(() => {
-    if (userAuth) {
-      setIsLoggedIn(true)
-    } else {
-      setIsLoggedIn(false)
-    }
-  }, [keycloak.authenticated, userAuth])
 
   /* 모달창이 열려있으면 스크롤바를 제거함 */
   useEffect(() => {
