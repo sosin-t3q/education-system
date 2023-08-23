@@ -1,4 +1,5 @@
 import { SetterOrUpdater } from 'recoil'
+import { CancelTokenSource } from 'axios'
 import {
   audioProcessor,
   binaryProcessor,
@@ -8,11 +9,8 @@ import {
   textProcessor,
   videoProcessor,
 } from '@/axios/case28'
-
 import { visionProcessor } from '@/axios/vision'
-
-import schoolProcessor from './school/schoolProcessor'
-import { CancelTokenSource } from 'axios'
+import { schoolProcessor } from '@/axios/school'
 
 const combinedProcessor = (
   id: string | undefined,
@@ -44,15 +42,7 @@ const combinedProcessor = (
       taskIndex = (targetId - 1) % 4
       targetTask = tasks[taskIndex]
 
-      // return hunminArray[funcIndex](
-      //   targetId,
-      //   targetTask,
-      //   value,
-      //   apiURL,
-      //   setLoading,
-      //   setAlert,
-      // )
-      return textProcessor(
+      return hunminArray[funcIndex](
         targetId,
         targetTask,
         value,
@@ -62,22 +52,31 @@ const combinedProcessor = (
         source,
       )
     }
-    // case targetId > 100 && targetId < 200: {
-    //   // 비전 예제일 때 (id 101~199)
-    //   return visionProcessor(
-    //     targetId,
-    //     value,
-    //     apiURL,
-    //     setLoading,
-    //     setAlert,
-    //   )
-    // }
+    case targetId > 100 && targetId < 200: {
+      // 비전 예제일 때 (id 101~199)
+      return visionProcessor(
+        targetId,
+        value,
+        apiURL,
+        setLoading,
+        setAlert,
+        source,
+      )
+    }
 
-    // case targetId >= 1100 && targetId < 1300: {
-    //   return schoolProcessor(targetId, value, apiURL, setLoading, setAlert)
-    // }
+    case targetId >= 1100 && targetId < 1300: {
+      return schoolProcessor(
+        targetId,
+        value,
+        apiURL,
+        setLoading,
+        setAlert,
+        source,
+      )
+    }
 
     default:
+      // eslint-disable-next-line no-console
       console.log(
         'ID 값이 잘못되었거나 훈민정음 예제가 아닙니다. 현재 ID값 -> ',
         targetId,

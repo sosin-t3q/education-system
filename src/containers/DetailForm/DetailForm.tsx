@@ -148,6 +148,7 @@ const DetailForm = ({ data }: DetailFormProps) => {
     // 요청을 취소하기 위한 cleanup 함수
     return () => {
       if (sourceRef.current) {
+        // setAlert({ visible: false, option: 'default' }) // 알림창 안보이게 변경
         sourceRef.current.cancel()
         console.log('axios 요청이 취소되었습니다.')
       }

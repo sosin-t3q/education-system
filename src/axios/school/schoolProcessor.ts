@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
 /* eslint-disable max-depth */
 import axiosRequest from '@/axios/axiosRequest'
+import { CancelTokenSource } from 'axios'
 import base64DataToFile from '@/axios/base64DataToFile'
 import { SetterOrUpdater } from 'recoil'
 import json from '@/data/SCHOOL_INFERENCE.json'
@@ -83,6 +85,7 @@ const schoolProcessor = async (
   formUrl: string,
   setLoading: SetterOrUpdater<boolean>,
   setAlert: SetterOrUpdater<{ visible: boolean; option: string }>,
+  source: CancelTokenSource, // axios cancelToken 추가
 ) => {
   const targetSchool = json.schools.find(school => school.id === targetId)
   const apiType = targetSchool?.axios || 'default'
@@ -103,7 +106,7 @@ const schoolProcessor = async (
   setLoading(true)
 
   try {
-    const json = await axiosRequest(convertData, apiType)
+    const json = await axiosRequest(convertData, apiType, source)
     if (json.res === 'true') {
       let response_data = json.response.data
       if (response_data == null) {
