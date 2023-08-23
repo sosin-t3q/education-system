@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable max-depth */
 import axiosRequest from '@/axios/axiosRequest'
-import { CancelTokenSource } from 'axios'
+import { CancelTokenSource, CanceledError } from 'axios'
 import base64DataToFile from '@/axios/base64DataToFile'
 import { SetterOrUpdater } from 'recoil'
 import json from '@/data/SCHOOL_INFERENCE.json'
@@ -237,9 +237,15 @@ const schoolProcessor = async (
   } catch (err) {
     if (targetId == 1200) {
       return setAlert({ visible: true, option: 'DBError' })
+    } else if (CanceledError) {
+      // console.error('Axios request error:', err)
+      // eslint-disable-next-line no-console
+      console.log('페이지를 벗어나 통신이 중단되었습니다.')
+
+      return
     }
 
-    return setAlert({ visible: true, option: 'axiosError' })
+    setAlert({ visible: true, option: 'axiosError' })
 
     return
   } finally {

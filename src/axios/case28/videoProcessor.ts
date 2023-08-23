@@ -1,7 +1,7 @@
 import axiosRequest from '@/axios/axiosRequest'
 import base64DataToFile from '@/axios/base64DataToFile'
 import { videoBase64toFile } from '@/axios'
-import { CancelTokenSource } from 'axios'
+import { CancelTokenSource, CanceledError } from 'axios'
 import { SetterOrUpdater } from 'recoil'
 
 const videoProcessor = async (
@@ -109,6 +109,13 @@ const videoProcessor = async (
       }
     }
   } catch (err) {
+    if (CanceledError) {
+      // console.error('Axios request error:', err)
+      // eslint-disable-next-line no-console
+      console.log('페이지를 벗어나 통신이 중단되었습니다.')
+
+      return
+    }
     setAlert({ visible: true, option: 'axiosError' })
 
     return
