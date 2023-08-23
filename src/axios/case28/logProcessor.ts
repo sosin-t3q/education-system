@@ -1,4 +1,5 @@
 import axiosRequest from '@/axios/axiosRequest'
+import { CancelTokenSource } from 'axios'
 import { SetterOrUpdater } from 'recoil'
 
 const logProcessor = async (
@@ -8,6 +9,7 @@ const logProcessor = async (
   formUrl: string, // 사용자가 입력한 API Url
   setLoading: SetterOrUpdater<boolean>, // 로딩 컴포넌트
   setAlert: SetterOrUpdater<{ visible: boolean; option: string }>, // 알림창 컴포넌트 상태관리
+  source: CancelTokenSource, // axios cancelToken 추가
 ) => {
   const apiType = 'log'
   let resultData = ''
@@ -38,7 +40,7 @@ const logProcessor = async (
   setLoading(true)
 
   try {
-    const json = await axiosRequest(convertData, apiType)
+    const json = await axiosRequest(convertData, apiType, source)
     if (json.res == 'true') {
       let response_data = json.response.data
       if (response_data == null) {

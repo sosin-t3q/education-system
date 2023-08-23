@@ -9,7 +9,7 @@ const textProcessor = async (
   formUrl: string, // 사용자가 입력한 API Url
   setLoading: SetterOrUpdater<boolean>, // 로딩 컴포넌트
   setAlert: SetterOrUpdater<{ visible: boolean; option: string }>, // 알림창 컴포넌트 상태관리
-  source: CancelTokenSource,
+  source: CancelTokenSource, // axios cancelToken 추가
 ) => {
   const apiType = 'text'
   let resultData = ''
@@ -63,7 +63,6 @@ const textProcessor = async (
       }
     }
   } catch (err) {
-    console.error('Axios request error:', err)
     setAlert({ visible: true, option: 'axiosError' })
 
     return
