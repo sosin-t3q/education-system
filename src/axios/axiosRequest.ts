@@ -1,8 +1,10 @@
 import axiosInstance from '@/services/axiosInstance'
+import { CancelTokenSource } from 'axios'
 
 const axiosRequest = async (
   dataTransfer: FormData | string,
   apiType: string,
+  source: CancelTokenSource,
 ) => {
   const axiosUrl = `/api/inference/${apiType}_req_ajx`
   let contentType = ''
@@ -23,6 +25,7 @@ const axiosRequest = async (
       'Content-Type': contentType,
     },
     responseType: 'json',
+    cancelToken: source.token,
   })
 
   return res.data
