@@ -44,6 +44,11 @@ const DropdownMenu = ({
     }
   }
 
+  useEffect(() => {
+    // id가 변경되면 toggle 상태를 false로 설정하여 메뉴를 닫습니다.
+    setToggle(false)
+  }, [id])
+
   return (
     <div className={`${styles.dropDown} ${className}`} onClick={handleToggle}>
       <div className={styles['dropDown-selected']}>
