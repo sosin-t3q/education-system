@@ -67,7 +67,7 @@ const DropdownMenu = ({
                 className={styles['dropDown-option']}
                 onClick={handleClick}
               >
-                <span className={styles.dropDownOtionText}>{option}</span>
+                <span className={styles.dropDownOptionText}>{option}</span>
               </li>
             )
           })}
