@@ -1,4 +1,5 @@
 import axiosRequest from '@/axios/axiosRequest'
+import { CancelTokenSource, CanceledError } from 'axios'
 import base64DataToFile from '@/axios/base64DataToFile'
 import { SetterOrUpdater } from 'recoil'
 
@@ -8,6 +9,7 @@ const visionProcessor = async (
   formUrl: string, // 사용자가 입력한 API Url
   setLoading: SetterOrUpdater<boolean>, // 로딩 컴포넌트
   setAlert: SetterOrUpdater<{ visible: boolean; option: string }>, // 알림창 컴포넌트 상태관리
+  source: CancelTokenSource, // axios cancelToken 추가
 ) => {
   const apiType = 'file'
   let convertData: File
@@ -49,7 +51,7 @@ const visionProcessor = async (
   setLoading(true)
 
   try {
-    const json = await axiosRequest(formData, apiType)
+    const json = await axiosRequest(formData, apiType, source)
     if (json.res == 'true') {
       let response_data = json.response.data
       if (response_data == null) {
@@ -89,6 +91,13 @@ const visionProcessor = async (
       }
     }
   } catch (err) {
+    if (CanceledError) {
+      // console.error('Axios request error:', err)
+      // eslint-disable-next-line no-console
+      console.log('페이지를 벗어나 통신이 중단되었습니다.')
+
+      return
+    }
     setAlert({ visible: true, option: 'axiosError' })
 
     return
