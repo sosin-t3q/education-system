@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import Cookies from 'js-cookie'
-import { useKeycloak } from '@react-keycloak/web'
 import { useSetRecoilState } from 'recoil'
+import { useKeycloak } from '@react-keycloak/web'
 import styles from './Header.module.css'
 import { Link } from '@/components'
 import { navigationAtom } from '@/atoms'
@@ -15,13 +15,13 @@ const Header = () => {
   const userAuth = Cookies.get("user_auth")
   
   useEffect(() => {
+    // 키클락 로그인에 성공했다면 헤더 UI를 업데이트
     if(keycloak.authenticated || userAuth) {
       setIsLoggedIn(true)
     } else {
       setIsLoggedIn(false)
     }
   }, [keycloak.authenticated, userAuth])
-
 
   return (
     <header className={styles.header}>
