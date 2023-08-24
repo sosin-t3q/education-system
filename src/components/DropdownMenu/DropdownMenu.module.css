@@ -70,7 +70,7 @@
   background-color: #fff; /* 스크롤바 트랙 색상 */
 }
 
-.dropDownOtionText {
+.dropDownOptionText {
   display: block;
   text-overflow: ellipsis;
   white-space: nowrap;

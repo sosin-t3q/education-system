@@ -1214,19 +1214,16 @@
         "name": "데이터셋"
       },
       {
-        "name": "전처리"
+        "name": "데이터 전처리"
       },
       {
-        "name": "Mask R-CNN (1)"
+        "name": "SegFormer"
       },
       {
-        "name": "RPN (Region Proposal Network)"
+        "name": "SegFormer-Encoder"
       },
       {
-        "name": "Mask branch"
-      },
-      {
-        "name": "Mask R-CNN (2)"
+        "name": "SegFormer-Decoder"
       },
       {
         "name": "추론 결과"
