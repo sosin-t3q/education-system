@@ -753,15 +753,14 @@
   {
     "id": 1103,
     "title": "나만의 말동무 심리케어 ChatBot",
-    "folderName": "test",
+    "folderName": "chatBot",
     "category": [
-      "제목",
-      "데이터셋",
-      "test1",
-      "test2",
-      "test3",
-      "test4",
-      "test5"
+      "소개",
+      "데이터셋 1",
+      "데이터셋 2",
+      "KoGPT2",
+      "토큰화",
+      "웹 구현"
     ]
   },
   {
