@@ -21,7 +21,7 @@ interface DetailCarouselProps {
 
 const DetailCarousel = ({ className, pageId }: DetailCarouselProps) => {
   const target = json.find(item => String(item.id) === pageId)
-  const fileList = target?.category.map(item => item.name) || []
+  const fileList = target?.category || []
   const folderName = target?.folderName
   const pageTitle = target?.title //상세페이지 제목이 담긴다
   const swiperRef = useRef<SwiperRef>(null)
