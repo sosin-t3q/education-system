@@ -1,15 +1,11 @@
 import { useRecoilValue } from 'recoil'
 import styles from './HomeCase.module.css'
-import { AI28Modal, CartModal, VisionModal } from '@/containers'
-import { Title, Text, Layers, AlertModal, Spinner } from '@/components'
-import { AI28ModalAtom, cartModalAtom, visionModalAtom, loadingAtom, alertAtom } from '@/atoms'
+import { Title, Text, Layers, AlertModal, Spinner, ModalController } from '@/components'
+import { loadingAtom, alertAtom } from '@/atoms'
 
 const HomeCase = () => {
   const loading = useRecoilValue(loadingAtom)
   const alertModal = useRecoilValue(alertAtom)
-  const ai28Modal = useRecoilValue(AI28ModalAtom)
-  const cartModal = useRecoilValue(cartModalAtom)
-  const visionModal = useRecoilValue(visionModalAtom)
 
   return (
     <div className={styles.case}>
@@ -27,9 +23,7 @@ const HomeCase = () => {
         수 있습니다.
       </Text>
       <Layers />
-      {ai28Modal && <AI28Modal />}
-      {cartModal && <CartModal />}
-      {visionModal && <VisionModal />}
+      <ModalController />
       {alertModal.visible && <AlertModal option={alertModal.option} />}
       {loading && <Spinner />}
     </div>

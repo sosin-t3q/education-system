@@ -14,3 +14,4 @@ export { default as navigationAtom } from './navigationAtom'
 export { default as RecordAtom } from './recordAtom'
 export { default as alertAtom } from './alertAtom'
 export { default as isModalOpenAtom } from './isModalOpenAtom'
+export { default as currentModalAtom } from "./currentModalAtom"

@@ -29,3 +29,4 @@ export { default as RecordButton } from './RecordButton/RecordButton'
 export { default as Recording } from './Recording/Recording'
 export { default as LayersView } from './LayersView/LayersView'
 export { default as AlertModal } from './AlertModal/AlertModal'
+export { default as ModalController } from "./ModalController/ModalController"
