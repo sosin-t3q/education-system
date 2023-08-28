@@ -1,14 +1,10 @@
-import { Title, Text, Layers, AlertModal } from '@/components'
-import { AI28Modal, CartModal, VisionModal } from '@/containers'
-import styles from './HomeCase.module.css'
 import { useRecoilValue } from 'recoil'
-import { AI28ModalAtom, cartModalAtom, visionModalAtom, loadingAtom, alertAtom } from '@/atoms'
-import Spinner from '@/components/Spinner/Spinner'
+import styles from './HomeCase.module.css'
+import { Title, Text, Layers, AlertModal, Spinner } from '@/components'
+import { loadingAtom, alertAtom } from '@/atoms'
+import { ModalController } from '@/containers'
 
 const HomeCase = () => {
-  const modal = useRecoilValue(AI28ModalAtom)
-  const cartModal = useRecoilValue(cartModalAtom)
-  const visionModal = useRecoilValue(visionModalAtom)
   const loading = useRecoilValue(loadingAtom)
   const alertModal = useRecoilValue(alertAtom)
 
@@ -18,7 +14,7 @@ const HomeCase = () => {
         type={2}
         className={styles.h2}
         label="전국민 AI훈민정음 28가지 사례"
-      ></Title>
+      />
       <Text className={styles.p}>
         인공지능에서 다루는 데이터 7종, 인공지능이 하는 태스크 4가지를 조합한{' '}
         <span className={styles.span}>
@@ -28,11 +24,9 @@ const HomeCase = () => {
         수 있습니다.
       </Text>
       <Layers />
-      {modal && <AI28Modal />}
-      {cartModal && <CartModal />}
-      {visionModal && <VisionModal />}
+      <ModalController />
       {alertModal.visible && <AlertModal option={alertModal.option} />}
-      {loading && <Spinner></Spinner>}
+      {loading && <Spinner />}
     </div>
   )
 }

@@ -47,6 +47,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateY(-20px);
 }
 
 .warning svg {
@@ -55,5 +56,5 @@
 
 .warning span {
   font-size: var(--font-20);
-  font-weight: 500;
+  font-weight: 600;
 }
