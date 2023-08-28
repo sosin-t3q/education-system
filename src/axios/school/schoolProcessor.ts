@@ -233,10 +233,14 @@ const schoolProcessor = async (
             response_data = json.response.inference.similar_images
             const arrayResult = []
 
-            for (const imageData of response_data) {
-              const formattedData = `data:image/jpg;base64,${imageData}`
-              arrayResult.push(formattedData)
+            if (response_data) {
+              // 만약 response_data가 존재하면 실행 (null값이면 빈배열 반환)
+              for (const imageData of response_data) {
+                const formattedData = `data:image/jpg;base64,${imageData}`
+                arrayResult.push(formattedData)
+              }
             }
+
             resultData = arrayResult
           }
 
