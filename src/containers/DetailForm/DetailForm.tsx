@@ -15,6 +15,7 @@ import {
   detailDataAtom,
   inputValidationAtom,
   loadingAtom,
+  isInferAtom,
 } from '@/atoms/index'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
@@ -25,7 +26,7 @@ import { convertVideo } from '@/axios'
 import axios, { CancelTokenSource } from 'axios'
 
 export type InferObj = {
-  label: string
+  label: string | string[]
 }
 
 type SelectedFileType = Record<string, string> | null | undefined
@@ -42,10 +43,11 @@ const DetailForm = ({ data }: DetailFormProps) => {
   const [selectedFile, setSelectedFile] = useState<SelectedFileType>(null)
   const [value, setValue] = useRecoilState(detailDataAtom)
   const [isValid] = useRecoilState(inputValidationAtom)
-  const [infer, setInfer] = useState<string | InferObj | null>(null)
+  const [infer, setInfer] = useState<string | InferObj | string[] | null>(null)
   const [apiURL, setApiURL] = useState<string>('')
   const setAlert = useSetRecoilState(alertAtom)
   const sourceRef = useRef<CancelTokenSource | null>(null)
+  const setIsInfer = useSetRecoilState(isInferAtom)
 
   const [cacheData, setCacheData] = useState<
     Record<string, SelectedFileType | null>
@@ -66,11 +68,13 @@ const DetailForm = ({ data }: DetailFormProps) => {
     setSelected('default')
     setSelectedFile(null)
     setInfer(null)
+    setIsInfer(false)
   }, [pageId])
 
   useEffect(() => {
     if (selected === 'default') {
       setSelectedFile(null)
+      setIsInfer(false)
 
       return
     }
@@ -112,6 +116,7 @@ const DetailForm = ({ data }: DetailFormProps) => {
 
       const mapping = { ...target, data: addMimeType(pageId, target.data) }
       setSelectedFile(mapping)
+      setIsInfer(false)
     }
   }, [selected, data, pageId, cacheData])
 
@@ -138,6 +143,7 @@ const DetailForm = ({ data }: DetailFormProps) => {
         setAlert,
         sourceRef.current,
       )
+      setIsInfer(true)
       setInfer(inferResult === undefined ? null : inferResult)
     } else if (!isValid.isValid) {
       setAlert({ visible: true, option: 'nullError' })
@@ -148,17 +154,10 @@ const DetailForm = ({ data }: DetailFormProps) => {
     // 요청을 취소하기 위한 cleanup 함수
     return () => {
       if (sourceRef.current) {
-        // setAlert({ visible: false, option: 'default' }) // 알림창 안보이게 변경
         sourceRef.current.cancel()
-        console.log('axios 요청이 취소되었습니다.')
       }
     }
   }, [])
-
-  // const stopAxios = useCallback(() => {
-  //   console.log('중단 버튼 클릭!!!')
-  //   sourceRef.current.cancel()
-  // }, [])
 
   const getInputData = useCallback((data: InputType) => {
     setValue(data as InputType)
@@ -197,12 +196,6 @@ const DetailForm = ({ data }: DetailFormProps) => {
         onClick={onClick}
         className={styles['button--input']}
       />
-      {/* <Button
-        option={1}
-        label={'중단하기'}
-        onClick={stopAxios}
-        className={styles['button--input']}
-      /> */}
     </section>
   )
 }
