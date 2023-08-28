@@ -6,7 +6,8 @@ import {
 import { useParams } from 'react-router-dom'
 import styles from './Detail.module.css'
 import { useEffect, useState } from 'react'
-import { Book, LayersView, Spinner, AlertModal, ModalController } from '@/components'
+import { Book, LayersView, Spinner, AlertModal } from '@/components'
+import { ModalController } from "@/containers"
 import { Helmet } from 'react-helmet-async'
 import { loadingAtom, alertAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
