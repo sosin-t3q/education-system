@@ -1,21 +1,20 @@
-import { cartAtom, AI28ModalAtom, visionModalAtom } from '@/atoms'
+import { cartAtom, currentModalAtom } from '@/atoms'
 import { useNavigate } from 'react-router-dom'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 
 const useLayers = () => {
   const cart = useRecoilValue(cartAtom)
-  const setModal = useSetRecoilState(AI28ModalAtom)
-  const setVisionModal = useSetRecoilState(visionModalAtom)
+  const setCurrentModal = useSetRecoilState(currentModalAtom) 
   const navigate = useNavigate()
 
   const returnLayers = () => {
     const id = cart.id
     switch (true) {
       case id >= 1 && id <= 28: // 훈민정음 예제일 때 (id 1~28)
-        setModal(true)
+        setCurrentModal('ai28')
         break
       case id > 100 && id < 200: // 비전 예제일 때 (id 101~199)
-        setVisionModal(true)
+        setCurrentModal('vision')
         break
       case id >= 1100: // 학교 예제일 때 (id > 1100)
         navigate('/school')

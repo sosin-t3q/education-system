@@ -70,8 +70,8 @@ const CartTable = () => {
     <>
       <h2 className={styles.title}>개인 AI</h2>
       <div className={styles.warning}>
-        <Warning></Warning>
-        <span>로그인된 사용자만 접근할 수 있습니다!</span>
+        <Warning />
+        <span>개인 AI에 데이터가 추가되지 않습니다</span>
       </div>
     </>
   )
