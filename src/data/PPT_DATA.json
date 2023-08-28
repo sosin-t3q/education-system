@@ -233,9 +233,11 @@
     "category": [
       "소개",
       "데이터셋",
-      "전처리",
-      "전처리-Inception V3",
-      "학습",
+      "데이터셋 전처리",
+      "정규화",
+      "원-핫 인코딩",
+      "Neural Network 신경망",
+      "Model Layer",
       "추론 결과"
     ]
   },
@@ -694,10 +696,11 @@
     "category": [
       "소개",
       "데이터셋",
-      "데이터 전처리",
-      "SegFormer",
-      "SegFormer - Encoder",
-      "SegFormer - Decoder",
+      "전처리",
+      "Mask R-CNN (1)",
+      "RPN (Region Proposal Network)",
+      "Mask branch",
+      "Mask R-CNN (2)",
       "추론 결과"
     ]
   },
