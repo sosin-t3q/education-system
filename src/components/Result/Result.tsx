@@ -6,15 +6,17 @@ import { InferObj } from '@/containers/DetailForm/DetailForm'
 import MidiPlayer from 'react-midi-player'
 
 interface ResultProps {
-  infer: string | null | InferObj
+  infer: string | InferObj | string[] | null
 }
 
 const Result = ({ infer }: ResultProps) => {
   const [value, setValue] = useState<string>('')
   const [objValue, setObjValue] = useState<InferObj>({ label: '' })
+  const [arrValue, setArrValue] = useState<string[]>([])
 
   useEffect(() => {
     if (infer && typeof infer === 'string') setValue(infer)
+    else if (infer && Array.isArray(infer)) setArrValue(infer)
     else if (infer && typeof infer === 'object') setObjValue(infer)
   }, [infer])
 
@@ -25,6 +27,24 @@ const Result = ({ infer }: ResultProps) => {
 
   if (infer) {
     switch (true) {
+      case Array.isArray(infer): // 결과값이 배열인 경우
+        if (arrValue.length === 0 || !arrValue[0].includes('data:image/')) {
+          return (
+            <div className={styles['result-cont']}>
+              <p>이미지를 불러올 수 없습니다.</p>
+            </div>
+          )
+        } else if (arrValue[0].includes('data:image/')) {
+          // 이미지 배열이 들어온 경우
+          return (
+            <div className={styles.arrImg}>
+              {arrValue.map((img, idx) => (
+                <img key={idx} src={img} alt={`결과 ${idx + 1}`} />
+              ))}
+            </div>
+          )
+        }
+        break
       case typeof infer === 'object': // 키워드
         return (
           <div className={styles['result-cont']}>
