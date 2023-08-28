@@ -25,7 +25,7 @@ import { convertVideo } from '@/axios'
 import axios, { CancelTokenSource } from 'axios'
 
 export type InferObj = {
-  label: string
+  label: string | string[]
 }
 
 type SelectedFileType = Record<string, string> | null | undefined

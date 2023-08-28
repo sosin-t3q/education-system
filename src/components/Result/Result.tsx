@@ -46,6 +46,8 @@ const Result = ({ infer }: ResultProps) => {
         }
         break
       case typeof infer === 'object': // 키워드
+        if (Array.isArray(objValue.label)) return
+
         return (
           <div className={styles['result-cont']}>
             <Keyword label={objValue.label} />
