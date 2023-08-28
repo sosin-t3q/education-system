@@ -86,9 +86,9 @@
     },
     {
       "id": 1207,
-      "axios": "file",
-      "inputType": "video/mp4",
-      "returnType": true,
+      "axios": "error",
+      "inputType": "error",
+      "returnType": false,
       "dataInfo": ""
     },
     {
