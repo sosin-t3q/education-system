@@ -15,6 +15,7 @@ import {
   detailDataAtom,
   inputValidationAtom,
   loadingAtom,
+  isInferAtom,
 } from '@/atoms/index'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { DataType } from '@/pages/Detail/Detail'
@@ -46,6 +47,7 @@ const DetailForm = ({ data }: DetailFormProps) => {
   const [apiURL, setApiURL] = useState<string>('')
   const setAlert = useSetRecoilState(alertAtom)
   const sourceRef = useRef<CancelTokenSource | null>(null)
+  const setIsInfer = useSetRecoilState(isInferAtom)
 
   const [cacheData, setCacheData] = useState<
     Record<string, SelectedFileType | null>
@@ -66,11 +68,13 @@ const DetailForm = ({ data }: DetailFormProps) => {
     setSelected('default')
     setSelectedFile(null)
     setInfer(null)
+    setIsInfer(false)
   }, [pageId])
 
   useEffect(() => {
     if (selected === 'default') {
       setSelectedFile(null)
+      setIsInfer(false)
 
       return
     }
@@ -112,6 +116,7 @@ const DetailForm = ({ data }: DetailFormProps) => {
 
       const mapping = { ...target, data: addMimeType(pageId, target.data) }
       setSelectedFile(mapping)
+      setIsInfer(false)
     }
   }, [selected, data, pageId, cacheData])
 
@@ -138,6 +143,7 @@ const DetailForm = ({ data }: DetailFormProps) => {
         setAlert,
         sourceRef.current,
       )
+      setIsInfer(true)
       setInfer(inferResult === undefined ? null : inferResult)
     } else if (!isValid.isValid) {
       setAlert({ visible: true, option: 'nullError' })

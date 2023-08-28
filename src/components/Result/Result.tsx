@@ -4,6 +4,8 @@ import { ReactComponent as ApprovalDelegation } from '@/assets/approval_delegati
 import { Keyword } from '@/components'
 import { InferObj } from '@/containers/DetailForm/DetailForm'
 import MidiPlayer from 'react-midi-player'
+import { useRecoilState } from 'recoil'
+import { isInferAtom } from '@/atoms'
 
 interface ResultProps {
   infer: string | InferObj | string[] | null
@@ -13,6 +15,7 @@ const Result = ({ infer }: ResultProps) => {
   const [value, setValue] = useState<string>('')
   const [objValue, setObjValue] = useState<InferObj>({ label: '' })
   const [arrValue, setArrValue] = useState<string[]>([])
+  const [isInfer] = useRecoilState(isInferAtom)
 
   useEffect(() => {
     if (infer && typeof infer === 'string') setValue(infer)
@@ -111,8 +114,14 @@ const Result = ({ infer }: ResultProps) => {
 
   return (
     <div className={styles['result-cont']}>
-      <ApprovalDelegation />
-      <p>예측 결과</p>
+      {isInfer ? (
+        <p>추론 결과가 없습니다.</p>
+      ) : (
+        <>
+          <ApprovalDelegation />
+          <p>예측 결과</p>
+        </>
+      )}
     </div>
   )
 }
