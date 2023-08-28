@@ -9,6 +9,7 @@ import { isModalOpenAtom } from '@/atoms'
 import { useSetRecoilState } from 'recoil'
 
 interface SchoolType {
+  jockey: string
   id: number
   badge: string
   title: string
@@ -17,13 +18,12 @@ interface SchoolType {
 
 interface SchoolData {
   [schoolName: string]: {
-    color: string;
-    title: string;
-  };
+    color: string
+    title: string
+  }
 }
 
 const School = () => {
-
   const schoolData: SchoolData = {
     경북대학교: {
       color: 'kyungbuk',
@@ -36,13 +36,14 @@ const School = () => {
     // 필요한 경우 더 많은 학교, 색상 및 제목을 추가합니다
   }
 
-  const [selectedSchool, setSelectedSchool] = useState<'경북대학교' | '고려대학교'>('경북대학교')
+  const [selectedSchool, setSelectedSchool] = useState<
+    '경북대학교' | '고려대학교'
+  >('경북대학교')
   const checkAuthNavigation = useHandleNavigate()
-  const setIsModalOpen = useSetRecoilState(isModalOpenAtom);
-
+  const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
 
   const handleSchoolChange = (school: string) => {
-    if (schoolData[school as '경북대학교' | '고려대학교'])  {
+    if (schoolData[school as '경북대학교' | '고려대학교']) {
       setSelectedSchool(school as '경북대학교' | '고려대학교')
     }
   }
@@ -55,7 +56,7 @@ const School = () => {
 
   //서당페이지에서 레이아웃을 클릭할 경우 스크롤이 사라지는 걸 방지하기 위한 방법
   useEffect(() => {
-    setIsModalOpen(false);
+    setIsModalOpen(false)
   }, [])
 
   return (
@@ -87,13 +88,13 @@ const School = () => {
             <Card
               key={school.id}
               badge={school.badge}
+              jockey={school.jockey}
               title={school.title}
               content={school.content}
               cardColor={cardColor}
               onClickCard={() => {
                 checkAuthNavigation(school.id)
-                }
-              }
+              }}
             />
           ))}
         </div>
