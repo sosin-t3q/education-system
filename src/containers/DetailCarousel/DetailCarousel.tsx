@@ -14,7 +14,6 @@ import { useRecoilState } from 'recoil'
 import useBook from '@/hooks/useBook'
 import Cookies from 'js-cookie'
 
-
 interface DetailCarouselProps {
   className: string
   pageId: string | undefined
@@ -22,11 +21,11 @@ interface DetailCarouselProps {
 
 const DetailCarousel = ({ className, pageId }: DetailCarouselProps) => {
   const target = json.find(item => String(item.id) === pageId)
-  const fileList = target?.category.map(item => item.name) || []
+  const fileList = target?.category || []
   const folderName = target?.folderName
   const pageTitle = target?.title //상세페이지 제목이 담긴다
   const swiperRef = useRef<SwiperRef>(null)
-  const userAuth = Cookies.get("user_auth")
+  const userAuth = Cookies.get('user_auth')
 
   // 이미지 로드 실패시 기본 이미지를 로드하는 함수
   const handleImageError = (
@@ -45,14 +44,14 @@ const DetailCarousel = ({ className, pageId }: DetailCarouselProps) => {
     // 컴포넌트가 렌더링된 다음 cart의 값으로 id, title 키를 가진 객체가 저장된다
     setCart({ id: Number(pageId), title: pageTitle })
   }, [pageId, pageTitle])
-  
+
   useEffect(() => {
     // 상세페이지가 장바구니에 들어가있는 지를 확인한다
     // cart Atom을 추적하고 있어, cart Atom이 업데이트된 다음에 실행될 수 있게끔 했다.
-    if(userAuth) {
+    if (userAuth) {
       checkBook()
     }
-  }, [cart, Cookies.get("user_auth")])
+  }, [cart, Cookies.get('user_auth')])
 
   const imagePaths = Array.from(
     { length: fileList.length },
@@ -62,6 +61,11 @@ const DetailCarousel = ({ className, pageId }: DetailCarouselProps) => {
   const gotoSlide = (selectedIndex: number) => {
     swiperRef.current?.swiper?.slideTo(selectedIndex)
   }
+
+  useEffect(() => {
+    // imagePaths 또는 target 변경시 swiper를 첫 번째 슬라이드로 초기화
+    swiperRef.current?.swiper?.slideTo(0)
+  }, [target])
 
   return (
     <section className={styles.container}>

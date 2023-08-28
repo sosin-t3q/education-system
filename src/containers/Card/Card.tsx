@@ -10,15 +10,15 @@ interface CardProps {
 }
 
 const Card = ({
-  badge = '배지',
-  title = '제목',
-  content = '내용',
-  cardColor='kyungbuk',
+  badge,
+  title,
+  content,
+  cardColor,
   onClickCard
 }: CardProps) => {
 
   const cardStyle = {
-    backgroundColor: cardColor,
+    backgroundColor: cardColor
   }
 
   return (

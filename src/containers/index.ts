@@ -8,3 +8,4 @@ export { default as HomeCase } from './HomeCase/HomeCase'
 export { default as AI28Modal } from './AI28Modal/AI28Modal'
 export { default as CartModal } from './CartModal/CartModal'
 export { default as VisionModal } from './VisionModal/VisionModal'
+export { default as ModalController } from "./ModalController/ModalController"

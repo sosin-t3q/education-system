@@ -1,15 +1,27 @@
+import {useState, useEffect} from 'react'
 import Cookies from 'js-cookie'
+import { useSetRecoilState } from 'recoil'
 import { useKeycloak } from '@react-keycloak/web'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
 import styles from './Header.module.css'
 import { Link } from '@/components'
-import { isLoggedInAtom, navigationAtom } from '@/atoms'
+import { navigationAtom } from '@/atoms'
 import { ReactComponent as Logo } from '@/assets/logo.svg'
 
 const Header = () => {
-  const { keycloak } = useKeycloak()
-  const isLoggedIn = useRecoilValue(isLoggedInAtom)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const setActiveTab = useSetRecoilState(navigationAtom)
+  
+  const { keycloak } = useKeycloak()
+  const userAuth = Cookies.get("user_auth")
+  
+  useEffect(() => {
+    // 키클락 로그인에 성공했다면 헤더 UI를 업데이트
+    if(keycloak.authenticated || userAuth) {
+      setIsLoggedIn(true)
+    } else {
+      setIsLoggedIn(false)
+    }
+  }, [keycloak.authenticated, userAuth])
 
   return (
     <header className={styles.header}>

@@ -2,15 +2,14 @@ import {
   Header,
   DetailForm,
   DetailCarousel,
-  AI28Modal,
-  VisionModal,
 } from '@/containers'
 import { useParams } from 'react-router-dom'
 import styles from './Detail.module.css'
 import { useEffect, useState } from 'react'
 import { Book, LayersView, Spinner, AlertModal } from '@/components'
+import { ModalController } from "@/containers"
 import { Helmet } from 'react-helmet-async'
-import { loadingAtom, AI28ModalAtom, visionModalAtom, alertAtom } from '@/atoms'
+import { loadingAtom, alertAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { getSubPageData } from '@/axios'
 
@@ -28,8 +27,6 @@ const Detail = () => {
   const [data, setData] = useState<DataType | null>(null)
   const loading = useRecoilValue(loadingAtom)
   const setLoading = useSetRecoilState(loadingAtom)
-  const modal = useRecoilValue(AI28ModalAtom)
-  const visionModal = useRecoilValue(visionModalAtom)
   const alertModal = useRecoilValue(alertAtom)
 
   useEffect(() => {
@@ -46,7 +43,7 @@ const Detail = () => {
   return (
     <div className={styles.detail}>
       <Helmet>
-        <title>전국민 AI 훈민정음</title>
+        <title>전국민 AI훈민정음 | 수행</title>
         <meta name="description" content="T3Q.ai" />
         <meta name="author" content="t3q" />
         <meta name="keyword" content="T3Q.ai,AI platform,BigData" />
@@ -61,8 +58,7 @@ const Detail = () => {
         ></DetailCarousel>
         <DetailForm data={data} />
       </main>
-      {modal && <AI28Modal />}
-      {visionModal && <VisionModal />}
+      <ModalController />
       {loading && <Spinner />}
       {alertModal.visible && <AlertModal option={alertModal.option} />}
     </div>

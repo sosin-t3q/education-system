@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import {
   Title,
   ApiURL,
@@ -8,7 +9,7 @@ import {
   RecordButton,
 } from '@/components'
 import styles from './DetailForm.module.css'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   alertAtom,
   detailDataAtom,
@@ -21,6 +22,7 @@ import addMimeType from '@/utils/addMimeType'
 import { default as combinedProcessor } from '@/axios/combinedProcessor'
 import { useParams } from 'react-router-dom'
 import { convertVideo } from '@/axios'
+import axios, { CancelTokenSource } from 'axios'
 
 export type InferObj = {
   label: string
@@ -43,6 +45,7 @@ const DetailForm = ({ data }: DetailFormProps) => {
   const [infer, setInfer] = useState<string | InferObj | null>(null)
   const [apiURL, setApiURL] = useState<string>('')
   const setAlert = useSetRecoilState(alertAtom)
+  const sourceRef = useRef<CancelTokenSource | null>(null)
 
   const [cacheData, setCacheData] = useState<
     Record<string, SelectedFileType | null>
@@ -125,6 +128,7 @@ const DetailForm = ({ data }: DetailFormProps) => {
   )
 
   const onClick = useCallback(async () => {
+    sourceRef.current = axios.CancelToken.source()
     if (value) {
       const inferResult = await combinedProcessor(
         pageId,
@@ -132,12 +136,29 @@ const DetailForm = ({ data }: DetailFormProps) => {
         apiURL,
         setLoading,
         setAlert,
+        sourceRef.current,
       )
       setInfer(inferResult === undefined ? null : inferResult)
     } else if (!isValid.isValid) {
       setAlert({ visible: true, option: 'nullError' })
     }
   }, [value, apiURL, setLoading, isValid.isValid, pageId])
+
+  useEffect(() => {
+    // 요청을 취소하기 위한 cleanup 함수
+    return () => {
+      if (sourceRef.current) {
+        // setAlert({ visible: false, option: 'default' }) // 알림창 안보이게 변경
+        sourceRef.current.cancel()
+        console.log('axios 요청이 취소되었습니다.')
+      }
+    }
+  }, [])
+
+  // const stopAxios = useCallback(() => {
+  //   console.log('중단 버튼 클릭!!!')
+  //   sourceRef.current.cancel()
+  // }, [])
 
   const getInputData = useCallback((data: InputType) => {
     setValue(data as InputType)
@@ -176,6 +197,12 @@ const DetailForm = ({ data }: DetailFormProps) => {
         onClick={onClick}
         className={styles['button--input']}
       />
+      {/* <Button
+        option={1}
+        label={'중단하기'}
+        onClick={stopAxios}
+        className={styles['button--input']}
+      /> */}
     </section>
   )
 }

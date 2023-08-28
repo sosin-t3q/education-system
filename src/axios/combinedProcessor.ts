@@ -1,4 +1,5 @@
 import { SetterOrUpdater } from 'recoil'
+import { CancelTokenSource } from 'axios'
 import {
   audioProcessor,
   binaryProcessor,
@@ -8,10 +9,8 @@ import {
   textProcessor,
   videoProcessor,
 } from '@/axios/case28'
-
 import { visionProcessor } from '@/axios/vision'
-
-import schoolProcessor from './school/schoolProcessor'
+import { schoolProcessor } from '@/axios/school'
 
 const combinedProcessor = (
   id: string | undefined,
@@ -19,6 +18,7 @@ const combinedProcessor = (
   apiURL: string,
   setLoading: SetterOrUpdater<boolean>,
   setAlert: SetterOrUpdater<{ visible: boolean; option: string }>,
+  source: CancelTokenSource,
 ) => {
   const hunminArray = [
     textProcessor,
@@ -49,6 +49,7 @@ const combinedProcessor = (
         apiURL,
         setLoading,
         setAlert,
+        source,
       )
     }
     case targetId > 100 && targetId < 200: {
@@ -59,14 +60,23 @@ const combinedProcessor = (
         apiURL,
         setLoading,
         setAlert,
+        source,
       )
     }
 
     case targetId >= 1100 && targetId < 1300: {
-      return schoolProcessor(targetId, value, apiURL, setLoading, setAlert)
+      return schoolProcessor(
+        targetId,
+        value,
+        apiURL,
+        setLoading,
+        setAlert,
+        source,
+      )
     }
 
     default:
+      // eslint-disable-next-line no-console
       console.log(
         'ID 값이 잘못되었거나 훈민정음 예제가 아닙니다. 현재 ID값 -> ',
         targetId,

@@ -1,1 +1,1 @@
-export { default as school } from './schoolProcessor'
+export { default as schoolProcessor } from './schoolProcessor'
