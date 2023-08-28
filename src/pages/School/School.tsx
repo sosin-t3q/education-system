@@ -9,6 +9,7 @@ import { isModalOpenAtom } from '@/atoms'
 import { useSetRecoilState } from 'recoil'
 
 interface SchoolType {
+  jockey: string
   id: number
   badge: string
   title: string
@@ -115,6 +116,7 @@ const School = () => {
             <Card
               key={school.id}
               badge={school.badge}
+              jockey={school.jockey}
               title={school.title}
               content={school.content}
               cardColor={cardColor}

@@ -92,7 +92,7 @@ const schoolProcessor = async (
   const inputType = targetSchool?.inputType || 'default'
   const returnType = targetSchool?.returnType || false
   const dataInfo = targetSchool?.dataInfo
-  let resultData = ''
+  let resultData: string | string[] = ''
 
   const convertFile = await getInputType(inputType, value as string)
   const convertData = getApiType(
@@ -124,7 +124,7 @@ const schoolProcessor = async (
           resultData = `data:video/mp4;base64,${response_data}`
           break
 
-        case 1103: // 500 에러, PPT 자료 없음
+        case 1103: // 정상작동
           resultData = response_data[0].replaceAll('\n', '<br>')
           break
         case 1200: // 추론 안되게 처리완료
@@ -136,7 +136,7 @@ const schoolProcessor = async (
           resultData = `data:image/jpg;base64,${response_data}`
           break
 
-        case 1202: // 샘플 3번 정상작동, 샘플 1번 2번 받아오는 이미지 오류
+        case 1202: // 정상작동
           {
             const res_score = []
             let resultValue = ''
@@ -207,26 +207,43 @@ const schoolProcessor = async (
           break
 
         case 1206: // 서버에 api 주소 없음
-          console.log('response_data =', response_data)
+          resultData = `data:image/jpg;base64,${response_data}`
           break
 
-        case 1207: // HTTPConnectionPool
-          console.log('value = ', value)
-          console.log('response_data =', response_data)
+        case 1207: // 추론 안되게 처리완료
+          // 동작 중지
           break
 
-        case 1208: // 500 에러
+        case 1208: // [요청사항] 결과값 그대로 렌더링
           response_data = json.response
-          for (const i in response_data) {
-            console.log(`${i} : ${response_data[i]}`)
+
+          for (const key in response_data) {
+            if (response_data.hasOwnProperty(key)) {
+              resultData += `${key} : ${response_data[key]} , `
+            }
           }
 
-          resultData = response_data
+          // 마지막 쉼표와 공백 제거
+          resultData = resultData.slice(0, -2)
 
           break
 
-        case 1209: // HTTPConnectionPool
-          console.log('response_data =', response_data)
+        case 1209: // 정상작동, 이미지 타입 붙여서 배열형식으로 이미지 5개 반환
+          {
+            response_data = json.response.inference.similar_images
+            const arrayResult = []
+
+            if (response_data) {
+              // 만약 response_data가 존재하면 실행 (null값이면 빈배열 반환)
+              for (const imageData of response_data) {
+                const formattedData = `data:image/jpg;base64,${imageData}`
+                arrayResult.push(formattedData)
+              }
+            }
+
+            resultData = arrayResult
+          }
+
           break
 
         default:
@@ -235,7 +252,8 @@ const schoolProcessor = async (
       }
     }
   } catch (err) {
-    if (targetId == 1200) {
+    // 1200, 1207번 예제 추론할 수 없도록 추가
+    if (targetId == 1200 || targetId == 1207) {
       return setAlert({ visible: true, option: 'DBError' })
     } else if (CanceledError) {
       // console.error('Axios request error:', err)
