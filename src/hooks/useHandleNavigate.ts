@@ -1,24 +1,21 @@
 Cookies
 import { useNavigate } from 'react-router-dom'
 import { useKeycloak } from '@react-keycloak/web'
-import { useSetRecoilState, SetterOrUpdater } from 'recoil'
-import { loadingAtom } from '@/atoms'
+import { useSetRecoilState } from 'recoil'
+import { currentModalAtom, loadingAtom } from '@/atoms'
 import Cookies from 'js-cookie'
 
 const useHandleNavigate = () => {
   const setLoading = useSetRecoilState(loadingAtom)
+  const setCurrentModal = useSetRecoilState(currentModalAtom)
 
   const navigate = useNavigate()
   const { keycloak } = useKeycloak()
   
-  const checkAuthNavigation = async (id: number, setModal?: SetterOrUpdater<boolean>) => {
+  const checkAuthNavigation = async (id: number) => {
     setLoading(true)
-    if (setModal) {
-      // setModal을 옵셔널로 줬기 때문에 undefined가 들어올 수도 있다.
-      // 그렇기 때문에 setModal이 있을 때만 실행하게끔 해준다.
-      setModal(false);
-    }
-
+    setCurrentModal("")
+    
     //키클락 인증이 안 된 경우(로그아웃 상태)
     if (!keycloak.authenticated) {
       try {
