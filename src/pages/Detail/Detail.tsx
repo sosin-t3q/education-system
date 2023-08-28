@@ -43,7 +43,7 @@ const Detail = () => {
   return (
     <div className={styles.detail}>
       <Helmet>
-        <title>전국민 AI 훈민정음</title>
+        <title>전국민 AI훈민정음 | 수행</title>
         <meta name="description" content="T3Q.ai" />
         <meta name="author" content="t3q" />
         <meta name="keyword" content="T3Q.ai,AI platform,BigData" />
