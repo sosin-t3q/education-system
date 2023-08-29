@@ -7,6 +7,7 @@ import useHandleNavigate from '@/hooks/useHandleNavigate'
 import { Header, Card } from '@/containers'
 import { isModalOpenAtom } from '@/atoms'
 import { useSetRecoilState } from 'recoil'
+import { getSessionStorage, setSessionStorage } from '@/utils'
 
 interface SchoolType {
   jockey: string
@@ -40,8 +41,7 @@ const School = () => {
   const selectableSchools = Object.keys(schoolData)
 
   // 상태와 훅
-  const initialSelectedSchool =
-    sessionStorage.getItem('selectedSchool') || selectableSchools[0]
+  const initialSelectedSchool = getSessionStorage() || selectableSchools[0]
   const [selectedSchool, setSelectedSchool] = useState<string>(
     initialSelectedSchool,
   )
@@ -50,15 +50,15 @@ const School = () => {
 
   // 학교 변경 처리
   const handleSchoolChange = (school: string) => {
-    if (schoolData[school]) {
+    if (schoolData.hasOwnProperty(school)) {
       setSelectedSchool(school)
-      sessionStorage.setItem('selectedSchool', school) // 선택한 학교를 세션 스토리지에 저장
+      setSessionStorage(school) // 선택한 학교 정보를 세션 스토리지에 저장
     }
   }
 
   // 효과
   useEffect(() => {
-    console.log(selectedSchool)
+    // console.log(selectedSchool)
   }, [selectedSchool])
 
   // popstate 이벤트 감지(뒤로/앞으로 탐색)

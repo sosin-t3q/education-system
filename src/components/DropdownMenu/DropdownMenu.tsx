@@ -3,6 +3,7 @@ import styles from './DropdownMenu.module.css'
 import { ReactComponent as ArrowUp } from '@/assets/arrow-up.svg'
 import { ReactComponent as ArrowDown } from '@/assets/arrow-down.svg'
 import { useParams } from 'react-router-dom'
+import { getSessionStorage, setSessionStorage } from '@/utils'
 
 interface DropdownMenu {
   className?: string
@@ -22,10 +23,14 @@ const DropdownMenu = ({
   const [selected, setSelected] = useState('')
 
   useEffect(() => {
-    if (options?.length > 0) {
+    if (options?.length > 0 && !id) {
+      // id가 없을 때만 세션 스토리지 적용
+      const initialSelected = getSessionStorage() || options[0]
+      setSelected(initialSelected)
+    } else if (options?.length > 0) {
       setSelected(options[0])
     }
-  }, [id])
+  }, [options, id])
 
   const handleToggle = () => {
     setToggle(!toggle)
@@ -35,6 +40,9 @@ const DropdownMenu = ({
     const li = e.target as HTMLLIElement
     const index = options.indexOf(li.innerText)
     setSelected(li.innerText)
+    if (!id) {
+      setSessionStorage(li.innerText) // 선택한 학교 정보를 세션 스토리지에 저장 (id가 없을 때만)
+    }
     setToggle(false)
     if (onSelect) {
       onSelect(li.innerText)
