@@ -1,4 +1,3 @@
-import {useState, useEffect} from 'react'
 import Cookies from 'js-cookie'
 import { useSetRecoilState } from 'recoil'
 import { useKeycloak } from '@react-keycloak/web'
@@ -6,22 +5,14 @@ import styles from './Header.module.css'
 import { Link } from '@/components'
 import { navigationAtom } from '@/atoms'
 import { ReactComponent as Logo } from '@/assets/logo.svg'
+import { useKeycloakAuthenticated } from '@/hooks/_index'
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  
   const setActiveTab = useSetRecoilState(navigationAtom)
   
   const { keycloak } = useKeycloak()
-  const userAuth = Cookies.get("user_auth")
-  
-  useEffect(() => {
-    // 키클락 로그인에 성공했다면 헤더 UI를 업데이트
-    if(keycloak.authenticated || userAuth) {
-      setIsLoggedIn(true)
-    } else {
-      setIsLoggedIn(false)
-    }
-  }, [keycloak.authenticated, userAuth])
+  const isKeycloakAuthenticated = useKeycloakAuthenticated()
 
   return (
     <header className={styles.header}>
@@ -50,7 +41,7 @@ const Header = () => {
           <a href="/adventure" className={`${styles.adventure}`}>
             T3Q.ai 체험하기
           </a>
-          {!isLoggedIn && (
+          {!isKeycloakAuthenticated && (
             <button
               className={`${styles.login}`}
               type="button"
@@ -62,7 +53,7 @@ const Header = () => {
               로그인
             </button>
           )}
-          {isLoggedIn && (
+          {isKeycloakAuthenticated && (
             <button
               className={`${styles.login}`}
               type="button"

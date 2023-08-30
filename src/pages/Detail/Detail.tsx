@@ -55,7 +55,7 @@ const Detail = () => {
         <DetailCarousel
           pageId={id}
           className={styles['detail-carousel']}
-        ></DetailCarousel>
+        />
         <DetailForm data={data} />
       </main>
       <ModalController />

@@ -1,14 +1,17 @@
-import { cartAtom, currentModalAtom } from '@/atoms'
+import { useSetRecoilState } from 'recoil'
 import { useNavigate } from 'react-router-dom'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { currentModalAtom } from '@/atoms'
 
 const useLayers = () => {
-  const cart = useRecoilValue(cartAtom)
   const setCurrentModal = useSetRecoilState(currentModalAtom) 
+  
   const navigate = useNavigate()
+  // localStorage에 저장된 cardId를 불러온다
+  const cartId = localStorage.getItem("cartId")
+
 
   const returnLayers = () => {
-    const id = cart.id
+    const id = Number(cartId)
     switch (true) {
       case id >= 1 && id <= 28: // 훈민정음 예제일 때 (id 1~28)
         setCurrentModal('ai28')
