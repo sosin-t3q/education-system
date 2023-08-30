@@ -4,12 +4,11 @@ import styles from './CartTable.module.css'
 import axiosInstance from '@/services/axiosInstance'
 import useHandleNavigate from '@/hooks/useHandleNavigate'
 import { ReactComponent as Warning } from '@/assets/warning.svg'
-import { cartTableAtom, isModalOpenAtom, alertAtom } from '@/atoms'
+import { cartTableAtom, alertAtom } from '@/atoms'
 import { getUserAuthCookie } from '@/utils'
 
 const CartTable = () => {
   const setAlert = useSetRecoilState(alertAtom)
-  const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
   const [cartTable, setCartTable] = useRecoilState(cartTableAtom)
 
   const checkAuthNavigation = useHandleNavigate();
@@ -49,7 +48,6 @@ const CartTable = () => {
                     key={data.id}
                     className={styles['body-data']}
                     onClick={() => {
-                      setIsModalOpen(false);
                       checkAuthNavigation(data.id)
                     }}
                   >
