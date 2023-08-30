@@ -1,6 +1,7 @@
 /* Swiper */
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
+
 /* CSS & Styles */
 import styles from './DetailCarousel.module.css'
 import 'swiper/swiper.min.css'
@@ -8,6 +9,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import '@/detailSwiper.css'
 import 'swiper/css'
+
 import { Title, DropdownMenu } from '@/components'
 import json from '@/data/PPT_DATA.json'
 import { useEffect, useRef } from 'react'
