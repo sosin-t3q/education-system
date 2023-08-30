@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import Cookies from 'js-cookie'
 import styles from './CartLayer.module.css'
 import { alertAtom } from '@/atoms'
 import { useSetRecoilState } from 'recoil'
 import axiosInstance from '@/services/axiosInstance'
+import { getUserAuthCookie } from '@/utils'
 
 interface CartLayerProps {
   className?: string
@@ -18,7 +18,7 @@ const CartLayer = ({ className }: CartLayerProps) => {
   //blocks는 최대 크기가 28인 비어있는 배열이다
   const [blocks, setBlocks] = useState(new Array(28).fill(null))
   const setAlert = useSetRecoilState(alertAtom)
-  const userAuth = Cookies.get("user_auth")
+  const userAuth = getUserAuthCookie()
 
   useEffect(() => {
     if (userAuth) {
