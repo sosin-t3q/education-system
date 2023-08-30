@@ -1,16 +1,18 @@
+/* Swiper */
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
-import { Title, DropdownMenu } from '@/components'
-import { useEffect, useRef } from 'react'
+/* CSS & Styles */
 import styles from './DetailCarousel.module.css'
-import '@/detailSwiper.css'
-import 'swiper/css'
+import 'swiper/swiper.min.css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import 'swiper/swiper.min.css'
+import '@/detailSwiper.css'
+import 'swiper/css'
+import { Title, DropdownMenu } from '@/components'
 import json from '@/data/PPT_DATA.json'
-import { cartAtom } from '@/atoms/index'
+import { useEffect, useRef } from 'react'
 import { useRecoilState } from 'recoil'
+import { cartAtom } from '@/atoms/index'
 import useBook from '@/hooks/useBook'
 import Cookies from 'js-cookie'
 
@@ -20,50 +22,56 @@ interface DetailCarouselProps {
 }
 
 const DetailCarousel = ({ className, pageId }: DetailCarouselProps) => {
+  /* 현재 페이지의 정보를 JSON에서 찾기 */
   const target = json.find(item => String(item.id) === pageId)
+
+  // 필요한 정보들을 JSON에서 추출
   const fileList = target?.category || []
   const folderName = target?.folderName
-  const pageTitle = target?.title //상세페이지 제목이 담긴다
+  const pageTitle = target?.title
+
   const swiperRef = useRef<SwiperRef>(null)
   const userAuth = Cookies.get('user_auth')
 
-  // 이미지 로드 실패시 기본 이미지를 로드하는 함수
+  /* 이미지 호출 에러 발생시 기본 이미지로 설정 */
   const handleImageError = (
     e: React.SyntheticEvent<HTMLImageElement, Event>,
   ) => {
-    e.currentTarget.src = '/src/assets/default.jpg' // 임의의 이미지 경로
+    e.currentTarget.src = '/src/assets/default.jpg'
   }
 
-  //찜을 확인하는 기능
+  /* 찜을 확인하는 기능 */
   const { checkBook } = useBook()
 
-  //cart에는 장바구니 기능을 위한 페이지 id와 title이 저장된다
+  /* cart에는 찜 기능을 위한 페이지 id와 title이 저장된다 */
   const [cart, setCart] = useRecoilState(cartAtom)
 
+  /* 컴포넌트가 렌더링된 다음 cart의 값으로 id, title 키를 가진 객체가 저장된다 */
   useEffect(() => {
-    // 컴포넌트가 렌더링된 다음 cart의 값으로 id, title 키를 가진 객체가 저장된다
     setCart({ id: Number(pageId), title: pageTitle })
   }, [pageId, pageTitle])
 
+  /* 해당 상세 페이지가 찜이 되어 있는지 확인 */
+  /* cart Atom을 추적하고 있어, cart Atom이 업데이트된 다음에 실행된다 */
   useEffect(() => {
-    // 상세페이지가 장바구니에 들어가있는 지를 확인한다
-    // cart Atom을 추적하고 있어, cart Atom이 업데이트된 다음에 실행될 수 있게끔 했다.
     if (userAuth) {
       checkBook()
     }
   }, [cart, Cookies.get('user_auth')])
 
+  /* 슬라이드 이미지는 받아온 folderName을 경로에 넣고, fileList 개수만큼 불러온다 */
   const imagePaths = Array.from(
     { length: fileList.length },
     (_, index) => `/src/assets/pptImage/${folderName}/slide${index + 1}.jpeg`,
   )
 
+  /* 목차를 클릭했을 때 해당 슬라이드로 이동하는 기능, index가 동일하기 때문에 가능 */
   const gotoSlide = (selectedIndex: number) => {
     swiperRef.current?.swiper?.slideTo(selectedIndex)
   }
 
+  /* 다른 페이지로 이동시 슬라이드가 첫 이미지로 돌아가도록 동작, id를 추적한다 */
   useEffect(() => {
-    // imagePaths 또는 target 변경시 swiper를 첫 번째 슬라이드로 초기화
     swiperRef.current?.swiper?.slideTo(0)
   }, [target])
 
@@ -93,7 +101,7 @@ const DetailCarousel = ({ className, pageId }: DetailCarouselProps) => {
             <img
               src={path}
               alt={`Slide ${index + 1}`}
-              onError={handleImageError} // 이미지 로드 실패시 기본 이미지 호출
+              onError={handleImageError}
             />
           </SwiperSlide>
         ))}

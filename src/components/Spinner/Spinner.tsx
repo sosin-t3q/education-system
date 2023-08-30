@@ -1,5 +1,5 @@
-import styles from './Spinner.module.css'
 import PulseLoader from 'react-spinners/PulseLoader'
+import styles from './Spinner.module.css'
 
 interface SpinnerProps {
   className?: string
