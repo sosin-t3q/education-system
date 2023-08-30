@@ -1,26 +1,20 @@
 import { useState } from 'react'
-import { useSetRecoilState } from 'recoil'
 import styles from './VisionModal.module.css'
 import sections from '@/data/layers/VISION_LAYER.json'
 import { preventBubbling } from '@/utils'
 import { VisionAccordion } from '@/components'
-import { currentModalAtom } from '@/atoms'
 import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
+import { useCurrentModal } from '@/hooks/_index'
 
 const VisionModal = () => {
   
-  const setCurrentModal = useSetRecoilState(currentModalAtom)
+  const closeCurrentModal = useCurrentModal()
   const [activeIndex, setActiveIndex] = useState<number | null>(-1)
-
-  //모달창 닫힘
-  const closeModal = () => {
-    setCurrentModal("")
-  }
 
   return (
     <div
       className={styles.shadow}
-      onClick={closeModal}
+      onClick={closeCurrentModal}
     >
       <div
         className={styles.modal}
@@ -45,7 +39,7 @@ const VisionModal = () => {
         })}
         <CloseButton
           className={styles.button}
-          onClick={closeModal}
+          onClick={closeCurrentModal}
         />
       </div>
     </div>

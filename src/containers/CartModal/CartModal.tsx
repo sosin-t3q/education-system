@@ -1,23 +1,18 @@
-import { useSetRecoilState } from 'recoil'
 import styles from './CartModal.module.css'
 import { CartTable } from '@/components'
 import { preventBubbling } from '@/utils'
-import { currentModalAtom } from '@/atoms'
+import { useCurrentModal } from '@/hooks/_index'
 import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
 
 const CartModal = () => {
 
-  const setCurrentModalAtom = useSetRecoilState(currentModalAtom)
-
-  //모달창 닫힘
-  const closeModal = () => {
-    setCurrentModalAtom("")
-  }
+  // 모달창 닫는 커스텀훅
+  const closeCurrentModal = useCurrentModal()
 
   return (
     <div
       className={styles.shadow}
-      onClick={closeModal}
+      onClick={closeCurrentModal}
     >
       <div
         className={styles.modal}
@@ -29,7 +24,7 @@ const CartModal = () => {
         <CartTable />
         <CloseButton
           className={styles.button}
-          onClick={closeModal}
+          onClick={closeCurrentModal}
         />
       </div>
     </div>

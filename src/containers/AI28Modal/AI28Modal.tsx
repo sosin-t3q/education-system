@@ -1,23 +1,17 @@
-import { useSetRecoilState } from 'recoil'
 import styles from './AI28Modal.module.css'
 import { AI28Table } from '@/components'
 import { preventBubbling } from '@/utils'
-import { currentModalAtom } from '@/atoms'
+import { useCurrentModal } from '@/hooks/_index'
 import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
 
 const AI28Modal = () => {  
 
-  const setCurrentModal = useSetRecoilState(currentModalAtom)
-  
-  //모달창 닫힘
-  const closeModal = () => {
-    setCurrentModal("")
-  }
+  const closeCurrentModal = useCurrentModal()
 
   return (
     <div
       className={styles.shadow}
-      onClick={closeModal}
+      onClick={closeCurrentModal}
     >
       <div
         className={styles.modal}
@@ -29,7 +23,7 @@ const AI28Modal = () => {
         <AI28Table />
         <CloseButton
           className={styles.button}
-          onClick={closeModal}
+          onClick={closeCurrentModal}
         />
       </div>
     </div>
