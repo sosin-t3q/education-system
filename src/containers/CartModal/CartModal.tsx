@@ -2,18 +2,16 @@ import { useSetRecoilState } from 'recoil'
 import styles from './CartModal.module.css'
 import { CartTable } from '@/components'
 import { preventBubbling } from '@/utils'
-import { currentModalAtom, isModalOpenAtom } from '@/atoms'
+import { currentModalAtom } from '@/atoms'
 import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
 
 const CartModal = () => {
 
   const setCurrentModalAtom = useSetRecoilState(currentModalAtom)
-  const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
 
   //모달창 닫힘
   const closeModal = () => {
     setCurrentModalAtom("")
-    setIsModalOpen(false)
   }
 
   return (

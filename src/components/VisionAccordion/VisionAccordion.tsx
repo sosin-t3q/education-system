@@ -1,8 +1,6 @@
 import { Dispatch } from 'react'
-import { useSetRecoilState } from 'recoil'
 import styles from './VisionAccordion.module.css'
 import useHandleNavigate from '@/hooks/useHandleNavigate'
-import { isModalOpenAtom } from '@/atoms'
 import { ReactComponent as ArrowUp } from '@/assets/arrow-up.svg'
 import { ReactComponent as ArrowDown } from '@/assets/arrow-down.svg'
 
@@ -24,7 +22,6 @@ const VisionAccordion = ({
   setActiveIndex,
   sectionIndex,
 }: VisionAccordionProps) => {
-  const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
 
   const checkAuthNavigation = useHandleNavigate();
 
@@ -48,7 +45,6 @@ const VisionAccordion = ({
                 key={data.id}
                 onClick={() =>
                   {
-                    setIsModalOpen(false)
                     checkAuthNavigation(data.id)
                   }}
               >

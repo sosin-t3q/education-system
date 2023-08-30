@@ -2,18 +2,16 @@ import { useSetRecoilState } from 'recoil'
 import styles from './AI28Modal.module.css'
 import { AI28Table } from '@/components'
 import { preventBubbling } from '@/utils'
-import { isModalOpenAtom, currentModalAtom } from '@/atoms'
+import { currentModalAtom } from '@/atoms'
 import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
 
 const AI28Modal = () => {  
 
   const setCurrentModal = useSetRecoilState(currentModalAtom)
-  const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
   
   //모달창 닫힘
   const closeModal = () => {
     setCurrentModal("")
-    setIsModalOpen(false);
   }
 
   return (

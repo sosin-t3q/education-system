@@ -4,19 +4,17 @@ import styles from './VisionModal.module.css'
 import sections from '@/data/layers/VISION_LAYER.json'
 import { preventBubbling } from '@/utils'
 import { VisionAccordion } from '@/components'
-import { currentModalAtom, isModalOpenAtom } from '@/atoms'
+import { currentModalAtom } from '@/atoms'
 import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
 
 const VisionModal = () => {
   
   const setCurrentModal = useSetRecoilState(currentModalAtom)
-  const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
   const [activeIndex, setActiveIndex] = useState<number | null>(-1)
 
   //모달창 닫힘
   const closeModal = () => {
     setCurrentModal("")
-    setIsModalOpen(false);
   }
 
   return (

@@ -1,17 +1,15 @@
 import { useSetRecoilState } from 'recoil'
 import styles from './Layers.module.css'
 import { AI28Layer, VisionLayer, CartLayer } from '@/components'
-import { isModalOpenAtom, currentModalAtom } from '@/atoms'
+import { currentModalAtom } from '@/atoms'
 
 const Layers = () => {
 
-  const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
   const setCurrentModal = useSetRecoilState(currentModalAtom)
 
   // 모달창 열기
   const openModal = (modal: string) => {
     setCurrentModal(modal)
-    setIsModalOpen(true)
   }
 
   return (
