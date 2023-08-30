@@ -8,17 +8,16 @@ import { Intro, Home, Detail, School, Error } from '@/pages'
 import { getUserAuthCookie } from './utils'
 
 function App() {
+  const isModalOpen = useRecoilValue(isModalOpenAtom)
 
-  const isModalOpen = useRecoilValue(isModalOpenAtom);
-  
   const { keycloak } = useKeycloak()
   const createUserCookie = useCreateUserCookie()
   const userAuth = getUserAuthCookie()
   
   useEffect(() => {
     //키클락을 경유해 로그인을 했으며 user_auth 쿠키가 없다면 쿠키를 생성한다
-    if(keycloak.authenticated && !userAuth) {
-      createUserCookie();
+    if (keycloak.authenticated && !userAuth) {
+      createUserCookie()
     }
   }, [keycloak.authenticated])
 
