@@ -1,7 +1,6 @@
 export { default as detailDataAtom } from './detailDataAtom'
 export { default as inputValidationAtom } from './inputValidationAtom'
 export { default as cartTableAtom } from './cartTableAtom'
-export { default as cartModalAtom } from './cartModalAtom'
 export { default as bookAtom } from './bookAtom'
 export { default as resultAtom } from './resultAtom'
 export { default as loadingAtom } from './loadingAtom'
