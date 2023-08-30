@@ -1,17 +1,22 @@
 import styles from './AI28Modal.module.css'
 import { AI28Table } from '@/components'
 import { preventBubbling } from '@/utils'
-import { useCurrentModal } from '@/hooks/_index'
+import { useCloseModal, useHideScroll } from '@/hooks/_index'
 import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
 
-const AI28Modal = () => {  
+const AI28Modal = () => {    
 
-  const closeCurrentModal = useCurrentModal()
+  // 모달창 닫기
+  const closeModal = useCloseModal()
+
+  // 스크롤 숨기기
+  useHideScroll()
+
 
   return (
     <div
       className={styles.shadow}
-      onClick={closeCurrentModal}
+      onClick={closeModal}
     >
       <div
         className={styles.modal}
@@ -23,7 +28,7 @@ const AI28Modal = () => {
         <AI28Table />
         <CloseButton
           className={styles.button}
-          onClick={closeCurrentModal}
+          onClick={closeModal}
         />
       </div>
     </div>

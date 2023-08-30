@@ -1,14 +1,14 @@
 import { useSetRecoilState } from 'recoil'
 import { currentModalAtom } from '@/atoms'
 
-const useCurrentModal = () => {
+const useCloseModal = () => {
     const setCurrentModal = useSetRecoilState(currentModalAtom)
 
-    const closeCurrentModal = () => {
+    const closeModal = () => {
         setCurrentModal("")
     }
 
-    return closeCurrentModal
+    return closeModal
 }
 
-export default useCurrentModal
+export default useCloseModal

@@ -1,18 +1,21 @@
 import styles from './CartModal.module.css'
 import { CartTable } from '@/components'
 import { preventBubbling } from '@/utils'
-import { useCurrentModal } from '@/hooks/_index'
+import { useCloseModal, useHideScroll } from '@/hooks/_index'
 import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
 
 const CartModal = () => {
 
-  // 모달창 닫는 커스텀훅
-  const closeCurrentModal = useCurrentModal()
+  // 모달창 닫기
+  const closeModal = useCloseModal()
+
+  // 스크롤 숨김
+  useHideScroll()
 
   return (
     <div
       className={styles.shadow}
-      onClick={closeCurrentModal}
+      onClick={closeModal}
     >
       <div
         className={styles.modal}
@@ -24,7 +27,7 @@ const CartModal = () => {
         <CartTable />
         <CloseButton
           className={styles.button}
-          onClick={closeCurrentModal}
+          onClick={closeModal}
         />
       </div>
     </div>

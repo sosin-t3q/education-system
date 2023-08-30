@@ -4,17 +4,22 @@ import sections from '@/data/layers/VISION_LAYER.json'
 import { preventBubbling } from '@/utils'
 import { VisionAccordion } from '@/components'
 import { ReactComponent as CloseButton } from '@/assets/close-button.svg'
-import { useCurrentModal } from '@/hooks/_index'
+import { useCloseModal, useHideScroll } from '@/hooks/_index'
 
 const VisionModal = () => {
   
-  const closeCurrentModal = useCurrentModal()
   const [activeIndex, setActiveIndex] = useState<number | null>(-1)
+
+  // 모달창 닫기
+  const closeModal = useCloseModal()
+
+  // 스크롤 숨김
+  useHideScroll()
 
   return (
     <div
       className={styles.shadow}
-      onClick={closeCurrentModal}
+      onClick={closeModal}
     >
       <div
         className={styles.modal}
@@ -39,7 +44,7 @@ const VisionModal = () => {
         })}
         <CloseButton
           className={styles.button}
-          onClick={closeCurrentModal}
+          onClick={closeModal}
         />
       </div>
     </div>
