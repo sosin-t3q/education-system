@@ -1,21 +1,20 @@
 import { useEffect } from 'react'
-import Cookies from 'js-cookie'
+import { useRecoilValue } from 'recoil'
 import { Routes, Route } from 'react-router-dom'
 import { useKeycloak } from '@react-keycloak/web'
+import { isModalOpenAtom } from '@/atoms'
+import { useCreateUserCookie } from '@/hooks/_index'
 import { Intro, Home, Detail, School, Error } from '@/pages'
-import { isModalOpenAtom } from './atoms'
-import { useRecoilValue } from 'recoil'
-import { useCookie } from '@/hooks/_index'
-// import { PrivateRoute } from '@/components'
+import { getUserAuthCookie } from './utils'
 
 function App() {
 
   const isModalOpen = useRecoilValue(isModalOpenAtom);
-
-  const { createUserCookie } = useCookie();
+  
   const { keycloak } = useKeycloak()
-  const userAuth = Cookies.get("user_auth")
-
+  const createUserCookie = useCreateUserCookie()
+  const userAuth = getUserAuthCookie()
+  
   useEffect(() => {
     //키클락을 경유해 로그인을 했으며 user_auth 쿠키가 없다면 쿠키를 생성한다
     if(keycloak.authenticated && !userAuth) {
@@ -35,13 +34,11 @@ function App() {
   return (
     <div className="app">
       <Routes>
-        <Route path="/" element={<Intro />}></Route>
-        <Route path="/home" element={<Home />}></Route>
-        {/* <Route element={<PrivateRoute />}> */}
-          <Route path="/detail/:id" element={<Detail />}></Route>
-        {/* </Route> */}
-        <Route path="/school" element={<School />}></Route>
-        <Route path="*" element={<Error />}></Route>
+        <Route path="/" element={<Intro />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/school" element={<School />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   )
