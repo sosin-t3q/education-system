@@ -5,8 +5,6 @@ import styles from './School.module.css'
 import schoolsData from '@/data/SCHOOL_CARD.json'
 import useHandleNavigate from '@/hooks/useHandleNavigate'
 import { Header, Card } from '@/containers'
-import { isModalOpenAtom } from '@/atoms'
-import { useSetRecoilState } from 'recoil'
 import { getSessionStorage, setSessionStorage } from '@/utils'
 
 interface SchoolType {
@@ -46,7 +44,6 @@ const School = () => {
     initialSelectedSchool,
   )
   const checkAuthNavigation = useHandleNavigate()
-  const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
 
   // 학교 변경 처리
   const handleSchoolChange = (school: string) => {
@@ -74,11 +71,6 @@ const School = () => {
     return () => {
       window.removeEventListener('popstate', handlePopState)
     }
-  }, [])
-
-  // 서당페이지에서 레이아웃 클릭 시 스크롤이 사라지는 것 방지
-  useEffect(() => {
-    setIsModalOpen(false)
   }, [])
 
   // 렌더링

@@ -1,13 +1,10 @@
 import DOMPurify from 'dompurify'
-import { useSetRecoilState } from 'recoil'
 import styles from './AI28Table.module.css'
 import data from '@/data/layers/AI28_LAYER.json'
 import useHandleNavigate from '@/hooks/useHandleNavigate'
-import { isModalOpenAtom } from '@/atoms'
 
 const AI28Table = () => {
   const checkAuthNavigation = useHandleNavigate();
-  const setIsModalOpen = useSetRecoilState(isModalOpenAtom)
   
   const { columns, rows, body } = data
 
@@ -54,7 +51,6 @@ const AI28Table = () => {
                     key={data.id}
                     className={styles['body-data']}
                     onClick={() => {
-                        setIsModalOpen(false)
                         checkAuthNavigation(data.id)
                       }
                     }
