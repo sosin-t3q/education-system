@@ -1,7 +1,7 @@
 import { useKeycloak } from '@react-keycloak/web'
 import Cookies from 'js-cookie';
 
-const useCreateUserCookie = () => {
+const useUserCookie = () => {
 
     const { keycloak } = useKeycloak();
 
@@ -21,7 +21,11 @@ const useCreateUserCookie = () => {
         }
     }
 
-    return createUserCookie 
+    const deleteUserCookie = () => {
+        Cookies.remove('user_auth')
+    }
+
+    return { createUserCookie, deleteUserCookie }
 }
 
-export default useCreateUserCookie
+export default useUserCookie
