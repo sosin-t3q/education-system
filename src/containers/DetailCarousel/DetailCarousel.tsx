@@ -11,12 +11,12 @@ import '@/detailSwiper.css'
 import 'swiper/css'
 
 import { Title, DropdownMenu } from '@/components'
-import json from '@/data/PPT_DATA.json'
 import { useEffect, useRef } from 'react'
+import json from '@/data/PPT_DATA.json'
 
 interface DetailCarouselProps {
   className: string
-  pageId: string | undefined
+  pageId: string
 }
 
 const DetailCarousel = ({ className, pageId }: DetailCarouselProps) => {
@@ -35,7 +35,7 @@ const DetailCarousel = ({ className, pageId }: DetailCarouselProps) => {
     e.currentTarget.src = '/src/assets/default.jpg'
   }
 
-  // pageId가 로컬스토리지에 저장된다
+  /*  pageId를 추적, 로컬스토리지에 저장하여 관리한다. */
   useEffect(() => {
     localStorage.setItem('cartId', String(pageId))
 
