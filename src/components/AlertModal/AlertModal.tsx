@@ -1,6 +1,6 @@
 import { useSetRecoilState } from 'recoil'
-import styles from './AlertModal.module.css'
 import { alertAtom } from '@/atoms'
+import styles from './AlertModal.module.css'
 
 interface AlertProps {
   option: string

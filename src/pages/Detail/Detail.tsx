@@ -1,13 +1,9 @@
-import {
-  Header,
-  DetailForm,
-  DetailCarousel,
-} from '@/containers'
+import { Header, DetailForm, DetailCarousel } from '@/containers'
 import { useParams } from 'react-router-dom'
 import styles from './Detail.module.css'
 import { useEffect, useState } from 'react'
 import { Book, LayersView, Spinner, AlertModal } from '@/components'
-import { ModalController } from "@/containers"
+import { ModalController } from '@/containers'
 import { Helmet } from 'react-helmet-async'
 import { loadingAtom, alertAtom } from '@/atoms'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
@@ -23,7 +19,7 @@ export interface DataType {
 }
 
 const Detail = () => {
-  const { id } = useParams() as { id: string | undefined }
+  const { id } = useParams() as { id: string }
   const [data, setData] = useState<DataType | null>(null)
   const loading = useRecoilValue(loadingAtom)
   const setLoading = useSetRecoilState(loadingAtom)
@@ -52,10 +48,7 @@ const Detail = () => {
       <main className={styles.detailMain}>
         <Book className={styles['detail-view']} />
         <LayersView className={styles['detail-book']} />
-        <DetailCarousel
-          pageId={id}
-          className={styles['detail-carousel']}
-        />
+        <DetailCarousel pageId={id} className={styles['detail-carousel']} />
         <DetailForm data={data} />
       </main>
       <ModalController />

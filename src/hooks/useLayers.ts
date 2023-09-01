@@ -3,27 +3,29 @@ import { useNavigate } from 'react-router-dom'
 import { currentModalAtom } from '@/atoms'
 
 const useLayers = () => {
-  const setCurrentModal = useSetRecoilState(currentModalAtom) 
-  
+  const setCurrentModal = useSetRecoilState(currentModalAtom)
   const navigate = useNavigate()
-  // localStorage에 저장된 cardId를 불러온다
-  const cartId = localStorage.getItem("cartId")
 
+  /* localStorage에 저장된 cardId를 불러온다 */
+  const cartId = localStorage.getItem('cartId')
 
   const returnLayers = () => {
     const id = Number(cartId)
     switch (true) {
-      case id >= 1 && id <= 28: // 훈민정음 예제일 때 (id 1~28)
+      /* 훈민정음 예제 (id 1~28) */
+      case id >= 1 && id <= 28:
         setCurrentModal('ai28')
         break
-      case id > 100 && id < 200: // 비전 예제일 때 (id 101~199)
+      /* vision 예제 (id 101~199) */
+      case id > 100 && id < 200:
         setCurrentModal('vision')
         break
-      case id >= 1100: // 학교 예제일 때 (id > 1100)
+      /* vision 예제 (id > 1100) */
+      case id >= 1100:
         navigate('/school')
         break
       default:
-        alert(`ID 값이 잘못되었습니다. 현재 ID값 -> ${id}`)
+        alert(`ID 값이 잘못되었습니다. 현재 ID값은 [${id}] 입니다.`)
     }
   }
 
