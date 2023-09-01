@@ -4,7 +4,7 @@ import { CancelTokenSource, CanceledError } from 'axios'
 import { SetterOrUpdater } from 'recoil'
 
 const satelliteProcessor = async (
-  targetId: any,
+  targetId: number,
   mode: 'classification' | 'anomaly' | 'clustering' | 'regression' | string,
   value: string | string[], // 사용자가 입력한 값 (input)
   formUrl: string, // 사용자가 입력한 API Url

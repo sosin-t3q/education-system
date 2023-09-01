@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
 /* eslint-disable max-depth */
 import axiosRequest from '@/axios/axiosRequest'
-import { CancelTokenSource, CanceledError } from 'axios'
 import base64DataToFile from '@/axios/base64DataToFile'
-import { SetterOrUpdater } from 'recoil'
 import json from '@/data/SCHOOL_INFERENCE.json'
+import { CancelTokenSource, CanceledError } from 'axios'
+import { SetterOrUpdater } from 'recoil'
 
 let convertDataA: File, convertDataB: File
 
@@ -35,7 +35,7 @@ const getInputType = async (inputType: string, value: string) => {
 }
 
 const getApiType = (
-  targetId: any,
+  targetId: number,
   apiType: string,
   value: string,
   formUrl: string,
@@ -61,7 +61,7 @@ const getApiType = (
       formData.append('url', formUrl)
       formData.append('files', convertDataA)
       formData.append('files', convertDataB)
-      formData.append('detail_id', targetId)
+      formData.append('detail_id', targetId.toString())
 
       return formData
     }
@@ -71,7 +71,7 @@ const getApiType = (
       if (convertFile) {
         formData.append('url', formUrl)
         formData.append('file', convertFile)
-        formData.append('detail_id', targetId)
+        formData.append('detail_id', targetId.toString())
       }
 
       return formData
@@ -80,7 +80,7 @@ const getApiType = (
 }
 
 const schoolProcessor = async (
-  targetId: string | number, // 타입 어떤걸로 할지 수정
+  targetId: number, // 타입 어떤걸로 할지 수정
   value: string | string[],
   formUrl: string,
   setLoading: SetterOrUpdater<boolean>,
@@ -206,7 +206,7 @@ const schoolProcessor = async (
               : '반환값 없음'
           break
 
-        case 1206: // 서버에 api 주소 없음
+        case 1206: // 정상작동
           resultData = `data:image/jpg;base64,${response_data}`
           break
 
