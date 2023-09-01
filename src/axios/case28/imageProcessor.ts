@@ -4,7 +4,7 @@ import { CancelTokenSource, CanceledError } from 'axios'
 import { SetterOrUpdater } from 'recoil'
 
 const imageProcessor = async (
-  targetId: any,
+  targetId: number,
   mode: 'classification' | 'anomaly' | 'clustering' | 'regression' | string,
   value: string | string[], // 사용자가 입력한 값 (input)
   formUrl: string, // 사용자가 입력한 API Url
@@ -61,7 +61,7 @@ const imageProcessor = async (
   const formData = new FormData()
   formData.append('url', formUrl)
   formData.append('file', convertData)
-  formData.append('detail_id', targetId)
+  formData.append('detail_id', targetId.toString())
 
   setLoading(true)
 

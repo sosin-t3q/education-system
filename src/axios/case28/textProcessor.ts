@@ -3,7 +3,7 @@ import { CancelTokenSource, CanceledError } from 'axios'
 import { SetterOrUpdater } from 'recoil'
 
 const textProcessor = async (
-  targetId: any,
+  targetId: number,
   mode: 'classification' | 'anomaly' | 'clustering' | 'regression' | string,
   value: string | string[], // 사용자가 입력한 값 (input)
   formUrl: string, // 사용자가 입력한 API Url
@@ -24,7 +24,7 @@ const textProcessor = async (
   const convertData = JSON.stringify({
     url: formUrl,
     word: value,
-    detail_id: targetId,
+    detail_id: targetId.toString(),
   })
 
   setLoading(true)

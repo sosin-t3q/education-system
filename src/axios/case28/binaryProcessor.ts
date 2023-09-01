@@ -1,10 +1,10 @@
-import base64DataToFile from '@/axios/base64DataToFile'
 import axiosRequest from '@/axios/axiosRequest'
+import base64DataToFile from '@/axios/base64DataToFile'
 import { CancelTokenSource, CanceledError } from 'axios'
 import { SetterOrUpdater } from 'recoil'
 
 const binaryProcessor = async (
-  targetId: any,
+  targetId: number,
   mode: 'classification' | 'anomaly' | 'clustering' | 'regression' | string,
   value: string | string[], // 사용자가 입력한 값 (input)
   formUrl: string, // 사용자가 입력한 API Url
@@ -22,6 +22,7 @@ const binaryProcessor = async (
     convertData = JSON.stringify({
       url: formUrl,
       log_data: value,
+      detail_id: targetId.toString(),
     })
     apiType = 'log'
   } else {
@@ -31,7 +32,7 @@ const binaryProcessor = async (
     convertData = new FormData()
     convertData.append('url', formUrl)
     convertData.append('file', convertImage)
-    convertData.append('detail_id', targetId)
+    convertData.append('detail_id', targetId.toString())
   }
 
   setLoading(true)
