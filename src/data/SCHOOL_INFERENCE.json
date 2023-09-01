@@ -81,7 +81,7 @@
       "id": 1206,
       "axios": "text",
       "inputType": "text",
-      "returnType": false,
+      "returnType": true,
       "dataInfo": ""
     },
     {
