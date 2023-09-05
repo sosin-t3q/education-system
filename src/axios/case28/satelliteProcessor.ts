@@ -92,7 +92,7 @@ const satelliteProcessor = async (
 
         /* CASE : 허리케인 위성 사진 풍속 예측 - Regression  */
         case 'regression':
-          resultData = response_data
+          resultData = `${response_data[0].toString()} Knot`
           returnDirectly = true
           break
 
