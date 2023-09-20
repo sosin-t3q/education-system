@@ -134,6 +134,11 @@ const DetailForm = ({ data }: DetailFormProps) => {
 
   const onClick = useCallback(async () => {
     sourceRef.current = axios.CancelToken.source()
+    if (typeof value === 'string' && value.trim().length === 0) {
+      setAlert({ visible: true, option: 'nullError' })
+
+      return
+    }
     if (value) {
       const inferResult = await combinedProcessor(
         pageId,
