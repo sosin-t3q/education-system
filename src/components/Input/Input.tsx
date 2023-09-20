@@ -23,7 +23,6 @@ const Input = ({ selected, getData, type }: InputProps) => {
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value)
-    if (value.trim().length === 0) return // 입력된 값이 없다면
     getData(e.target.value)
   }
 
