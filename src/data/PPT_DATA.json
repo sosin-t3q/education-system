@@ -1,0 +1,907 @@
+[
+  {
+    "id": 1,
+    "title": "영화 리뷰 텍스트 감정 분석",
+    "folderName": "text_classification",
+    "category": [
+      "소개",
+      "데이터셋",
+      "전처리",
+      "Word Embedding-1",
+      "Word Embedding-2",
+      "Layer",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "셰익스피어의 저작 텍스트 생성",
+    "folderName": "text_generation",
+    "category": [
+      "소개",
+      "데이터셋",
+      "Word Embedding",
+      "슬라이딩 윈도우",
+      "GPU-1",
+      "GPU-2",
+      "LSTM",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "스팸메일 탐지",
+    "folderName": "text_anomaly_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "Label Encoder",
+      "Tokenizer",
+      "클래스 가중치",
+      "Embedding Layer",
+      "LSTM",
+      "클래스 가중치의 영향",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "뉴스 기사 군집화",
+    "folderName": "text_clustering",
+    "category": [
+      "소개",
+      "데이터셋",
+      "HashingVectorizer",
+      "TruncatedSVD",
+      "K-means",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "손그림 이미지 분류",
+    "folderName": "image_classification",
+    "category": [
+      "소개",
+      "데이터셋",
+      "정규화",
+      "원-핫 인코딩",
+      "CNN - 1",
+      "CNN - 2",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Style Transfer",
+    "folderName": "image_generation",
+    "category": [
+      "소개",
+      "데이터셋",
+      "Anti-alias",
+      "VGG19",
+      "Style & Content",
+      "Gram Matrix",
+      "Style Transfer 1",
+      "Style Transfer 2",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "노후 시설물 이미지를 이용한 이상탐지",
+    "folderName": "image_anomaly_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "정규화",
+      "언더/오버 샘플링",
+      "SMOTE",
+      "VGGNet",
+      "VGG16",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "만화 얼굴 군집화",
+    "folderName": "image_clustering",
+    "category": [
+      "소개",
+      "데이터셋",
+      "VGGNet",
+      "VGG19",
+      "PCA(차원축소)",
+      "K-means clustering",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "음성 단어 분류",
+    "folderName": "audio_classification",
+    "category": [
+      "소개",
+      "데이터셋",
+      "스펙트로그램",
+      "CNN - 1",
+      "CNN - 2",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "피아노 악보 생성",
+    "folderName": "audio_generation",
+    "category": [
+      "소개",
+      "데이터셋",
+      "MIDI와 WAVE차이",
+      "훈련 데이터셋 생성",
+      "LSTM 1",
+      "LSTM 2",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 11,
+    "title": "산업 기계 소리 이상탐지",
+    "folderName": "audio_anomaly_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "Mel Spectrogram",
+      "AutoEncoder",
+      "Model Layer",
+      "Threshold",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 12,
+    "title": "환경소리 군집화",
+    "folderName": "audio_clustering",
+    "category": [
+      "소개",
+      "데이터셋",
+      "MFCC",
+      "PCA(차원축소)",
+      "K-means clustering",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 13,
+    "title": "비디오 행동 분류",
+    "folderName": "video_classification",
+    "category": [
+      "소개",
+      "데이터셋",
+      "전처리",
+      "전처리-Inception V3",
+      "학습",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 14,
+    "title": "비디오의 다음 프레임 예측",
+    "folderName": "video_generation",
+    "category": [
+      "소개",
+      "데이터셋",
+      "전처리",
+      "Convolutional LSTM",
+      "Convolutional LSTM Network",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 15,
+    "title": "보행자 도로 위 이상행동 탐지",
+    "folderName": "video_anomaly_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "전처리",
+      "Convolutional LSTM",
+      "AutoEncoder",
+      "Convolutional LSTM AutoEncoder",
+      "Model Layer",
+      "재구성 점수",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 16,
+    "title": "얼굴 키포인트가 있는 데이터 군집화",
+    "folderName": "video_clustering",
+    "category": [
+      "소개",
+      "데이터셋",
+      "2D and 3D landmarks 시각화",
+      "전처리",
+      "K-means",
+      "학습 결과",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 17,
+    "title": "NBA 선수 포지션 분류",
+    "folderName": "numeric_classification",
+    "category": [
+      "소개",
+      "데이터셋",
+      "데이터셋 전처리",
+      "정규화",
+      "원-핫 인코딩",
+      "Neural Network 신경망",
+      "Model Layer",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 18,
+    "title": "NBA 선수 연봉 예측",
+    "folderName": "numeric_regression",
+    "category": [
+      "소개",
+      "데이터셋",
+      "데이터셋 전처리",
+      "의사 결정 트리",
+      "랜덤 포레스트",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 19,
+    "title": "신용카드 사기 탐지",
+    "folderName": "numeric_anomaly_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "데이터셋 전처리",
+      "정규화",
+      "Neural Network",
+      "클래시 가중치 설정",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 20,
+    "title": "포켓몬 스탯에 따른 군집화",
+    "folderName": "numeric_clustering",
+    "category": [
+      "소개",
+      "데이터셋",
+      "전처리",
+      "K-means clustering",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 21,
+    "title": "도로 위성 사진 분류",
+    "folderName": "satellite_classification",
+    "category": [
+      "소개",
+      "데이터셋",
+      "원-핫 인코딩",
+      "EfficientNet 1",
+      "EfficientNet 2",
+      "EfficientNetB5",
+      "전이학습",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 22,
+    "title": "허리케인 위성 사진 풍속 예측",
+    "folderName": "satellite_regression",
+    "category": [
+      "소개",
+      "데이터셋",
+      "전처리",
+      "ResNet 1",
+      "ResNet 2",
+      "ResNet 3",
+      "ResNet50",
+      "전이학습",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 23,
+    "title": "픽셀의 다중 스펙트럼값을 이용한 이상탐지",
+    "folderName": "satellite_anomaly_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "데이터셋 전처리",
+      "RobustSCaler",
+      "Neural Network",
+      "클래스 가중치 설정",
+      "Metrics 이해하기",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 24,
+    "title": "지표면 위성 사진 군집화",
+    "folderName": "satellite_clustering",
+    "category": [
+      "소개",
+      "데이터셋",
+      "VGGNet",
+      "VGG19",
+      "주성분 분석(PCA)",
+      "K-means",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 25,
+    "title": "악성코드 분류",
+    "folderName": "binary_classification",
+    "category": [
+      "소개",
+      "데이터셋",
+      "EfficientNet 1",
+      "EfficientNet 2",
+      "EfficientNetB5",
+      "전이학습",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 26,
+    "title": "악성코드 감염 예측",
+    "folderName": "binary_regression",
+    "category": [
+      "소개",
+      "데이터셋",
+      "데이터 전처리",
+      "의사 결정 트리",
+      "Light GBM",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 27,
+    "title": "악성코드 이상탐지",
+    "folderName": "binary_anomaly_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "오토인코더",
+      "U-Net",
+      "U-Net 인코더",
+      "U-Net 디코더",
+      "Threshold",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 28,
+    "title": "악성코드 군집화",
+    "folderName": "binary_clustering",
+    "category": [
+      "소개",
+      "데이터셋",
+      "VGGNet",
+      "VGG16",
+      "PCA",
+      "K-means clustering",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 101,
+    "title": "YOLOv8을 이용한 축구 경기장에서 선수와 심판 탐지",
+    "folderName": "yolov8_detection",
+    "category": ["소개", "데이터셋", "YOLO", "YOLOv8", "추론 결과"]
+  },
+  {
+    "id": 102,
+    "title": "EfficientDet TF2을 이용한 혈액 세포 탐지",
+    "folderName": "efficientdet_tensorflow",
+    "category": ["소개", "데이터셋", "Bi-FPN", "EfficientDet", "추론 결과"]
+  },
+  {
+    "id": 103,
+    "title": "EfficientDet을 이용한 체스 말 탐지",
+    "folderName": "efficientdet_object_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "EfficientDet Object Detection 1",
+      "EfficientDet Object Detection 2",
+      "BiFPN",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 104,
+    "title": "YOLOv7을 이용한 일상 사진속에서 91종류 객체 탐지",
+    "folderName": "yolov7_detection",
+    "category": ["소개", "데이터셋", "YOLOv7", "학습", "추론 결과"]
+  },
+  {
+    "id": 105,
+    "title": "Faster R-CNN을 이용한 혈액 세포 탐지",
+    "folderName": "faster_rcnn_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "전처리",
+      "RPN (Region Proposal Network)",
+      "Faster R-CNN",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 106,
+    "title": "MT-YOLOv6를 이용한 체스 말 탐지",
+    "folderName": "yolov6_detection",
+    "category": ["소개", "데이터셋", "YOLOv6", "전처리 및 학습", "추론 결과"]
+  },
+  {
+    "id": 107,
+    "title": "YOLOv5를 이용한 혈액 세포 탐지",
+    "folderName": "yolov5_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "YOLO",
+      "YOLOv5",
+      "YOLOv5 Backbone",
+      "SPP (Spatial Pyramid Pooling)",
+      "YOLOv5 Head",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 108,
+    "title": "YOLOS를 이용한 혈액 세포 탐지",
+    "folderName": "yolos_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "데이터셋 전처리",
+      "전처리",
+      "YOLOS (1)",
+      "YOLOS (2)",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 109,
+    "title": "YOLOv3 Keras를 이용한 체스 말 탐지",
+    "folderName": "yolov3_keras_detection",
+    "category": ["소개", "데이터셋", "TFRecord", "YOLOv3", "추론 결과"]
+  },
+  {
+    "id": 110,
+    "title": "YOLOX를 이용한 혈액 세포 탐지",
+    "folderName": "yolox_detection",
+    "category": ["소개", "데이터셋", "YOLOX", "YOLOR", "추론 결과"]
+  },
+  {
+    "id": 111,
+    "title": "YOLOR을 이용한 혈액 세포 탐지",
+    "folderName": "yolor_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "전처리",
+      "YOLOR",
+      "Implicit Knowledge",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 112,
+    "title": "YOLOv3 PyTorch를 이용한 체스 말 탐지",
+    "folderName": "yolov3_torch_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "YOLO",
+      "YOLOv3 (1)",
+      "YOLOv3 (2)",
+      "K-means clustering",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 113,
+    "title": "YOLOv8 instance Segmentation을 이용한 식료품 탐지 및 분할",
+    "folderName": "yolov8_segmentation",
+    "category": [
+      "소개",
+      "데이터셋",
+      "결측 데이터 삭제",
+      "YOLO",
+      "YOLOv8 (1)",
+      "YOLOv8 (2)",
+      "YOLOv8 segmentation",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 114,
+    "title": "YOLOv7 Instance Segmentation을 이용한 콘크리트 균열 탐지와 분할",
+    "folderName": "yolov7_segmentation",
+    "category": ["소개", "데이터셋", "YOLOv7", "전처리 및 학습", "추론 결과"]
+  },
+  {
+    "id": 115,
+    "title": "YOLOv5 Instance Segmentation을 이용한 미국식 수화 판별",
+    "folderName": "yolov5_segmentation",
+    "category": [
+      "소개",
+      "데이터셋",
+      "모델",
+      "YOLOv5",
+      "YOLOv5 Backbone",
+      "SPPF",
+      "YOLOv5 Head",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 116,
+    "title": "Mask R-CNN을 이용한 미국식 수화 판별",
+    "folderName": "maskrcnn_segmentation",
+    "category": [
+      "소개",
+      "데이터셋",
+      "Mask R-CNN (1)",
+      "RPN (Region Proposal Network)",
+      "Mask branch",
+      "Mask R-CNN (2)",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 117,
+    "title": "SegFormer을 이용한 풍선 분할",
+    "folderName": "segformer_segmentation",
+    "category": [
+      "소개",
+      "데이터셋",
+      "데이터 전처리",
+      "SegFormer",
+      "SegFormer-Encoder",
+      "SegFormer-Decoder",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 118,
+    "title": "YOLOv8 Classification을 이용한 바나나 숙성도 분류",
+    "folderName": "yolov8_classification",
+    "category": [
+      "소개",
+      "데이터셋",
+      "YOLO",
+      "YOLO (2)",
+      "YOLOv8 Classification",
+      "NMS",
+      "YOLOv8 Classification (2)",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 119,
+    "title": "YOLOv5 Classification을 이용한 토마토 분류",
+    "folderName": "yolov5_classification",
+    "category": [
+      "소개",
+      "데이터셋",
+      "모델",
+      "YOLOv5 Classification",
+      "YOLOv5 Classification Backbone",
+      "SPPF",
+      "YOLOv5 Classification head",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 120,
+    "title": "EfficientNet을 이용한 견종 분류",
+    "folderName": "local_platform_efficientnet_classification",
+    "category": [
+      "소개",
+      "데이터셋",
+      "TFRecord",
+      "원-핫 인코딩",
+      "Efficientnet 모델",
+      "Efficient 모델",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 121,
+    "title": "Vision Transformer을 이용한 100종류 이미지 분류",
+    "folderName": "vit_classification",
+    "category": [
+      "소개",
+      "CIFAR-100",
+      "데이터셋",
+      "ViT 모델 구축",
+      "전처리 및 학습",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 122,
+    "title": "MobileNet V2 Classification을 이용한 꽃 분류",
+    "folderName": "mobilenet_classification",
+    "category": [
+      "소개",
+      "데이터셋",
+      "데이터 구조화",
+      "Image resize, tensor 변환",
+      "MobileNet V2",
+      "Inverted Residual Block",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 123,
+    "title": "YOLOv4 Tiny를 이용한 혈액 세포 탐지",
+    "folderName": "yolov4_tiny_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "YOLO",
+      "YOLOv4",
+      "YOLOv4 Tiny",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 124,
+    "title": "YOLOv4 PyTorch를 이용한 혈액 세포 탐지",
+    "folderName": "yolov4_torch_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "YOLO",
+      "CSPDarknet53",
+      "SPP, PAN",
+      "YOLOv4",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 125,
+    "title": "Scaled YOLOv4를 이용한 혈액 세포 탐지",
+    "folderName": "scaled_yolov4_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "YOLO",
+      "YOLOv4",
+      "Scaled YOLOv4",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 126,
+    "title": "Detectron2를 이용한 풍선 탐지",
+    "folderName": "detectron_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "전처리",
+      "Mask R-CNN (1)",
+      "RPN (Region Proposal Network)",
+      "Mask branch",
+      "Mask R-CNN (2)",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 1100,
+    "title": "이륜차 위험 요소 탐지",
+    "folderName": "twoWheel_vehicle_hazard",
+    "category": [
+      "제목",
+      "모델 소개-1",
+      "모델 소개-2",
+      "데이터 소개-1",
+      "데이터 소개-2",
+      "데이터 소개-3",
+      "데이터 전처리-1",
+      "데이터 전처리-2",
+      "데모 영상"
+    ]
+  },
+  {
+    "id": 1101,
+    "title": "버스 승객 승하차 감지",
+    "folderName": "bus_passenger_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "MoveNet",
+      "언더/오버샘플링",
+      "오버샘플링",
+      "원-핫 인코딩",
+      "CNN - 1",
+      "CNN - 2",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 1102,
+    "title": "버스 승객 이상행동 감지",
+    "folderName": "bus_passenger_detection",
+    "category": [
+      "소개",
+      "데이터셋",
+      "MoveNet",
+      "언더/오버샘플링",
+      "오버샘플링",
+      "원-핫 인코딩",
+      "CNN - 1",
+      "CNN - 2",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 1103,
+    "title": "나만의 말동무 심리케어 ChatBot",
+    "folderName": "chatBot",
+    "category": [
+      "소개",
+      "데이터셋 1",
+      "데이터셋 2",
+      "KoGPT2",
+      "토큰화",
+      "웹 구현"
+    ]
+  },
+  {
+    "id": 1200,
+    "title": "키워드 검색을 통한 키워드 내 이슈 & 트렌드 분석 서비스",
+    "folderName": "keyword_search_issue",
+    "category": [
+      "제목",
+      "아이디어 배경",
+      "서비스 목적 & 가치",
+      "분석 배경 1",
+      "분석 배경 2",
+      "알고리즘 (전체)",
+      "추론 결과 및 시각화"
+    ]
+  },
+  {
+    "id": 1201,
+    "title": "건축물 노후도 진단",
+    "folderName": "building_diagnostics",
+    "category": [
+      "소개",
+      "데이터셋",
+      "전처리 1",
+      "전처리 2",
+      "Swin Transformer",
+      "RetinaNet 1",
+      "RetinaNet 2",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 1202,
+    "title": "사용자 맞춤 알약 검색 시스템",
+    "folderName": "classifying_pill_images",
+    "category": [
+      "Title",
+      "About pillm",
+      "preprocessing 1",
+      "preprocessing 2",
+      "Segmentation",
+      "ClassificationModel 1",
+      "ClassificationModel 2",
+      "ClassificationColor 1",
+      "ClassificationText 1",
+      "Inference"
+    ]
+  },
+  {
+    "id": 1203,
+    "title": "가구 상세 분류",
+    "folderName": "find_your_furniture",
+    "category": [
+      "제목",
+      "Class 선정",
+      "학습 Data 수집",
+      "Imbalanced Dataset 1",
+      "Imbalanced Dataset 2",
+      "Data Distribution",
+      "EfficientDet",
+      "Reparameterization",
+      "Export Model"
+    ]
+  },
+  {
+    "id": 1204,
+    "title": "가짜 얼굴 판별 서비스",
+    "folderName": "the_face_detective",
+    "category": [
+      "제목",
+      "데이터 1",
+      "데이터 2",
+      "데이터 전처리 1",
+      "데이터 전처리 2",
+      "데이터 전처리 3",
+      "Deep Learning 1",
+      "Deep Learning 2",
+      "확장 가능성과 의의"
+    ]
+  },
+  {
+    "id": 1205,
+    "title": "보행약자 보조",
+    "folderName": "passing_parsing",
+    "category": [
+      "제목",
+      "데이터셋",
+      "Instance Segmentation",
+      "학습 결과",
+      "신호등 인식기능",
+      "고정체 장애물 안내",
+      "기대 효과"
+    ]
+  },
+  {
+    "id": 1206,
+    "title": "개인화 감성 이모티콘 생성 서비스",
+    "folderName": "ge_nemo_3",
+    "category": [
+      "제목",
+      "데이터셋",
+      "어노테이션",
+      "Stable Diffusion",
+      "Fine-tuning Stable Diffusion",
+      "출력 결과"
+    ]
+  },
+  {
+    "id": 1207,
+    "title": "Tracking & Image Captioning",
+    "folderName": "tracking_image_captioning_6",
+    "category": [
+      "제목",
+      "데이터셋",
+      "Tracking",
+      "Super resolution",
+      "Data Augmentation",
+      "Fine-Tuning",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 1208,
+    "title": "Non financial business analysis report",
+    "folderName": "non_financial_business_analysis_report_8",
+    "category": [
+      "제목",
+      "데이터셋",
+      "전처리부분-표제어추출",
+      "전처리부분-불용어제거",
+      "모델설명(Roberta)",
+      "모델설명(Tweet Roberta base sentiment)",
+      "추론 결과"
+    ]
+  },
+  {
+    "id": 1209,
+    "title": "상표 이미지 유사도 검색 서비스",
+    "folderName": "trademark_image_similarity_search_service_11",
+    "category": ["제목", "데이터셋", "전처리", "SimCLR", "ORB", "추론 결과"]
+  }
+]

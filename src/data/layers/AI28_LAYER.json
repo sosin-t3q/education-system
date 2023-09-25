@@ -1,0 +1,64 @@
+{
+    "columns": [
+      { "id": 1, "header": "" },
+      { "id": 2, "header": "분류" },
+      { "id": 3, "header": "회귀" },
+      { "id": 4, "header": "이상탐지" },
+      { "id": 5, "header": "군집화" }
+    ],
+    "rows": [
+      { "id": 1, "side": "텍스트" },
+      { "id": 2, "side": "이미지" },
+      { "id": 3, "side": "음성" },
+      { "id": 4, "side": "영상" },
+      { "id": 5, "side": "로그(수치)" },
+      { "id": 6, "side": "위성" },
+      { "id": 7, "side": "바이너리" }
+    ],
+    "body": [
+      { "id": 1, "type": "CLF", "name": "영화 리뷰 텍스트<br>감정 분석" },
+      { "id": 2, "type": "REG", "name": "셰익스피어의<br>저작 텍스트 생성" },
+      { "id": 3, "type": "ANORM", "name": "스팸메일 탐지" },
+      { "id": 4, "type": "CLS", "name": "뉴스 기사 군집화" },
+      { "id": 5, "type": "CLF", "name": "손그림 이미지 분류" },
+      { "id": 6, "type": "REG", "name": "Style Transfer" },
+      {
+        "id": 7,
+        "type": "ANORM",
+        "name": "노후 시설물 이미지를<br>이용한 이상탐지"
+      },
+      { "id": 8, "type": "CLS", "name": "만화 얼굴 군집화" },
+      { "id": 9, "type": "CLF", "name": "음성 단어 분류" },
+      { "id": 10, "type": "REG", "name": "피아노 악보 생성" },
+      { "id": 11, "type": "ANORM", "name": "산업 기계 소리<br>이상탐지" },
+      { "id": 12, "type": "CLS", "name": "환경소리 군집화" },
+      { "id": 13, "type": "CLF", "name": "비디오 행동 분류" },
+      { "id": 14, "type": "REG", "name": "비디오의 다음<br>프레임 예측" },
+      { "id": 15, "type": "ANORM", "name": "보행자 도로 위<br>이상행동 탐지" },
+      {
+        "id": 16,
+        "type": "CLS",
+        "name": "얼굴 키포인트가 있는<br>데이터 군집화"
+      },
+      { "id": 17, "type": "CLF", "name": "NBA 선수 포지션 분류" },
+      { "id": 18, "type": "REG", "name": "NBA 선수 연봉 예측" },
+      { "id": 19, "type": "ANORM", "name": "신용카드 사기 탐지" },
+      { "id": 20, "type": "CLS", "name": "포켓몬 스탯에<br>따른 군집화" },
+      { "id": 21, "type": "CLF", "name": "도로 위성 사진 분류" },
+      { "id": 22, "type": "REG", "name": "허리케인 위성 사진<br>풍속 예측" },
+      {
+        "id": 23,
+        "type": "ANORM",
+        "name": "픽셀의 다중 스펙트럼<br>값을 이용한 이상탐지"
+      },
+      { "id": 24, "type": "CLS", "name": "지표면 위성 사진<br>군집화" },
+      { "id": 25, "type": "CLF", "name": "악성코드 분류" },
+      { "id": 26, "type": "REG", "name": "악성코드 감염 예측" },
+      {
+        "id": 27,
+        "type": "ANORM",
+        "name": "악성코드 이상탐지"
+      },
+      { "id": 28, "type": "CLS", "name": "악성코드 군집화" }
+    ]
+  }

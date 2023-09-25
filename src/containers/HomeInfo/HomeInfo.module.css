@@ -1,0 +1,51 @@
+@import '../../root.css';
+
+.info {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.info-inner {
+  display: flex;
+  width: 721px;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.title {
+  color: var(--bg-blue);
+  text-align: center;
+  margin-bottom: var(--margin-24);
+}
+
+.video {
+  margin-bottom: var(--margin-24);
+}
+
+.paragraph {
+  margin-bottom: var(--margin-100);
+  line-height: 24px;
+  color: var(--font-black-light);
+}
+
+.info-data {
+  width: 576px;
+  margin: 0 auto;
+}
+
+.images {
+  margin-bottom: var(--margin-24);
+}
+
+.center {
+  text-align: center;
+}
+
+.info-task {
+  width: 480px;
+  margin: 0 auto;
+}
+
+.images-data {
+  margin-left: var(--margin-48);
+}

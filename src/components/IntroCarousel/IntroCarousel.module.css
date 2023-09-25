@@ -1,0 +1,56 @@
+@import '../../root.css';
+
+.container {
+  border: 1px solid salmon;
+}
+
+.text-contents {
+  padding-top: 100px;
+  padding-left: 100px;
+  color: var(--font-white);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.contents-title {
+  margin-bottom: var(--margin-30);
+}
+
+.contents-subtitle {
+  font-size: var(--font-24);
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--margin-30);
+}
+
+.contents-paragraph {
+  font-size: var(--font-20);
+  font-weight: var(--font-medium);
+  line-height: 30px;
+  margin-bottom: var(--margin-30);
+}
+
+.contents-button {
+  cursor: pointer;
+  margin-top: var(--margin-100);
+}
+
+.adventure-button {
+  width: 93px;
+  height: 41px;
+  background-color: var(--font-blue);
+  border-radius: var(--border-radius-4);
+  margin-top: var(--margin-100);
+}
+
+.adventure-button a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: var(--font-18);
+  color: var(--font-white);
+  font-weight: var(--font-semibold);
+}

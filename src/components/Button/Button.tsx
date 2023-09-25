@@ -1,12 +1,13 @@
 import styles from './Button.module.css'
 
 interface ButtonProps {
-  onClick: () => void
+  onClick?: () => void
   option: number
   label: string
+  className: string
 }
 
-const Button = ({ option, label, onClick }: ButtonProps) => {
+const Button = ({ option, onClick, label, className }: ButtonProps) => {
   const mode =
     option === 1
       ? styles['button--primary']
@@ -17,7 +18,7 @@ const Button = ({ option, label, onClick }: ButtonProps) => {
   return (
     <button
       type="button"
-      className={`${styles.button} ${mode}`}
+      className={`${styles.button} ${mode} ${className}`}
       onClick={onClick}
     >
       {label}

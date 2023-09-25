@@ -1,0 +1,49 @@
+@import '../../root.css';
+
+.school {
+  width: 1200px;
+  margin: 0 auto;
+  background: #f7f8ff;
+  padding-top: 200px;
+}
+
+/* 타이틀 */
+.title {
+  color: var(--font-blue);
+  text-align: center;
+  font-size: var(--font-32);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--margin-24);
+}
+
+.subtitle {
+  color: var(--font-black);
+  text-align: center;
+  font-size: var(--font-32);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--margin-100);
+}
+
+.menu {
+  margin-left: 60px;
+}
+
+.text {
+  text-align: center;
+  font-size: var(--font-20);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--margin-100);
+}
+
+/* 카드 컨테이너 */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1100px;
+  margin: 0 auto;
+  column-gap: 70px;
+  row-gap: 50px;
+  margin-bottom: var(--margin-100);
+  font-size: var(--font-16);
+  line-height: 24px;
+}

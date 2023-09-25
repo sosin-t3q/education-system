@@ -1,0 +1,60 @@
+@import '../../root.css';
+
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  box-shadow: var(--shadow-navbar);
+  background-color: #ffffff;
+}
+
+.header-inner {
+  display: flex;
+  width: 1200px;
+  height: 80px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  overflow-x: auto;
+}
+
+.experience {
+  margin-right: var(--margin-20);
+}
+
+.adventure {
+  color: var(--font-gray-heavy);
+  font-size: var(--font-16);
+  font-weight: var(--font-semibold);
+  text-decoration: none;
+  margin-right: var(--margin-20);
+}
+
+.adventure:hover {
+  color: var(--font-blue);
+}
+
+.experience:hover {
+  color: var(--font-blue);
+}
+
+.login {
+  background-color: transparent;
+  border: none;
+  color: var(--font-gray-heavy);
+  font-size: var(--font-16);
+  font-weight: var(--font-semibold);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.login:hover {
+  color: var(--font-blue);
+}
+
+@media (max-width: 1200px) {
+  .header-inner {
+    width: 100%;
+  }
+}

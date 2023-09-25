@@ -1,27 +1,27 @@
+@import '../../root.css';
+
 .button {
-  border-radius: 10px;
-  font-size: 28px;
+  background-color: var(--font-blue);
+  border-radius: var(--border-radius-4);
+  font-size: var(--font-18);
+  color: var(--font-white);
   outline: none;
   border: none;
 }
 
 .button--primary {
-  background-color: #3f75ff;
-  color: #ffffff;
-  font-size: 28px;
-  font-weight: 600;
-  width: 200px;
-  height: 68px;
+  font-weight: var(--font-semibold);
+  width: 93px;
+  height: 41px;
 }
 
 .button--secondary {
-  background-color: #3f75ff;
-  color: #ffffff;
-  font-weight: 700;
+  font-weight: var(--font-bold);
   width: 174px;
   height: 70px;
 }
 
 .button--third {
-  background-color: salmon;
+  width: 100px;
+  height: 70px;
 }

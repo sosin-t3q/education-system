@@ -2,20 +2,31 @@
 
 .dropDown {
   font-size: var(--font-16);
-  font-weight: var(--font-extrabold);
+  font-weight: var(--font-bold);
   color: var(--font-black);
-  width: 300px;
+  width: 250px;
+  position: relative;
+  margin-bottom: var(--margin-50);
+  cursor: pointer;
 }
 
 .dropDown-selected {
-  height: 48px;
+  height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: var(--bg-white);
   border-radius: var(--border-radius-10);
-  padding: 0 var(--padding-25);
-  margin-bottom: var(--margin-10);
+  padding: 0 var(--padding-20);
+  margin-bottom: 10px;
+}
+
+.dropDown-selected-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+  max-width: 200px;
+  overflow: hidden;
 }
 
 .dropDown-selected-title,
@@ -29,6 +40,7 @@
   align-items: center;
   background-color: transparent;
   border: none;
+  padding: 0;
 }
 
 .dropDown-options {
@@ -36,7 +48,46 @@
   flex-direction: column;
   background: var(--bg-white);
   border-radius: var(--border-radius-10);
+  width: 100%;
+  position: absolute;
+  overflow-y: auto; /* 내용이 높이를 초과하면 수직 스크롤바 활성화 */
+  max-height: 200px;
+  scrollbar-width: thin; /* Firefox를 위한 속성 */
+  scrollbar-color: var(--bg-blue) #fff; /* Firefox를 위한 속성 */
 }
+
+/* 웹킷 브라우저(Chrome, Safari)에서 스크롤 디자인 변경 */
+.dropDown-options::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dropDown-options::-webkit-scrollbar-thumb {
+  background-color: var(--bg-blue); /* 스크롤바 썸네일 색상 */
+  border-radius: 4px;
+}
+
+.dropDown-options::-webkit-scrollbar-track {
+  background-color: #fff; /* 스크롤바 트랙 색상 */
+}
+
+.dropDownOptionText {
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+  max-width: 230px;
+  overflow: hidden;
+  margin: var(--margin-10) 0;
+  padding: 0 var(--padding-20);
+}
+
+/* .dropDownOptionText:first-child {
+  margin-top: var(--margin-15);
+}
+
+.dropDownOptionText:last-child {
+  margin-bottom: var(--margin-15);
+} */
 
 .dropDown-option:first-child {
   margin-top: var(--margin-15);
@@ -47,8 +98,8 @@
 }
 
 .dropDown-option {
-  margin: var(--margin-10) 0;
-  padding: 0 var(--padding-25);
+  /* margin: var(--margin-10) 0; */
+  /* padding: 0 var(--padding-20); */
   color: var(--font-gray-light);
 }
 

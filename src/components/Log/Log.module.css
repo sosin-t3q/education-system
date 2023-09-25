@@ -1,0 +1,54 @@
+.input-log__box {
+  color: var(--font-gray-light);
+  width: 100%;
+  height: 400px;
+  background-color: var(--bg-white);
+  border-radius: var(--border-radius-10);
+  padding: 20px;
+  overflow: auto;
+
+  scrollbar-width: thin; /* Firefox를 위한 속성 */
+  scrollbar-color: var(--bg-blue) #fff; /* Firefox를 위한 속성 */
+}
+
+/* 웹킷 브라우저(Chrome, Safari)에서 스크롤 디자인 변경 */
+.input-log__box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.input-log__box::-webkit-scrollbar-thumb {
+  background-color: var(--bg-blue); /* 스크롤바 썸네일 색상 */
+  border-radius: 4px;
+}
+
+.input-log__box::-webkit-scrollbar-track {
+  background-color: #fff; /* 스크롤바 트랙 색상 */
+}
+
+.tableHead {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: left;
+  background-color: var(--bg-blue);
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+  color: var(--font-white);
+}
+
+.logForm div {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  text-align: left;
+  padding: 20px;
+  border-bottom: 1px solid var(--bg-secondary);
+}
+
+.logForm label {
+  color: var(--font-black);
+}
+
+.logForm input {
+  border: none;
+  width: 100%;
+}

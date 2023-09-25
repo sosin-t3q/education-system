@@ -1,0 +1,113 @@
+@import '../../root.css';
+
+.keyword {
+  display: flex;
+  width: 150px;
+  height: 200px;
+  color: var(--font-white);
+  font-size: var(--font-16);
+  font-weight: var(--font-semibold);
+  border-radius: 30px;
+}
+
+.keyword--primary {
+  justify-content: center;
+  align-items: center;
+  background-color: #bcc2f3;
+}
+
+.keyword--secondary {
+  justify-content: center;
+  align-items: center;
+  background-color: #c75d3d;
+}
+
+.keyword--third {
+  background-repeat: no-repeat;
+  background-position: 50% 40%;
+  background-size: 50px 50px;
+  padding-top: 130px;
+  justify-content: center;
+  background-color: #bcc2f3;
+}
+
+.keyword--fourth {
+  background-repeat: no-repeat;
+  /* background-position: 50% 40%; */
+  background-size: 50px 50px;
+  padding-top: 130px;
+  justify-content: center;
+  background-color: #c75d3d;
+}
+
+.positive {
+  background-image: url(../../assets/smile-icon.png);
+  background-position: center top;
+  background-position: 50% 40%;
+}
+
+.negative {
+  background-image: url(../../assets/sad-icon.png);
+  background-position: center top;
+  background-position: 50% 40%;
+}
+
+.ant {
+  background-image: url(../../assets/ant-icon.png);
+  background-position: center top;
+  background-position: 50% 40%;
+}
+
+.apple {
+  background-image: url(../../assets/apple-icon.png);
+  background-position: center top;
+  background-position: 50% 40%;
+}
+
+.bus {
+  background-image: url(../../assets/bus-icon.png);
+  background-position: center top;
+  background-position: 50% 40%;
+}
+
+.butterfly {
+  background-image: url(../../assets/butterfly-icon.png);
+  background-position: center top;
+  background-position: 50% 40%;
+}
+
+.cup {
+  background-image: url(../../assets/cup-icon.png);
+  background-position: center top;
+  background-position: 50% 40%;
+}
+
+.envelope {
+  background-image: url(../../assets/envelope-icon.png);
+  background-position: center top;
+  background-position: 50% 40%;
+}
+
+.fish {
+  background-image: url(../../assets/fish-icon.png);
+  background-position: center top;
+  background-position: 50% 40%;
+}
+
+.giraffe {
+  background-image: url(../../assets/giraffe-icon.png);
+  background-position: center top;
+  background-position: 50% 40%;
+}
+
+.bulb {
+  background-image: url(../../assets/bulb-icon.png);
+  background-position: center top;
+  background-position: 50% 40%;
+}
+
+.pig {
+  background-image: url(../../assets/pig-icon.png);
+  background-position: center top;
+  background-position: 50% 40%;
+}

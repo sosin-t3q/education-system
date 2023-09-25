@@ -1,0 +1,27 @@
+.swiper-slide {
+  text-align: center;
+}
+
+.detail-carousel .swiper-wrapper {
+  height: 750px;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  width: 64px;
+  height: 64px;
+  transform: translateY(-38px);
+}
+
+.swiper-button-prev {
+  background: url('/src/assets/left_button.png') no-repeat center;
+}
+
+.swiper-button-next {
+  background: url('/src/assets/right_button.png') no-repeat center;
+}

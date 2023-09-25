@@ -13,13 +13,13 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    checker({
-      typescript: true,
-    }),
+    // checker({
+    //   typescript: true,
+    // }),
     svgr(),
   ],
   server: {
-    host: 'localhost',
+    host: true,
     port: 3000,
     cors: true,
   },

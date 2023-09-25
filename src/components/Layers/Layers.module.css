@@ -1,0 +1,78 @@
+/* @import '../../root.css'; */
+
+.layers {
+  display: flex;
+  width: 720px;
+  height: 472px;
+  margin: 0 auto;
+  margin-bottom: var(--margin-100);
+  position: relative;
+}
+
+.container-general {
+  z-index: 4;
+  transition: all 0.3s ease-in-out;
+}
+
+.container-general:hover {
+  transform: translateY(-15%);
+}
+
+.general {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  cursor: pointer;
+}
+
+.container-vision {
+  z-index: 3;
+  transition: all 0.3s ease-in-out;
+}
+
+.container-vision:hover {
+  transform: translateY(-15%);
+}
+
+.vision {
+  position: absolute;
+  top: 0;
+  left: 210px;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.container-army {
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
+}
+
+.container-army:hover {
+  transform: translateY(-15%);
+}
+
+.army {
+  position: absolute;
+  top: 0;
+  left: 280px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.container-cart {
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.container-cart:hover {
+  transform: translateY(-15%);
+}
+
+.cart {
+  position: absolute;
+  top: 0;
+  left: 420px;
+  z-index: 1;
+  cursor: pointer;
+}

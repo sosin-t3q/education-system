@@ -1,0 +1,7 @@
+export { default as textProcessor } from './textProcessor'
+export { default as imageProcessor } from './imageProcessor'
+export { default as audioProcessor } from './audioProcessor'
+export { default as videoProcessor } from './videoProcessor'
+export { default as logProcessor } from './logProcessor'
+export { default as satelliteProcessor } from './satelliteProcessor'
+export { default as binaryProcessor } from './binaryProcessor'

@@ -1,15 +1,16 @@
 import styles from './Badge.module.css'
 
 interface BadgeProps {
-  width: string
-  content: React.ReactNode
+  className?: string
+  name: string
+  jockey: string
 }
 
-const Badge = ({ width, content }: BadgeProps) => {
+const Badge = ({ className, name, jockey }: BadgeProps) => {
   return (
-    <button className={styles['badge-university']} style={{ width: width }}>
-      {content}
-    </button>
+    <div className={`${styles.badge} ${className}`}>
+      {name} <span className={styles.bold}>{jockey}</span>
+    </div>
   )
 }
 

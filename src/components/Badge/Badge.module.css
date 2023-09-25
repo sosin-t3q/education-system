@@ -1,8 +1,16 @@
-.badge-university {
-  height: 38px;
-  border: 1px solid #000000;
-  background: #ffffff;
-  border-radius: 20px;
-  font-weight: 500;
-  font-size: 14px;
+@import '../../root.css';
+
+.badge {
+  display: inline-block;
+  height: 30px;
+  padding: 0 var(--padding-10);
+  background: var(--bg-white);
+  line-height: 30px;
+  border-radius: var(--border-radius-20);
+  font-weight: var(--font-medium);
+  font-size: var(--font-14);
+}
+
+.bold {
+  font-weight: var(--font-bold);
 }

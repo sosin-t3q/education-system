@@ -1,13 +1,8 @@
-.link--primary {
-  font-size: 28px;
-  font-weight: 600;
-  line-height: 24px;
-  color: #8c8f99;
+@import '../../root.css';
+
+.link {
+  color: var(--font-gray-heavy);
+  font-size: var(--font-16);
+  font-weight: var(--font-semibold);
   text-decoration: none;
 }
-
-/* .link—secondary {
-}
-
-.link—third {
-} */
